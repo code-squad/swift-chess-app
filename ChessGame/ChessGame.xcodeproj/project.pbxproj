@@ -14,6 +14,11 @@
 		F27B332328DE0717002AC78C /* ChessGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332228DE0717002AC78C /* ChessGameTests.swift */; };
 		F27B332D28DE0717002AC78C /* ChessGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332C28DE0717002AC78C /* ChessGameUITests.swift */; };
 		F27B332F28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332E28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift */; };
+		F284F09D28DF3D5D0037F860 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F09C28DF3D5D0037F860 /* Board.swift */; };
+		F284F09F28DF3DCB0037F860 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F09E28DF3DCB0037F860 /* Pawn.swift */; };
+		F284F0A128DF3ECD0037F860 /* TeamColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A028DF3ECD0037F860 /* TeamColor.swift */; };
+		F284F0A328DF3F900037F860 /* ChessPieceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */; };
+		F284F0A528DF3FF20037F860 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A428DF3FF20037F860 /* Position.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		F27B332828DE0717002AC78C /* ChessGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27B332C28DE0717002AC78C /* ChessGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITests.swift; sourceTree = "<group>"; };
 		F27B332E28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F284F09C28DF3D5D0037F860 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		F284F09E28DF3DCB0037F860 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		F284F0A028DF3ECD0037F860 /* TeamColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColor.swift; sourceTree = "<group>"; };
+		F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceProtocol.swift; sourceTree = "<group>"; };
+		F284F0A428DF3FF20037F860 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 				F27B331128DE0716002AC78C /* ChessGameApp.swift */,
 				F27B331328DE0716002AC78C /* ContentView.swift */,
 				F27B331528DE0717002AC78C /* Assets.xcassets */,
+				F284F09B28DF3B4C0037F860 /* Chess */,
 				F27B331728DE0717002AC78C /* Preview Content */,
 			);
 			path = ChessGame;
@@ -125,6 +136,26 @@
 				F27B332E28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift */,
 			);
 			path = ChessGameUITests;
+			sourceTree = "<group>";
+		};
+		F284F09B28DF3B4C0037F860 /* Chess */ = {
+			isa = PBXGroup;
+			children = (
+				F284F09C28DF3D5D0037F860 /* Board.swift */,
+				F284F0A428DF3FF20037F860 /* Position.swift */,
+				F284F0A628DF41C10037F860 /* Chess Piece */,
+			);
+			path = Chess;
+			sourceTree = "<group>";
+		};
+		F284F0A628DF41C10037F860 /* Chess Piece */ = {
+			isa = PBXGroup;
+			children = (
+				F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */,
+				F284F0A028DF3ECD0037F860 /* TeamColor.swift */,
+				F284F09E28DF3DCB0037F860 /* Pawn.swift */,
+			);
+			path = "Chess Piece";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F284F0A528DF3FF20037F860 /* Position.swift in Sources */,
 				F27B331428DE0716002AC78C /* ContentView.swift in Sources */,
+				F284F0A328DF3F900037F860 /* ChessPieceProtocol.swift in Sources */,
 				F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */,
+				F284F09D28DF3D5D0037F860 /* Board.swift in Sources */,
+				F284F0A128DF3ECD0037F860 /* TeamColor.swift in Sources */,
+				F284F09F28DF3DCB0037F860 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
