@@ -17,7 +17,7 @@
 		F284F09D28DF3D5D0037F860 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F09C28DF3D5D0037F860 /* Board.swift */; };
 		F284F09F28DF3DCB0037F860 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F09E28DF3DCB0037F860 /* Pawn.swift */; };
 		F284F0A128DF3ECD0037F860 /* TeamColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A028DF3ECD0037F860 /* TeamColor.swift */; };
-		F284F0A328DF3F900037F860 /* ChessPieceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */; };
+		F284F0A328DF3F900037F860 /* ChessPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A228DF3F900037F860 /* ChessPiece.swift */; };
 		F284F0A528DF3FF20037F860 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A428DF3FF20037F860 /* Position.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		F284F09C28DF3D5D0037F860 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		F284F09E28DF3DCB0037F860 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		F284F0A028DF3ECD0037F860 /* TeamColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColor.swift; sourceTree = "<group>"; };
-		F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceProtocol.swift; sourceTree = "<group>"; };
+		F284F0A228DF3F900037F860 /* ChessPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPiece.swift; sourceTree = "<group>"; };
 		F284F0A428DF3FF20037F860 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,7 +151,7 @@
 		F284F0A628DF41C10037F860 /* Chess Piece */ = {
 			isa = PBXGroup;
 			children = (
-				F284F0A228DF3F900037F860 /* ChessPieceProtocol.swift */,
+				F284F0A228DF3F900037F860 /* ChessPiece.swift */,
 				F284F0A028DF3ECD0037F860 /* TeamColor.swift */,
 				F284F09E28DF3DCB0037F860 /* Pawn.swift */,
 			);
@@ -290,7 +290,7 @@
 			files = (
 				F284F0A528DF3FF20037F860 /* Position.swift in Sources */,
 				F27B331428DE0716002AC78C /* ContentView.swift in Sources */,
-				F284F0A328DF3F900037F860 /* ChessPieceProtocol.swift in Sources */,
+				F284F0A328DF3F900037F860 /* ChessPiece.swift in Sources */,
 				F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */,
 				F284F09D28DF3D5D0037F860 /* Board.swift in Sources */,
 				F284F0A128DF3ECD0037F860 /* TeamColor.swift in Sources */,

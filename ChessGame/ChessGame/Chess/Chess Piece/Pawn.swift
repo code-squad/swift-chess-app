@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Pawn: ChessPieceProtocol {
-    var teamColor: TeamColor
+struct Pawn: ChessPiece {
+    let teamColor: TeamColor
     
-    func canMove(from origin: Position, to destination: Position) -> Bool {
+    func canMove(from origin: Position, to destination: Position, board: Board) -> Bool {
         return true
     }
 }
