@@ -9,7 +9,7 @@ import Foundation
 
 struct ChessBoard {
     
-    private var data: [[ChessPiece?]]
+    private(set) var data: [[ChessPiece?]]
     
     init(files: Int, ranks: Int) {
         let fileRow = [ChessPiece?](repeating: nil, count: files)
@@ -26,10 +26,10 @@ struct ChessBoard {
     }
     
     var files: Int {
-        data.count
+        data.first?.count ?? 0
     }
     var ranks: Int {
-        data.first?.count ?? 0
+        data.count
     }
     
     func canAccess(position: Position) -> Bool {
@@ -62,9 +62,9 @@ extension ChessBoard {
     static let defaultChessBoard = {
         var board = ChessBoard(files: 8, ranks: 8)
         // 폰 추가
-        for rank in 0..<8 {
-            board[Position(file: 1, rank: rank)] = ChessPiece(type: .pawn, teamColor: .white)
-            board[Position(file: 6, rank: rank)] = ChessPiece(type: .pawn, teamColor: .black)
+        for file in 0..<8 {
+            board[Position(file: file, rank: 1)] = ChessPiece(type: .pawn, teamColor: .white)
+            board[Position(file: file, rank: 6)] = ChessPiece(type: .pawn, teamColor: .black)
         }
         return board
     }()
