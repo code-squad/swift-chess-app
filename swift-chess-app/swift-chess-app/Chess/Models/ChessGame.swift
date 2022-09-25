@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: - ChessGame / ChessBoard 역할 나누기 (ChessGame은 턴 관리 및 폰 커맨드 관리, ChessBoard는 폰 위치 및 출력 관리)
 class ChessGame {
     typealias Player = Pawn.Color
     
@@ -15,56 +14,69 @@ class ChessGame {
         static let pawnNumberOfStart = 8
     }
     
-    let board = ChessBoard()
-    var blackPawns: [Pawn]
-    var whitePawns: [Pawn]
+    let chessBoard = ChessBoard()
     private var currentPalyer: Player = .black
     
-    init() {
-        self.blackPawns = Self.startPositionOfBlackPawns().map({ Pawn(color: .black,
-                                                                       position: $0) })
-        
-        
-        self.whitePawns = Self.startPositionOfWhitePawns().map({ Pawn(color: .white,
-                                                                       position: $0) })
-    }
-    
     private func changeTurnPalyer() {
-        let turnPalyer: Pawn.Color = currentPalyer == .black ? .white : .black
+        let turnPalyer: Player = currentPalyer == .black ? .white : .black
         self.currentPalyer = turnPalyer
     }
     
-    // 폰은 직선 1칸만 이동 가능 (file +- 1) || (rank +- 1)
+    func start() {
+        chessBoard.createPawns(color: .black, positions: Self.startPositionOfBlackPawns())
+        chessBoard.createPawns(color: .white, positions: Self.startPositionOfWhitePawns())
+        
+        while checkContinueGame() {
+            guard let inputString = readLine(),
+                  let command = Command.make(inputString: inputString) else { return printError() }
+            let from = command.fromPosition()
+            let to = command.toPosition()
+            
+            if checkValidatePosition(from: from, to: to) {
+                chessBoard.movePawn(color: currentPalyer, from: from, to: to)
+                chessBoard.display()
+                changeTurnPalyer()
+            } else {
+                printError()
+            }
+        }
+    }
+    
+    // MARK: - 폰은 직선 1칸만 이동 가능 (file +- 1) || (rank +- 1)
     private func checkValidatePosition(from: Position, to: Position) -> Bool {
-        return true
-    }
-    
-    private func findPawn(player: Player , position: Position) -> Pawn? {
-        let pawns = player == .black ? self.blackPawns : self.whitePawns
-        return pawns.first(where: { $0.position == position })
-    }
-    
-    @discardableResult
-    func movePawn(from: Position, to: Position) -> Bool {
-        guard checkValidatePosition(from: from, to: to),
-              var targetPawn = findPawn(player: currentPalyer, position: from) else { return false }
+        if from.file.rawValue == to.file.rawValue
+            && abs(from.rank.rawValue - to.rank.rawValue) == 1 {
+            return true
+        } else if abs(from.file.rawValue - to.file.rawValue) == 1
+                    && from.rank.rawValue == to.rank.rawValue {
+            return true
+        }
         
-        targetPawn.move(to)
-        return true
+        return false
     }
     
-    private func checkHitPawn(player: Player ,position: Position) -> Pawn? {
-        let targetPawns = player == .black ? self.whitePawns : self.blackPawns
+    private func checkContinueGame() -> Bool {
+        var shouldContinue = true
         
-        return targetPawns.first(where: { $0.position == position })
+        [Player.black, Player.white].forEach({
+            if chessBoard.myPawns(color: $0).count == 0 {
+                shouldContinue = false
+            }
+        })
+        return shouldContinue
     }
     
     
-    func score(player: Player) -> Int {
-        let score = player == .black ? self.blackPawns.count : self.whitePawns.count
+    // TODO: 상황에따라 나뉘어지는 에러가 많으면 에러 타입 따로 정의하기
+    private func printError() {
+        print("error message")
+    }
+    
+    func score() -> Int {
+        let score = chessBoard.myPawns(color: self.currentPalyer).count
         return score
     }
-
+    
 }
 
 extension ChessGame {
