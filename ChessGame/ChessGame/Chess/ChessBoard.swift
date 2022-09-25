@@ -2,73 +2,74 @@
 //  ChessBoard.swift
 //  ChessGame
 //
-//  Created by Sunghyun Kim on 2022/09/24.
+//  Created by Sunghyun Kim on 2022/09/25.
 //
 
 import Foundation
 
 struct ChessBoard {
-    private var data: [[ChessPiece?]]
     
-    // MARK: - Init
+    private var data: [[ChessPiece?]]
     
     init(files: Int, ranks: Int) {
         let fileRow = [ChessPiece?](repeating: nil, count: files)
         data = Array(repeating: fileRow, count: ranks)
     }
     
-    // MARK: - Internal
-    
-    var allRanks: [[ChessPiece?]] { data }
-    
-    // MARK: - Method
-    
-    @discardableResult
-    mutating func move(from origin: Position, to destination: Position) -> Bool {
-        guard
-            let piece = piece(at: origin)
-        else { return false }
-        
-        let success = addPiece(piece, at: destination)
-        guard success else { return false }
-        removePiece(at: origin)
-        
-        return true
-    }
-    
-    @discardableResult
-    func piece(at position: Position) -> ChessPiece? {
-        guard canAccess(position: position) else { return nil }
-        return self[position]
-    }
-    
-    // MARK: - Private
-    
-    private func canAccess(position: Position) -> Bool {
-        return data.count > position.file && data.first?.count ?? 0 > position.rank
-    }
-    
-    @discardableResult
-    private mutating func addPiece(_ piece: ChessPiece, at position: Position) -> Bool {
-        guard canAccess(position: position) else { return false }
-        self[position] = piece
-        return true
-    }
-    
-    @discardableResult
-    private mutating func removePiece(at position: Position) -> ChessPiece? {
-        guard let piece = piece(at: position) else { return nil }
-        self[position] = nil
-        return piece
-    }
-    
-    private subscript(_ position: Position) -> ChessPiece? {
+    subscript(_ position: Position) -> ChessPiece? {
         get {
             data[position.rank][position.file]
         }
         set {
             data[position.rank][position.file] = newValue
         }
+    }
+    
+    var files: Int {
+        data.count
+    }
+    var ranks: Int {
+        data.first?.count ?? 0
+    }
+    
+    func canAccess(position: Position) -> Bool {
+        return files > position.file && ranks > position.rank
+    }
+    
+    @discardableResult
+    mutating func move(from origin: Position, to destination: Position) -> Bool {
+        guard
+            canAccess(position: origin),
+            canAccess(position: destination),
+            let originPiece = self[origin]
+        else { return false }
+        
+        let movementIsValid: Bool
+        switch originPiece.type {
+        case .pawn:
+            movementIsValid = validateMovementOfPawn(
+                origin: origin,
+                destination: destination,
+                teamColor: originPiece.teamColor
+            )
+        }
+        guard movementIsValid else { return false }
+        
+        if let targetPiece = self[destination] {
+            guard targetPiece.teamColor != originPiece.teamColor else { return false }
+        }
+        
+        self[origin] = nil
+        self[destination] = originPiece
+        
+        return true
+    }
+    
+    private func validateMovementOfPawn(origin: Position, destination: Position, teamColor: TeamColor) -> Bool {
+        var expectedPosition = origin
+        expectedPosition.rank += teamColor == .white ? 1 : -1
+        guard destination == expectedPosition else { return false }
+        return true
     }
 }
 
@@ -77,8 +78,8 @@ extension ChessBoard {
         var board = ChessBoard(files: 8, ranks: 8)
         // 폰 추가
         for rank in 0..<8 {
-            board.addPiece(ChessPiece(type: .pawn, teamColor: .white), at: Position(file: 1, rank: rank))
-            board.addPiece(ChessPiece(type: .pawn, teamColor: .black), at: Position(file: 6, rank: rank))
+            board[Position(file: 1, rank: rank)] = ChessPiece(type: .pawn, teamColor: .white)
+            board[Position(file: 6, rank: rank)] = ChessPiece(type: .pawn, teamColor: .black)
         }
         return board
     }()
