@@ -1,5 +1,5 @@
 //
-//  Board.swift
+//  ChessBoard.swift
 //  ChessGame
 //
 //  Created by Sunghyun Kim on 2022/09/24.
@@ -7,35 +7,26 @@
 
 import Foundation
 
-struct Board {
-    private(set) var data: [[ChessPiece?]] = []
+struct ChessBoard {
+    private var data: [[ChessPiece?]]
     
-    // MARK: - Prepare
+    // MARK: - Init
     
-    init() {
-        configureBoard(files: 8, ranks: 8)
-        configureInitialChessPiece()
+    init(files: Int, ranks: Int) {
+        let fileRow = [ChessPiece?](repeating: nil, count: files)
+        data = Array(repeating: fileRow, count: ranks)
     }
     
-    private mutating func configureBoard(files: Int, ranks: Int) {
-        let rankRow = [ChessPiece?](repeating: nil, count: ranks)
-        data = Array(repeating: rankRow, count: files)
-    }
+    // MARK: - Internal
     
-    private mutating func configureInitialChessPiece() {
-        for rank in 0..<8 {
-            addPiece(Pawn(teamColor: .white), at: Position(file: 1, rank: rank))
-            addPiece(Pawn(teamColor: .black), at: Position(file: 6, rank: rank))
-        }
-    }
+    var allRanks: [[ChessPiece?]] { data }
     
     // MARK: - Method
     
     @discardableResult
     mutating func move(from origin: Position, to destination: Position) -> Bool {
         guard
-            let piece = piece(at: origin),
-            piece.canMove(from: origin, to: destination, board: self)
+            let piece = piece(at: origin)
         else { return false }
         
         let success = addPiece(piece, at: destination)
@@ -73,10 +64,22 @@ struct Board {
     
     private subscript(_ position: Position) -> ChessPiece? {
         get {
-            data[position.file][position.rank]
+            data[position.rank][position.file]
         }
         set {
-            data[position.file][position.rank] = newValue
+            data[position.rank][position.file] = newValue
         }
     }
+}
+
+extension ChessBoard {
+    static let defaultChessBoard = {
+        var board = ChessBoard(files: 8, ranks: 8)
+        // 폰 추가
+        for rank in 0..<8 {
+            board.addPiece(ChessPiece(type: .pawn, teamColor: .white), at: Position(file: 1, rank: rank))
+            board.addPiece(ChessPiece(type: .pawn, teamColor: .black), at: Position(file: 6, rank: rank))
+        }
+        return board
+    }()
 }
