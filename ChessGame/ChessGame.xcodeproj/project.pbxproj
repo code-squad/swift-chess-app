@@ -14,9 +14,9 @@
 		F27B332328DE0717002AC78C /* ChessGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332228DE0717002AC78C /* ChessGameTests.swift */; };
 		F27B332D28DE0717002AC78C /* ChessGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332C28DE0717002AC78C /* ChessGameUITests.swift */; };
 		F27B332F28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B332E28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift */; };
-		F284F09D28DF3D5D0037F860 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F09C28DF3D5D0037F860 /* ChessBoard.swift */; };
 		F284F0A328DF3F900037F860 /* ChessPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A228DF3F900037F860 /* ChessPiece.swift */; };
 		F284F0A528DF3FF20037F860 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F0A428DF3FF20037F860 /* Position.swift */; };
+		F2977FBF28E00A5900ECF817 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2977FBE28E00A5900ECF817 /* ChessBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +47,9 @@
 		F27B332828DE0717002AC78C /* ChessGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27B332C28DE0717002AC78C /* ChessGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITests.swift; sourceTree = "<group>"; };
 		F27B332E28DE0717002AC78C /* ChessGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F284F09C28DF3D5D0037F860 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		F284F0A228DF3F900037F860 /* ChessPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPiece.swift; sourceTree = "<group>"; };
 		F284F0A428DF3FF20037F860 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		F2977FBE28E00A5900ECF817 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 		F284F09B28DF3B4C0037F860 /* Chess */ = {
 			isa = PBXGroup;
 			children = (
-				F284F09C28DF3D5D0037F860 /* ChessBoard.swift */,
+				F2977FBE28E00A5900ECF817 /* ChessBoard.swift */,
 				F284F0A428DF3FF20037F860 /* Position.swift */,
 				F284F0A228DF3F900037F860 /* ChessPiece.swift */,
 			);
@@ -275,10 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F284F0A528DF3FF20037F860 /* Position.swift in Sources */,
+				F2977FBF28E00A5900ECF817 /* ChessBoard.swift in Sources */,
 				F27B331428DE0716002AC78C /* ContentView.swift in Sources */,
 				F284F0A328DF3F900037F860 /* ChessPiece.swift in Sources */,
 				F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */,
-				F284F09D28DF3D5D0037F860 /* ChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
