@@ -44,16 +44,8 @@ struct ChessBoard {
             let originPiece = self[origin]
         else { return false }
         
-        let movementIsValid: Bool
-        switch originPiece.type {
-        case .pawn:
-            movementIsValid = validateMovementOfPawn(
-                origin: origin,
-                destination: destination,
-                teamColor: originPiece.teamColor
-            )
-        }
-        guard movementIsValid else { return false }
+        guard originPiece.availableMovements(at: origin)
+            .contains(destination) else { return false }
         
         if let targetPiece = self[destination] {
             guard targetPiece.teamColor != originPiece.teamColor else { return false }
@@ -62,13 +54,6 @@ struct ChessBoard {
         self[origin] = nil
         self[destination] = originPiece
         
-        return true
-    }
-    
-    private func validateMovementOfPawn(origin: Position, destination: Position, teamColor: TeamColor) -> Bool {
-        var expectedPosition = origin
-        expectedPosition.rank += teamColor == .white ? 1 : -1
-        guard destination == expectedPosition else { return false }
         return true
     }
 }
