@@ -21,11 +21,11 @@ extension ChessBoard {
         var strings = [" "]
         // file 알파벳 추가
         let a = UInt8(ascii: "A")
-        let filesRow = (a ..< a+UInt8(files))
+        let filesRow = (a ..< a+UInt8(filesCount))
             .map { Character(UnicodeScalar($0)) }
         strings[0] += String(filesRow)
         
-        for rankIndex in 0..<ranks {
+        for rankIndex in 0..<ranksCount {
             let rankRowString = "\(rankIndex + 1)" + makeRankRowString(data[rankIndex])
             strings.append(rankRowString)
         }

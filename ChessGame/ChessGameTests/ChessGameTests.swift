@@ -9,28 +9,56 @@ import XCTest
 @testable import ChessGame
 
 final class ChessGameTests: XCTestCase {
-
+    
+    var game: ChessGame!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        game = ChessGame()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testChessBoard() {
+        let board = ChessBoard.standardChessBoard()
+        
+        for file in 0..<board.filesCount {
+            XCTAssertEqual(
+                board[Position(file: file, rank: 1)],
+                ChessPiece(type: .pawn, teamColor: .white)
+            )
+            XCTAssertEqual(
+                board[Position(file: file, rank: 6)],
+                ChessPiece(type: .pawn, teamColor: .black)
+            )
         }
     }
-
+    
+    func testCountBoardHas8Pawns() {
+        let board = ChessBoard.standardChessBoard()
+        let whitePawnCount = board.allPieces
+            .filter { $0.teamColor == .white && $0.type == .pawn }
+            .count
+        XCTAssertEqual(whitePawnCount, 8)
+        let blackPawnCount = board.allPieces
+            .filter { $0.teamColor == .black && $0.type == .pawn }
+            .count
+        XCTAssertEqual(blackPawnCount, 8)
+    }
+    
+    func testMovement() {
+        [
+            "A2A3",
+            "A7A6",
+            "A3A4",
+            "A6A5",
+            "A4A5"
+        ]
+            .forEach { XCTAssert(move($0)) }
+    }
+    
+    private func move(_ command: String) -> Bool {
+        let args = Array(command)
+        return game.movePiece(
+            from: .init(String(args[0...1]))!,
+            to: .init(String(args[2...3]))!
+        )
+    }
 }

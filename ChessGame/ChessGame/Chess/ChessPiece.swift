@@ -22,7 +22,7 @@ enum TeamColor {
     case black
 }
 
-struct ChessPiece {
+struct ChessPiece: Equatable {
     var type: PieceType
     let teamColor: TeamColor
     
