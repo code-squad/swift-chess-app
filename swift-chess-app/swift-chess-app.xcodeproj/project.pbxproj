@@ -16,6 +16,9 @@
 		CE1F765A28E0AD2E00383C94 /* swift_chess_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F765928E0AD2E00383C94 /* swift_chess_appUITestsLaunchTests.swift */; };
 		CE1F766928E0B4BC00383C94 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F766828E0B4BC00383C94 /* ChessBoard.swift */; };
 		CE1F767D28E0C46A00383C94 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F767C28E0C46A00383C94 /* Array+.swift */; };
+		CE1F767F28E0C7B600383C94 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F767E28E0C7B600383C94 /* Position.swift */; };
+		CE1F768128E0C7CC00383C94 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F768028E0C7CC00383C94 /* Pawn.swift */; };
+		CE1F768328E0C7E500383C94 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F768228E0C7E500383C94 /* ChessGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		CE1F765928E0AD2E00383C94 /* swift_chess_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_chess_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE1F766828E0B4BC00383C94 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		CE1F767C28E0C46A00383C94 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		CE1F767E28E0C7B600383C94 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		CE1F768028E0C7CC00383C94 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		CE1F768228E0C7E500383C94 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +144,10 @@
 		CE1F766728E0B4B400383C94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE1F768228E0C7E500383C94 /* ChessGame.swift */,
 				CE1F766828E0B4BC00383C94 /* ChessBoard.swift */,
+				CE1F767E28E0C7B600383C94 /* Position.swift */,
+				CE1F768028E0C7CC00383C94 /* Pawn.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,7 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1F763B28E0AD2E00383C94 /* ViewController.swift in Sources */,
+				CE1F768128E0C7CC00383C94 /* Pawn.swift in Sources */,
+				CE1F768328E0C7E500383C94 /* ChessGame.swift in Sources */,
 				CE1F766928E0B4BC00383C94 /* ChessBoard.swift in Sources */,
+				CE1F767F28E0C7B600383C94 /* Position.swift in Sources */,
 				CE1F763728E0AD2E00383C94 /* AppDelegate.swift in Sources */,
 				CE1F763928E0AD2E00383C94 /* SceneDelegate.swift in Sources */,
 				CE1F767D28E0C46A00383C94 /* Array+.swift in Sources */,
