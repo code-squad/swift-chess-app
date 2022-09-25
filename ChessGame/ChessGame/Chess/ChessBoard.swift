@@ -37,7 +37,7 @@ struct ChessBoard {
     }
     
     @discardableResult
-    mutating func move(from origin: Position, to destination: Position) -> Bool {
+    mutating func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard
             canAccess(position: origin),
             canAccess(position: destination),
