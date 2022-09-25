@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F25605DE28E02EBC009F40E0 /* ChessStringRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */; };
 		F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331128DE0716002AC78C /* ChessGameApp.swift */; };
 		F27B331428DE0716002AC78C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331328DE0716002AC78C /* ContentView.swift */; };
 		F27B331628DE0717002AC78C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F27B331528DE0717002AC78C /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessStringRepresent.swift; sourceTree = "<group>"; };
 		F27B330E28DE0716002AC78C /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27B331128DE0716002AC78C /* ChessGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameApp.swift; sourceTree = "<group>"; };
 		F27B331328DE0716002AC78C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				F2977FBE28E00A5900ECF817 /* ChessBoard.swift */,
 				F284F0A428DF3FF20037F860 /* Position.swift */,
 				F284F0A228DF3F900037F860 /* ChessPiece.swift */,
+				F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25605DE28E02EBC009F40E0 /* ChessStringRepresent.swift in Sources */,
 				F284F0A528DF3FF20037F860 /* Position.swift in Sources */,
 				F2977FBF28E00A5900ECF817 /* ChessBoard.swift in Sources */,
 				F27B331428DE0716002AC78C /* ContentView.swift in Sources */,
