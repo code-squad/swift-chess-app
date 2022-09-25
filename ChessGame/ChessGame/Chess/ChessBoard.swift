@@ -25,15 +25,19 @@ struct ChessBoard {
         }
     }
     
-    var files: Int {
+    var filesCount: Int {
         data.first?.count ?? 0
     }
-    var ranks: Int {
+    var ranksCount: Int {
         data.count
+    }
+    var allPieces: [ChessPiece] {
+        data.flatMap { $0 }
+            .compactMap { $0 }
     }
     
     func canAccess(position: Position) -> Bool {
-        return files > position.file && ranks > position.rank
+        return filesCount > position.file && ranksCount > position.rank
     }
     
     @discardableResult
@@ -59,7 +63,7 @@ struct ChessBoard {
 }
 
 extension ChessBoard {
-    static let defaultChessBoard = {
+    static func standardChessBoard() -> ChessBoard {
         var board = ChessBoard(files: 8, ranks: 8)
         // 폰 추가
         for file in 0..<8 {
@@ -67,5 +71,5 @@ extension ChessBoard {
             board[Position(file: file, rank: 6)] = ChessPiece(type: .pawn, teamColor: .black)
         }
         return board
-    }()
+    }
 }

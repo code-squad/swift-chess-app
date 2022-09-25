@@ -8,7 +8,7 @@
 import Foundation
 
 class ChessGame {
-    private(set) var board = ChessBoard(files: 8, ranks: 8)
+    private(set) var board = ChessBoard.standardChessBoard()
     private(set) var turn: TeamColor = .white
     func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard
