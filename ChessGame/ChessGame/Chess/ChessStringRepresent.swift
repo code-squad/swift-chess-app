@@ -44,3 +44,17 @@ extension ChessBoard {
         return String(rankRowCharacters)
     }
 }
+
+extension Position {
+    init?(_ string: String) {
+        let args = Array(string)
+        guard
+            args.count == 2,
+            let fileUnicode = args[0].unicodeScalars.first,
+            let rankValue = Int(String(args[1]))
+        else { return nil }
+        let file = Int(UInt8(ascii: fileUnicode) - UInt8(ascii: "A"))
+        guard file >= 0, rankValue > 0 else { return nil }
+        self.init(file: file, rank: rankValue - 1)
+    }
+}
