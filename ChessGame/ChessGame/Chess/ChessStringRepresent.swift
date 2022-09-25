@@ -18,19 +18,23 @@ extension ChessPiece {
 
 extension ChessBoard {
     func textFormatted() -> String {
-        var strings = [" "]
-        // file 알파벳 추가
-        let a = UInt8(ascii: "A")
-        let filesRow = (a ..< a+UInt8(filesCount))
-            .map { Character(UnicodeScalar($0)) }
-        strings[0] += String(filesRow)
+        var strings: [String] = [makeFileNamesRowString(filesCount: filesCount)]
         
-        for rankIndex in 0..<ranksCount {
+        for rankIndex in stride(from: ranksCount - 1, through: 0, by: -1) {
             let rankRowString = "\(rankIndex + 1)" + makeRankRowString(data[rankIndex])
             strings.append(rankRowString)
         }
         
+        strings.append(strings[0])
+        
         return strings.joined(separator: "\n")
+    }
+    
+    private func makeFileNamesRowString(filesCount: Int) -> String {
+        let a = UInt8(ascii: "A")
+        let filesRow = (a ..< a+UInt8(filesCount))
+            .map { Character(UnicodeScalar($0)) }
+        return " " + String(filesRow)
     }
     
     private func makeRankRowString(_ rankRow: [ChessPiece?]) -> String {
