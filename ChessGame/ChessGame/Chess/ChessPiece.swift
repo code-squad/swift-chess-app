@@ -25,4 +25,17 @@ enum TeamColor {
 struct ChessPiece {
     var type: PieceType
     let teamColor: TeamColor
+    
+    func availableMovements(at position: Position) -> [Position] {
+        switch type {
+        case .pawn:
+            return pawnMovements(at: position)
+        }
+    }
+    
+    private func pawnMovements(at position: Position) -> [Position] {
+        var newPosition = position
+        newPosition.rank += teamColor == .white ? 1 : -1
+        return [newPosition]
+    }
 }
