@@ -60,6 +60,16 @@ struct ChessBoard {
         
         return true
     }
+    
+    func scoreSum(for teamColor: TeamColor) -> Int {
+        var score = 0
+        for piece in allPieces {
+            if piece.teamColor == teamColor {
+                score += piece.type.score
+            }
+        }
+        return score
+    }
 }
 
 extension ChessBoard {
