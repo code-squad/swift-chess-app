@@ -20,4 +20,15 @@ final class ChessTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
+    
+    // MARK: - Status
+    func testChess_whenInit_statusIsReady() {
+        XCTAssertEqual(sut.status, .ready)
+    }
+    
+    func testChess_whenStart_statusChangeInProgress() {
+        sut.start()
+        
+        XCTAssertEqual(sut.status, .inProgress)
+    }
 }
