@@ -10,27 +10,92 @@ import XCTest
 
 class ChessAppTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    func testBoardInit() {
+        let board = Board()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+        let rowForBlack = 1
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+        board.matrix[rowForBlack].forEach { pawn in
+            XCTAssertNotNil(pawn)
+            XCTAssertEqual(pawn?.type, .black)
+        }
+        let rowForWhite = 6
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        board.matrix[rowForWhite].forEach { pawn in
+            XCTAssertNotNil(pawn)
+            XCTAssertEqual(pawn?.type, .white)
         }
     }
 
+    func testMove_black() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 1), to: .init(row: 1, section: 2))
+        let pawn = board.matrix[2][1]
+        XCTAssertNotNil(pawn)
+        XCTAssertEqual(pawn?.type, .black)
+    }
+
+    func testMove_white() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 6), to: .init(row: 1, section: 5))
+        let pawn = board.matrix[5][1]
+        XCTAssertNotNil(pawn)
+        XCTAssertEqual(pawn?.type, .white)
+
+    }
+
+    func testMove_black_exception_back() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 1), to: .init(row: 1, section: 0))
+        let pawn = board.matrix[0][1]
+        XCTAssertNil(pawn)
+    }
+
+    func testMove_white_exception_back() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 6), to: .init(row: 2, section: 6))
+        let pawn = board.matrix[7][1]
+        XCTAssertNil(pawn)
+
+    }
+
+
+    func testMove_black_exception_left() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 1), to: .init(row: 1, section: 2))
+        board.move(current: .init(row: 1, section: 2), to: .init(row: 0, section: 2))
+        let pawn = board.matrix[2][0]
+        XCTAssertNil(pawn)
+    }
+
+    func testMove_white_exception_right() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 6), to: .init(row: 1, section: 5))
+        board.move(current: .init(row: 1, section: 5), to: .init(row: 2, section: 5))
+        let pawn = board.matrix[5][2]
+        XCTAssertNil(pawn)
+    }
+
+    func testGetPoint_black() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 1), to: .init(row: 1, section: 2))
+        board.move(current: .init(row: 1, section: 2), to: .init(row: 1, section: 3))
+        board.move(current: .init(row: 1, section: 3), to: .init(row: 1, section: 4))
+        board.move(current: .init(row: 1, section: 4), to: .init(row: 1, section: 5))
+        board.move(current: .init(row: 1, section: 5), to: .init(row: 1, section: 6))
+        XCTAssertEqual(board.scoreForBlack, 1)
+    }
+
+    func testGetPoint_white() {
+        let board = Board()
+        board.move(current: .init(row: 1, section: 6), to: .init(row: 1, section: 5))
+        board.move(current: .init(row: 1, section: 5), to: .init(row: 1, section: 4))
+        board.move(current: .init(row: 1, section: 4), to: .init(row: 1, section: 3))
+        board.move(current: .init(row: 1, section: 3), to: .init(row: 1, section: 2))
+        board.move(current: .init(row: 1, section: 2), to: .init(row: 1, section: 1))
+        XCTAssertEqual(board.scoreForWhite, 1)
+    }
+
 }
+
+
