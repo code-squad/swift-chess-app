@@ -17,7 +17,7 @@ extension ChessPiece {
 }
 
 extension ChessBoard {
-    func textFormatted() -> String {
+    func display() -> String {
         var strings: [String] = [makeFileNamesRowString(filesCount: filesCount)]
         
         for rankIndex in stride(from: ranksCount - 1, through: 0, by: -1) {
@@ -31,8 +31,8 @@ extension ChessBoard {
     }
     
     private func makeFileNamesRowString(filesCount: Int) -> String {
-        let a = UInt8(ascii: "A")
-        let filesRow = (a ..< a+UInt8(filesCount))
+        let aLetter = UInt8(ascii: "A")
+        let filesRow = (aLetter ..< aLetter+UInt8(filesCount))
             .map { Character(UnicodeScalar($0)) }
         return " " + String(filesRow)
     }
