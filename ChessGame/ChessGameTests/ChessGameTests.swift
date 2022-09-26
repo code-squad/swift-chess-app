@@ -44,6 +44,13 @@ final class ChessGameTests: XCTestCase {
     }
     
     func testMovement() {
+        func moveAndAssert(_ command: String) {
+            let args = Array(command)
+            XCTAssert(move(command))
+            XCTAssertNil(game.board[.init(String(args[0...1]))!])
+            XCTAssertNotNil(game.board[.init(String(args[2...3]))!])
+        }
+        
         [
             "A2A3",
             "A7A6",
@@ -51,7 +58,7 @@ final class ChessGameTests: XCTestCase {
             "A6A5",
             "A4A5"
         ]
-            .forEach { XCTAssert(move($0)) }
+            .forEach { moveAndAssert($0) }
     }
     
     func testMovementFails() {
