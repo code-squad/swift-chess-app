@@ -17,6 +17,7 @@
 		EE3C66EC28E26D240085213D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66EB28E26D240085213D /* Board.swift */; };
 		EE3C66EE28E26D940085213D /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66ED28E26D940085213D /* ChessTests.swift */; };
 		EE3C66F028E26DC00085213D /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66EF28E26DC00085213D /* Chess.swift */; };
+		EE3C66F228E271A40085213D /* Chess+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66F128E271A40085213D /* Chess+Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		EE3C66EB28E26D240085213D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		EE3C66ED28E26D940085213D /* ChessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessTests.swift; sourceTree = "<group>"; };
 		EE3C66EF28E26DC00085213D /* Chess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
+		EE3C66F128E271A40085213D /* Chess+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chess+Status.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				EE3C66EB28E26D240085213D /* Board.swift */,
 				EE3C66EF28E26DC00085213D /* Chess.swift */,
+				EE3C66F128E271A40085213D /* Chess+Status.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE3C66F228E271A40085213D /* Chess+Status.swift in Sources */,
 				EE3C66CA28E1A8FF0085213D /* ViewController.swift in Sources */,
 				EE3C66C628E1A8FF0085213D /* AppDelegate.swift in Sources */,
 				EE3C66EC28E26D240085213D /* Board.swift in Sources */,

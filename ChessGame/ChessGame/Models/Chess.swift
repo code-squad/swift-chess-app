@@ -8,5 +8,9 @@
 import Foundation
 
 class Chess {
+    var status: Status = .ready
     
+    func start() {
+        status = .inProgress
+    }
 }
