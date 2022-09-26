@@ -24,8 +24,18 @@ enum Color {
     case white, black
 }
 
-struct Piece {
+class Piece {
     var location: Location
     var color: Color
     var accessibleLocations: [Location]
+    
+    init(location: Location, color: Color, accessibleLocations: [Location] = []) {
+        self.location = location
+        self.color = color
+        self.accessibleLocations = accessibleLocations
+    }
+}
+
+final class Pawn: Piece {
+    
 }
