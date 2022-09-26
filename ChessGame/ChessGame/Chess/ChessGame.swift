@@ -13,9 +13,10 @@ class ChessGame {
     func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard
             board.canAccess(position: origin),
-            board[origin]?.teamColor == playerTurn
+            board[origin]?.teamColor == playerTurn,
+            board.movePiece(from: origin, to: destination)
         else { return false }
-        guard board.movePiece(from: origin, to: destination) else { return false }
+        
         togglePlayerTurn()
         return true
     }
