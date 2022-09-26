@@ -15,8 +15,8 @@ struct Location {
         case A, B, C, D, E, F, G, H
     }
     
-    enum Rank {
-        case one, two, three, four, five, six, seven, eight
+    enum Rank: Int {
+        case one = 1, two, three, four, five, six, seven, eight
     }
 }
 
@@ -26,7 +26,7 @@ enum Color {
 
 class Piece {
     var location: Location
-    var color: Color
+    let color: Color
     var accessibleLocations: [Location]
     
     init(location: Location, color: Color, accessibleLocations: [Location] = []) {
@@ -37,5 +37,14 @@ class Piece {
 }
 
 final class Pawn: Piece {
+    private var movableDistance: Int = 1
+    // 초기 생성시 흑색은 2rank, 백색은 7rank에만 생성됨
     
+    func move(from: Location, to: Location) {
+        let distance = from.rank.rawValue - to.rank.rawValue
+        
+        if (color == .black && distance == -1) || (color == .white && distance == 1) {
+            location = to
+        }
+    }
 }
