@@ -19,6 +19,8 @@
 		0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */; };
 		0099CEB528E07B6400AFCCCF /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB428E07B6400AFCCCF /* Pawn.swift */; };
 		0099CEB728E0819300AFCCCF /* ChessBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB628E0819300AFCCCF /* ChessBoardTests.swift */; };
+		0099CEB928E0888100AFCCCF /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB828E0888100AFCCCF /* PawnTests.swift */; };
+		0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEBA28E1D4F400AFCCCF /* Position.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		0099CEB428E07B6400AFCCCF /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		0099CEB628E0819300AFCCCF /* ChessBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardTests.swift; sourceTree = "<group>"; };
+		0099CEB828E0888100AFCCCF /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		0099CEBA28E1D4F400AFCCCF /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +128,7 @@
 			children = (
 				0099CE9928DDF91200AFCCCF /* ChessTests.swift */,
 				0099CEB628E0819300AFCCCF /* ChessBoardTests.swift */,
+				0099CEB828E0888100AFCCCF /* PawnTests.swift */,
 			);
 			path = ChessTests;
 			sourceTree = "<group>";
@@ -282,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0099CEB928E0888100AFCCCF /* PawnTests.swift in Sources */,
 				0099CE9A28DDF91200AFCCCF /* ChessTests.swift in Sources */,
 				0099CEB728E0819300AFCCCF /* ChessBoardTests.swift in Sources */,
 			);
