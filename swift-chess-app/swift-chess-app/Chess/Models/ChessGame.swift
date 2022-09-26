@@ -10,52 +10,63 @@ import Foundation
 class ChessGame {
     typealias Player = Pawn.Color
     
-    enum Dimesion {
-        static let pawnNumberOfStart = 8
-    }
-    
     let chessBoard = ChessBoard()
-    private var currentPalyer: Player = .black
+    var currentPalyer: Player = .black
     
-    private func changeTurnPalyer() {
-        let turnPalyer: Player = currentPalyer == .black ? .white : .black
-        self.currentPalyer = turnPalyer
-    }
-    
-    func start() {
+    func start(inputString: String) {
         chessBoard.createPawns(color: .black, positions: Self.startPositionOfBlackPawns())
         chessBoard.createPawns(color: .white, positions: Self.startPositionOfWhitePawns())
         
         while checkContinueGame() {
-            guard let inputString = readLine(),
-                  let command = Command.make(inputString: inputString) else { return printError() }
-            let from = command.fromPosition()
-            let to = command.toPosition()
-            
-            if checkValidatePosition(from: from, to: to) {
-                chessBoard.movePawn(color: currentPalyer, from: from, to: to)
-                chessBoard.display()
-                changeTurnPalyer()
-            } else {
-                printError()
+            guard let command = Command.make(inputString: inputString),
+                  let from = command.fromPosition(),
+                  let to = command.toPosition()
+            else {
+                printError(.invalidFormat)
+                continue
             }
+            
+            guard checkValidatePosition(player: currentPalyer, from: from, to: to)
+            else {
+                printError(.invalidPosition)
+                continue
+            }
+            
+            guard chessBoard.movePawn(color: currentPalyer, from: from, to: to)
+            else {
+                printError(.notFindPawn)
+                continue
+            }
+                
+            if let removePawn = chessBoard.checkHitPawn(color: currentPalyer, position: to) {
+                let otherPlayer: Player = currentPalyer == .black ? .white : .black
+                chessBoard.removePawn(color: otherPlayer, pawn: removePawn)
+            }
+                
+            chessBoard.display()
+            changeTurnPalyer()
         }
     }
     
-    // MARK: - 폰은 직선 1칸만 이동 가능 (file +- 1) || (rank +- 1)
-    private func checkValidatePosition(from: Position, to: Position) -> Bool {
-        if from.file.rawValue == to.file.rawValue
-            && abs(from.rank.rawValue - to.rank.rawValue) == 1 {
-            return true
-        } else if abs(from.file.rawValue - to.file.rawValue) == 1
-                    && from.rank.rawValue == to.rank.rawValue {
+    func changeTurnPalyer() {
+        let turnPalyer: Player = currentPalyer == .black ? .white : .black
+        self.currentPalyer = turnPalyer
+    }
+    
+    // MARK: - 백색은 큰 rank에서 더 작은 rank로 움직일 수 있고, 흑색은 작은 rank에서 더 큰 rank로 움직일 수 있다.
+    func checkValidatePosition(player: Player, from: Position, to: Position) -> Bool {
+        guard chessBoard.findPawn(color: player, position: to) == nil else { return false }
+        
+        let canDirectionToInt: Int = player == .white ? 1 : -1
+        if ((from.file.rawValue == to.file.rawValue) && ((from.rank.rawValue - to.rank.rawValue) == canDirectionToInt))
+            || ((abs(from.file.rawValue - to.file.rawValue) == 1) && (from.rank.rawValue == to.rank.rawValue)) {
             return true
         }
         
         return false
     }
     
-    private func checkContinueGame() -> Bool {
+    func checkContinueGame() -> Bool {
         var shouldContinue = true
         
         [Player.black, Player.white].forEach({
@@ -66,10 +77,8 @@ class ChessGame {
         return shouldContinue
     }
     
-    
-    // TODO: 상황에따라 나뉘어지는 에러가 많으면 에러 타입 따로 정의하기
-    private func printError() {
-        print("error message")
+    private func printError(_ error: Error) {
+        print(error.message)
     }
     
     func score() -> Int {
@@ -82,11 +91,11 @@ class ChessGame {
 extension ChessGame {
     // MARK: - 초기 생성 위치는 흑색은 2-rank 또는 백색 7-rank에만 가능하다.
     static func startPositionOfBlackPawns() -> [Position] {
-        return Rank.allCases.map({ Position(file: .two, rank: $0) })
+        return File.allCases.map({ Position(file: $0, rank: .two) })
     }
     
     static func startPositionOfWhitePawns() -> [Position] {
-        return Rank.allCases.map({ Position(file: .seven, rank: $0) })
+        return File.allCases.map({ Position(file: $0, rank: .seven) })
     }
 }
 

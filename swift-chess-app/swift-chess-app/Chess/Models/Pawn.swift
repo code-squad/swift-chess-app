@@ -7,17 +7,15 @@
 
 import Foundation
 
-struct Pawn {
+struct Pawn: Equatable {
     enum Color {
         case white, black
     }
     
-    let id: UUID
     let color: Color
     var position: Position
     
     init(color: Color, position: Position) {
-        self.id = UUID()
         self.color = color
         self.position = position
     }

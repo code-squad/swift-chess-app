@@ -11,12 +11,22 @@ struct Command {
     let fromString: String
     let toString: String
     
-    func fromPosition() -> Position {
-        return Position(file: .one, rank: .a)
+    func fromPosition() -> Position? {
+        guard let fileString = fromString.firstString(),
+              let rankString = fromString.lastString(),
+              let file = File.convert(from: fileString),
+              let rank = Rank.convert(from: rankString) else { return nil }
+        
+        return Position(file: file, rank: rank)
     }
     
-    func toPosition() -> Position {
-        return Position(file: .eight, rank: .a)
+    func toPosition() -> Position? {
+        guard let fileString = toString.firstString(),
+              let rankString = toString.lastString(),
+              let file = File.convert(from: fileString),
+              let rank = Rank.convert(from: rankString) else { return nil }
+        
+        return Position(file: file, rank: rank)
     }
 }
 
@@ -25,10 +35,32 @@ extension Command {
         let components = inputString.components(separatedBy: "->")
         
         guard components.count == 2,
-              let fromString = components.first,
-              let toString = components.last else { return nil }
-        
-        // TODO: - 정규 표현식으로 입력 범위 확인하기
+              let fromString = Self.checkRegex(components.first),
+              let toString = Self.checkRegex(components.last) else { return nil }
+            
         return Command(fromString: fromString, toString: toString)
+    }
+    
+    static private func checkRegex(_ str: String?) -> String? {
+        guard let str = str else { return nil }
+        
+        let pattern: String = "[A-H][1-8]$"
+        if str.range(of: pattern, options: .regularExpression) != nil {
+            return str
+        } else {
+            return nil
+        }
+    }
+}
+
+extension String {
+    func firstString() -> String? {
+        guard let char = self.first else { return nil }
+        return String(char)
+    }
+    
+    func lastString() -> String? {
+        guard let char = self.last else { return nil }
+        return String(char)
     }
 }
