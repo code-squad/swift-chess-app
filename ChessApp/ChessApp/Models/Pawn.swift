@@ -50,6 +50,6 @@ final class Pawn {
     }
 
     func canMove(postion: IndexPath) -> Bool {
-        return  nextPossiblePositions.contains(postion)
+        return nextPossiblePositions.contains(postion)
     }
 }

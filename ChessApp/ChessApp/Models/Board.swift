@@ -33,17 +33,17 @@ final class Board {
     func reset() {
         matrix = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Board.matrixSize), count: Board.matrixSize)
 
-        let rowForBlack = 1
-        matrix[rowForBlack] = (0..<Board.matrixSize).map { section -> Pawn in
-            let pawn = Pawn(postion: IndexPath(row: rowForBlack, section: section), type: .black)
+        let sectionForBlack = 1
+        matrix[sectionForBlack] = (0..<Board.matrixSize).map { row -> Pawn in
+            let pawn = Pawn(postion: IndexPath(row: row, section: sectionForBlack), type: .black)
             pawn.delegate = self
             return pawn
         }
 
 
-        let rowForWhite = 6
-        matrix[rowForWhite] = (0..<Board.matrixSize).map { section -> Pawn in
-            let pawn = Pawn(postion: IndexPath(row: rowForWhite, section: section), type: .white)
+        let sectionForWhite = 6
+        matrix[sectionForWhite] = (0..<Board.matrixSize).map { row -> Pawn in
+            let pawn = Pawn(postion: IndexPath(row: row, section: sectionForWhite), type: .white)
             pawn.delegate = self
             return pawn
         }
