@@ -11,6 +11,9 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let board = Board()
+        print(board.description())
         // Do any additional setup after loading the view.
     }
 
