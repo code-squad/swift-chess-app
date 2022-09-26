@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PawnDelegate: AnyObject {
-    func didMovePawn(_ pawn: Pawn, position: IndexPath)
+    func didMovePawn(_ pawn: Pawn, prePosition: IndexPath)
 }
 
 final class Pawn {
@@ -22,12 +22,12 @@ final class Pawn {
     let type: ColorType
     let iconString: String
     weak var delegate: PawnDelegate?
-    var nextPossiblePosition: IndexPath {
+    var nextPossiblePositions: [IndexPath] {
         switch type {
         case .black:
-            return IndexPath(row: postion.row + 1, section: postion.section)
+            return [IndexPath(row: postion.row, section: postion.section + 1)]
         case .white:
-            return IndexPath(row: postion.row - 1, section: postion.section)
+            return [IndexPath(row: postion.row, section: postion.section - 1)]
         }
 
     }
@@ -44,11 +44,12 @@ final class Pawn {
     }
 
     func move(to postion: IndexPath) {
+        let prePosition = self.postion
         self.postion = postion
-        delegate?.didMovePawn(self, position: postion)
+        delegate?.didMovePawn(self, prePosition: prePosition)
     }
 
     func canMove(postion: IndexPath) -> Bool {
-        return postion == nextPossiblePosition
+        return  nextPossiblePositions.contains(postion)
     }
 }
