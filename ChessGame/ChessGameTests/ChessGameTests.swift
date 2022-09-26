@@ -65,6 +65,19 @@ final class ChessGameTests: XCTestCase {
         XCTAssertFalse(board.movePiece(from: .init("A2")!, to: .init("A3")!))
     }
     
+    func testScoreSum() {
+        var board = ChessBoard.standardChessBoard()
+        XCTAssertEqual(board.scoreSum(for: .white), 8)
+        XCTAssertEqual(board.scoreSum(for: .black), 8)
+        
+        board[.init("A2")!] = nil
+        XCTAssertEqual(board.scoreSum(for: .white), 7)
+        
+        board[.init("A7")!] = nil
+        board[.init("B7")!] = nil
+        XCTAssertEqual(board.scoreSum(for: .black), 6)
+    }
+    
     // MARK: - ChessGame
     
     func testMovement() {
