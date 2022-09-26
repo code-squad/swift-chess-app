@@ -9,18 +9,18 @@ import Foundation
 
 class ChessGame {
     private(set) var board = ChessBoard.standardChessBoard()
-    private(set) var turn: TeamColor = .white
+    private(set) var playerTurn: TeamColor = .white
     func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard
             board.canAccess(position: origin),
-            board[origin]?.teamColor == turn
+            board[origin]?.teamColor == playerTurn
         else { return false }
         guard board.movePiece(from: origin, to: destination) else { return false }
-        toggleTurn()
+        togglePlayerTurn()
         return true
     }
     
-    private func toggleTurn() {
-        turn = turn == .white ? .black : .white
+    private func togglePlayerTurn() {
+        playerTurn = playerTurn == .white ? .black : .white
     }
 }
