@@ -11,8 +11,17 @@ final class Board {
 
     static let matrixSize: Int = 8
 
-    private(set) var scoreForBlack: Int = 0
+    private(set) var scoreForBlack: Int = 0 {
+        didSet {
+            print("흑색 점수: \(scoreForBlack)")
+        }
+    }
     private(set) var scoreForWhite: Int = 0
+    {
+        didSet {
+            print("백색 점수: \(scoreForWhite)")
+        }
+    }
 
     var matrix = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Board.matrixSize), count: Board.matrixSize)
 
@@ -25,18 +34,33 @@ final class Board {
         matrix = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Board.matrixSize), count: Board.matrixSize)
 
         let rowForBlack = 1
-        matrix[rowForBlack] = (0..<Board.matrixSize).map { Pawn(postion: IndexPath(row: rowForBlack, section: $0), type: .black) }
+        matrix[rowForBlack] = (0..<Board.matrixSize).map { section -> Pawn in
+            let pawn = Pawn(postion: IndexPath(row: rowForBlack, section: section), type: .black)
+            pawn.delegate = self
+            return pawn
+        }
+
 
         let rowForWhite = 6
-        matrix[rowForWhite] = (0..<Board.matrixSize).map { Pawn(postion: IndexPath(row: rowForWhite, section: $0), type: .white) }
+        matrix[rowForWhite] = (0..<Board.matrixSize).map { section -> Pawn in
+            let pawn = Pawn(postion: IndexPath(row: rowForWhite, section: section), type: .white)
+            pawn.delegate = self
+            return pawn
+        }
+
+        scoreForWhite = 0
+        scoreForBlack = 0
+        
     }
 
     func canMove(current: IndexPath, to nextPosition: IndexPath) -> Bool {
         guard isValidIndex(indexPath: current),
               isValidIndex(indexPath: nextPosition),
               let pawn = matrix[current.section][current.row],
-              pawn.canMove(postion: nextPosition) else { return false }
-        return false
+              pawn.canMove(postion: nextPosition),
+              matrix[nextPosition.section][nextPosition.row]?.type != pawn.type else { return false }
+
+        return true
     }
 
     func move(current: IndexPath, to nextPosition: IndexPath) {
@@ -75,7 +99,19 @@ final class Board {
 }
 
 extension Board: PawnDelegate {
-    func didMovePawn(_ pawn: Pawn, position: IndexPath) {
-        matrix[position.section][position.row] = pawn
+    func didMovePawn(_ pawn: Pawn, prePosition: IndexPath) {
+        defer {
+            matrix[prePosition.section][prePosition.row] = nil
+            matrix[pawn.postion.section][pawn.postion.row] = pawn
+        }
+        guard let _ = matrix[pawn.postion.section][pawn.postion.row] else {
+            return
+        }
+        switch pawn.type {
+        case .black:
+            scoreForBlack += 1
+        case .white:
+            scoreForWhite += 1
+        }
     }
 }
