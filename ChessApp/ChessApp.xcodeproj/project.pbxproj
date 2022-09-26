@@ -16,6 +16,8 @@
 		CDD56EA528E2096800E7BB20 /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD56EA428E2096800E7BB20 /* ChessAppTests.swift */; };
 		CDD56EAF28E2096800E7BB20 /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD56EAE28E2096800E7BB20 /* ChessAppUITests.swift */; };
 		CDD56EB128E2096800E7BB20 /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD56EB028E2096800E7BB20 /* ChessAppUITestsLaunchTests.swift */; };
+		CDD56EBF28E20A7B00E7BB20 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD56EBE28E20A7B00E7BB20 /* Board.swift */; };
+		CDD56EC128E20C7F00E7BB20 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD56EC028E20C7F00E7BB20 /* Pawn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CDD56EAA28E2096800E7BB20 /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD56EAE28E2096800E7BB20 /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		CDD56EB028E2096800E7BB20 /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CDD56EBE28E20A7B00E7BB20 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		CDD56EC028E20C7F00E7BB20 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		CDD56E8C28E2096500E7BB20 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				CDD56EBD28E20A6F00E7BB20 /* Chess */,
 				CDD56E8D28E2096500E7BB20 /* AppDelegate.swift */,
 				CDD56E8F28E2096500E7BB20 /* SceneDelegate.swift */,
 				CDD56E9128E2096500E7BB20 /* ViewController.swift */,
@@ -125,6 +130,15 @@
 				CDD56EB028E2096800E7BB20 /* ChessAppUITestsLaunchTests.swift */,
 			);
 			path = ChessAppUITests;
+			sourceTree = "<group>";
+		};
+		CDD56EBD28E20A6F00E7BB20 /* Chess */ = {
+			isa = PBXGroup;
+			children = (
+				CDD56EBE28E20A7B00E7BB20 /* Board.swift */,
+				CDD56EC028E20C7F00E7BB20 /* Pawn.swift */,
+			);
+			path = Chess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +274,8 @@
 			files = (
 				CDD56E9228E2096500E7BB20 /* ViewController.swift in Sources */,
 				CDD56E8E28E2096500E7BB20 /* AppDelegate.swift in Sources */,
+				CDD56EBF28E20A7B00E7BB20 /* Board.swift in Sources */,
+				CDD56EC128E20C7F00E7BB20 /* Pawn.swift in Sources */,
 				CDD56E9028E2096500E7BB20 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
