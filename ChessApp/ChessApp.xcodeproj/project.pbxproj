@@ -10,7 +10,6 @@
 		E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */; };
 		E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */; };
 		E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEC28E1DDD50033DE60 /* ViewController.swift */; };
-		E8C67FF028E1DDD50033DE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C67FEE28E1DDD50033DE60 /* Main.storyboard */; };
 		E8C67FF228E1DDD80033DE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C67FF128E1DDD80033DE60 /* Assets.xcassets */; };
 		E8C67FF528E1DDD80033DE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C67FF328E1DDD80033DE60 /* LaunchScreen.storyboard */; };
 		E8C6800028E1DDD90033DE60 /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FFF28E1DDD90033DE60 /* ChessAppTests.swift */; };
@@ -40,7 +39,6 @@
 		E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8C67FEC28E1DDD50033DE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E8C67FEF28E1DDD50033DE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8C67FF128E1DDD80033DE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8C67FF428E1DDD80033DE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8C67FF628E1DDD80033DE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */,
 				E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */,
 				E8C67FEC28E1DDD50033DE60 /* ViewController.swift */,
-				E8C67FEE28E1DDD50033DE60 /* Main.storyboard */,
 				E8C67FF128E1DDD80033DE60 /* Assets.xcassets */,
 				E8C67FF328E1DDD80033DE60 /* LaunchScreen.storyboard */,
 				E8C67FF628E1DDD80033DE60 /* Info.plist */,
@@ -233,7 +230,6 @@
 			files = (
 				E8C67FF528E1DDD80033DE60 /* LaunchScreen.storyboard in Resources */,
 				E8C67FF228E1DDD80033DE60 /* Assets.xcassets in Resources */,
-				E8C67FF028E1DDD50033DE60 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E8C67FEE28E1DDD50033DE60 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8C67FEF28E1DDD50033DE60 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E8C67FF328E1DDD80033DE60 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +430,6 @@
 				INFOPLIST_FILE = ChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +457,6 @@
 				INFOPLIST_FILE = ChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
