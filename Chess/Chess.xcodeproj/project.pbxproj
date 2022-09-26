@@ -16,6 +16,8 @@
 		0099CE9A28DDF91200AFCCCF /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CE9928DDF91200AFCCCF /* ChessTests.swift */; };
 		0099CEA428DDF91200AFCCCF /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEA328DDF91200AFCCCF /* ChessUITests.swift */; };
 		0099CEA628DDF91200AFCCCF /* ChessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEA528DDF91200AFCCCF /* ChessUITestsLaunchTests.swift */; };
+		0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */; };
+		0099CEB528E07B6400AFCCCF /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CEB428E07B6400AFCCCF /* Pawn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		0099CE9F28DDF91200AFCCCF /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0099CEA328DDF91200AFCCCF /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		0099CEA528DDF91200AFCCCF /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
+		0099CEB428E07B6400AFCCCF /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		0099CEBA28E1D4F400AFCCCF /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */,
+				0099CEB428E07B6400AFCCCF /* Pawn.swift */,
+				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
 				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
 				0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */,
 				0099CE8628DDF90F00AFCCCF /* ViewController.swift */,
@@ -261,8 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0099CE8728DDF90F00AFCCCF /* ViewController.swift in Sources */,
+				0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */,
 				0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */,
 				0099CE8328DDF90F00AFCCCF /* AppDelegate.swift in Sources */,
+				0099CEB528E07B6400AFCCCF /* Pawn.swift in Sources */,
 				0099CE8528DDF90F00AFCCCF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
