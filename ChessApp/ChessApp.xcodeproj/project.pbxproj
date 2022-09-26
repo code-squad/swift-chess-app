@@ -16,6 +16,8 @@
 		B95908C828E1E236001DE78D /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908C728E1E236001DE78D /* ChessAppTests.swift */; };
 		B95908D228E1E236001DE78D /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908D128E1E236001DE78D /* ChessAppUITests.swift */; };
 		B95908D428E1E236001DE78D /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908D328E1E236001DE78D /* ChessAppUITestsLaunchTests.swift */; };
+		B95908E528E1E5B0001DE78D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908E428E1E5B0001DE78D /* Board.swift */; };
+		B95908E728E1E5BB001DE78D /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908E628E1E5BB001DE78D /* Pawn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		B95908CD28E1E236001DE78D /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95908D128E1E236001DE78D /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		B95908D328E1E236001DE78D /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B95908E428E1E5B0001DE78D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		B95908E628E1E5BB001DE78D /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 		B95908E028E1E435001DE78D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B95908E428E1E5B0001DE78D /* Board.swift */,
+				B95908E628E1E5BB001DE78D /* Pawn.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 			files = (
 				B95908B528E1E234001DE78D /* ViewController.swift in Sources */,
 				B95908B128E1E234001DE78D /* AppDelegate.swift in Sources */,
+				B95908E528E1E5B0001DE78D /* Board.swift in Sources */,
+				B95908E728E1E5BB001DE78D /* Pawn.swift in Sources */,
 				B95908B328E1E234001DE78D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
