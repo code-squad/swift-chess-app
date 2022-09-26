@@ -23,7 +23,7 @@ final class Board {
         }
     }
 
-    var matrix = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Board.matrixSize), count: Board.matrixSize)
+    private(set) var matrix = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Board.matrixSize), count: Board.matrixSize)
 
     init() {
         reset()

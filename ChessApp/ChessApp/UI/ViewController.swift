@@ -15,7 +15,5 @@ final class ViewController: UIViewController {
         let board = Board()
         print(board.description())
     }
-
-
 }
 
