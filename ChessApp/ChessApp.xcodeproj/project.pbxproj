@@ -99,13 +99,10 @@
 		B95908AF28E1E234001DE78D /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				B95908B028E1E234001DE78D /* AppDelegate.swift */,
-				B95908B228E1E234001DE78D /* SceneDelegate.swift */,
-				B95908B428E1E234001DE78D /* ViewController.swift */,
-				B95908B628E1E234001DE78D /* Main.storyboard */,
-				B95908B928E1E235001DE78D /* Assets.xcassets */,
-				B95908BB28E1E235001DE78D /* LaunchScreen.storyboard */,
-				B95908BE28E1E235001DE78D /* Info.plist */,
+				B95908E328E1E461001DE78D /* Resources */,
+				B95908E228E1E450001DE78D /* System */,
+				B95908E128E1E448001DE78D /* UI */,
+				B95908E028E1E435001DE78D /* Models */,
 			);
 			path = ChessApp;
 			sourceTree = "<group>";
@@ -125,6 +122,41 @@
 				B95908D328E1E236001DE78D /* ChessAppUITestsLaunchTests.swift */,
 			);
 			path = ChessAppUITests;
+			sourceTree = "<group>";
+		};
+		B95908E028E1E435001DE78D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B95908E128E1E448001DE78D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B95908B628E1E234001DE78D /* Main.storyboard */,
+				B95908BB28E1E235001DE78D /* LaunchScreen.storyboard */,
+				B95908B428E1E234001DE78D /* ViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B95908E228E1E450001DE78D /* System */ = {
+			isa = PBXGroup;
+			children = (
+				B95908B228E1E234001DE78D /* SceneDelegate.swift */,
+				B95908B028E1E234001DE78D /* AppDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		B95908E328E1E461001DE78D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B95908B928E1E235001DE78D /* Assets.xcassets */,
+				B95908BE28E1E235001DE78D /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,7 +473,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V37X2D6JM3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChessApp/Info.plist;
+				INFOPLIST_FILE = ChessApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -469,7 +501,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V37X2D6JM3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChessApp/Info.plist;
+				INFOPLIST_FILE = ChessApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
