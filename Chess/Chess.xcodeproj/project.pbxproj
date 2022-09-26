@@ -49,6 +49,7 @@
 		0099CE9F28DDF91200AFCCCF /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0099CEA328DDF91200AFCCCF /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		0099CEA528DDF91200AFCCCF /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0099CEBA28E1D4F400AFCCCF /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */,
+				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
 				0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */,
 				0099CE8628DDF90F00AFCCCF /* ViewController.swift */,
 				0099CE8828DDF90F00AFCCCF /* Main.storyboard */,
@@ -259,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0099CE8728DDF90F00AFCCCF /* ViewController.swift in Sources */,
+				0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */,
 				0099CE8328DDF90F00AFCCCF /* AppDelegate.swift in Sources */,
 				0099CE8528DDF90F00AFCCCF /* SceneDelegate.swift in Sources */,
 			);
