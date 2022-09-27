@@ -6,30 +6,68 @@
 //
 
 import XCTest
+@testable import swift_chess_app
 
 final class BlackPawnTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_흑색pawn은_큰rank로만_움직일수있으며_이때_true반환한다() {
+        // given
+        let fromLocatoin: Location = .init(rank: 0, file: 0)
+        let toLocation: Location = .init(rank: 1, file: 0)
+        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        
+        // when
+        let result = pawn.move(to: toLocation)
+        let resultLocation = pawn.location
+        
+        // then
+        XCTAssertTrue(result)
+        XCTAssertEqual(toLocation, resultLocation)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_흑색pawn은_작은rank로_움직이려고하면_false반환한다() {
+        // given
+        let fromLocatoin: Location = .init(rank: 0, file: 0)
+        let toLocation: Location = .init(rank: -1, file: 0)
+        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        
+        // when
+        let result = pawn.move(to: toLocation)
+        let resultLocation = pawn.location
+        
+        // then
+        XCTAssertFalse(result)
+        XCTAssertNotEqual(toLocation, resultLocation)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_한칸만_움직일수있으며_이때_true반환한다() {
+        // given
+        let fromLocatoin: Location = .init(rank: 0, file: 0)
+        let toLocation: Location = .init(rank: 1, file: 0)
+        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        
+        // when
+        let result = pawn.move(to: toLocation)
+        let resultLocation = pawn.location
+        
+        // then
+        XCTAssertTrue(result)
+        XCTAssertEqual(toLocation, resultLocation)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_한칸보다_더_많이_움직이면_false반환한다() {
+        // given
+        let fromLocatoin: Location = .init(rank: 0, file: 0)
+        let toLocation: Location = .init(rank: 2, file: 0)
+        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        
+        // when
+        let result = pawn.move(to: toLocation)
+        let resultLocation = pawn.location
+        
+        // then
+        XCTAssertFalse(result)
+        XCTAssertNotEqual(toLocation, resultLocation)
     }
 
 }
