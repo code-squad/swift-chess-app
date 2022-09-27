@@ -29,6 +29,8 @@ class Board {
   // MARK: Properties
   
   var boardState: [[BoardState]]
+  var blackScore: Int?
+  var whiteScore: Int?
 
   
   // MARK: Initializing
@@ -71,6 +73,26 @@ extension Board: BoardLogic {
   }
   
   func calcScore() {
+    var blackScore: Int = 0
+    var whiteScore: Int = 0
+    
+    boardState.forEach { rank in
+      rank.forEach { file in
+        switch file {
+        case .empty:
+          return
+        case .black:
+          blackScore += Const.pawnScore
+        case .white:
+          whiteScore += Const.pawnScore
+        }
+      }
+    }
+    
+    self.blackScore = blackScore
+    self.whiteScore = whiteScore
+    
+    print("== Black: \(blackScore)점 | White: \(whiteScore)점 ==")
   }
   
   func display() {
