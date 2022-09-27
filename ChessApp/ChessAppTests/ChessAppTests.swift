@@ -43,4 +43,12 @@ final class ChessAppTests: XCTestCase {
     
     XCTAssertEqual(expectBoardScore, displayBoardScore)
   }
+  
+  func testChecValidationkMoviePosition() {
+    let expectResult = false
+    
+    let isMovable = self.board.movePiece(from: "AA", to: "A1")
+    
+    XCTAssertEqual(expectResult, isMovable)
+  }
 }
