@@ -87,7 +87,6 @@
 		E894127F28E37DFD00DB15AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E894128028E37E1000DB15AE /* Board.swift */,
 				E894128228E37E2400DB15AE /* Color.swift */,
 				E894128728E37E6C00DB15AE /* Pawn.swift */,
 				E894128A28E38EF300DB15AE /* Position.swift */,
@@ -101,6 +100,14 @@
 				E894128528E37E5300DB15AE /* Piece.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E894128928E38EE500DB15AE /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				E894128028E37E1000DB15AE /* Board.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		E8C67FDC28E1DDD40033DE60 = {
@@ -126,6 +133,7 @@
 		E8C67FE728E1DDD50033DE60 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				E894128928E38EE500DB15AE /* Module */,
 				E894128428E37E4800DB15AE /* Protocol */,
 				E894127F28E37DFD00DB15AE /* Model */,
 				E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */,
