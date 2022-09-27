@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol Pawn {
+protocol ChessPiece {
     var location: Location? { get }
     var rechableLocations: [Location]? { get }
     func move(to: Location) -> Bool
 }
 
-class WhitePawn: Pawn {
+class WhitePawn: ChessPiece {
     private(set) var location: Location?
     var rechableLocations: [Location]? {
         guard var location = location else {
@@ -45,7 +45,7 @@ class WhitePawn: Pawn {
     }
 }
 
-class BlackPawn: Pawn {
+class BlackPawn: ChessPiece {
     private(set) var location: Location?
     var rechableLocations: [Location]? {
         guard var location = location else {

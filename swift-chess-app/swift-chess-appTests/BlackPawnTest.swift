@@ -14,7 +14,7 @@ final class BlackPawnTest: XCTestCase {
         // given
         let fromLocatoin: Location = .init(rank: 0, file: 0)
         let toLocation: Location = .init(rank: 1, file: 0)
-        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        let pawn: ChessPiece = BlackPawn(location: fromLocatoin)
         
         // when
         let result = pawn.move(to: toLocation)
@@ -29,7 +29,7 @@ final class BlackPawnTest: XCTestCase {
         // given
         let fromLocatoin: Location = .init(rank: 0, file: 0)
         let toLocation: Location = .init(rank: -1, file: 0)
-        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        let pawn: ChessPiece = BlackPawn(location: fromLocatoin)
         
         // when
         let result = pawn.move(to: toLocation)
@@ -44,7 +44,7 @@ final class BlackPawnTest: XCTestCase {
         // given
         let fromLocatoin: Location = .init(rank: 0, file: 0)
         let toLocation: Location = .init(rank: 1, file: 0)
-        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        let pawn: ChessPiece = BlackPawn(location: fromLocatoin)
         
         // when
         let result = pawn.move(to: toLocation)
@@ -59,7 +59,7 @@ final class BlackPawnTest: XCTestCase {
         // given
         let fromLocatoin: Location = .init(rank: 0, file: 0)
         let toLocation: Location = .init(rank: 2, file: 0)
-        let pawn: Pawn = BlackPawn(location: fromLocatoin)
+        let pawn: ChessPiece = BlackPawn(location: fromLocatoin)
         
         // when
         let result = pawn.move(to: toLocation)

@@ -46,7 +46,7 @@ struct ChessBoard {
     
     let whitePawns: [WhitePawn]
     let blackPawns: [BlackPawn]
-    let value: [[Pawn?]] = .init(repeating: .init(repeating: nil, count: 8), count: 8)
+    let value: [[ChessPiece?]] = .init(repeating: .init(repeating: nil, count: 8), count: 8)
     
     
     init(whitePawns: [WhitePawn], blackPawns: [BlackPawn]) throws {
