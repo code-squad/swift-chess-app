@@ -52,3 +52,61 @@ class Pawn {
     return position.file.display() + "\(position.rank)"
   }
 }
+
+
+// MARK: - Pawn Logic
+
+extension Pawn: PawnLogic {
+  
+  func moveablePositions() -> [PawnPosition] {
+    
+    var positions: [PawnPosition] = []
+    let currentRawValue = self.position.file.rawValue
+    
+    // 양 옆
+    if let leftFile = PawnPosition.File(rawValue: currentRawValue - 1) {
+      positions.append(
+        PawnPosition(
+          rank: self.position.rank,
+          file: leftFile
+        )
+      )
+    }
+    
+    if let rightFile = PawnPosition.File(rawValue: currentRawValue + 1) {
+      positions.append(
+        PawnPosition(
+          rank: self.position.rank,
+          file: rightFile
+        )
+      )
+    }
+    
+    // 위 아래
+    switch self.color {
+    case .black:
+      if let file = PawnPosition.File(rawValue: currentRawValue),
+         self.position.rank + 1 < Const.maxRank {
+        positions.append(
+          PawnPosition(
+            rank: self.position.rank + 1,
+            file: file
+          )
+        )
+      }
+      
+    case .white:
+      if let file = PawnPosition.File(rawValue: currentRawValue),
+         self.position.rank - 1 > 1 {
+        positions.append(
+          PawnPosition(
+            rank: self.position.rank - 1,
+            file: file
+          )
+        )
+      }
+    }
+    
+    return positions
+  }
+}
