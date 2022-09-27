@@ -2,7 +2,7 @@
 //  ChessAppUITests.swift
 //  ChessAppUITests
 //
-//  Created by seongmin.kim on 2022/09/25.
+//  Created by seongmin.kim on 2022/09/27.
 //
 
 import XCTest

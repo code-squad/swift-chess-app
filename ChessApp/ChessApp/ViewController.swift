@@ -2,23 +2,16 @@
 //  ViewController.swift
 //  ChessApp
 //
-//  Created by seongmin.kim on 2022/09/25.
+//  Created by seongmin.kim on 2022/09/27.
 //
 
-import Cocoa
+import UIKit
 
-class ViewController: NSViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
     }
 
 
