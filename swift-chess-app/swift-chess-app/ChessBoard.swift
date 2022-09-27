@@ -7,11 +7,17 @@
 
 import Foundation
 
-enum ChessConstant {
-    static let rankCount = 8
-    static let fileCount = 8
-    static let maxRank = 8
-    static let minRank = 1
-    static let minFile = "A"
-    static let maxFile = "H"
+struct ChessBoard {
+    enum Constant {
+        static let rankCount = 8
+        static let fileCount = 8
+        static let maxRank = 8
+        static let minRank = 1
+        static let minFile = "A"
+        static let maxFile = "H"
+        static let rankRange = minRank...maxRank
+    }
+    
 }
+
+
