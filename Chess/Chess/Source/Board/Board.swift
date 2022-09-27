@@ -11,7 +11,7 @@ protocol BoardLogic {
   func setupBoard()
   func calcScore()
   func display()
-  func move(from: PawnPosition, to: PawnPosition) -> Bool
+  func move(from: Pawn, to: Pawn) -> Bool
 }
 
 class Board {
@@ -106,6 +106,48 @@ extension Board: BoardLogic {
     }
   }
   
-  func move(from: PawnPosition, to: PawnPosition) -> Bool {
+  func move(from: Pawn, to: Pawn) -> Bool {
+    guard movablePosition(from: from, to: to) else {
+      return false
+    }
+    
+    let rankIndex = to.position.rank - 1
+    let fileIndex = to.position.file.rawValue
+    let destinationState = boardState[rankIndex][fileIndex]
+
+    switch from.color {
+    case .black:
+      if destinationState == .black {
+        return false
+      }
+      
+    case .white:
+      if destinationState == .white {
+        return false
+      }
+    }
+    
+    replacePosition(from: from, to: to)
+    return true
+  }
+  
+  private func movablePosition(from: Pawn, to: Pawn) -> Bool {
+    let movablePositions = from.moveablePositions()
+    return movablePositions.contains(to.position)
+  }
+  
+  private func replacePosition(from: Pawn, to: Pawn) {
+    let fromRank = from.position.rank - 1
+    let fromFile = from.position.file.rawValue
+    let toRank = to.position.rank - 1
+    let toFile = to.position.file.rawValue
+    
+    if fromRank < boardState.count,
+       fromFile < boardState[fromRank].count,
+       toRank < boardState.count,
+       toFile < boardState[toRank].count {
+      boardState[fromRank][fromFile] = .empty
+      boardState[toRank][toFile] = from.color == .black ? .black : .white
+    }
   }
 }

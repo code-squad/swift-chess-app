@@ -95,4 +95,50 @@ class BoardTests: XCTestCase {
     XCTAssertTrue(sut.blackScore == 8)
     XCTAssertTrue(sut.whiteScore == 8)
   }
+  
+  
+  // MARK: - move
+  
+  func test_move_이동가능한위치이고_해당위치에_같은말이_없으면_true를_반환해요() throws {
+    // given
+    let sut = Board()
+    
+    // when
+    let result = sut.move(
+      from: Pawn(color: .black, position: PawnPosition(rank: 2, file: .d)),
+      to: Pawn(color: .black, position: PawnPosition(rank: 3, file: .d))
+    )
+    
+    // then
+    XCTAssertTrue(result)
+  }
+  
+  func test_move_이동할수없는위치이면_false를_반환해요() throws {
+    // given
+    let sut = Board()
+    
+    // when
+    let result = sut.move(
+      from: Pawn(color: .black, position: PawnPosition(rank: 2, file: .d)),
+      to: Pawn(color: .black, position: PawnPosition(rank: 4, file: .d))
+    )
+    
+    // then
+    XCTAssertFalse(result)
+  }
+  
+  func test_move_이동할위치에_같은말이_있으면_false를_반환해요() throws {
+    // given
+    let sut = Board()
+    sut.boardState[2][3] = .black
+    sut.display()
+    // when
+    let result = sut.move(
+      from: Pawn(color: .black, position: PawnPosition(rank: 2, file: .d)),
+      to: Pawn(color: .black, position: PawnPosition(rank: 3, file: .d))
+    )
+    
+    // then
+    XCTAssertFalse(result)
+  }
 }
