@@ -11,6 +11,7 @@
 		E894128328E37E2400DB15AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128228E37E2400DB15AE /* Color.swift */; };
 		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
 		E894128828E37E6C00DB15AE /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128728E37E6C00DB15AE /* Pawn.swift */; };
+		E894128B28E38EF300DB15AE /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128A28E38EF300DB15AE /* Position.swift */; };
 		E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */; };
 		E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */; };
 		E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEC28E1DDD50033DE60 /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		E894128228E37E2400DB15AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		E894128728E37E6C00DB15AE /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		E894128A28E38EF300DB15AE /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		E8C67FE528E1DDD50033DE60 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				E894128028E37E1000DB15AE /* Board.swift */,
 				E894128228E37E2400DB15AE /* Color.swift */,
 				E894128728E37E6C00DB15AE /* Pawn.swift */,
+				E894128A28E38EF300DB15AE /* Position.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				E894128628E37E5300DB15AE /* Piece.swift in Sources */,
 				E894128128E37E1000DB15AE /* Board.swift in Sources */,
 				E894128328E37E2400DB15AE /* Color.swift in Sources */,
+				E894128B28E38EF300DB15AE /* Position.swift in Sources */,
 				E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
