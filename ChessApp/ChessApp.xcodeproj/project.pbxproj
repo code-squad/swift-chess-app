@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E894128328E37E2400DB15AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128228E37E2400DB15AE /* Color.swift */; };
+		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
+		E894128828E37E6C00DB15AE /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128728E37E6C00DB15AE /* Pawn.swift */; };
 		E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */; };
 		E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */; };
 		E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEC28E1DDD50033DE60 /* ViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E894128228E37E2400DB15AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		E894128728E37E6C00DB15AE /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		E8C67FE528E1DDD50033DE60 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E894127F28E37DFD00DB15AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E894128228E37E2400DB15AE /* Color.swift */,
+				E894128728E37E6C00DB15AE /* Pawn.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E894128428E37E4800DB15AE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E894128528E37E5300DB15AE /* Piece.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		E8C67FDC28E1DDD40033DE60 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +120,8 @@
 		E8C67FE728E1DDD50033DE60 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				E894128428E37E4800DB15AE /* Protocol */,
+				E894127F28E37DFD00DB15AE /* Model */,
 				E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */,
 				E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */,
 				E8C67FEC28E1DDD50033DE60 /* ViewController.swift */,
@@ -255,7 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */,
+				E894128828E37E6C00DB15AE /* Pawn.swift in Sources */,
 				E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */,
+				E894128628E37E5300DB15AE /* Piece.swift in Sources */,
+				E894128328E37E2400DB15AE /* Color.swift in Sources */,
 				E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
