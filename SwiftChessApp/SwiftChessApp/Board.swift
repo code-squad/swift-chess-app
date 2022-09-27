@@ -36,6 +36,7 @@ class Board {
     }
   }
 
+  @discardableResult
   func move(from sourcePosition: Position?, to destinationPosition: Position?) -> Bool {
     guard let sourcePosition, let destinationPosition, canMove(from: sourcePosition, to: destinationPosition) else { return false }
     pieces[position: destinationPosition] = pieces[position: sourcePosition]
@@ -57,15 +58,17 @@ class Board {
     return true
   }
 
-  func display() {
-    print(" ABCDEFGH")
+  func display() -> String {
+    var result = ""
+    result += " ABCDEFGH\n"
     for rankIndex in 0..<Position.maxRanks {
-        print(rankIndex + 1, terminator: "")
+      result += "\(rankIndex + 1)"
       for fileIndex in 0..<Position.maxFiles {
-        print(pieces[position: .init(rankIndex: rankIndex, fileIndex: fileIndex)]?.symbol ?? ".", terminator: "")
+        result += "\(pieces[position: .init(rankIndex: rankIndex, fileIndex: fileIndex)]?.symbol ?? ".")"
       }
-      print()
+      result += "\n"
     }
-    print(" ABCDEFGH")
+    result += " ABCDEFGH"
+    return result
   }
 }
