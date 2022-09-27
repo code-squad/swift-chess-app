@@ -80,4 +80,19 @@ class BoardTests: XCTestCase {
     XCTAssertTrue(blackCount <= 8)
     XCTAssertTrue(whiteCount <= 8)
   }
+  
+  
+  // MARK: - calcScore
+  
+  func test_calcScore_현재_점수를_계산해요() throws {
+    // given
+    let sut = Board()
+    
+    // when
+    sut.calcScore()
+    
+    // then
+    XCTAssertTrue(sut.blackScore == 8)
+    XCTAssertTrue(sut.whiteScore == 8)
+  }
 }
