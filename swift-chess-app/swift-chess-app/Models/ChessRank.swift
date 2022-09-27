@@ -23,12 +23,12 @@ struct ChessRank: Hashable {
 extension ChessRank {
     
     init?(_ num: Int) {
-        guard num >= 1 || num <= 8 else { return nil}
+        guard num >= 1 && num <= 8 else { return nil}
         self.num = num
     }
     
     init?(_ string: String) {
-        guard let num = Int(string), num >= 1 || num <= 8 else { return nil }
+        guard let num = Int(string), num >= 1 && num <= 8 else { return nil }
         self.num = num
     }
 }
