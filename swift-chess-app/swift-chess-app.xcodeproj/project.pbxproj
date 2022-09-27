@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E20989A28E357F800D831AA /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E20989928E357F800D831AA /* ChessGame.swift */; };
 		2EA90A4828E2FA8A008A2491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A4728E2FA8A008A2491 /* AppDelegate.swift */; };
 		2EA90A4A28E2FA8A008A2491 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A4928E2FA8A008A2491 /* SceneDelegate.swift */; };
 		2EA90A4C28E2FA8A008A2491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A4B28E2FA8A008A2491 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E20989928E357F800D831AA /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		2EA90A4428E2FA8A008A2491 /* swift-chess-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-chess-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EA90A4728E2FA8A008A2491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EA90A4928E2FA8A008A2491 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				2EA90A8328E345C9008A2491 /* ChessBoardDisplay.swift */,
 				2EA90A8528E348E9008A2491 /* ChessPieceFactory.swift */,
 				2EA90A8728E34981008A2491 /* InputView.swift */,
+				2E20989928E357F800D831AA /* ChessGame.swift */,
 			);
 			path = "swift-chess-app";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				2EA90A7C28E3289F008A2491 /* Location.swift in Sources */,
 				2EA90A4A28E2FA8A008A2491 /* SceneDelegate.swift in Sources */,
 				2EA90A7A28E327E7008A2491 /* ChessPiece.swift in Sources */,
+				2E20989A28E357F800D831AA /* ChessGame.swift in Sources */,
 				2EA90A8828E34981008A2491 /* InputView.swift in Sources */,
 				2EA90A8628E348E9008A2491 /* ChessPieceFactory.swift in Sources */,
 				2EA90A7E28E32E40008A2491 /* ChessBoard.swift in Sources */,
