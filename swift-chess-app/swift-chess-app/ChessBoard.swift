@@ -43,13 +43,19 @@ struct ChessBoard {
         }
     }
     
-    
-    let whitePawns: [WhitePawn]
-    let blackPawns: [BlackPawn]
+    let chessPieces: [ChessPiece]
+    var whitePawns: [WhitePawn] {
+        chessPieces.map { $0 as? WhitePawn }
+            .compactMap { $0 }
+    }
+    var blackPawns: [BlackPawn] {
+        chessPieces.map { $0 as? BlackPawn }
+            .compactMap { $0 }
+    }
     let value: [[ChessPiece?]] = .init(repeating: .init(repeating: nil, count: 8), count: 8)
     
-    
-    init(whitePawns: [WhitePawn], blackPawns: [BlackPawn]) throws {
+    init(chessPieces: [ChessPiece]) throws {
+        self.chessPieces = chessPieces
         if whitePawns.count > Constant.pawnsCount || blackPawns.count > Constant.pawnsCount {
             throw Error.pawnCountWrong
         }
@@ -65,9 +71,6 @@ struct ChessBoard {
         if rightBlackPawnCount != Constant.pawnsCount {
             throw Error.wrongBlackPawnLocation
         }
-        
-        self.whitePawns = whitePawns
-        self.blackPawns = blackPawns
     }
     
     func score() -> Score {
