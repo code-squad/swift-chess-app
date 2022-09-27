@@ -43,16 +43,18 @@ final class Board {
       let rank = $0.element
       
       rankLineString += rank + self.position[index]
-        .reduce("") { $0 + ($1?.shape ?? ".")}
-      
+                               .reduce("") { $0 + ($1?.shape ?? ".")}
       rankLineString += "\n"
     }
     
     return fileLineString + "\n" + rankLineString + fileLineString
   }
   
-  func displayScore() {
-    print(self.score)
+  func displayScore() -> String {
+    let blackScore = self.score[.black] ?? 0
+    let whiteScore = self.score[.white] ?? 0
+    
+    return "흑: \(blackScore) 백: \(whiteScore)"
   }
   
   func configureScore() {
@@ -65,4 +67,37 @@ final class Board {
     self.score = [.black: blackScore, .white: whiteScore]
   }
   
+  func movePiece(from: String, to: String) -> Bool {
+    guard self.checkMoveValidate(position: from) && self.checkMoveValidate(position: to)
+    else {
+      return false
+    }
+    
+    return true
+  }
+  
+  private func checkMoveValidate(position: String) -> Bool {
+    guard position.count == 2 else { return false }
+    
+    let split = position.map { String($0) }
+    
+    let file = split.first ?? ""
+    let rank = split.last ?? ""
+    
+    return self.file.contains(file) && self.rank.contains(rank)
+  }
+  
+  func position(from position: String) -> Position? {
+    let split = position.map { String($0) }
+    
+    guard let file = split.first,
+          let rank = split.last,
+          let fileIndex = self.file.firstIndex(of: file),
+          let rankIndex = self.rank.firstIndex(of: rank)
+    else {
+      return nil
+    }
+    
+    return Position(x: rankIndex, y: fileIndex)
+  }
 }
