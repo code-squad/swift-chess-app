@@ -57,6 +57,14 @@ extension Board: BoardLogic {
   }
   
   func display() {
+    print(" ","A","B","C","D","E","F","G","H")
+    boardState.enumerated().forEach { rank in
+      var display: [String] = ["\(rank.offset + 1)"]
+      rank.element.forEach { file in
+        display.append(file.rawValue)
+      }
+      print(display.joined(separator: " "))
+    }
   }
   
   func move(from: PawnPosition, to: PawnPosition) -> Bool {
