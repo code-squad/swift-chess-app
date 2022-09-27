@@ -42,6 +42,7 @@ class Board {
       ),
       count: Const.maxRank
     )
+    setupBoard()
   }
 }
 
@@ -51,6 +52,22 @@ class Board {
 extension Board: BoardLogic {
   
   func setupBoard() {
+    // 2Rank는 흑색
+    boardState[1].enumerated().forEach {
+      if $0.element == .empty {
+        boardState[1][$0.offset] = .black
+      }
+    }
+    
+    // 7Rank는 백색
+    boardState[6].enumerated().forEach {
+      if $0.element == .empty {
+        boardState[6][$0.offset] = .white
+      }
+    }
+    
+    print("▶️ 체스 보드가 생성되었습니다.")
+    display()
   }
   
   func calcScore() {
