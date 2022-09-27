@@ -7,28 +7,29 @@
 
 import UIKit
 
-enum Pawn {
-    case black
-    case white
+final class Pawn {
+    let color: PawnColor
     
-    var initPosition: Int {
-        switch self {
-        case .black: return 1
-        case .white: return 6
-        }
+    init(color: PawnColor) {
+        self.color = color
     }
     
-    var turn: String {
-        switch self {
-        case .black: return "흑색 체스말의 차례입니다."
-        case .white: return "백색 체스말의 차례입니다."
+    enum PawnColor {
+        case black
+        case white
+        
+        var turn: String {
+            switch self {
+            case .black: return "흑색 체스말의 차례입니다."
+            case .white: return "백색 체스말의 차례입니다."
+            }
         }
-    }
-    
-    var display: String {
-        switch self {
-        case .black: return "♟"
-        case .white: return "♙"
+        
+        var display: String {
+            switch self {
+            case .black: return "♟"
+            case .white: return "♙"
+            }
         }
     }
 }
@@ -47,9 +48,11 @@ final class Board {
         static let rankCount: Int = 8 // 가로
         static let fileCount: Int = 8 // 세로
         static let maxPawnCount: Int = 8 // pawn의 최대 갯수
+        static let blackPawnInitPosition: Int = 1 // 검은말 초기 위치
+        static let whitePawnInitPosition: Int = 6 // 흰말 초기 위치
     }
     
-    var board: [[Pawn?]] = []
+    private var board: [[Pawn?]] = []
     
     // 체스판을 생성한다
     init() {
@@ -61,17 +64,17 @@ final class Board {
         print("체스 보드를 초기화 했습니다.\n")
         for i in (0...Constants.rankCount) {
             guard i < Constants.maxPawnCount else { return }
-            board[Pawn.black.initPosition][i] = Pawn.black
-            board[Pawn.white.initPosition][i] = Pawn.white
+            board[Constants.blackPawnInitPosition][i] = Pawn(color: .black)
+            board[Constants.whitePawnInitPosition][i] = Pawn(color: .white)
         }
     }
     
-    
+    // 현재 플레이중인 체스보드 표시
     func displayBoard() {
         var display: String = ""
         board.forEach { files in
             let ranks = files.map({ item -> String in
-                return item?.display ?? "."
+                return item?.color.display ?? "."
             }).reduce(" ", { $0 + $1 })
             display += ranks
             display += "\n"
