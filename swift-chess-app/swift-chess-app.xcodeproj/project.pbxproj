@@ -22,6 +22,8 @@
 		2EA90A7E28E32E40008A2491 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A7D28E32E40008A2491 /* ChessBoard.swift */; };
 		2EA90A8228E33A71008A2491 /* BlackPawnTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A8128E33A71008A2491 /* BlackPawnTest.swift */; };
 		2EA90A8428E345C9008A2491 /* ChessBoardDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A8328E345C9008A2491 /* ChessBoardDisplay.swift */; };
+		2EA90A8628E348E9008A2491 /* ChessPieceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A8528E348E9008A2491 /* ChessPieceFactory.swift */; };
+		2EA90A8828E34981008A2491 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA90A8728E34981008A2491 /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		2EA90A7D28E32E40008A2491 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		2EA90A8128E33A71008A2491 /* BlackPawnTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackPawnTest.swift; sourceTree = "<group>"; };
 		2EA90A8328E345C9008A2491 /* ChessBoardDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardDisplay.swift; sourceTree = "<group>"; };
+		2EA90A8528E348E9008A2491 /* ChessPieceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceFactory.swift; sourceTree = "<group>"; };
+		2EA90A8728E34981008A2491 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 				2EA90A7B28E3289F008A2491 /* Location.swift */,
 				2EA90A7D28E32E40008A2491 /* ChessBoard.swift */,
 				2EA90A8328E345C9008A2491 /* ChessBoardDisplay.swift */,
+				2EA90A8528E348E9008A2491 /* ChessPieceFactory.swift */,
+				2EA90A8728E34981008A2491 /* InputView.swift */,
 			);
 			path = "swift-chess-app";
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 				2EA90A7C28E3289F008A2491 /* Location.swift in Sources */,
 				2EA90A4A28E2FA8A008A2491 /* SceneDelegate.swift in Sources */,
 				2EA90A7A28E327E7008A2491 /* ChessPiece.swift in Sources */,
+				2EA90A8828E34981008A2491 /* InputView.swift in Sources */,
+				2EA90A8628E348E9008A2491 /* ChessPieceFactory.swift in Sources */,
 				2EA90A7E28E32E40008A2491 /* ChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
