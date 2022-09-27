@@ -35,4 +35,12 @@ final class ChessAppTests: XCTestCase {
     
     XCTAssertEqual(expectBoard, displayBoard)
   }
+  
+  func testInitBoardDisplayScore() {
+    let expectBoardScore = "흑: 8 백: 8"
+    
+    let displayBoardScore = self.board.displayScore()
+    
+    XCTAssertEqual(expectBoardScore, displayBoardScore)
+  }
 }
