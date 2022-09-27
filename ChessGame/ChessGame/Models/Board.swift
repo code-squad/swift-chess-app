@@ -7,6 +7,15 @@
 
 import Foundation
 
-class Board {
+protocol BoardType {
+    var pieces: [Piece] { get set }
+    func reset()
+}
+
+class Board: BoardType {
+    var pieces: [Piece] = []
     
+    func reset() {
+        pieces.removeAll()
+    }
 }
