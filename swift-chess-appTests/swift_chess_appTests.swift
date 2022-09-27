@@ -26,9 +26,110 @@ final class swift_chess_appTests: XCTestCase {
     
     // MARK: - Utility 테스트
     /// Utility에 존재하는 함수들을 테스트합니다.
+    /// Command -> ChessPosition까지의 변환입니다.
     func testCommandInput() {
+        /// 실제 로직의 기본 순서는 Command 체크 (CommandValidate)-> (Command 체크 마지막에) 유효 위치 체크(postionStringValidate) -> Chess Position 변환 체크 (stringToChessPosition)
         
+        /// positionStringValidate 먼저 테스트
+        /// 중점을 둔 부분
+        /// 올바른 위치 문자열, 올바르지 않은 위치 문자열
+        /// 올바르지 않은 문자열은? -> 길이 규격에 맞지 않는 문자열, 데이터 형식에 맞지 않는 문자열(순서가 바뀌었다거나, 허용되지 않은 문자라거나), 빈 문자열(empty)
+        XCTAssertTrue(positionStringValidate("A1"))
+        XCTAssertTrue(positionStringValidate("A8"))
+        XCTAssertTrue(positionStringValidate("H1"))
+        XCTAssertTrue(positionStringValidate("H8"))
+        XCTAssertTrue(positionStringValidate("B6"))
+        XCTAssertTrue(positionStringValidate("C8"))
+        XCTAssertFalse(positionStringValidate(""))
+        XCTAssertFalse(positionStringValidate("A"))
+        XCTAssertFalse(positionStringValidate("11"))
+        XCTAssertFalse(positionStringValidate("AB"))
+        XCTAssertFalse(positionStringValidate("5B"))
+        XCTAssertFalse(positionStringValidate("5959"))
+        
+        /// CommandValidate 테스트
+        /// 중점을 둔 부분
+        /// 올바른 커맨드, 올바르지 않은 커맨드
+        /// 올바르지 않은 커맨드는? -> 길이 규격에 맞지 않는 커맨드, 데이터 형식에 맞지 않는 커맨드, 빈 커맨드
+        /// 단, 현재 테스트는 커맨드의 문자열 자체 유효성만 검사하기 때문에, 이동 가능한 상황인지(거리나 방향이 올바르다거나, 해당 위치에 내 말이 없다거나)는 테스트하지 않음.
+        XCTAssertTrue(commandValidate("A2->A3"))
+        XCTAssertTrue(commandValidate("A2->H8"))
+        XCTAssertFalse(commandValidate("A1->A2->A3"))
+        XCTAssertFalse(commandValidate("H8->H8"))
+        XCTAssertFalse(commandValidate("H8-H8"))
+        XCTAssertFalse(commandValidate("->H8"))
+        XCTAssertFalse(commandValidate("->"))
+        XCTAssertFalse(commandValidate(""))
+        XCTAssertFalse(commandValidate("A2A3"))
+        XCTAssertFalse(commandValidate("Z1->A5"))
+        XCTAssertFalse(commandValidate("ZZ->ㅋㅋ"))
+        
+        /// stringToChessPosition 테스트
+        /// 중점을 둔 부분
+        /// 역으로 확인했을 때 제대로 결과가 나오는가?
+        XCTAssertNotNil(stringToChessPosition("A2->A3"))
+        XCTAssertNotNil(stringToChessPosition("A2->H8"))
+        XCTAssertNotNil(stringToChessPosition("A2->A3"))
+        XCTAssertNil(stringToChessPosition("A1->A2->A3"))
+        XCTAssertNil(stringToChessPosition("->H8"))
+        XCTAssertNil(stringToChessPosition("->"))
+        XCTAssertNil(stringToChessPosition(""))
+        
+        // 위에서 성공으로 테스트 된것에 대해서 추가적으로 제대로 구조체를 뽑아냈는지 테스트
+        let testPosition1 = stringToChessPosition("A2->A3")!
+        
+        let successPosition1 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 2, file: 0))
+        let failPosition1 = (current: ChessPosition(rank: 1, file: 1), move: ChessPosition(rank: 1, file: 1))
+        
+        let testPosition2 = stringToChessPosition("A2->H8")!
+        
+        let successPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 7, file: 7))
+        let failPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 5, file: 7))
+        
+        XCTAssertEqual(testPosition1.current, successPosition1.current)
+        XCTAssertEqual(testPosition1.move, successPosition1.move)
+        
+        XCTAssertNotEqual(testPosition1.current, failPosition1.current)
+        XCTAssertNotEqual(testPosition1.move, failPosition1.move)
+        
+        XCTAssertEqual(testPosition2.current, successPosition2.current)
+        XCTAssertEqual(testPosition2.move, successPosition2.move)
+        
+        XCTAssertEqual(testPosition2.current, failPosition2.current)
+        XCTAssertNotEqual(testPosition2.move, failPosition2.move)
     }
+    
+    // MARK: - Chess Position 테스트
+    /// Chess Position을 테스트합니다.
+    /// 상호 변환이 들어있기에 각각 테스트를 합니다
+    func testChessPosition() {
+        /// 현재 코드상 ChessPosition은 오직 Utility 함수에서만 제작되기 때문에, 유효성 검사를 따로 하지 않습니다.
+        XCTAssertEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 0))
+        XCTAssertEqual(ChessPosition("A1").position, "A1")
+        
+        XCTAssertTrue(ChessPosition("A1") == "A1")
+        XCTAssertTrue("A1" == ChessPosition(rank: 0, file: 0))
+        XCTAssertFalse("A3" == ChessPosition(rank: 0, file: 0))
+        XCTAssertFalse("H8" == ChessPosition("A9"))
+    }
+    
+    // MARK: - Pawn 테스트
+    /// Pawn같은 경우 제가 설계한 팩션에 따른 이동 가능 거리를 테스트합니다.
+    func testPawn() {
+        let blackPawn = Pawn(faction: .Black)
+        let whitePawn = Pawn(faction: .White)
+        
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("A2")))
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("B1")))
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A3")))
+        
+        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("B2")))
+        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A1")))
+        XCTAssertFalse(whitePawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A3")))
+    }
+    
+    // MARK: - Board 테스트
+    
 
     func testPlay() throws {
         /// 체스 테스트
@@ -59,44 +160,6 @@ final class swift_chess_appTests: XCTestCase {
 //        cc.move(inputString: "B6->A6")
 //        print(cc.display())
 //        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-    }
-    
-    func testChessPositionStruct() {
-        /// String -> Position
-        XCTAssertEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 0))
-        XCTAssertEqual(ChessPosition("H8"), ChessPosition(rank: 7, file: 7))
-        XCTAssertNotEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 5))
-        /// Postion -> String
-        XCTAssertEqual(ChessPosition("A1").position, "A1")
-        XCTAssertEqual(ChessPosition("H8").position, "H8")
-        XCTAssertNotEqual(ChessPosition("A1").position, "A2")
-    }
-    
-    func testinputCommand() {
-        /// 문자열의 형태 검사
-        XCTAssertTrue(inputValidate("A2->A3")) /// 현재는 문자의 형태와 보드판의 범위안에 포함되어있는지만 검사하므로 True
-        XCTAssertTrue(inputValidate("A2->H8"))
-        XCTAssertFalse(inputValidate("->H8"))
-        XCTAssertFalse(inputValidate("->"))
-        XCTAssertFalse(inputValidate(""))
-        XCTAssertFalse(inputValidate("A2A3"))
-        XCTAssertFalse(inputValidate("Z1->A5"))
-        XCTAssertFalse(inputValidate("ZZ->ㅋㅋ"))
-    }
-    
-    func testRegex() {
-        XCTAssertFalse(positionStringValidate("AAA"))
-        XCTAssertFalse(positionStringValidate("A1A"))
-        XCTAssertFalse(positionStringValidate("A"))
-        XCTAssertFalse(positionStringValidate("A0"))
-        XCTAssertTrue(positionStringValidate("A1"))
-        XCTAssertFalse(positionStringValidate("A111"))
-        XCTAssertFalse(positionStringValidate("1A"))
-        XCTAssertTrue(positionStringValidate("H8"))
-        XCTAssertFalse(positionStringValidate("H9"))
-        XCTAssertFalse(positionStringValidate("I8"))
-        XCTAssertFalse(positionStringValidate("I9"))
-        XCTAssertFalse(positionStringValidate("1A"))
     }
     
     func testInit() {

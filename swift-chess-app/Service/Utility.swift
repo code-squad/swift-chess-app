@@ -14,17 +14,19 @@ let inputPattern = "[a-hA-H][1-8]"
 
 let asciiA = 65
 
-func inputValidate(_ input: String) -> Bool {
-    guard input.count == 6 else { return false } /// 6글자인지 체크
+func commandValidate(_ input: String) -> Bool {
+    guard input.count == 6 else { return false } // 6글자인지 체크
     
-    guard input.contains("->") else { return false } /// -> 문자가 포함되어 있는지 체크
+    guard input.contains("->") else { return false } // -> 문자가 포함되어 있는지 체크
     
     let split = input.split(separator: "->")
     
-    guard split.count == 2 else { return false } /// 스플릿된 문자열이 2개인지 체크
+    guard split.count == 2 else { return false } // 스플릿된 문자열이 2개인지 체크
+    
+    if split[0] == split[1] { return false } // 두개가 다른지 체크
     
     guard positionStringValidate(String(split[0])) &&
-            positionStringValidate(String(split[0])) else { return false } /// 정상적인 보드판의 위치인지 체크
+            positionStringValidate(String(split[0])) else { return false } // 정상적인 보드판의 위치인지 체크
     
     
     return true
@@ -36,7 +38,7 @@ func positionStringValidate(_ input: String) -> Bool {
 }
 
 func stringToChessPosition(_ input: String) -> (current: ChessPosition, move: ChessPosition)? {
-    if !inputValidate(input) { return nil }
+    if !commandValidate(input) { return nil }
     
     let split = input.split(separator: "->")
     
