@@ -99,10 +99,8 @@
 		4671BF6728E28A8C00A11817 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				4671BF6828E28A8C00A11817 /* AppDelegate.swift */,
-				4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */,
-				4671BF6C28E28A8C00A11817 /* ViewController.swift */,
-				4671BF6E28E28A8C00A11817 /* Main.storyboard */,
+				4671BF9928E28C2400A11817 /* Application */,
+				4671BF9A28E28C3200A11817 /* Home */,
 				4671BF7128E28A8C00A11817 /* Assets.xcassets */,
 				4671BF7328E28A8C00A11817 /* LaunchScreen.storyboard */,
 				4671BF7628E28A8C00A11817 /* Info.plist */,
@@ -125,6 +123,24 @@
 				4671BF8B28E28A8D00A11817 /* ChessAppUITestsLaunchTests.swift */,
 			);
 			path = ChessAppUITests;
+			sourceTree = "<group>";
+		};
+		4671BF9928E28C2400A11817 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4671BF6828E28A8C00A11817 /* AppDelegate.swift */,
+				4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4671BF9A28E28C3200A11817 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4671BF6C28E28A8C00A11817 /* ViewController.swift */,
+				4671BF6E28E28A8C00A11817 /* Main.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
