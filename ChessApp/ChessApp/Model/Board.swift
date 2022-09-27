@@ -27,7 +27,6 @@ final class Board {
       Array(repeating: nil, count: 8),
       Array(repeating: nil, count: 8),
       Array(repeating: nil, count: 8),
-      Array(repeating: nil, count: 8),
       Array(repeating: Pawn(color: .white), count: 8),
       Array(repeating: nil, count: 8),
     ]
@@ -35,12 +34,33 @@ final class Board {
     self.configureScore()
   }
   
+  func display() -> String {
+    let fileLineString = " " + file.joined(separator: "")
+    
+    var rankLineString = ""
+    rank.enumerated().forEach {
+      let index = $0.offset
+      let rank = $0.element
+      
+      rankLineString += rank + self.position[index]
+        .reduce("") { $0 + ($1?.shape ?? ".")}
+      
+      rankLineString += "\n"
+    }
+    
+    return fileLineString + "\n" + rankLineString + fileLineString
+  }
+  
+  func displayScore() {
+    print(self.score)
+  }
+  
   func configureScore() {
     let blackScore = self.position.flatMap { $0 }.filter { $0?.color == .black }
-      .reduce(into: 0) { $0 += ($1?.value ?? 0 )}
+      .reduce(0) { $0 + ($1?.value ?? 0 )}
     
     let whiteScore = self.position.flatMap { $0 }.filter { $0?.color == .white }
-      .reduce(into: 0) { $0 += ($1?.value ?? 0 )}
+      .reduce(0) { $0 + ($1?.value ?? 0 )}
     
     self.score = [.black: blackScore, .white: whiteScore]
   }
