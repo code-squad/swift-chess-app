@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E894128128E37E1000DB15AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128028E37E1000DB15AE /* Board.swift */; };
 		E894128328E37E2400DB15AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128228E37E2400DB15AE /* Color.swift */; };
 		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
 		E894128828E37E6C00DB15AE /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128728E37E6C00DB15AE /* Pawn.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E894128028E37E1000DB15AE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E894128228E37E2400DB15AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		E894128728E37E6C00DB15AE /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		E894127F28E37DFD00DB15AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E894128028E37E1000DB15AE /* Board.swift */,
 				E894128228E37E2400DB15AE /* Color.swift */,
 				E894128728E37E6C00DB15AE /* Pawn.swift */,
 			);
@@ -283,6 +286,7 @@
 				E894128828E37E6C00DB15AE /* Pawn.swift in Sources */,
 				E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */,
 				E894128628E37E5300DB15AE /* Piece.swift in Sources */,
+				E894128128E37E1000DB15AE /* Board.swift in Sources */,
 				E894128328E37E2400DB15AE /* Color.swift in Sources */,
 				E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */,
 			);
