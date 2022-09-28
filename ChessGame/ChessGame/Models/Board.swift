@@ -10,15 +10,27 @@ import Foundation
 protocol Board {
     var pieces: [Piece] { get set }
     
-    func reset()
+    func resetPieces()
     func move(_ piece: Piece, to: String) -> Bool
 }
 
 class ChessBoard: Board {
     var pieces: [Piece] = []
     
-    func reset() {
+    func resetPieces() {
         pieces.removeAll()
+        setPawn()
+    }
+    
+    private func setPawn() {
+        setPawn(.black)
+        setPawn(.white)
+    }
+    
+    private func setPawn(_ color: Chess.PieceColor) {
+        for _ in 0 ..< ChessRules().pawnCount {
+            pieces.append(Pawn(color: color))
+        }
     }
     
     func move(_ piece: Piece, to: String) -> Bool {
