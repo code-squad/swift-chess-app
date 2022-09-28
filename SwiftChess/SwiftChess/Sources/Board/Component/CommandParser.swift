@@ -22,7 +22,7 @@ enum CommandParserError: Error {
 }
 
 /// 사용자 입력을 해석하는 타입.
-struct CommandParser {
+enum CommandParser {
 
     /// 문자열 형식의 사용자 명령문을 해석하여 ``MoveCommand`` 인스턴스로 반환한다.
     static func parse(_ command: String) throws -> MoveCommand {
