@@ -78,24 +78,22 @@ class ViewController: UIViewController {
 
 final class Board {
     private struct Constants {
-        static let rankCount: Int = 8 // 가로
-        static let fileCount: Int = 8 // 세로
         static let maxPawnCount: Int = 8 // pawn의 최대 갯수
-        static let blackPawnInitPosition: Int = 1 // 검은말 초기 위치
-        static let whitePawnInitPosition: Int = 6 // 흰말 초기 위치
+        static let blackPawnInitPosition: Int = Rank.Two.rawValue // 검은말 초기 위치
+        static let whitePawnInitPosition: Int = Rank.Seven.rawValue // 흰말 초기 위치
     }
     
     private var board: [[Pawn?]] = []
     
     // 체스판을 생성한다
     init() {
-        board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Constants.rankCount), count: Constants.fileCount)
+        board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: File.allCases.count), count: Rank.allCases.count)
     }
     
     // 체스보드 초기화 및 체스 말 생성
     func startGame() {
         print("체스 보드를 초기화 했습니다.\n")
-        for i in (0...Constants.rankCount) {
+        for i in (0..<File.allCases.count) {
             guard i < Constants.maxPawnCount else { return }
             board[Constants.blackPawnInitPosition][i] = Pawn(color: .black)
             board[Constants.whitePawnInitPosition][i] = Pawn(color: .white)
