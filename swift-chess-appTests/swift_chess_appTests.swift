@@ -9,17 +9,25 @@ import XCTest
 @testable import swift_chess_app
 
 final class swift_chess_appTests: XCTestCase {
-    var cc: ChessController!
+    
+    let defaultDisplay = [
+        "........",
+        "♟♟♟♟♟♟♟♟",
+        "........",
+        "........",
+        "........",
+        "........",
+        "♙♙♙♙♙♙♙♙",
+        "........"
+    ]
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
-        cc = ChessController()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        cc = nil
         
         try super.tearDownWithError()
     }
@@ -129,60 +137,121 @@ final class swift_chess_appTests: XCTestCase {
     }
     
     // MARK: - Board 테스트
-    
-
-    func testPlay() throws {
-        /// 체스 테스트
-//        cc.move(inputString: "A2->A3")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A7->A6")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A3->A4")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A6->A5")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A4->A5")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A3->A4")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "B7->B6")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "A5->A6")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-//        cc.move(inputString: "B6->A6")
-//        print(cc.display())
-//        print("점수: 흑:\(cc.score.black) 백:\(cc.score.white)")
-    }
-    
-    func testInit() {
-        let display = cc.display()
-        let initDisplay =
-        " ABCDEFGH\n" +
-        "1........\n" +
-        "2♟♟♟♟♟♟♟♟\n" +
-        "3........\n" +
-        "4........\n" +
-        "5........\n" +
-        "6........\n" +
-        "7♙♙♙♙♙♙♙♙\n" +
-        "8........\n" +
-        " ABCDEFGH"
+    /// 현재까지의 구현만 놓고 봤을 때, Board는
+    func testBoard() {
+        /// Board를 생성하면, 설정된대로 초기화가 이루어진다.
+        /// 설정 -> 8x8의 보드판 생성, rank-2에 흑색Pawn 8개, rank-7에 백색Pawn 8개, 생성 이후 유효성 검사, 흑색 플레이어부터 시작.
+        /// 체스 위치를 몇번 바꿔보고, 이후 초기화(clear)를 진행해 다시한번 테스트를 진행해본다.
         
-        XCTAssertEqual(display, initDisplay)
+        /// init / clear 테스트
+        let board = Board()
+        testClear(board)
+        /// moveCheck, move 테스트
+        /// 보드는 초기화만 되어있는 상태.
+        XCTAssertTrue(board.moveCheck("C2", "C3"))
+        XCTAssertTrue(board.moveCheck("A2", "B2")) // 내 Pawn이 있는데로 가는지 검사하지만, moveCheck에서는 다른말이 있는지 확인하지 않는다.
+        XCTAssertFalse(board.moveCheck("B2", "A3")) // 대각선으로 가는가?
+        XCTAssertFalse(board.moveCheck("B2", "B1")) // 뒤로가지는가?
+        
+        XCTAssertTrue(board.move("C2", "C3"))
+        XCTAssertFalse(board.move("C2", "C3")) // 이미 위에서 이동했으므로 C2 위치에는 말이 없다. 따라서 Fail이 나오는게 정상.
+        XCTAssertFalse(board.move("C3", "D4"))
+        XCTAssertTrue(board.move("C3", "D3")) // 위에서 대각선으로 옮기려고 시도했기때문에, 실패후 위치는 그대로. 이번에는 오른쪽으로 옮겨본다.
+        XCTAssertFalse(board.move("D3", "D2")) // 뒤로 한번 옮겨본다. (현재는 흑색 플레이어)
+        
+        board.factionChange() // 팩션 변경
+        XCTAssertFalse(board.move("D3", "D4")) // 흑색플레이어의 Pawn을 건드려본다
+        XCTAssertFalse(board.move("A7", "A8")) // 뒤로 한번 옮겨본다
+        XCTAssertFalse(board.moveCheck("A7", "A8")) // moveCheck로 한번 검사
+        XCTAssertTrue(board.move("A7", "A6")) // 다음 테스트를 위해 백색 Pawn 하나를 위에서 이동했던 흑색 Pawn 앞으로 옮긴다.
+        XCTAssertTrue(board.move("A6", "A5"))
+        XCTAssertTrue(board.move("A5", "B5"))
+        XCTAssertTrue(board.move("B5", "C5"))
+        XCTAssertTrue(board.move("C5", "D5"))
+        XCTAssertTrue(board.move("D5", "D4"))
+        
+        XCTAssertEqual(board.getScore().black, 8) // 점수가 올바른지 확인
+        XCTAssertEqual(board.getScore().white, 8)
+        
+        /// 위 테스트대로라면 현재 보드의 상태는 이렇게 되어있을 것.
+        /// ........
+        /// ♟♟.♟♟♟♟♟
+        /// ...♟....
+        /// ...♙....
+        /// ........
+        /// ........
+        /// .♙♙♙♙♙♙♙
+        /// ........
+        /// 올바른 상태인지 display로 체크
+        var currentDisplay = [
+        "........",
+        "♟♟.♟♟♟♟♟",
+        "...♟....",
+        "...♙....",
+        "........",
+        "........",
+        ".♙♙♙♙♙♙♙",
+        "........"
+        ]
+        
+        XCTAssertEqual(board.display(), currentDisplay)
+        
+        XCTAssertTrue(board.moveCheck("D3", "D4")) // 현재는 백색플레이어가 플레이중이므로, 이동은 가능하지만, 실제 이동은 이루어지지 않는다.
+        XCTAssertFalse(board.move("D3", "D4"))
+        
+        XCTAssertTrue(board.move("D4", "D3")) // 흰색 Pawn이 흑색 Pawn을 잡는다.
+        
+        /// 스코어 체크
+        XCTAssertEqual(board.getScore().black, 7) // 점수가 올바른지 확인
+        XCTAssertEqual(board.getScore().white, 8)
+        
+        // 현재 상태의 display 체크
+        currentDisplay = [
+        "........",
+        "♟♟.♟♟♟♟♟",
+        "...♙....",
+        "........",
+        "........",
+        "........",
+        ".♙♙♙♙♙♙♙",
+        "........"
+        ]
+        
+        XCTAssertEqual(board.display(), currentDisplay)
+        
+        // clear 함수를 실행해서, 모든 항목이 초기화 되었는지 체크, (말 위치 | 점수 | 현재 플레이어)
+        board.clear()
+        testClear(board)
     }
+    
+    func testClear(_ board: Board) {
+        XCTAssertEqual(board.display(), defaultDisplay)
+        XCTAssertEqual(board.getScore().black, 8)
+        XCTAssertEqual(board.getScore().white, 8)
+        XCTAssertEqual(board.currentFaction, .Black)
+    }
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+}
+
+extension Board {
+    func moveCheck(_ current: String, _ move: String) -> Bool {
+        let currentPosition = ChessPosition(current)
+        let movePosition = ChessPosition(move)
+        
+        return moveCheck(currentPosition, movePosition)
+    }
+    
+    func move(_ currentChessPosition: String, _ moveChessPosition: String) -> Bool {
+        let currentPosition = ChessPosition(currentChessPosition)
+        let movePosition = ChessPosition(moveChessPosition)
+
+        return move(currentPosition, movePosition)
     }
 }

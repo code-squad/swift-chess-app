@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		245066DF28E2870700F868E3 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245066DE28E2870700F868E3 /* Utility.swift */; };
 		245066E128E29F2900F868E3 /* ChessPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245066E028E29F2900F868E3 /* ChessPosition.swift */; };
-		245066E728E2B27100F868E3 /* ChessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245066E628E2B27100F868E3 /* ChessController.swift */; };
 		246F8C0B28E1C29E00D2ECCE /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C0A28E1C29E00D2ECCE /* Pawn.swift */; };
 		246F8C0D28E1C7CC00D2ECCE /* ChessProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C0C28E1C7CC00D2ECCE /* ChessProtocols.swift */; };
 		246F8C0F28E1CA1E00D2ECCE /* ChessUnitEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C0E28E1CA1E00D2ECCE /* ChessUnitEnum.swift */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		245066DE28E2870700F868E3 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		245066E028E29F2900F868E3 /* ChessPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPosition.swift; sourceTree = "<group>"; };
-		245066E628E2B27100F868E3 /* ChessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessController.swift; sourceTree = "<group>"; };
 		246F8C0A28E1C29E00D2ECCE /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		246F8C0C28E1C7CC00D2ECCE /* ChessProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessProtocols.swift; sourceTree = "<group>"; };
 		246F8C0E28E1CA1E00D2ECCE /* ChessUnitEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUnitEnum.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 		245066E228E2B22F00F868E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				245066E628E2B27100F868E3 /* ChessController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,7 +330,6 @@
 				246F8C1128E1CFB300D2ECCE /* ChessRule.swift in Sources */,
 				245066E128E29F2900F868E3 /* ChessPosition.swift in Sources */,
 				246F8C0F28E1CA1E00D2ECCE /* ChessUnitEnum.swift in Sources */,
-				245066E728E2B27100F868E3 /* ChessController.swift in Sources */,
 				245066DF28E2870700F868E3 /* Utility.swift in Sources */,
 				61D8E99428E022C000466138 /* ViewController.swift in Sources */,
 				61D8E99028E022C000466138 /* AppDelegate.swift in Sources */,

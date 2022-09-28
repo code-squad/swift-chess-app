@@ -16,21 +16,16 @@ class Board {
         clear()
     }
     
-    func factionChange() {
-        currentFaction = currentFaction == .Black ? .White : .Black
-    }
-    
-    
     /// 게임을 초기화
     func clear() {
         board = [[ChessUnitProtocol?]](repeating: [ChessUnitProtocol?](repeating: nil, count: ChessRule.boardSize), count: ChessRule.boardSize)
         currentFaction = .Black
         
-        initUnits()
+        createNewUnitsOnBoard()
     }
     
-    func initUnits() {
-        /// 유닛 생성
+    /// 유닛 생성
+    func createNewUnitsOnBoard() {
         PlayerFaction.allCases.forEach {
             /// Pawn 생성
             var count = 0
@@ -45,70 +40,67 @@ class Board {
         }
     }
     
+    func factionChange() {
+        currentFaction = currentFaction == .Black ? .White : .Black
+    }
+    
     func getScore() -> (black: Int, white: Int) {
-        var black = 0
-        var white = 0
+        // Dictionary 타입이라 Optional 처리가 되기는 하는데, 초기화를 해주었으므로 실질적으로 Optional이 되진 않을거로 예상
+        var score: [PlayerFaction: Int] = [.Black: 0, .White: 0]
         
         for i in 0 ..< board.count {
-            for j in 0 ..< board[i].count {
-                if let unit = board[i][j] {
-                    black += unit.faction == .Black ? 1 : 0
-                    white += unit.faction == .White ? 1 : 0
-                }
+            for j in 0 ..< board[i].count where board[i][j] != nil {
+                score[board[i][j]!.faction]? += 1
             }
         }
         
-        return (black: black, white: white)
+        return (black: score[.Black] ?? 0, white: score[.White] ?? 0)
     }
-    
-    public func display() -> String {
-        var displayString = " ABCDEFGH\n"
 
-        for i in 0 ..< ChessRule.boardSize {
-            let rank = board[i].map { unit in
+    public func display() -> [String] {
+        board.map { file in
+            file.map { unit in
                 if let unit = unit {
                     return unit.type.icon(unit.faction)
                 } else {
                     return "."
                 }
             }.joined()
-            
-            displayString += "\(i + 1)\(rank)\n"
         }
-        
-        displayString += " ABCDEFGH"
-        
-        return displayString
     }
     
     public func moveCheck(_ current: ChessPosition, _ move: ChessPosition) -> Bool {
         // 입력받은 현재 위치에 말이 있는지
         guard let unit = board[current.rank][current.file] else { return false }
         
-        // 그 말이 나의 말인지
-        if currentFaction != unit.faction { return false }
-        
         // 해당 위치로 이동이 가능한 상황인지
         if !unit.movablePaths(current).contains(move) { return false }
-        
-        // 해당 위치에 나의 말이 없는지
-        if let moveUnit = board[move.rank][move.file], moveUnit.faction == currentFaction { return false }
         
         // 가능하다면 true 반환
         return true
     }
     
-    public func move(_ current: ChessPosition, _ move: ChessPosition) {
-        // 입력받은 위치의 말을 요청한 위치로 이동
+    public func move(_ current: ChessPosition, _ move: ChessPosition) -> Bool {
+        // 가능한지 먼저 검사
+        guard moveCheck(current, move),
+              let unit = board[current.rank][current.file], // 유닛이 있어도, 내 말이 아니면 false
+              unit.faction == currentFaction else { return false }
         
+        // 해당 위치에 나의 말이 없는지 검사
+        if let moveUnit = board[move.rank][move.file],
+           unit.faction == moveUnit.faction { return false }
+
         // 입력받은 위치에 상대방 말이 있다면..
         if let unit = board[move.rank][move.file], unit.faction != currentFaction {
             // 삭제 및 감점
             removeUnit(move)
         }
         
+        // 입력받은 위치의 말을 요청한 위치로 이동
         board[move.rank][move.file] = board[current.rank][current.file]
         board[current.rank][current.file] = nil
+        
+        return true
     }
     
     private func removeUnit(_ position: ChessPosition) {
