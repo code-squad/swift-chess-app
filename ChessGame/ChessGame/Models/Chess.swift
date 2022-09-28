@@ -15,6 +15,11 @@ class Chess {
     func start() {
         state = .inProgress
         turn = .white
+        reset()
+    }
+    
+    func reset() {
+        board.resetPieces()
     }
     
     func move(_ piece: Piece, to: String) {

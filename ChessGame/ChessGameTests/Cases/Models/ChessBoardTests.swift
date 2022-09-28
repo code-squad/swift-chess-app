@@ -20,10 +20,4 @@ final class ChessBoardTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
-    
-    func testBoard_whenReset_piecesCountZero() {
-        sut.reset()
-        
-        XCTAssertEqual(sut.pieces.count, 0)
-    }
 }

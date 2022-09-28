@@ -8,15 +8,13 @@
 import Foundation
 
 protocol Piece {
-    var position: String { get set }
+    var color: Chess.PieceColor { get }
 }
 
 class Pawn: Piece {
-    var position: String
     var color: Chess.PieceColor
     
-    init(position: String, color: Chess.PieceColor) {
-        self.position = position
+    init(color: Chess.PieceColor) {
         self.color = color
     }
 }
