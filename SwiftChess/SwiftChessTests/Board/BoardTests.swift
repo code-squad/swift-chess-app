@@ -194,6 +194,23 @@ final class BoardTests: XCTestCase {
             )
         }
     }
+
+    func test_보드초기화후_체스판을그래픽으로나타내면_예상한대로출력된다() {
+        let expectedGraphicalRepresentation = """
+        ........
+        ♟♟♟♟♟♟♟♟
+        ........
+        ........
+        ........
+        ........
+        ♙♙♙♙♙♙♙♙
+        ........
+        """
+
+        let currentGraphicalRepresentation = sut?.display()
+
+        XCTAssertEqual(currentGraphicalRepresentation, expectedGraphicalRepresentation)
+    }
 }
 
 extension Board {

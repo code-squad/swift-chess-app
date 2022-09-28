@@ -17,6 +17,7 @@ protocol Piece {
     var color: PieceColor { get }
     /// 체스말이 잡혔을 때 획득할 수 있는 점수. `point` 타입 상수를 참조하여 반환한다.
     var point: Int { get }
+    var asSymbol: String { get }
 
     /// 입력된 위치에서 이동할 수 있는 위치 후보를 반환한다.
     func movableLocations(from location: Board.Location) -> [Board.Location]
@@ -29,6 +30,18 @@ extension Piece {
             return Pawn.point
         default:
             return 0
+        }
+    }
+
+    var asSymbol: String {
+        switch self {
+        case _ as Pawn:
+            return color == .black
+                ? PieceSymbol.blackPawn.rawValue
+                : PieceSymbol.whitePawn.rawValue
+
+        default:
+            return PieceSymbol.empty.rawValue
         }
     }
 }
@@ -44,4 +57,10 @@ enum PieceColor: CaseIterable {
 struct MoveRule: Hashable {
     let rank: Int
     let file: Int
+}
+
+enum PieceSymbol: String {
+    case blackPawn = "♟"
+    case whitePawn = "♙"
+    case empty = "."
 }

@@ -213,6 +213,21 @@ final class Board {
             }
         }
     }
+
+    // MARK: - 체스판 표현
+
+    /// 현재 체스판 상황을 콘솔에 출력한다.
+    @discardableResult
+    func display() -> String {
+        let graphicalRepresentation = status.map { rank in
+            return rank
+                .map { $0?.asSymbol ?? PieceSymbol.empty.rawValue }
+                .joined()
+        }
+            .joined(separator: "\n")
+        print(graphicalRepresentation)
+        return graphicalRepresentation
+    }
 }
 
 extension Board {
