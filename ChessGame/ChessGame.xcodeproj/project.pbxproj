@@ -13,7 +13,7 @@
 		EE3C66CD28E1A8FF0085213D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE3C66CB28E1A8FF0085213D /* Main.storyboard */; };
 		EE3C66CF28E1A9000085213D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3C66CE28E1A9000085213D /* Assets.xcassets */; };
 		EE3C66D228E1A9000085213D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE3C66D028E1A9000085213D /* LaunchScreen.storyboard */; };
-		EE3C66E928E26CEE0085213D /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66E828E26CEE0085213D /* BoardTests.swift */; };
+		EE3C66E928E26CEE0085213D /* ChessBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66E828E26CEE0085213D /* ChessBoardTests.swift */; };
 		EE3C66EC28E26D240085213D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66EB28E26D240085213D /* Board.swift */; };
 		EE3C66EE28E26D940085213D /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66ED28E26D940085213D /* ChessTests.swift */; };
 		EE3C66F028E26DC00085213D /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C66EF28E26DC00085213D /* Chess.swift */; };
@@ -43,7 +43,7 @@
 		EE3C66D128E1A9000085213D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE3C66D328E1A9000085213D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE3C66DD28E1A9100085213D /* ChessGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE3C66E828E26CEE0085213D /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		EE3C66E828E26CEE0085213D /* ChessBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardTests.swift; sourceTree = "<group>"; };
 		EE3C66EB28E26D240085213D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		EE3C66ED28E26D940085213D /* ChessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessTests.swift; sourceTree = "<group>"; };
 		EE3C66EF28E26DC00085213D /* Chess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		EE3C66E728E26CBD0085213D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EE3C66E828E26CEE0085213D /* BoardTests.swift */,
+				EE3C66E828E26CEE0085213D /* ChessBoardTests.swift */,
 				EE3C66ED28E26D940085213D /* ChessTests.swift */,
 				EE3C66F328E275C60085213D /* PieceTests.swift */,
 			);
@@ -261,7 +261,7 @@
 			files = (
 				EE3C66EE28E26D940085213D /* ChessTests.swift in Sources */,
 				EE3C66F428E275C60085213D /* PieceTests.swift in Sources */,
-				EE3C66E928E26CEE0085213D /* BoardTests.swift in Sources */,
+				EE3C66E928E26CEE0085213D /* ChessBoardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

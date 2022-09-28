@@ -8,12 +8,12 @@
 import XCTest
 @testable import ChessGame
 
-final class BoardTests: XCTestCase {
+final class ChessBoardTests: XCTestCase {
     var sut: Board!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = Board()
+        sut = ChessBoard()
     }
 
     override func tearDownWithError() throws {

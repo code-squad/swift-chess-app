@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol BoardType {
+protocol Board {
     var pieces: [Piece] { get set }
     
     func reset()
     func move(_ piece: Piece, to: String) -> Bool
 }
 
-class Board: BoardType {
+class ChessBoard: Board {
     var pieces: [Piece] = []
     
     func reset() {
