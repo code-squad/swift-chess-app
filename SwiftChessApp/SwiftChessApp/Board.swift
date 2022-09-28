@@ -33,7 +33,7 @@ final class BoardImpl: Board {
     }
     
     func move(from: Position, to: Position) throws -> Bool {
-        // 포지션 검증 및 알 옮기기
+        // TODO: 포지션 검증 및 Pawn 옮기기
         return true
     }
 }
