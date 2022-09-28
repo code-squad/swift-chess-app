@@ -10,21 +10,21 @@ import Foundation
 final class Board {
     private struct Constants {
         static let maxPawnCount: Int = 8 // pawn의 최대 갯수
-        static let blackPawnInitPosition: Int = Rank.Two.rawValue // 검은말 초기 위치
-        static let whitePawnInitPosition: Int = Rank.Seven.rawValue // 흰말 초기 위치
+        static let blackPawnInitPosition: Int = Position.Rank.Two.rawValue // 검은말 초기 위치
+        static let whitePawnInitPosition: Int = Position.Rank.Seven.rawValue // 흰말 초기 위치
     }
     
     private var board: [[Pawn?]] = []
     
     // 체스판을 생성한다
     init() {
-        board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: File.allCases.count), count: Rank.allCases.count)
+        board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: Position.File.allCases.count), count: Position.Rank.allCases.count)
     }
     
     // 체스보드 초기화 및 체스 말 생성
     func startGame() {
         print("체스 보드를 초기화 했습니다.\n")
-        for i in (0..<File.allCases.count) {
+        for i in (0..<Position.File.allCases.count) {
             guard i < Constants.maxPawnCount else { return }
             board[Constants.blackPawnInitPosition][i] = Pawn(color: .black)
             board[Constants.whitePawnInitPosition][i] = Pawn(color: .white)
@@ -65,7 +65,7 @@ extension Board {
     // 현재 플레이중인 체스보드 표시
     func displayBoard() -> String{
         var display: String = ""
-        display += File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
+        display += Position.File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
         display += "\n"
         board
             .enumerated()
@@ -77,7 +77,7 @@ extension Board {
                 display += ranks
                 display += "\n"
             }
-        display += File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
+        display += Position.File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
         return display
     }
     
