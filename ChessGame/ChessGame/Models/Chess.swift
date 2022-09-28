@@ -8,12 +8,12 @@
 import Foundation
 
 class Chess {
-    var status: Status = .ready
+    var state: State = .ready
     var turn: PieceColor = .white
     var board: Board
     
     func start() {
-        status = .inProgress
+        state = .inProgress
         turn = .white
     }
     
