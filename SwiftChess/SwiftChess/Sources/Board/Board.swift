@@ -213,17 +213,12 @@ final class Board {
 extension Board {
 
     enum Configuration {
+        typealias Size = (rank: Int, file: Int)
+
         /// 체스판의 크기
-        static let size = Board.Size(rank: 8, file: 8)
+        static let size = Size(rank: 8, file: 8)
         /// 진영별 얻을 수 있는 총 점수
         static let totalAvailablePoints = Pawn.point * Pawn.maxCount
-    }
-
-    struct Size {
-        /// 행(Row)
-        let rank: Int
-        /// 열(Column)
-        let file: Int
     }
 
     struct Location: Equatable {
