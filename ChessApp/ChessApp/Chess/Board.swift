@@ -74,4 +74,15 @@ extension Board {
         }
         print(display)
     }
+    
+    // 현재 각 pawn의 남은 갯수를 알려줌
+    func score() {
+        let avalilablePawn = board
+            .compactMap({ $0.compactMap({ $0 }) })
+            .flatMap({ $0 })
+        let validBlackPawn = avalilablePawn.filter( { $0 == Pawn(color: .black )})
+        let validWhitePawn = avalilablePawn.filter( { $0 == Pawn(color: .white )})
+        
+        print("현재 스코어\nblack -> \(Constants.maxPawnCount - validWhitePawn.count)\nwhite -> \(Constants.maxPawnCount - validBlackPawn.count)")
+    }
 }
