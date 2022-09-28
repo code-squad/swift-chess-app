@@ -55,7 +55,7 @@ extension Board {
 
     func rank(_ rank: Int) throws -> [Piece?] {
         guard (1...Self.Configuration.size.rank).contains(rank) else {
-            throw BoardError.invalidRank
+            throw BoardError.invalidRank(rank)
         }
         return status[rank.asIndex]
     }

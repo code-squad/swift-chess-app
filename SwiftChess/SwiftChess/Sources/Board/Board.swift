@@ -6,12 +6,34 @@
 //
 
 enum BoardError: Error {
-    case invalidRank
+    /// 유효하지 않은 rank를 전달함
+    case invalidRank(Int)
+    /// 이동을 시도하였으나 시작점에 체스말이 없음
+    case pieceNotExistsAtStartPoint(Board.Location)
+    /// 이동 가능한 위치가 존재하지 않음
+    case movableLocationsNotExists
+    /// 이동을 시도하였으나 시작점이 유효하지 않음
+    case invalidStartPoint(Board.Location)
+    /// 이동을 시도하였으나 목적지가 유효하지 않음
+    case invalidEndPoint(Board.Location)
+    /// 이동 규칙에 따라 해당 체스말은 지정한 목적지로 이동할 수 없음
+    case moveRuleViolated(possibleEndPoints: [Board.Location])
+    /// 목적지에 동일한 색상의 체스말이 이미 존재하여 이동할 수 없음
+    case identicalColoredPieceAlreadyExists(endPoint: Board.Location)
 }
 
 final class Board {
 
     private(set) var status: [[Piece?]] = []
+
+    subscript(_ location: Board.Location) -> Piece? {
+        get {
+            return status[location.rank.asIndex][location.file.asIndex]
+        }
+        set {
+            status[location.rank.asIndex][location.file.asIndex] = newValue
+        }
+    }
 
     /// 주어진 상태로 체스판을 초기화한다.
     init(
@@ -72,6 +94,120 @@ final class Board {
             status[whitePawn.initialRank.asIndex] = whitePawnRank
         }
     }
+
+    // MARK: - 체스말 이동
+
+    func move(
+        from startPoint: Board.Location,
+        to endPoint: Board.Location
+    ) throws {
+        do {
+            try validate(startPoint: startPoint, endPoint: endPoint)
+
+            guard let piece = self[startPoint] else {
+                throw BoardError.pieceNotExistsAtStartPoint(startPoint)
+            }
+
+            guard canMove(piece: piece, from: startPoint, to: endPoint) else {
+                throw BoardError.identicalColoredPieceAlreadyExists(endPoint: endPoint)
+            }
+
+            if self[endPoint] != nil {
+                captureEnemyPiece(at: endPoint)
+                let currentPoints = currentPoints()
+                // TODO: 출력 타입 마련해서 포매팅 후 출력
+                print(currentPoints)
+            }
+
+            move(piece, from: startPoint, to: endPoint)
+        } catch {
+            // TODO: Log Error
+        }
+    }
+
+    private func validate(
+        startPoint: Board.Location,
+        endPoint: Board.Location
+    ) throws {
+        guard startPoint.isValid else {
+            throw BoardError.invalidStartPoint(startPoint)
+        }
+
+        guard endPoint.isValid else {
+            throw BoardError.invalidEndPoint(endPoint)
+        }
+    }
+
+    /// 주어진 체스말의 시작점에서 목적지로 이동 가능 여부를 반환한다.
+    private func canMove(
+        piece: Piece,
+        from startPoint: Board.Location,
+        to endPoint: Board.Location
+    ) -> Bool {
+        let movableLocations = piece.movableLocations(from: startPoint)
+
+        guard movableLocations.isNotEmpty else {
+            // TODO: Log BoardError.movableLocationsNotExists
+            return false
+        }
+
+        guard movableLocations.contains(endPoint) else {
+            // TODO: Log BoardError.moveRuleViolated(possibleEndPoints: movableLocations)
+            return false
+        }
+
+        guard let endPointPiece = self[endPoint] else { return true }
+        return piece.color != endPointPiece.color
+    }
+
+    /// 지정된 위치에 있는 체스말을 없앤다. 대상 체스말이 이동할 체스말과 다른 색상임을 확인하고 사용해야한다.
+    private func captureEnemyPiece(at location: Board.Location) {
+        self[location] = nil
+    }
+
+    /// 지정된 체스말을 시작점에서 목적지로 이동시킨다.
+    private func move(
+        _ piece: Piece,
+        from startPoint: Board.Location,
+        to endPoint: Board.Location
+    ) {
+        self[startPoint] = nil
+        self[endPoint] = piece
+    }
+
+    // MARK: - 점수 계산
+
+    /// black, white 양 진영의 현재 점수를 반환한다.
+    func currentPoints() -> (black: Int, white: Int) {
+        let existingPieces = status
+            .flatMap { $0.compactMap { $0 } }
+        return reducePoints(from: existingPieces)
+    }
+
+    /// 체스판에 존재하는 ``Piece``를 이용해 black, white 양 진영의 점수를 계산하여 반환한다.
+    private func reducePoints(
+        from existingPieces: [Piece]
+    ) -> (black: Int, white: Int) {
+        let points = (
+            black: Board.Configuration.totalAvailablePoints,
+            white: Board.Configuration.totalAvailablePoints
+        )
+        return existingPieces.reduce(points) { partialResult, piece in
+            switch piece.color {
+            case .black:
+                return (
+                    black: partialResult.black,
+                    white: partialResult.white - piece.point
+                )
+
+            case .white:
+                return (
+                    black: partialResult.black - piece.point,
+                    white: partialResult.white
+                )
+            }
+        }
+    }
 }
 
 extension Board {
@@ -79,6 +215,8 @@ extension Board {
     enum Configuration {
         /// 체스판의 크기
         static let size = Board.Size(rank: 8, file: 8)
+        /// 진영별 얻을 수 있는 총 점수
+        static let totalAvailablePoints = Pawn.point * Pawn.maxCount
     }
 
     struct Size {
@@ -88,10 +226,26 @@ extension Board {
         let file: Int
     }
 
-    struct Location {
+    struct Location: Equatable {
         /// 행(Row)
         var rank: Int
         /// 열(Column)
         var file: Int
+    }
+}
+
+extension Board.Location {
+
+    static func + (lhs: Self, rhs: MoveRule) -> Self {
+        return Self(rank: lhs.rank + rhs.rank, file: lhs.file + rhs.file)
+    }
+
+    static func - (lhs: Self, rhs: MoveRule) -> Self {
+        return Self(rank: lhs.rank - rhs.rank, file: lhs.file - rhs.file)
+    }
+
+    var isValid: Bool {
+        return (1...Board.Configuration.size.rank).contains(self.rank) &&
+        (1...Board.Configuration.size.file).contains(self.file)
     }
 }
