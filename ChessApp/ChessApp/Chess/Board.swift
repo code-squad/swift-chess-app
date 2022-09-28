@@ -63,26 +63,33 @@ final class Board {
 extension Board {
     
     // 현재 플레이중인 체스보드 표시
-    func displayBoard() {
+    func displayBoard() -> String{
         var display: String = ""
-        board.forEach { files in
-            let ranks = files.map({ item -> String in
-                return item?.color.display ?? "."
-            }).reduce(" ", { $0 + $1 })
-            display += ranks
-            display += "\n"
-        }
-        print(display)
+        display += File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
+        display += "\n"
+        board
+            .enumerated()
+            .forEach { index, files in
+                let ranks = files.map({ item -> String in
+                    return item?.color.display ?? "."
+                }).reduce("", { $0 + $1 })
+                display += "\(index + 1)"
+                display += ranks
+                display += "\n"
+            }
+        display += File.allCases.map {"\($0)"}.reduce(" ", { $0 + $1 })
+        return display
     }
     
     // 현재 각 pawn의 남은 갯수를 알려줌
-    func score() {
+    func score() -> String {
         let avalilablePawn = board
             .compactMap({ $0.compactMap({ $0 }) })
             .flatMap({ $0 })
         let validBlackPawn = avalilablePawn.filter( { $0 == Pawn(color: .black )})
         let validWhitePawn = avalilablePawn.filter( { $0 == Pawn(color: .white )})
         
-        print("현재 스코어\nblack -> \(Constants.maxPawnCount - validWhitePawn.count)\nwhite -> \(Constants.maxPawnCount - validBlackPawn.count)")
+        let score = "현재 스코어\nblack -> \(Constants.maxPawnCount - validWhitePawn.count)\nwhite -> \(Constants.maxPawnCount - validBlackPawn.count)"
+        return score
     }
 }
