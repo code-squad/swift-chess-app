@@ -8,7 +8,17 @@
 import Foundation
 
 class ChessPieceFactory {
-    static func create(chessPieceName: String, locations: [Location]) -> [ChessPiece]? {
+    enum Error: LocalizedError {
+        case unknownChessPiece
+        
+        var errorDescription: String? {
+            switch self {
+            case .unknownChessPiece:
+                return "unknown chess piece"
+            }
+        }
+    }
+    static func create(chessPieceName: String, locations: [Location]) throws -> [ChessPiece] {
         switch chessPieceName {
         case "WhitePawn":
             return locations.map { location in
@@ -20,7 +30,7 @@ class ChessPieceFactory {
                 BlackPawn(location: location)
             }
         default:
-            return nil
+            throw Error.unknownChessPiece
         }
     }
 }

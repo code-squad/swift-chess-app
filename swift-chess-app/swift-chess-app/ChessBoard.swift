@@ -12,46 +12,38 @@ struct Score {
     let blackPawnScore: Int
 }
 
+enum ChessConstant {
+    static let maxRank = 7
+    static let maxFile = 7
+    static let minRank = 0
+    static let minFile = 0
+    static let rankRange = minRank...maxRank
+    static let fileRange = minFile...maxFile
+    static let initalWhiteRank = 6
+    static let initalBlackRank = 1
+    static let pawnsCount = 8
+}
+
 struct ChessBoard {
-    enum Constant {
-        static let maxRank = 8
-        static let maxFile = 8
-        static let minRank = 1
-        static let minFile = 1
-        static let rankRange = minRank...maxRank
-        static let fileRange = minFile...maxFile
-    }
-    
-    enum Error: LocalizedError {
-        case outSideOfBoard
-        
-        var errorDescription: String? {
-            switch self {
-            case .outSideOfBoard:
-                return "체스판 8x8이내에 체스말이 위치할 수 있습니다."
-            }
-        }
-    }
-    
-    let chessPieces: [ChessPiece]
+    let chessPieces: ChessPieces
     var whitePawns: [WhitePawn] {
-        chessPieces.map { $0 as? WhitePawn }
-            .compactMap { $0 }
+        chessPieces.whitePawns
     }
     var blackPawns: [BlackPawn] {
-        chessPieces.map { $0 as? BlackPawn }
-            .compactMap { $0 }
+        chessPieces.blackPawns
     }
+    
     private(set) var value: [[ChessPiece?]] = .init(repeating: .init(repeating: nil, count: 8), count: 8)
     
-    init(chessPieces: [ChessPiece]) throws {
+    init(chessPieces: ChessPieces) throws {
         self.chessPieces = chessPieces
-       
-        chessPieces.forEach { chessPiece in
+        
+        chessPieces.value.forEach { chessPiece in
             guard let rank = chessPiece.location?.rank,
                   let file = chessPiece.location?.file else {
                 return
             }
+            
             if value[rank][file] == nil {
                 value[rank][file] = chessPiece
                 return
@@ -61,10 +53,11 @@ struct ChessBoard {
         }
     }
     
+   
     func score() -> Score {
-        let whitePawnScore = blackPawns.compactMap { $0.location }
+        let whitePawnScore = blackPawns.filter { $0.location == nil}
             .count
-        let blackPawnScore = whitePawns.compactMap { $0.location }
+        let blackPawnScore = whitePawns.filter { $0.location == nil}
             .count
         return .init(whitePawnScore: whitePawnScore, blackPawnScore: blackPawnScore)
     }
@@ -74,6 +67,12 @@ struct ChessBoard {
         guard let chessPiece = chessPiece else {
             return false
         }
+        
+        guard let chessPieceAtToLocation = value[toLocation.rank][toLocation.file],
+           chessPiece.isWhite != chessPieceAtToLocation.isWhite else {
+            return false
+        }
+        
         let result = chessPiece.move(to: toLocation)
         if result {
             value[toLocation.rank][toLocation.file] = chessPiece
@@ -82,6 +81,13 @@ struct ChessBoard {
         }
         
         return false
+    }
+    
+    func isWhite(atLocation location: Location) -> Bool {
+        guard let chessPiece = value[location.rank][location.file] else {
+            return false
+        }
+        return chessPiece.isWhite
     }
 }
 
