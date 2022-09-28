@@ -5,6 +5,7 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
+/// 체스말 폰.
 struct Pawn: Piece {
     static let moveRules: Set<MoveRule> = [MoveRule(rank: 1, file: 0)]
     static let maxCount: Int = 8

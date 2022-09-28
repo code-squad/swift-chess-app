@@ -24,6 +24,7 @@ enum BoardError: Error, Equatable {
     case identicalColoredPieceAlreadyExists(endPoint: Board.Location)
 }
 
+/// 체스판 타입.
 final class Board {
 
     /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다. 빈 위치는 `nil`로 표현한다.
