@@ -30,17 +30,15 @@ extension Pawn {
         from location: Board.Location
     ) -> [Board.Location] {
         guard let moveRule = Self.moveRules.first else { return [] }
-        var destination: Board.Location
 
         switch color {
         case .black:
-            destination = location + moveRule
+            return [location + moveRule]
+                .filter(\.isValid)
 
         case .white:
-            destination = location - moveRule
+            return [location - moveRule]
+                .filter(\.isValid)
         }
-
-        guard destination.isValid else { return [] }
-        return [destination]
     }
 }
