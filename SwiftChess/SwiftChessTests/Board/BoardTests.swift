@@ -22,6 +22,8 @@ final class BoardTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - 초기화
+
     func test_흑색Pawn의최초생성위치는_2rank이다() throws {
         let expectedPieceColor = PieceColor.black
         let secondRank = try sut?.rank(2)
@@ -49,6 +51,8 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(existingPawns?.black, expectedPawnCount)
         XCTAssertEqual(existingPawns?.white, expectedPawnCount)
     }
+
+    // MARK: - 점수 측정
 
     func test_체스판초기화후_점수를측정하면_각진영의점수는0이다() {
         let expectedPoints = (black: 0, white: 0)
@@ -79,6 +83,8 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(currentPoints.white, expectedPoint)
     }
 
+    // MARK: - 이동
+
     func test_흑색Pawn은_rank가늘어나는방향으로한칸만이동할수있다() {
         let blackPawn = Pawn(color: .black)
         let movableLocations = blackPawn.movableLocations(from: .D4)
@@ -93,6 +99,13 @@ final class BoardTests: XCTestCase {
 
         XCTAssertEqual(movableLocations.count, 1)
         XCTAssertEqual(movableLocations.first, .D4)
+    }
+
+    func test_Pawn이상대진영의끝으로이동하면_이동할수있는곳이없다() {
+        let whitePawn = Pawn(color: .white)
+        let movableLocations = whitePawn.movableLocations(from: .A1)
+
+        XCTAssertTrue(movableLocations.isEmpty)
     }
 
     func test_흑색진영이백색Pawn을잡으면_흑색진영이1점을얻는다() throws {
@@ -131,13 +144,6 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(currentPawnCounts.white, initialPawnCounts.white)
         XCTAssertEqual(currentPoints.black, initialPoints.black)
         XCTAssertEqual(currentPoints.white, initialPoints.white + 1)
-    }
-
-    func test_Pawn이상대진영의끝으로이동하면_이동할수있는곳이없다() {
-        let whitePawn = Pawn(color: .white)
-        let movableLocations = whitePawn.movableLocations(from: .A1)
-
-        XCTAssertTrue(movableLocations.isEmpty)
     }
 
     func test_체스판안에있지않은출발점을지정하면_이동시킬수없다() {
@@ -194,6 +200,8 @@ final class BoardTests: XCTestCase {
             )
         }
     }
+
+    // MARK: - 출력
 
     func test_보드초기화후_체스판을그래픽으로나타내면_예상한대로출력된다() {
         let expectedGraphicalRepresentation = """
