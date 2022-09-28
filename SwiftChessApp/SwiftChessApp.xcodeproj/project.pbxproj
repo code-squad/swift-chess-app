@@ -16,6 +16,12 @@
 		730E4DB528E1D5D40000B271 /* SwiftChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DB428E1D5D40000B271 /* SwiftChessAppTests.swift */; };
 		730E4DBF28E1D5D50000B271 /* SwiftChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DBE28E1D5D50000B271 /* SwiftChessAppUITests.swift */; };
 		730E4DC128E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */; };
+		73CCE15C28E4ACB1008127E4 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE15B28E4ACB1008127E4 /* Board.swift */; };
+		73CCE15E28E4AD42008127E4 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE15D28E4AD42008127E4 /* Pawn.swift */; };
+		73CCE16428E4BCB7008127E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16328E4BCB7008127E4 /* Piece.swift */; };
+		73CCE16828E4C8AF008127E4 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16728E4C8AF008127E4 /* Rank.swift */; };
+		73CCE16A28E4D896008127E4 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16928E4D896008127E4 /* RankManager.swift */; };
+		73CCE16C28E4DFD2008127E4 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16B28E4DFD2008127E4 /* Position.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		730E4DBA28E1D5D50000B271 /* SwiftChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		730E4DBE28E1D5D50000B271 /* SwiftChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITests.swift; sourceTree = "<group>"; };
 		730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		73CCE15B28E4ACB1008127E4 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		73CCE15D28E4AD42008127E4 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		73CCE16328E4BCB7008127E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		73CCE16728E4C8AF008127E4 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		73CCE16928E4D896008127E4 /* RankManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
+		73CCE16B28E4DFD2008127E4 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +111,15 @@
 		730E4D9C28E1D5D40000B271 /* SwiftChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				730E4D9D28E1D5D40000B271 /* AppDelegate.swift */,
-				730E4D9F28E1D5D40000B271 /* SceneDelegate.swift */,
-				730E4DA128E1D5D40000B271 /* ViewController.swift */,
-				730E4DA328E1D5D40000B271 /* Main.storyboard */,
-				730E4DA628E1D5D40000B271 /* Assets.xcassets */,
-				730E4DA828E1D5D40000B271 /* LaunchScreen.storyboard */,
+				73CCE16028E4AF7F008127E4 /* Scene */,
+				73CCE15F28E4AF57008127E4 /* App */,
 				730E4DAB28E1D5D40000B271 /* Info.plist */,
+				73CCE15B28E4ACB1008127E4 /* Board.swift */,
+				73CCE15D28E4AD42008127E4 /* Pawn.swift */,
+				73CCE16328E4BCB7008127E4 /* Piece.swift */,
+				73CCE16728E4C8AF008127E4 /* Rank.swift */,
+				73CCE16928E4D896008127E4 /* RankManager.swift */,
+				73CCE16B28E4DFD2008127E4 /* Position.swift */,
 			);
 			path = SwiftChessApp;
 			sourceTree = "<group>";
@@ -125,6 +139,26 @@
 				730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */,
 			);
 			path = SwiftChessAppUITests;
+			sourceTree = "<group>";
+		};
+		73CCE15F28E4AF57008127E4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				730E4DA628E1D5D40000B271 /* Assets.xcassets */,
+				730E4DA828E1D5D40000B271 /* LaunchScreen.storyboard */,
+				730E4D9D28E1D5D40000B271 /* AppDelegate.swift */,
+				730E4D9F28E1D5D40000B271 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		73CCE16028E4AF7F008127E4 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				730E4DA128E1D5D40000B271 /* ViewController.swift */,
+				730E4DA328E1D5D40000B271 /* Main.storyboard */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				730E4DA228E1D5D40000B271 /* ViewController.swift in Sources */,
+				73CCE16A28E4D896008127E4 /* RankManager.swift in Sources */,
+				73CCE16428E4BCB7008127E4 /* Piece.swift in Sources */,
 				730E4D9E28E1D5D40000B271 /* AppDelegate.swift in Sources */,
+				73CCE15C28E4ACB1008127E4 /* Board.swift in Sources */,
+				73CCE16828E4C8AF008127E4 /* Rank.swift in Sources */,
+				73CCE15E28E4AD42008127E4 /* Pawn.swift in Sources */,
+				73CCE16C28E4DFD2008127E4 /* Position.swift in Sources */,
 				730E4DA028E1D5D40000B271 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,8 +475,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -451,6 +492,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moon.SwiftChessApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,8 +504,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -478,6 +521,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moon.SwiftChessApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
