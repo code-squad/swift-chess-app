@@ -33,7 +33,6 @@ class swift_chess_appTests: XCTestCase {
         }
     }
 
-
     func test_입력된_숫자에_맞는_체스판이_생성되었나() {
 
     }
