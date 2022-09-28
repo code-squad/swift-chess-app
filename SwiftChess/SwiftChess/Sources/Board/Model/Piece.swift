@@ -6,10 +6,13 @@
 //
 
 protocol Piece {
+    /// 체스판에 존재할 수 있는 최대 개수
+    static var maxCount: Int { get }
+
     var color: PieceColor { get }
 }
 
-enum PieceColor {
+enum PieceColor: CaseIterable {
     case black
     case white
 }
