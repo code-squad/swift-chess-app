@@ -13,26 +13,19 @@
 		730E4DA528E1D5D40000B271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730E4DA328E1D5D40000B271 /* Main.storyboard */; };
 		730E4DA728E1D5D40000B271 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 730E4DA628E1D5D40000B271 /* Assets.xcassets */; };
 		730E4DAA28E1D5D40000B271 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730E4DA828E1D5D40000B271 /* LaunchScreen.storyboard */; };
-		730E4DB528E1D5D40000B271 /* SwiftChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DB428E1D5D40000B271 /* SwiftChessAppTests.swift */; };
-		730E4DBF28E1D5D50000B271 /* SwiftChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DBE28E1D5D50000B271 /* SwiftChessAppUITests.swift */; };
-		730E4DC128E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */; };
+		730E4DB528E1D5D40000B271 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E4DB428E1D5D40000B271 /* BoardTests.swift */; };
 		73CCE15C28E4ACB1008127E4 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE15B28E4ACB1008127E4 /* Board.swift */; };
 		73CCE15E28E4AD42008127E4 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE15D28E4AD42008127E4 /* Pawn.swift */; };
 		73CCE16428E4BCB7008127E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16328E4BCB7008127E4 /* Piece.swift */; };
 		73CCE16828E4C8AF008127E4 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16728E4C8AF008127E4 /* Rank.swift */; };
 		73CCE16A28E4D896008127E4 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16928E4D896008127E4 /* RankManager.swift */; };
 		73CCE16C28E4DFD2008127E4 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16B28E4DFD2008127E4 /* Position.swift */; };
+		73CCE16E28E4F0C7008127E4 /* RankManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16D28E4F0C7008127E4 /* RankManagerTests.swift */; };
+		73CCE17028E4F28E008127E4 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CCE16F28E4F28E008127E4 /* PawnTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		730E4DB128E1D5D40000B271 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 730E4D9228E1D5D30000B271 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 730E4D9928E1D5D40000B271;
-			remoteInfo = SwiftChessApp;
-		};
-		730E4DBB28E1D5D50000B271 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 730E4D9228E1D5D30000B271 /* Project object */;
 			proxyType = 1;
@@ -51,16 +44,15 @@
 		730E4DA928E1D5D40000B271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		730E4DAB28E1D5D40000B271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		730E4DB028E1D5D40000B271 /* SwiftChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		730E4DB428E1D5D40000B271 /* SwiftChessAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppTests.swift; sourceTree = "<group>"; };
-		730E4DBA28E1D5D50000B271 /* SwiftChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		730E4DBE28E1D5D50000B271 /* SwiftChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITests.swift; sourceTree = "<group>"; };
-		730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		730E4DB428E1D5D40000B271 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		73CCE15B28E4ACB1008127E4 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		73CCE15D28E4AD42008127E4 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		73CCE16328E4BCB7008127E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		73CCE16728E4C8AF008127E4 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		73CCE16928E4D896008127E4 /* RankManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
 		73CCE16B28E4DFD2008127E4 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		73CCE16D28E4F0C7008127E4 /* RankManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankManagerTests.swift; sourceTree = "<group>"; };
+		73CCE16F28E4F28E008127E4 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +70,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		730E4DB728E1D5D50000B271 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -93,7 +78,6 @@
 			children = (
 				730E4D9C28E1D5D40000B271 /* SwiftChessApp */,
 				730E4DB328E1D5D40000B271 /* SwiftChessAppTests */,
-				730E4DBD28E1D5D50000B271 /* SwiftChessAppUITests */,
 				730E4D9B28E1D5D40000B271 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,7 +87,6 @@
 			children = (
 				730E4D9A28E1D5D40000B271 /* SwiftChessApp.app */,
 				730E4DB028E1D5D40000B271 /* SwiftChessAppTests.xctest */,
-				730E4DBA28E1D5D50000B271 /* SwiftChessAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,18 +110,11 @@
 		730E4DB328E1D5D40000B271 /* SwiftChessAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				730E4DB428E1D5D40000B271 /* SwiftChessAppTests.swift */,
+				730E4DB428E1D5D40000B271 /* BoardTests.swift */,
+				73CCE16D28E4F0C7008127E4 /* RankManagerTests.swift */,
+				73CCE16F28E4F28E008127E4 /* PawnTests.swift */,
 			);
 			path = SwiftChessAppTests;
-			sourceTree = "<group>";
-		};
-		730E4DBD28E1D5D50000B271 /* SwiftChessAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				730E4DBE28E1D5D50000B271 /* SwiftChessAppUITests.swift */,
-				730E4DC028E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift */,
-			);
-			path = SwiftChessAppUITests;
 			sourceTree = "<group>";
 		};
 		73CCE15F28E4AF57008127E4 /* App */ = {
@@ -199,24 +175,6 @@
 			productReference = 730E4DB028E1D5D40000B271 /* SwiftChessAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		730E4DB928E1D5D50000B271 /* SwiftChessAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 730E4DCA28E1D5D50000B271 /* Build configuration list for PBXNativeTarget "SwiftChessAppUITests" */;
-			buildPhases = (
-				730E4DB628E1D5D50000B271 /* Sources */,
-				730E4DB728E1D5D50000B271 /* Frameworks */,
-				730E4DB828E1D5D50000B271 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				730E4DBC28E1D5D50000B271 /* PBXTargetDependency */,
-			);
-			name = SwiftChessAppUITests;
-			productName = SwiftChessAppUITests;
-			productReference = 730E4DBA28E1D5D50000B271 /* SwiftChessAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -231,10 +189,6 @@
 						CreatedOnToolsVersion = 13.3.1;
 					};
 					730E4DAF28E1D5D40000B271 = {
-						CreatedOnToolsVersion = 13.3.1;
-						TestTargetID = 730E4D9928E1D5D40000B271;
-					};
-					730E4DB928E1D5D50000B271 = {
 						CreatedOnToolsVersion = 13.3.1;
 						TestTargetID = 730E4D9928E1D5D40000B271;
 					};
@@ -255,7 +209,6 @@
 			targets = (
 				730E4D9928E1D5D40000B271 /* SwiftChessApp */,
 				730E4DAF28E1D5D40000B271 /* SwiftChessAppTests */,
-				730E4DB928E1D5D50000B271 /* SwiftChessAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -272,13 +225,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		730E4DAE28E1D5D40000B271 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		730E4DB828E1D5D50000B271 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,16 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				730E4DB528E1D5D40000B271 /* SwiftChessAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		730E4DB628E1D5D50000B271 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				730E4DBF28E1D5D50000B271 /* SwiftChessAppUITests.swift in Sources */,
-				730E4DC128E1D5D50000B271 /* SwiftChessAppUITestsLaunchTests.swift in Sources */,
+				73CCE17028E4F28E008127E4 /* PawnTests.swift in Sources */,
+				730E4DB528E1D5D40000B271 /* BoardTests.swift in Sources */,
+				73CCE16E28E4F0C7008127E4 /* RankManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,11 +267,6 @@
 			isa = PBXTargetDependency;
 			target = 730E4D9928E1D5D40000B271 /* SwiftChessApp */;
 			targetProxy = 730E4DB128E1D5D40000B271 /* PBXContainerItemProxy */;
-		};
-		730E4DBC28E1D5D50000B271 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 730E4D9928E1D5D40000B271 /* SwiftChessApp */;
-			targetProxy = 730E4DBB28E1D5D50000B271 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -566,40 +500,6 @@
 			};
 			name = Release;
 		};
-		730E4DCB28E1D5D50000B271 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moon.SwiftChessAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftChessApp;
-			};
-			name = Debug;
-		};
-		730E4DCC28E1D5D50000B271 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moon.SwiftChessAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftChessApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -626,15 +526,6 @@
 			buildConfigurations = (
 				730E4DC828E1D5D50000B271 /* Debug */,
 				730E4DC928E1D5D50000B271 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		730E4DCA28E1D5D50000B271 /* Build configuration list for PBXNativeTarget "SwiftChessAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				730E4DCB28E1D5D50000B271 /* Debug */,
-				730E4DCC28E1D5D50000B271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
