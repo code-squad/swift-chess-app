@@ -16,10 +16,8 @@ final class ChessGame {
     }
     
     func move(from: Position, to: Position) {
-        guard checkEnableToMove(pawn: pawn, from: from, to: to) else { return }
-        board[from.rank.rawValue][from.file.rawValue] = nil
-        board[to.rank.rawValue][to.file.rawValue] = pawn
-        
+        guard board.checkEnableToMove(pawn: pawn, from: from, to: to) else { return }
+        board.move(pawn: pawn, from: from, to: to)
         pawn = pawn.color == .black ? Pawn(color: .white) : Pawn(color: .black)
     }
 }

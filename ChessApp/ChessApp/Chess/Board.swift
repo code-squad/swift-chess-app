@@ -31,6 +31,11 @@ final class Board {
         }
     }
     
+    func move(pawn: Pawn, from: Position, to: Position) {
+        board[from.rank.rawValue][from.file.rawValue] = nil
+        board[to.rank.rawValue][to.file.rawValue] = pawn
+    }
+    
     // 움직일 pawn의 현재 위치와 목표 위치를 받아온다
     // 현재 위치와 목표 위치가 각 pawn의 움직일 수 있는 조건에 맞는지 확인한다
     func checkEnableToMove(pawn: Pawn, from: Position, to: Position) -> Bool {
