@@ -15,6 +15,9 @@
 		AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAA28E43F240051D8CB /* PawnTests.swift */; };
 		AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAC28E457610051D8CB /* Occupiable.swift */; };
 		AA53ACB228E473430051D8CB /* BoardTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB128E473430051D8CB /* BoardTesting.swift */; };
+		AA53ACB528E491430051D8CB /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB428E491430051D8CB /* CommandParser.swift */; };
+		AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB628E491540051D8CB /* CommandReader.swift */; };
+		AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB828E497B10051D8CB /* String+Extensions.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -52,6 +55,9 @@
 		AA53ACAA28E43F240051D8CB /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		AA53ACAC28E457610051D8CB /* Occupiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupiable.swift; sourceTree = "<group>"; };
 		AA53ACB128E473430051D8CB /* BoardTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTesting.swift; sourceTree = "<group>"; };
+		AA53ACB428E491430051D8CB /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		AA53ACB628E491540051D8CB /* CommandReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReader.swift; sourceTree = "<group>"; };
+		AA53ACB828E497B10051D8CB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 		AA53AC9428E414140051D8CB /* Board */ = {
 			isa = PBXGroup;
 			children = (
+				AA53ACB328E491360051D8CB /* Component */,
 				AA53AC9728E41A870051D8CB /* Model */,
 				AA53AC9528E41A840051D8CB /* Board.swift */,
 			);
@@ -125,6 +132,7 @@
 			children = (
 				AA53ACA528E43E720051D8CB /* Int+Extensions.swift */,
 				AA53ACAC28E457610051D8CB /* Occupiable.swift */,
+				AA53ACB828E497B10051D8CB /* String+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -135,6 +143,15 @@
 				AA53ACAA28E43F240051D8CB /* PawnTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AA53ACB328E491360051D8CB /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				AA53ACB428E491430051D8CB /* CommandParser.swift */,
+				AA53ACB628E491540051D8CB /* CommandReader.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		AABA53A828E1D31A00006508 = {
@@ -384,10 +401,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */,
+				AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */,
 				AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */,
 				AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */,
 				AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */,
+				AA53ACB528E491430051D8CB /* CommandParser.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
+				AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */,
 				AA53ACA628E43E720051D8CB /* Int+Extensions.swift in Sources */,
 				AA53AC9628E41A840051D8CB /* Board.swift in Sources */,
 				AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */,
