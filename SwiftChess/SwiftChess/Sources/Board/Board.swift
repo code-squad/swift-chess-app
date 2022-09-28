@@ -5,6 +5,10 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
+enum BoardError: Error {
+    case invalidRank
+}
+
 final class Board {
 
     private(set) var status: [[Piece?]] = []
