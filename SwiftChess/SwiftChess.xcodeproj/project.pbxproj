@@ -10,6 +10,9 @@
 		AA53AC9628E41A840051D8CB /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AC9528E41A840051D8CB /* Board.swift */; };
 		AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AC9828E41A8D0051D8CB /* Piece.swift */; };
 		AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AC9A28E41AB70051D8CB /* Pawn.swift */; };
+		AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACA028E43D3E0051D8CB /* BoardTests.swift */; };
+		AA53ACA628E43E720051D8CB /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACA528E43E720051D8CB /* Int+Extensions.swift */; };
+		AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAA28E43F240051D8CB /* PawnTests.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -42,6 +45,9 @@
 		AA53AC9528E41A840051D8CB /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		AA53AC9828E41A8D0051D8CB /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		AA53AC9A28E41AB70051D8CB /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		AA53ACA028E43D3E0051D8CB /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		AA53ACA528E43E720051D8CB /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		AA53ACAA28E43F240051D8CB /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,31 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AA53AC9D28E43D240051D8CB /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				AA53ACA728E43F0A0051D8CB /* Model */,
+				AA53ACA028E43D3E0051D8CB /* BoardTests.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		AA53ACA228E43E580051D8CB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AA53ACA528E43E720051D8CB /* Int+Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AA53ACA728E43F0A0051D8CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA53ACAA28E43F240051D8CB /* PawnTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AABA53A828E1D31A00006508 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +164,7 @@
 		AABA53CA28E1D31C00006508 /* SwiftChessTests */ = {
 			isa = PBXGroup;
 			children = (
+				AA53AC9D28E43D240051D8CB /* Board */,
 				AABA53CB28E1D31C00006508 /* SwiftChessTests.swift */,
 			);
 			path = SwiftChessTests;
@@ -169,6 +201,7 @@
 			children = (
 				AABA53E428E1D3FA00006508 /* Application */,
 				AA53AC9428E414140051D8CB /* Board */,
+				AA53ACA228E43E580051D8CB /* Common */,
 				AABA53E528E1D4C900006508 /* Home */,
 			);
 			path = Sources;
@@ -348,6 +381,7 @@
 				AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */,
 				AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
+				AA53ACA628E43E720051D8CB /* Int+Extensions.swift in Sources */,
 				AA53AC9628E41A840051D8CB /* Board.swift in Sources */,
 				AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */,
 			);
@@ -357,6 +391,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
+				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
 				AABA53CC28E1D31C00006508 /* SwiftChessTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

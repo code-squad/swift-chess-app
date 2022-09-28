@@ -10,13 +10,13 @@ struct Pawn: Piece {
 
     let color: PieceColor
 
-    var initialRankIndex: Int {
+    var initialRank: Int {
         switch color {
         case .black:
-            return 1
+            return 2
 
         case .white:
-            return 6
+            return 7
         }
     }
 }

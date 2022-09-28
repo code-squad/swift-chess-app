@@ -57,7 +57,7 @@ final class Board {
                 repeating: blackPawn,
                 count: Self.Configuration.size.file
             )
-            status[blackPawn.initialRankIndex] = blackPawnRank
+            status[blackPawn.initialRank.asIndex] = blackPawnRank
 
         case .white:
             let whitePawn = Pawn(color: .white)
@@ -65,7 +65,7 @@ final class Board {
                 repeating: whitePawn,
                 count: Self.Configuration.size.file
             )
-            status[whitePawn.initialRankIndex] = whitePawnRank
+            status[whitePawn.initialRank.asIndex] = whitePawnRank
         }
     }
 }
