@@ -12,6 +12,7 @@ struct Pawn: Piece {
 
     let color: PieceColor
 
+    /// ``Pawn``이 최초에 위치할 수 있는 rank
     var initialRank: Int {
         switch color {
         case .black:

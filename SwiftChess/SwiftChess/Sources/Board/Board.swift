@@ -212,6 +212,7 @@ final class Board {
 
 extension Board {
 
+    /// 체스판의 환경변수를 정의한 타입.
     enum Configuration {
         typealias Size = (rank: Int, file: Int)
 
@@ -221,6 +222,7 @@ extension Board {
         static let totalAvailablePoints = Pawn.point * Pawn.maxCount
     }
 
+    /// 체스판 내 위치를 나타내는 타입.
     struct Location: Equatable {
         /// 행(Row)
         var rank: Int
@@ -239,6 +241,7 @@ extension Board.Location {
         return Self(rank: lhs.rank - rhs.rank, file: lhs.file - rhs.file)
     }
 
+    /// 해당 위치가 체스판 안에 존재하는지 여부를 반환한다.
     var isValid: Bool {
         return (1...Board.Configuration.size.rank).contains(self.rank) &&
         (1...Board.Configuration.size.file).contains(self.file)
