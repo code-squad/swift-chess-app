@@ -9,7 +9,9 @@ import Foundation
 
 protocol BoardType {
     var pieces: [Piece] { get set }
+    
     func reset()
+    func move(_ piece: Piece, to: String) -> Bool
 }
 
 class Board: BoardType {
@@ -17,5 +19,10 @@ class Board: BoardType {
     
     func reset() {
         pieces.removeAll()
+    }
+    
+    func move(_ piece: Piece, to: String) -> Bool {
+        
+        return true
     }
 }
