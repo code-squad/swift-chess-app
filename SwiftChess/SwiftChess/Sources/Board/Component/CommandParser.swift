@@ -11,14 +11,20 @@ struct MoveCommand {
 }
 
 enum CommandParserError: Error {
+    /// 유효하지 않은 명령
     case invalidCommand
+    /// 검증 실패(형식에 맞지않음, 유효하지 않은 출발점/목적지 등)
     case validationFailed
+    /// 검증을 마친 문자열이 사라짐(발생하지 않음)
     case locationStringsNotExist
+    /// 검증을 마친 캐릭터가 사라짐(발생하지 않음)
     case fileOrRankCharacterNotExists
 }
 
+/// 사용자 입력을 해석하는 타입.
 struct CommandParser {
 
+    /// 문자열 형식의 사용자 명령문을 해석하여 ``MoveCommand`` 인스턴스로 반환한다.
     static func parse(_ command: String) throws -> MoveCommand {
         let locations = command.split(separator: "->")
 
@@ -39,6 +45,7 @@ struct CommandParser {
         )
     }
 
+    /// 구분자 `->`를 기준으로 분리된 문자열들을 검증한다. 예) ["A1", "A2"]
     private static func validate(_ locationStrings: [String.SubSequence]) -> Bool {
         guard locationStrings.count == 2 else {
             // TODO: 로그 CommandParserError.invalidCommand
@@ -64,6 +71,7 @@ struct CommandParser {
         return true
     }
 
+    /// 시작점 또는 목적지와 같이 하나의 문자열을 검증한다. 예) "A1"
     private static func validateEach(_ locationString: Substring) -> Bool {
         guard locationString.count == 2 else {
             return false
@@ -98,6 +106,8 @@ struct CommandParser {
         return true
     }
 
+    /// `Substring` 타입의 문자열을 ``Board/Location`` 인스턴스로 바꾸어 반환한다.
+    /// ``CommandParser/validate(_:)``를 통해 검증된 결과만 전달해주어야 한다.
     private static func makeLocation(with substring: Substring) throws -> Board.Location {
         guard let file = substring.first,
               let rank = substring.last else {
