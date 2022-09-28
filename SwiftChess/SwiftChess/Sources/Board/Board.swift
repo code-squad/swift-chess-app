@@ -5,7 +5,7 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
-enum BoardError: Error {
+enum BoardError: Error, Equatable {
     /// 유효하지 않은 rank를 전달함
     case invalidRank(Int)
     /// 이동을 시도하였으나 시작점에 체스말이 없음
@@ -16,6 +16,8 @@ enum BoardError: Error {
     case invalidStartPoint(Board.Location)
     /// 이동을 시도하였으나 목적지가 유효하지 않음
     case invalidEndPoint(Board.Location)
+    /// 이동 시 시작점과 목적지가 동일할 수 없음
+    case startEndPointShouldNotBeIdentical
     /// 이동 규칙에 따라 해당 체스말은 지정한 목적지로 이동할 수 없음
     case moveRuleViolated(possibleEndPoints: [Board.Location])
     /// 목적지에 동일한 색상의 체스말이 이미 존재하여 이동할 수 없음
@@ -24,6 +26,7 @@ enum BoardError: Error {
 
 final class Board {
 
+    /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다. 빈 위치는 `nil`로 표현한다.
     private(set) var status: [[Piece?]] = []
 
     subscript(_ location: Board.Location) -> Piece? {
@@ -97,34 +100,32 @@ final class Board {
 
     // MARK: - 체스말 이동
 
+    /// 체스말을 시작점에서 목적지로 이동시킨다.
     func move(
         from startPoint: Board.Location,
         to endPoint: Board.Location
     ) throws {
-        do {
-            try validate(startPoint: startPoint, endPoint: endPoint)
+        try validate(startPoint: startPoint, endPoint: endPoint)
 
-            guard let piece = self[startPoint] else {
-                throw BoardError.pieceNotExistsAtStartPoint(startPoint)
-            }
-
-            guard canMove(piece: piece, from: startPoint, to: endPoint) else {
-                throw BoardError.identicalColoredPieceAlreadyExists(endPoint: endPoint)
-            }
-
-            if self[endPoint] != nil {
-                captureEnemyPiece(at: endPoint)
-                let currentPoints = currentPoints()
-                // TODO: 출력 타입 마련해서 포매팅 후 출력
-                print(currentPoints)
-            }
-
-            move(piece, from: startPoint, to: endPoint)
-        } catch {
-            // TODO: Log Error
+        guard let piece = self[startPoint] else {
+            throw BoardError.pieceNotExistsAtStartPoint(startPoint)
         }
+
+        guard canMove(piece: piece, from: startPoint, to: endPoint) else {
+            throw BoardError.identicalColoredPieceAlreadyExists(endPoint: endPoint)
+        }
+
+        if self[endPoint] != nil {
+            captureEnemyPiece(at: endPoint)
+            let currentPoints = currentPoints()
+            // TODO: 출력 타입 마련해서 포매팅 후 출력
+            print(currentPoints)
+        }
+
+        move(piece, from: startPoint, to: endPoint)
     }
 
+    /// 시작점과 목적지가 체스판 안의 위치를 가리키고 있는지, 그리고 서로 같지 않은지 검증한다.
     private func validate(
         startPoint: Board.Location,
         endPoint: Board.Location
@@ -135,6 +136,10 @@ final class Board {
 
         guard endPoint.isValid else {
             throw BoardError.invalidEndPoint(endPoint)
+        }
+
+        guard startPoint != endPoint else {
+            throw BoardError.startEndPointShouldNotBeIdentical
         }
     }
 
