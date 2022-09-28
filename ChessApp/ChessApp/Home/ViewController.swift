@@ -112,4 +112,25 @@ final class Board {
         }
         print(display)
     }
+    
+    // 움직일 pawn의 현재 위치와 목표 위치를 받아온다
+    // 현재 위치와 목표 위치가 각 pawn의 움직일 수 있는 조건에 맞는지 확인한다
+    // 목표 위치에 같은 색상 의 pawn이 있는지 확인한다
+    func move(pawn: Pawn, from: Position, to: Position) {
+        guard pawn.checkEnableToMove(from: from, to: to),
+              checkEnableToMove(of: pawn, position: to) else {
+            print("cannot move")
+            return
+        }
+        board[from.rank.rawValue][from.file.rawValue] = nil
+        board[to.rank.rawValue][to.file.rawValue] = pawn
+    }
+    
+    func checkEnableToMove(of pawn: Pawn, position: Position) -> Bool {
+        guard let toPwan = board[position.rank.rawValue][position.file.rawValue]
+        else {
+            return true
+        }
+        return toPwan != pawn
+    }
 }
