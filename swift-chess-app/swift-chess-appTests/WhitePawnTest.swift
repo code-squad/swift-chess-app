@@ -69,4 +69,14 @@ final class WhitePawnTest: XCTestCase {
         XCTAssertFalse(result)
         XCTAssertNotEqual(toLocation, resultLocation)
     }
+    
+    func test_reachableLocations() {
+        // given
+        let location: Location = .init(rank: 0, file: 0)
+        let pawn: ChessPiece = WhitePawn(location: location)
+        
+        let 
+        // when
+        
+    }
 }

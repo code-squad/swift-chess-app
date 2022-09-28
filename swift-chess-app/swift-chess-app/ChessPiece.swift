@@ -10,7 +10,9 @@ import Foundation
 protocol ChessPiece {
     var location: Location? { get }
     var rechableLocations: [Location]? { get }
+    var isWhite: Bool { get }
     func move(to: Location) -> Bool
+    func located(atRank rank: Int) -> Bool
 }
 
 class WhitePawn: ChessPiece {
@@ -27,6 +29,8 @@ class WhitePawn: ChessPiece {
         ]
     }
     
+    var isWhite: Bool { true }
+    
     init(location: Location?) {
         self.location = location
     }
@@ -42,6 +46,13 @@ class WhitePawn: ChessPiece {
         }
         
         return false
+    }
+    
+    func located(atRank rank: Int) -> Bool {
+        guard let location = location else {
+            return false
+        }
+        return location.isRank(rank)
     }
 }
 
@@ -58,6 +69,8 @@ class BlackPawn: ChessPiece {
         ]
     }
     
+    var isWhite: Bool { false }
+    
     init(location: Location?) {
         self.location = location
     }
@@ -73,5 +86,12 @@ class BlackPawn: ChessPiece {
         }
         
         return false
+    }
+    
+    func located(atRank rank: Int) -> Bool {
+        guard let location = location else {
+            return false
+        }
+        return location.isRank(rank)
     }
 }
