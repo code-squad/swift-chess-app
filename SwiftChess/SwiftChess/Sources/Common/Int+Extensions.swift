@@ -13,4 +13,9 @@ extension Int {
     var asIndex: Int {
         return self - 1
     }
+
+    /// Ascii 값을 문자열 타입으로 변환하여 반환한다.
+    var asString: String {
+        return String(UnicodeScalar(self)!)
+    }
 }
