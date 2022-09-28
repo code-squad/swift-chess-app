@@ -9,8 +9,35 @@ import Foundation
 
 class Chess {
     var status: Status = .ready
+    var turn: PieceColor = .white
+    var board: Board
     
     func start() {
         status = .inProgress
+        turn = .white
+    }
+    
+    func move(_ piece: Piece, to: String) {
+        let isMoved = board.move(piece, to: to)
+        
+        if isMoved {
+            changeTurn()
+        }
+    }
+    
+    private func changeTurn() {
+        if turn == .black {
+            turn = .white
+        } else {
+            turn = .black
+        }
+    }
+    
+    init(board: Board) {
+        self.board = board
+    }
+    
+    convenience init() {
+        self.init(board: Board())
     }
 }
