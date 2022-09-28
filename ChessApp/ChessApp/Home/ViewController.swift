@@ -7,7 +7,27 @@
 
 import UIKit
 
-final class Pawn {
+enum File: Int, CaseIterable {
+    case A = 1
+    case B,C,D,E,F,G,H
+}
+
+enum Rank: Int, CaseIterable {
+    case One = 0
+    case Two, Three, Four, Five, Six, Seven, Eight
+}
+
+final class Position {
+    let file: File
+    let rank: Rank
+
+    init(file: File, rank: Rank) {
+        self.rank = rank
+        self.file = file
+    }
+}
+
+final class Pawn: Equatable {
     let color: PawnColor
     
     init(color: PawnColor) {
@@ -31,6 +51,19 @@ final class Pawn {
             case .white: return "♙"
             }
         }
+    }
+    
+    func checkEnableToMove(from: Position, to: Position) -> Bool {
+        switch color {
+        case .black:
+            return from.rank.rawValue < to.rank.rawValue
+        case .white:
+            return from.rank.rawValue > to.rank.rawValue
+        }
+    }
+    
+    static func == (lhs: Pawn, rhs: Pawn) -> Bool {
+        lhs.color == rhs.color
     }
 }
 class ViewController: UIViewController {
