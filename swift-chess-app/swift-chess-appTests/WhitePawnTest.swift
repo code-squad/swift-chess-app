@@ -75,8 +75,10 @@ final class WhitePawnTest: XCTestCase {
         let location: Location = .init(rank: 0, file: 0)
         let pawn: ChessPiece = WhitePawn(location: location)
         
-        let 
-        // when
+        // when, then
+        XCTAssertEqual(pawn.rechableLocations, [Location(rank: -1, file: 0),
+                                                Location(rank: 0, file: 1),
+                                                Location(rank: 0, file: -1)])
         
     }
 }

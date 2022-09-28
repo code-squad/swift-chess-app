@@ -69,5 +69,17 @@ final class BlackPawnTest: XCTestCase {
         XCTAssertFalse(result)
         XCTAssertNotEqual(toLocation, resultLocation)
     }
+    
+    func test_reachableLocations() {
+        // given
+        let location: Location = .init(rank: 0, file: 0)
+        let pawn: ChessPiece = BlackPawn(location: location)
+        
+        // when, then
+        XCTAssertEqual(pawn.rechableLocations, [Location(rank: 1, file: 0),
+                                                Location(rank: 0, file: 1),
+                                                Location(rank: 0, file: -1)])
+        
+    }
 
 }
