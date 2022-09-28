@@ -38,6 +38,6 @@ class Chess {
     }
     
     convenience init() {
-        self.init(board: Board())
+        self.init(board: ChessBoard())
     }
 }
