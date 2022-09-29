@@ -7,15 +7,28 @@
 
 import Foundation
 
+struct Coordination {
+    
+}
+
 struct Location {
+    lazy var coordinators: [String] = {
+        var arr: [String] = []
+        for file in File.allCases {
+            for rank in Rank.allCases {
+                arr.append(file.rawValue + "\(rank.rawValue)")
+            }
+        }
+        return arr
+    }()
     var file: File
     var rank: Rank
     
-    enum File {
+    enum File: String, CaseIterable {
         case A, B, C, D, E, F, G, H
     }
     
-    enum Rank: Int {
+    enum Rank: Int, CaseIterable {
         case one = 1, two, three, four, five, six, seven, eight
     }
 }
@@ -47,4 +60,17 @@ final class Pawn: Piece {
             location = to
         }
     }
+}
+
+struct Board {
+    var whitePieces: [Piece]
+    var blackPieces: [Piece]
+    var location: Location
+    var board: [String]
+    
+    func score(color: Color) -> Int {
+        color == .white ? whitePieces.count : blackPieces.count
+    }
+    
+    
 }
