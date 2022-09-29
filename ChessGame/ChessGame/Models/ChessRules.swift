@@ -7,7 +7,10 @@
 
 import Foundation
 
-class ChessRules {
+final class ChessRules {
+    typealias BoardSize = (rank: Int, file: Int)
+    
     let startingColor: Chess.PieceColor = .white
     let pawnCount: Int = 8
+    let boardSize: BoardSize = (rank: 8, file: 8)
 }

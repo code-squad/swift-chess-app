@@ -33,11 +33,9 @@ final class ChessTests: XCTestCase {
     }
     
     func testPieces_whenChessStart_resetPawn() {
-        sut.board.pieces = [Pawn(color: .black), Pawn(color: .white)]
-        
         sut.start()
         
-        XCTAssertEqual(ChessRules().pawnCount * 2, sut.board.pieces.count)
+        XCTAssertEqual(ChessRules().pawnCount * 2, sut.board.board.flatMap { $0 }.compactMap { $0 }.count)
     }
     
     // MARK: - Play
