@@ -20,4 +20,12 @@ final class ChessBoardTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
+    
+    func testPawn_whenReset_pawnCountSetRulesPawnCount() {
+        sut.pieces = [Pawn(color: .black), Pawn(color: .white)]
+        
+        sut.resetPieces()
+        
+        XCTAssertEqual(ChessRules().pawnCount * 2, sut.pieces.count)
+    }
 }
