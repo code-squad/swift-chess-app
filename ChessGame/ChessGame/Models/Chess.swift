@@ -37,7 +37,7 @@ final class Chess {
     }
     
     convenience init() {
-        let rule = ChessRules()
+        let rule = ChessRules.shared
         let board = ChessBoard()
         self.init(rule: rule, board: board)
     }

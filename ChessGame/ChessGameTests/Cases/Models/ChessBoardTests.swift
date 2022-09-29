@@ -15,7 +15,7 @@ final class ChessBoardTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = ChessBoard()
-        rule = ChessRules()
+        rule = ChessRules.shared
     }
 
     override func tearDownWithError() throws {
@@ -27,7 +27,7 @@ final class ChessBoardTests: XCTestCase {
     func testPawn_whenReset_pawnCountSetRulesPawnCount() {
         sut.resetPieces()
         
-        XCTAssertEqual(ChessRules().pawnCount * 2, sut.board.flatMap { $0 }.compactMap { $0 }.count)
+        XCTAssertEqual(rule.pawnCount * 2, sut.board.flatMap { $0 }.compactMap { $0 }.count)
     }
     
     func testBoardSize_createdCorrectRankSize() {

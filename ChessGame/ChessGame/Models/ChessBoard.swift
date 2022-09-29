@@ -12,7 +12,7 @@ final class ChessBoard: Board {
     weak var delegate: BoardDelegate?
     
     init() {
-        board = createBoard(rank: ChessRules().boardSize.rank, file: ChessRules().boardSize.file)
+        board = createBoard(rank: ChessRules.shared.boardSize.rank, file: ChessRules.shared.boardSize.file)
     }
     
     @discardableResult
@@ -24,7 +24,7 @@ final class ChessBoard: Board {
     }
     
     func resetPieces() {
-        createBoard(rank: ChessRules().boardSize.rank, file: ChessRules().boardSize.file)
+        createBoard(rank: ChessRules.shared.boardSize.rank, file: ChessRules.shared.boardSize.file)
         setPawn()
     }
     
@@ -36,11 +36,12 @@ final class ChessBoard: Board {
     private func setPawn(_ color: Chess.PieceColor) {
         switch color {
         case .white:
-            for rank in 0 ..< ChessRules().pawnCount {
+            // TODO: 이후 6, 1 하드 코딩 부분을 손봐야합니다.
+            for rank in 0 ..< ChessRules.shared.pawnCount {
                 board[6][rank] = Pawn(color: .white)
             }
         case .black:
-            for rank in 0 ..< ChessRules().pawnCount {
+            for rank in 0 ..< ChessRules.shared.pawnCount {
                 board[1][rank] = Pawn(color: .black)
             }
         }
