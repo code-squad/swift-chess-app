@@ -11,7 +11,7 @@ protocol Piece {
     var color: Chess.PieceColor { get }
 }
 
-class Pawn: Piece {
+final class Pawn: Piece {
     var color: Chess.PieceColor
     
     init(color: Chess.PieceColor) {

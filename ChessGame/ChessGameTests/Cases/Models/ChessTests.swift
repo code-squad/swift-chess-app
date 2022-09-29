@@ -41,19 +41,20 @@ final class ChessTests: XCTestCase {
     }
     
     // MARK: - Play
-    func testTurn_whenStart_whiteTurnFirst() {
+    func testTurn_whenStart_startingColorTurn() {
         sut.turn = .black
         
         sut.start()
         
-        XCTAssertEqual(sut.turn, .white)
+        XCTAssertEqual(sut.turn, sut.rule.startingColor)
     }
     
     func testTurn_whenPieceMoved_turnChange() {
         let previousTurn = sut.turn
         let pawn = Pawn(color: .black)
         
-        sut.move(pawn, to: "B3")
+        sut.board.delegate = sut
+        _ = sut.board.move(pawn, to: "B3")
         
         XCTAssertNotEqual(previousTurn, sut.turn)
     }

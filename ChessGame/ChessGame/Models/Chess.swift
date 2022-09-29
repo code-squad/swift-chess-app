@@ -7,27 +7,20 @@
 
 import Foundation
 
-class Chess {
+final class Chess {
+    private(set) var rule: ChessRules
     var state: State = .ready
-    var turn: PieceColor = .white
+    var turn: PieceColor?
     var board: Board
     
     func start() {
         state = .inProgress
-        turn = .white
+        turn = rule.startingColor
         reset()
     }
     
     func reset() {
         board.resetPieces()
-    }
-    
-    func move(_ piece: Piece, to: String) {
-        let isMoved = board.move(piece, to: to)
-        
-        if isMoved {
-            changeTurn()
-        }
     }
     
     private func changeTurn() {
@@ -38,11 +31,24 @@ class Chess {
         }
     }
     
-    init(board: Board) {
+    init(rule: ChessRules, board: Board) {
+        self.rule = rule
         self.board = board
     }
     
     convenience init() {
-        self.init(board: ChessBoard())
+        let rule = ChessRules()
+        let board = ChessBoard()
+        self.init(rule: rule, board: board)
+    }
+}
+
+
+// MARK: - BoardDelegate
+extension Chess: BoardDelegate {
+    func didMoved(isMoved: Bool) {
+        if isMoved {
+            changeTurn()
+        }
     }
 }

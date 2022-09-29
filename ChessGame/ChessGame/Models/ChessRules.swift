@@ -8,5 +8,6 @@
 import Foundation
 
 class ChessRules {
+    let startingColor: Chess.PieceColor = .white
     let pawnCount: Int = 8
 }
