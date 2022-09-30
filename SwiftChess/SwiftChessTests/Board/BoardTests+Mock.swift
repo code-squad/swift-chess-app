@@ -8,7 +8,7 @@
 @testable import SwiftChess
 
 // swiftlint:disable comma identifier_name
-enum BoardTesting {
+extension BoardTests {
     static let blackPawn = Pawn(color: .black)
     static let whitePawn = Pawn(color: .white)
     static let emptyMock: [[Piece?]] = [
