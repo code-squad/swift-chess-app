@@ -10,7 +10,7 @@ import XCTest
 
 final class CommandParserTests: XCTestCase {
 
-    func test_A1에서A2로이동하는유효한입력을하면_A1시작점과A2목적지로파싱된다() throws {
+    func test_A1에서A2로이동하는유효한입력을하면_A1시작점과A2도착점으로파싱된다() throws {
         let command = "A1->A2"
 
         let parsed = try CommandParser.parse(command)
@@ -19,7 +19,7 @@ final class CommandParserTests: XCTestCase {
         XCTAssertEqual(parsed.endPoint, .A2)
     }
 
-    func test_A7에서A8로이동하는유효한입력을하면_A7시작점과A8목적지로파싱된다() throws {
+    func test_A7에서A8로이동하는유효한입력을하면_A7시작점과A8도착점으로파싱된다() throws {
         let command = "A7->A8"
 
         let parsed = try CommandParser.parse(command)
@@ -28,7 +28,7 @@ final class CommandParserTests: XCTestCase {
         XCTAssertEqual(parsed.endPoint, .A8)
     }
 
-    func test_B1에서A1으로이동하는유효한입력을하면_B1시작점과A1목적지로파싱된다() throws {
+    func test_B1에서A1으로이동하는유효한입력을하면_B1시작점과A1도착점으로파싱된다() throws {
         let command = "A1->B1"
 
         let parsed = try CommandParser.parse(command)
@@ -37,7 +37,7 @@ final class CommandParserTests: XCTestCase {
         XCTAssertEqual(parsed.endPoint, .B1)
     }
 
-    func test_G1에서H1으로이동하는유효한입력을하면_G1시작점과H1목적지로파싱된다() throws {
+    func test_G1에서H1으로이동하는유효한입력을하면_G1시작점과H1도착점으로파싱된다() throws {
         let command = "G1->H1"
 
         let parsed = try CommandParser.parse(command)
@@ -46,7 +46,7 @@ final class CommandParserTests: XCTestCase {
         XCTAssertEqual(parsed.endPoint, .H1)
     }
 
-    func test_H7에서H8로이동하는유효한입력을하면_H7시작점과H8목적지로파싱된다() throws {
+    func test_H7에서H8로이동하는유효한입력을하면_H7시작점과H8도착점으로파싱된다() throws {
         let command = "H7->H8"
 
         let parsed = try CommandParser.parse(command)
@@ -55,7 +55,7 @@ final class CommandParserTests: XCTestCase {
         XCTAssertEqual(parsed.endPoint, .H8)
     }
 
-    func test_G8에서H8로이동하는유효한입력을하면_H7시작점과H8목적지로파싱된다() throws {
+    func test_G8에서H8로이동하는유효한입력을하면_H7시작점과H8도착점으로파싱된다() throws {
         let command = "G8->H8"
 
         let parsed = try CommandParser.parse(command)

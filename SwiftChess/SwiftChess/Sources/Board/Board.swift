@@ -5,25 +5,6 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
-enum BoardError: Error, Equatable {
-    /// 유효하지 않은 rank를 전달함
-    case invalidRank(Int)
-    /// 이동을 시도하였으나 시작점에 체스말이 없음
-    case pieceNotExistsAtStartPoint(Board.Location)
-    /// 이동 가능한 위치가 존재하지 않음
-    case movableLocationsNotExists
-    /// 이동을 시도하였으나 시작점이 유효하지 않음
-    case invalidStartPoint(Board.Location)
-    /// 이동을 시도하였으나 목적지가 유효하지 않음
-    case invalidEndPoint(Board.Location)
-    /// 이동 시 시작점과 목적지가 동일할 수 없음
-    case startEndPointShouldNotBeIdentical
-    /// 이동 규칙에 따라 해당 체스말은 지정한 목적지로 이동할 수 없음
-    case moveRuleViolated(possibleEndPoints: [Board.Location])
-    /// 목적지에 동일한 색상의 체스말이 이미 존재하여 이동할 수 없음
-    case identicalColoredPieceAlreadyExists(endPoint: Board.Location)
-}
-
 /// 체스판 타입.
 final class Board {
 
@@ -121,7 +102,7 @@ final class Board {
 
     // MARK: - 체스말 이동
 
-    /// 체스말을 시작점에서 목적지로 이동시킨다.
+    /// 체스말을 시작점에서 도착점로 이동시킨다.
     func move(
         from startPoint: Board.Location,
         to endPoint: Board.Location
@@ -146,7 +127,7 @@ final class Board {
         move(piece, from: startPoint, to: endPoint)
     }
 
-    /// 시작점과 목적지가 체스판 안의 위치를 가리키고 있는지, 그리고 서로 같지 않은지 검증한다.
+    /// 시작점과 도착점이 체스판 안의 위치를 가리키고 있는지, 그리고 서로 같지 않은지 검증한다.
     private func validate(
         startPoint: Board.Location,
         endPoint: Board.Location
@@ -164,7 +145,7 @@ final class Board {
         }
     }
 
-    /// 주어진 체스말의 시작점에서 목적지로 이동 가능 여부를 반환한다.
+    /// 주어진 체스말의 시작점에서 도착점으로 이동 가능 여부를 반환한다.
     private func canMove(
         piece: Piece,
         from startPoint: Board.Location,
@@ -191,7 +172,7 @@ final class Board {
         self[location] = nil
     }
 
-    /// 지정된 체스말을 시작점에서 목적지로 이동시킨다.
+    /// 지정된 체스말을 시작점에서 도착점으로 이동시킨다.
     private func move(
         _ piece: Piece,
         from startPoint: Board.Location,
