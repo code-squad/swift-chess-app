@@ -9,9 +9,9 @@
 final class Board {
 
     /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다. 빈 위치는 `nil`로 표현한다.
-    private(set) var status: [[Piece?]] = []
+    private(set) var status: [[BoardElementRepresentable?]] = []
 
-    subscript(_ location: Board.Location) -> Piece? {
+    subscript(_ location: Board.Location) -> BoardElementRepresentable? {
         get {
             return status[location.rank.asIndex][location.file.asIndex]
         }
@@ -22,7 +22,7 @@ final class Board {
 
     /// 주어진 상태로 체스판을 초기화한다.
     init(
-        status: [[Piece?]]
+        status: [[BoardElementRepresentable?]]
     ) {
         self.status = status
     }
@@ -42,7 +42,7 @@ final class Board {
 
     /// ``Board/status``를 빈 상태로 설정한다. 크기는 ``Board/Configuration/size``를 따른다.
     private func setEmptyState() {
-        let emptyRank: [Piece?] = Array(
+        let emptyRank: [BoardElementRepresentable?] = Array(
             repeating: nil,
             count: Self.Configuration.size.file
         )
@@ -109,7 +109,7 @@ final class Board {
     ) throws {
         try validate(startPoint: startPoint, endPoint: endPoint)
 
-        guard let piece = self[startPoint] else {
+        guard let piece = self[startPoint] as? Piece else {
             throw BoardError.pieceNotExistsAtStartPoint(startPoint)
         }
 
@@ -163,7 +163,7 @@ final class Board {
             return false
         }
 
-        guard let endPointPiece = self[endPoint] else { return true }
+        guard let endPointPiece = self[endPoint] as? Piece else { return true }
         return piece.color != endPointPiece.color
     }
 
@@ -187,7 +187,7 @@ final class Board {
     /// black, white 양 진영의 현재 점수를 반환한다.
     func currentPoints() -> (black: Int, white: Int) {
         let existingPieces = status
-            .flatMap { $0.compactMap { $0 } }
+            .flatMap { $0.compactMap { $0 as? Piece } }
         return reducePoints(from: existingPieces)
     }
 

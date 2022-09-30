@@ -29,8 +29,10 @@ final class BoardTests: XCTestCase {
         let secondRank = try sut?.rank(2)
 
         secondRank?.forEach { piece in
-            XCTAssertTrue(piece is Pawn)
-            XCTAssertEqual(piece?.color, expectedPieceColor)
+            guard let piece = piece as? Pawn else {
+                return XCTFail("Pawn 타입이 아닙니다.")
+            }
+            XCTAssertEqual(piece.color, expectedPieceColor)
         }
     }
 
@@ -39,8 +41,10 @@ final class BoardTests: XCTestCase {
         let secondRank = try sut?.rank(7)
 
         secondRank?.forEach { piece in
-            XCTAssertTrue(piece is Pawn)
-            XCTAssertEqual(piece?.color, expectedPieceColor)
+            guard let piece = piece as? Pawn else {
+                return XCTFail("Pawn 타입이 아닙니다.")
+            }
+            XCTAssertEqual(piece.color, expectedPieceColor)
         }
     }
 
@@ -223,7 +227,7 @@ final class BoardTests: XCTestCase {
 
 extension Board {
 
-    func rank(_ rank: Int) throws -> [Piece?] {
+    func rank(_ rank: Int) throws -> [BoardElementRepresentable?] {
         guard (1...Self.Configuration.size.rank).contains(rank) else {
             throw BoardError.invalidRank(rank)
         }
@@ -238,6 +242,11 @@ extension Board {
         var pieces = (black: 0, white: 0)
 
         existingPieces.forEach { piece in
+            guard let piece = piece as? Piece else {
+                XCTFail("\(Piece.self) 타입이 아닙니다. 타입을 다시 확인해주세요.")
+                return
+            }
+
             switch piece.color {
             case .black:
                 pieces.black += 1

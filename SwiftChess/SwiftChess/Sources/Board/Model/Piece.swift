@@ -5,21 +5,24 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
-/// 체스말 타입이 준수하는 프로토콜. 체스말이 가지는 기본 요건을 정의하고 있다.
-protocol Piece {
+/// 보드에 표현될 수 있는 요소. ``Board/status``의 요소가 될 수 있다.
+protocol BoardElementRepresentable {
 
-    /// 이동할 수 있는 규칙 모음. 자세한 내용은 ``MoveRule``을 참고한다.
-    static var moveRules: Set<MoveRule> { get }
+    /// 요소를 콘솔에 표현할 때 사용하는 표식
+    var asSymbol: String { get }
+}
+
+/// 체스말 타입이 준수하는 프로토콜. 체스말이 가지는 기본 요건을 정의하고 있다.
+protocol Piece: BoardElementRepresentable {
+
     /// 체스판에 존재할 수 있는 최대 개수
     static var maxCount: Int { get }
+    /// 이동할 수 있는 규칙 모음. 자세한 내용은 ``MoveRule``을 참고한다.
+    static var moveRules: Set<MoveRule> { get }
     /// 체스말이 잡혔을 때 획득할 수 있는 점수.
     static var point: Int { get }
-
+    /// 체스말의 진영(흑, 백)
     var color: PieceColor { get }
-    /// 체스말이 잡혔을 때 획득할 수 있는 점수. `point` 타입 상수를 참조하여 반환한다.
-    var point: Int { get }
-    /// 체스말을 콘솔에 표현할 때 사용하는 표식
-    var asSymbol: String { get }
 
     /// 입력된 위치에서 이동할 수 있는 위치 후보를 반환한다.
     func movableLocations(from location: Board.Location) -> [Board.Location]
