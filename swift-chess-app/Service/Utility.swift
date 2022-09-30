@@ -14,7 +14,7 @@ let inputPattern = "[a-hA-H][1-8]"
 
 let asciiA = 65
 
-func commandValidate(_ input: String) -> Bool {
+func commandStringValidate(_ input: String) -> Bool {
     guard input.count == 6 else { return false } // 6글자인지 체크
     
     guard input.contains("->") else { return false } // -> 문자가 포함되어 있는지 체크
@@ -25,22 +25,27 @@ func commandValidate(_ input: String) -> Bool {
     
     if split[0] == split[1] { return false } // 두개가 다른지 체크
     
-    guard positionStringValidate(String(split[0])) &&
-            positionStringValidate(String(split[0])) else { return false } // 정상적인 보드판의 위치인지 체크
+    guard chessPositionStringValidate(String(split[0])) &&
+            chessPositionStringValidate(String(split[0])) else { return false } // 정상적인 보드판의 위치인지 체크
     
     
     return true
 }
 
-func positionStringValidate(_ input: String) -> Bool {
+func chessPositionStringValidate(_ input: String) -> Bool {
     if input.count == 2, input.range(of: inputPattern, options: .regularExpression) != nil { return true }
     return false
 }
 
-func stringToChessPosition(_ input: String) -> (current: ChessPosition, move: ChessPosition)? {
-    if !commandValidate(input) { return nil }
+func commandStringToChessPosition(_ input: String) -> (currentChessPosition: ChessPosition, moveChessPosition: ChessPosition)? {
+    if !commandStringValidate(input) { return nil }
     
     let split = input.split(separator: "->")
     
-    return (current: ChessPosition(String(split[0])), move: ChessPosition(String(split[1])))
+    guard let currentChessPosition = ChessPosition(String(split[0])),
+          let moveChessPosition = ChessPosition(String(split[1])) else {
+        return nil
+    }
+    
+    return (currentChessPosition: currentChessPosition, moveChessPosition: moveChessPosition)
 }

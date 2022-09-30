@@ -9,6 +9,6 @@ import Foundation
 
 protocol ChessUnitProtocol {
     var type: ChessUnitType { get }
-    var faction: PlayerFaction { get }
-    func movablePaths(_ currentPosition: ChessPosition) -> [ChessPosition]
+    var playerFaction: PlayerFaction { get }
+    func movablePaths(_ currentChessPosition: ChessPosition) -> [ChessPosition]
 }

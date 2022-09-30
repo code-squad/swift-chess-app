@@ -13,7 +13,8 @@
 		246F8C0D28E1C7CC00D2ECCE /* ChessProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C0C28E1C7CC00D2ECCE /* ChessProtocols.swift */; };
 		246F8C0F28E1CA1E00D2ECCE /* ChessUnitEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C0E28E1CA1E00D2ECCE /* ChessUnitEnum.swift */; };
 		246F8C1128E1CFB300D2ECCE /* ChessRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C1028E1CFB300D2ECCE /* ChessRule.swift */; };
-		246F8C1328E1DA8500D2ECCE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C1228E1DA8500D2ECCE /* Board.swift */; };
+		246F8C1328E1DA8500D2ECCE /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F8C1228E1DA8500D2ECCE /* ChessBoard.swift */; };
+		247D3DDC28E6CFB400BC7529 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247D3DDB28E6CFB400BC7529 /* Error.swift */; };
 		61D8E99028E022C000466138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8E98F28E022C000466138 /* AppDelegate.swift */; };
 		61D8E99228E022C000466138 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8E99128E022C000466138 /* SceneDelegate.swift */; };
 		61D8E99428E022C000466138 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8E99328E022C000466138 /* ViewController.swift */; };
@@ -49,7 +50,8 @@
 		246F8C0C28E1C7CC00D2ECCE /* ChessProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessProtocols.swift; sourceTree = "<group>"; };
 		246F8C0E28E1CA1E00D2ECCE /* ChessUnitEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUnitEnum.swift; sourceTree = "<group>"; };
 		246F8C1028E1CFB300D2ECCE /* ChessRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessRule.swift; sourceTree = "<group>"; };
-		246F8C1228E1DA8500D2ECCE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		246F8C1228E1DA8500D2ECCE /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
+		247D3DDB28E6CFB400BC7529 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		61D8E98C28E022C000466138 /* swift-chess-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-chess-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D8E98F28E022C000466138 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61D8E99128E022C000466138 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				61D8E98F28E022C000466138 /* AppDelegate.swift */,
 				61D8E99128E022C000466138 /* SceneDelegate.swift */,
 				61D8E99328E022C000466138 /* ViewController.swift */,
+				247D3DDB28E6CFB400BC7529 /* Error.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -132,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				246F8C0928E1C29500D2ECCE /* ChessModel */,
-				246F8C1228E1DA8500D2ECCE /* Board.swift */,
+				246F8C1228E1DA8500D2ECCE /* ChessBoard.swift */,
 				245066E028E29F2900F868E3 /* ChessPosition.swift */,
 			);
 			path = Model;
@@ -330,13 +333,14 @@
 				246F8C1128E1CFB300D2ECCE /* ChessRule.swift in Sources */,
 				245066E128E29F2900F868E3 /* ChessPosition.swift in Sources */,
 				246F8C0F28E1CA1E00D2ECCE /* ChessUnitEnum.swift in Sources */,
+				247D3DDC28E6CFB400BC7529 /* Error.swift in Sources */,
 				245066DF28E2870700F868E3 /* Utility.swift in Sources */,
 				61D8E99428E022C000466138 /* ViewController.swift in Sources */,
 				61D8E99028E022C000466138 /* AppDelegate.swift in Sources */,
 				246F8C0B28E1C29E00D2ECCE /* Pawn.swift in Sources */,
 				246F8C0D28E1C7CC00D2ECCE /* ChessProtocols.swift in Sources */,
 				61D8E99228E022C000466138 /* SceneDelegate.swift in Sources */,
-				246F8C1328E1DA8500D2ECCE /* Board.swift in Sources */,
+				246F8C1328E1DA8500D2ECCE /* ChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

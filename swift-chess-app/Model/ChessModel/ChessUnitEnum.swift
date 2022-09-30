@@ -13,10 +13,10 @@ enum ChessUnitType: String {
 }
 
 extension ChessUnitType {
-    func icon(_ faction: PlayerFaction) -> String {
+    func icon(_ playerFaction: PlayerFaction) -> String {
         switch self {
         case .None: return "."
-        case .Pawn: return faction == .Black ? "♟" : "♙"
+        case .Pawn: return playerFaction == .Black ? "♟" : "♙"
         }
     }
 }

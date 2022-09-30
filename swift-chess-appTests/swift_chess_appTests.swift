@@ -42,54 +42,54 @@ final class swift_chess_appTests: XCTestCase {
         /// 중점을 둔 부분
         /// 올바른 위치 문자열, 올바르지 않은 위치 문자열
         /// 올바르지 않은 문자열은? -> 길이 규격에 맞지 않는 문자열, 데이터 형식에 맞지 않는 문자열(순서가 바뀌었다거나, 허용되지 않은 문자라거나), 빈 문자열(empty)
-        XCTAssertTrue(positionStringValidate("A1"))
-        XCTAssertTrue(positionStringValidate("A8"))
-        XCTAssertTrue(positionStringValidate("H1"))
-        XCTAssertTrue(positionStringValidate("H8"))
-        XCTAssertTrue(positionStringValidate("B6"))
-        XCTAssertTrue(positionStringValidate("C8"))
-        XCTAssertFalse(positionStringValidate(""))
-        XCTAssertFalse(positionStringValidate("A"))
-        XCTAssertFalse(positionStringValidate("11"))
-        XCTAssertFalse(positionStringValidate("AB"))
-        XCTAssertFalse(positionStringValidate("5B"))
-        XCTAssertFalse(positionStringValidate("5959"))
+        XCTAssertTrue(chessPositionStringValidate("A1"))
+        XCTAssertTrue(chessPositionStringValidate("A8"))
+        XCTAssertTrue(chessPositionStringValidate("H1"))
+        XCTAssertTrue(chessPositionStringValidate("H8"))
+        XCTAssertTrue(chessPositionStringValidate("B6"))
+        XCTAssertTrue(chessPositionStringValidate("C8"))
+        XCTAssertFalse(chessPositionStringValidate(""))
+        XCTAssertFalse(chessPositionStringValidate("A"))
+        XCTAssertFalse(chessPositionStringValidate("11"))
+        XCTAssertFalse(chessPositionStringValidate("AB"))
+        XCTAssertFalse(chessPositionStringValidate("5B"))
+        XCTAssertFalse(chessPositionStringValidate("5959"))
         
         /// CommandValidate 테스트
         /// 중점을 둔 부분
         /// 올바른 커맨드, 올바르지 않은 커맨드
         /// 올바르지 않은 커맨드는? -> 길이 규격에 맞지 않는 커맨드, 데이터 형식에 맞지 않는 커맨드, 빈 커맨드
         /// 단, 현재 테스트는 커맨드의 문자열 자체 유효성만 검사하기 때문에, 이동 가능한 상황인지(거리나 방향이 올바르다거나, 해당 위치에 내 말이 없다거나)는 테스트하지 않음.
-        XCTAssertTrue(commandValidate("A2->A3"))
-        XCTAssertTrue(commandValidate("A2->H8"))
-        XCTAssertFalse(commandValidate("A1->A2->A3"))
-        XCTAssertFalse(commandValidate("H8->H8"))
-        XCTAssertFalse(commandValidate("H8-H8"))
-        XCTAssertFalse(commandValidate("->H8"))
-        XCTAssertFalse(commandValidate("->"))
-        XCTAssertFalse(commandValidate(""))
-        XCTAssertFalse(commandValidate("A2A3"))
-        XCTAssertFalse(commandValidate("Z1->A5"))
-        XCTAssertFalse(commandValidate("ZZ->ㅋㅋ"))
+        XCTAssertTrue(commandStringValidate("A2->A3"))
+        XCTAssertTrue(commandStringValidate("A2->H8"))
+        XCTAssertFalse(commandStringValidate("A1->A2->A3"))
+        XCTAssertFalse(commandStringValidate("H8->H8"))
+        XCTAssertFalse(commandStringValidate("H8-H8"))
+        XCTAssertFalse(commandStringValidate("->H8"))
+        XCTAssertFalse(commandStringValidate("->"))
+        XCTAssertFalse(commandStringValidate(""))
+        XCTAssertFalse(commandStringValidate("A2A3"))
+        XCTAssertFalse(commandStringValidate("Z1->A5"))
+        XCTAssertFalse(commandStringValidate("ZZ->ㅋㅋ"))
         
         /// stringToChessPosition 테스트
         /// 중점을 둔 부분
         /// 역으로 확인했을 때 제대로 결과가 나오는가?
-        XCTAssertNotNil(stringToChessPosition("A2->A3"))
-        XCTAssertNotNil(stringToChessPosition("A2->H8"))
-        XCTAssertNotNil(stringToChessPosition("A2->A3"))
-        XCTAssertNil(stringToChessPosition("A1->A2->A3"))
-        XCTAssertNil(stringToChessPosition("->H8"))
-        XCTAssertNil(stringToChessPosition("->"))
-        XCTAssertNil(stringToChessPosition(""))
+        XCTAssertNotNil(commandStringToChessPosition("A2->A3"))
+        XCTAssertNotNil(commandStringToChessPosition("A2->H8"))
+        XCTAssertNotNil(commandStringToChessPosition("A2->A3"))
+        XCTAssertNil(commandStringToChessPosition("A1->A2->A3"))
+        XCTAssertNil(commandStringToChessPosition("->H8"))
+        XCTAssertNil(commandStringToChessPosition("->"))
+        XCTAssertNil(commandStringToChessPosition(""))
         
         // 위에서 성공으로 테스트 된것에 대해서 추가적으로 제대로 구조체를 뽑아냈는지 테스트
-        let testPosition1 = stringToChessPosition("A2->A3")!
+        let testPosition1 = commandStringToChessPosition("A2->A3")!
         
         let successPosition1 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 2, file: 0))
         let failPosition1 = (current: ChessPosition(rank: 1, file: 1), move: ChessPosition(rank: 1, file: 1))
         
-        let testPosition2 = stringToChessPosition("A2->H8")!
+        let testPosition2 = commandStringToChessPosition("A2->H8")!
         
         let successPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 7, file: 7))
         let failPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 5, file: 7))
@@ -113,7 +113,7 @@ final class swift_chess_appTests: XCTestCase {
     func testChessPosition() {
         /// 현재 코드상 ChessPosition은 오직 Utility 함수에서만 제작되기 때문에, 유효성 검사를 따로 하지 않습니다.
         XCTAssertEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 0))
-        XCTAssertEqual(ChessPosition("A1").position, "A1")
+        XCTAssertEqual(ChessPosition("A1").positionString, "A1")
         
         XCTAssertTrue(ChessPosition("A1") == "A1")
         XCTAssertTrue("A1" == ChessPosition(rank: 0, file: 0))
@@ -144,7 +144,7 @@ final class swift_chess_appTests: XCTestCase {
         /// 체스 위치를 몇번 바꿔보고, 이후 초기화(clear)를 진행해 다시한번 테스트를 진행해본다.
         
         /// init / clear 테스트
-        let board = Board()
+        let board = ChessBoard()
         testClear(board)
         /// moveCheck, move 테스트
         /// 보드는 초기화만 되어있는 상태.
@@ -159,7 +159,7 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertTrue(board.move("C3", "D3")) // 위에서 대각선으로 옮기려고 시도했기때문에, 실패후 위치는 그대로. 이번에는 오른쪽으로 옮겨본다.
         XCTAssertFalse(board.move("D3", "D2")) // 뒤로 한번 옮겨본다. (현재는 흑색 플레이어)
         
-        board.factionChange() // 팩션 변경
+        board.changeFaction() // 팩션 변경
         XCTAssertFalse(board.move("D3", "D4")) // 흑색플레이어의 Pawn을 건드려본다
         XCTAssertFalse(board.move("A7", "A8")) // 뒤로 한번 옮겨본다
         XCTAssertFalse(board.moveCheck("A7", "A8")) // moveCheck로 한번 검사
@@ -224,7 +224,7 @@ final class swift_chess_appTests: XCTestCase {
         testClear(board)
     }
     
-    func testClear(_ board: Board) {
+    func testClear(_ board: ChessBoard) {
         XCTAssertEqual(board.display(), defaultDisplay)
         XCTAssertEqual(board.getScore().black, 8)
         XCTAssertEqual(board.getScore().white, 8)
@@ -240,7 +240,7 @@ final class swift_chess_appTests: XCTestCase {
     }
 }
 
-extension Board {
+extension ChessBoard {
     func moveCheck(_ current: String, _ move: String) -> Bool {
         let currentPosition = ChessPosition(current)
         let movePosition = ChessPosition(move)
