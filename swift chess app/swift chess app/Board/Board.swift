@@ -62,6 +62,10 @@ class Board {
             guard from.rank - to.rank == -1 else { return false }
         case .pawn(.white):
             guard from.rank - to.rank == 1 else { return false }
+        case .bishop(.black):
+            return true
+        case .bishop(.white):
+            return true
         case .empty: return false
         }
         

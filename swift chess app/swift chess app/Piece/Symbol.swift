@@ -9,11 +9,13 @@ import Foundation
 
 enum Symbol {
     case pawn(PieceColor)
+    case bishop(PieceColor)
     case empty
     
     var image: String {
         switch self {
         case .pawn(let color): return color == .black ? "♟" : "♙"
+        case .bishop(let color): return color == .black ? "♝" : "♗"
         case .empty: return "."
         }
     }
@@ -21,13 +23,15 @@ enum Symbol {
     var rawValue: String {
         switch self {
         case .pawn:     return "pawn"
+        case .bishop:   return "bishop"
         default:        return "empty"
         }
     }
     
     init(name: String, color: PieceColor) {
         switch name {
-        case Self.pawn(color).rawValue: self = .pawn(color)
+        case Self.pawn(color).rawValue:     self = .pawn(color)
+        case Self.bishop(color).rawValue:   self = .bishop(color)
         default: self = .empty
         }
     }
