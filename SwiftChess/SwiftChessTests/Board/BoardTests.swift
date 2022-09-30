@@ -64,7 +64,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_각진영에Pawn이하나씩남아있을때_점수를측정하면_모든진영의점수는7이다() {
-        let sut = Board(status: BoardTesting.topLeftEngagedPawnsMock)
+        let sut = Board(status: Self.topLeftEngagedPawnsMock)
         let expectedPoint = 7
 
         let currentPoints = sut.currentPoints()
@@ -74,7 +74,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_체스판에말이없을때_점수를측정하면_각진영모두최대점수이다() {
-        let sut = Board(status: BoardTesting.emptyMock)
+        let sut = Board(status: Self.emptyMock)
         let expectedPoint = Board.Configuration.totalAvailablePoints
 
         let currentPoints = sut.currentPoints()
@@ -109,7 +109,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_흑색진영이백색Pawn을잡으면_흑색진영이1점을얻는다() throws {
-        let sut = Board(status: BoardTesting.topLeftEngagedPawnsMock)
+        let sut = Board(status: Self.topLeftEngagedPawnsMock)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
         XCTAssertEqual(initialPawnCounts.black, 1)
@@ -128,7 +128,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_백색진영이흑색Pawn을잡으면_백색진영이1점을얻는다() throws {
-        let sut = Board(status: BoardTesting.topLeftEngagedPawnsMock)
+        let sut = Board(status: Self.topLeftEngagedPawnsMock)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
         XCTAssertEqual(initialPawnCounts.black, 1)
@@ -147,7 +147,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_체스판안에있지않은출발점을지정하면_이동시킬수없다() {
-        let sut = Board(status: BoardTesting.topLeftBlackPawnMock)
+        let sut = Board(status: Self.topLeftBlackPawnMock)
 
         XCTAssertThrowsError(try sut.move(from: .A0, to: .A1)) { error in
             XCTAssertEqual(
@@ -158,7 +158,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_체스판안에있지않은목적지를지정하면_이동시킬수없다() {
-        let sut = Board(status: BoardTesting.topLeftWhitePawnMock)
+        let sut = Board(status: Self.topLeftWhitePawnMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A0)) { error in
             XCTAssertEqual(
@@ -169,7 +169,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_출발점과목적지가동일하면_이동시킬수없다() {
-        let sut = Board(status: BoardTesting.topLeftWhitePawnMock)
+        let sut = Board(status: Self.topLeftWhitePawnMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A1)) { error in
             XCTAssertEqual(
@@ -180,7 +180,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_출발점에체스말이없으면_이동시킬수없다() {
-        let sut = Board(status: BoardTesting.emptyMock)
+        let sut = Board(status: Self.emptyMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A2)) { error in
             XCTAssertEqual(
@@ -191,7 +191,7 @@ final class BoardTests: XCTestCase {
     }
 
     func test_같은색상의말이목적지에있으면_이동할수없다() {
-        let sut = Board(status: BoardTesting.topLeftBlockedPawnsMock)
+        let sut = Board(status: Self.topLeftBlockedPawnsMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A2)) { error in
             XCTAssertEqual(

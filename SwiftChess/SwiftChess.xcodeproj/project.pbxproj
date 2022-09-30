@@ -14,7 +14,7 @@
 		AA53ACA628E43E720051D8CB /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACA528E43E720051D8CB /* Int+Extensions.swift */; };
 		AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAA28E43F240051D8CB /* PawnTests.swift */; };
 		AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAC28E457610051D8CB /* Occupiable.swift */; };
-		AA53ACB228E473430051D8CB /* BoardTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB128E473430051D8CB /* BoardTesting.swift */; };
+		AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */; };
 		AA53ACB528E491430051D8CB /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB428E491430051D8CB /* CommandParser.swift */; };
 		AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB628E491540051D8CB /* CommandReader.swift */; };
 		AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB828E497B10051D8CB /* String+Extensions.swift */; };
@@ -55,7 +55,7 @@
 		AA53ACA528E43E720051D8CB /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		AA53ACAA28E43F240051D8CB /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		AA53ACAC28E457610051D8CB /* Occupiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupiable.swift; sourceTree = "<group>"; };
-		AA53ACB128E473430051D8CB /* BoardTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTesting.swift; sourceTree = "<group>"; };
+		AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardTests+Mock.swift"; sourceTree = "<group>"; };
 		AA53ACB428E491430051D8CB /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
 		AA53ACB628E491540051D8CB /* CommandReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReader.swift; sourceTree = "<group>"; };
 		AA53ACB828E497B10051D8CB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				AA53ACBB28E4A2030051D8CB /* Component */,
 				AA53ACA728E43F0A0051D8CB /* Model */,
 				AA53ACA028E43D3E0051D8CB /* BoardTests.swift */,
-				AA53ACB128E473430051D8CB /* BoardTesting.swift */,
+				AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
 				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
 				AABA53CC28E1D31C00006508 /* SwiftChessTests.swift in Sources */,
-				AA53ACB228E473430051D8CB /* BoardTesting.swift in Sources */,
+				AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* CommandParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
