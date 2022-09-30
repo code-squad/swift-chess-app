@@ -12,6 +12,9 @@ struct Pawn: Piece {
     static let point: Int = 1
 
     let color: PieceColor
+    var asSymbol: BoardElementSymbol {
+        return color == .black ? .blackPawn : .whitePawn
+    }
 
     /// 색상별 ``Pawn``이 최초에 위치할 수 있는 rank
     var initialRank: Int {

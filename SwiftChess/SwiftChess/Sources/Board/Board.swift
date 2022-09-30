@@ -223,7 +223,8 @@ final class Board {
     func display() -> String {
         let graphicalRepresentation = status.map { rank in
             return rank
-                .map { $0?.asSymbol ?? PieceSymbol.empty.rawValue }
+                .compactMap { $0?.asSymbol ?? .empty }
+                .map(\.rawValue)
                 .joined()
         }
             .joined(separator: "\n")

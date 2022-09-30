@@ -9,7 +9,7 @@
 protocol BoardElementRepresentable {
 
     /// 요소를 콘솔에 표현할 때 사용하는 표식
-    var asSymbol: String { get }
+    var asSymbol: BoardElementSymbol { get }
 }
 
 /// 체스말 타입이 준수하는 프로토콜. 체스말이 가지는 기본 요건을 정의하고 있다.
@@ -21,6 +21,9 @@ protocol Piece: BoardElementRepresentable {
     static var moveRules: Set<MoveRule> { get }
     /// 체스말이 잡혔을 때 획득할 수 있는 점수.
     static var point: Int { get }
+
+    /// 체스말이 잡혔을 때 획득할 수 있는 점수. 타입 상수 `point`값을 참조한다.
+    var point: Int { get }
     /// 체스말의 진영(흑, 백)
     var color: PieceColor { get }
 
@@ -30,27 +33,11 @@ protocol Piece: BoardElementRepresentable {
 
 extension Piece {
     var point: Int {
-        switch self {
-        case _ as Pawn:
-            return Pawn.point
-        default:
-            return 0
-        }
-    }
-
-    var asSymbol: String {
-        switch self {
-        case _ as Pawn:
-            return color == .black
-                ? PieceSymbol.blackPawn.rawValue
-                : PieceSymbol.whitePawn.rawValue
-
-        default:
-            return PieceSymbol.empty.rawValue
-        }
+        return Self.point
     }
 }
 
+/// 체스말의 색깔.
 enum PieceColor: CaseIterable {
     case black
     case white
@@ -64,8 +51,8 @@ struct MoveRule: Hashable {
     let file: Int
 }
 
-/// 체스말을 콘솔에 표현할 때 사용하는 표식을 모두 정의한 타입.
-enum PieceSymbol: String {
+/// 체스판 요소를 콘솔에 표현할 때 사용하는 표식을 정의한 타입.
+enum BoardElementSymbol: String {
     case blackPawn = "♟"
     case whitePawn = "♙"
     case empty = "."
