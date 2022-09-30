@@ -31,9 +31,9 @@ class Board {
             result += "\(i + 1)"
             for j in 0 ..< fileCount {
                 if let piece = board[i][j] {
-                    result += piece.symbol
+                    result += piece.getSymbol().image
                 } else {
-                    result += "."
+                    result += Symbol.empty.image
                 }
             }
             result += "\n"
@@ -47,27 +47,22 @@ class Board {
         let rank = [Pieceable?](repeating: nil, count: fileCount)
         board = [[Pieceable?]](repeating: rank, count: rankCount)
         
-        for i in 0 ..< fileCount {
-            putPiece(piece: Pawn(color: .black), rank: 1, file: i)
-        }
-        
-        for i in 0 ..< fileCount {
-            putPiece(piece: Pawn(color: .white), rank: 6, file: i)
-        }
+        putPawns()
     }
     
     func move(from: String, to: String) -> Bool {
-        // TODO: 추후에 Piece가 추가된다면 따로 빼야겠다
         guard let from = validate(location: from),
               let to = validate(location: to) else { return false }
         guard let selectedPiece = board[from.rank][from.file] else { return false }
         guard selectedPiece.color == order else { return false }
         
-        switch selectedPiece.color {
-        case .black:
+        // TODO: 추후에 Piece가 추가된다면 따로 빼야겠다
+        switch selectedPiece.getSymbol() {
+        case .pawn(.black):
             guard from.rank - to.rank == -1 else { return false }
-        case .white:
+        case .pawn(.white):
             guard from.rank - to.rank == 1 else { return false }
+        case .empty: return false
         }
         
         board[to.rank][to.file] = board[from.rank][from.file]
@@ -97,7 +92,7 @@ private extension Board {
         guard board[rank][file] == nil else { return }
         
         let count = pieces
-            .filter { $0.symbol == piece.symbol }
+            .filter { $0.getSymbol().image == piece.getSymbol().image }
             .count
         
         guard count < type(of: piece).maxCount else { return }
@@ -120,5 +115,15 @@ private extension Board {
         guard file >= 0 && file < fileCount else { return nil }
         
         return Location(rank: rank, file: file)
+    }
+    
+    func putPawns() {
+        for i in 0 ..< fileCount {
+            putPiece(piece: Pawn(color: .black), rank: 1, file: i)
+        }
+        
+        for i in 0 ..< fileCount {
+            putPiece(piece: Pawn(color: .white), rank: 6, file: i)
+        }
     }
 }

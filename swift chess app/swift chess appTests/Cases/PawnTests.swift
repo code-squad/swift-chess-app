@@ -14,9 +14,9 @@ final class PawnTests: XCTestCase {
     
     func testPawnSymbol() throws {
         sut = Pawn(color: .black)
-        XCTAssertEqual(sut.symbol, "♟")
+        XCTAssertEqual(sut.getSymbol().image, "♟")
         
         sut = Pawn(color: .white)
-        XCTAssertEqual(sut.symbol, "♙")
+        XCTAssertEqual(sut.getSymbol().image, "♙")
     }
 }

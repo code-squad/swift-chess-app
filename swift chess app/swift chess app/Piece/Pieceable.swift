@@ -11,10 +11,11 @@ protocol Pieceable {
     static var maxCount: Int { get }
     
     var color: PieceColor { get }
-    var symbol: String { get }
 }
 
-enum PieceColor {
-    case black
-    case white
+extension Pieceable {
+    func getSymbol() -> Symbol {
+        Symbol(name: String(describing: Self.self).lowercased(),
+               color: color)
+    }
 }
