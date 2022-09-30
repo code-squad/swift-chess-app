@@ -157,7 +157,7 @@ final class BoardTests: XCTestCase {
         }
     }
 
-    func test_체스판안에있지않은목적지를지정하면_이동시킬수없다() {
+    func test_체스판안에있지않은도착점을지정하면_이동시킬수없다() {
         let sut = Board(status: Self.topLeftWhitePawnMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A0)) { error in
@@ -168,7 +168,7 @@ final class BoardTests: XCTestCase {
         }
     }
 
-    func test_출발점과목적지가동일하면_이동시킬수없다() {
+    func test_출발점과도착점이동일하면_이동시킬수없다() {
         let sut = Board(status: Self.topLeftWhitePawnMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A1)) { error in
@@ -190,7 +190,7 @@ final class BoardTests: XCTestCase {
         }
     }
 
-    func test_같은색상의말이목적지에있으면_이동할수없다() {
+    func test_같은색상의말이도착점에있으면_이동할수없다() {
         let sut = Board(status: Self.topLeftBlockedPawnsMock)
 
         XCTAssertThrowsError(try sut.move(from: .A1, to: .A2)) { error in

@@ -19,6 +19,7 @@
 		AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB628E491540051D8CB /* CommandReader.swift */; };
 		AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB828E497B10051D8CB /* String+Extensions.swift */; };
 		AA53ACBD28E4A21F0051D8CB /* CommandParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACBC28E4A21F0051D8CB /* CommandParserTests.swift */; };
+		AA53ACF328E759810051D8CB /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACF228E759810051D8CB /* BoardError.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -60,6 +61,7 @@
 		AA53ACB628E491540051D8CB /* CommandReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReader.swift; sourceTree = "<group>"; };
 		AA53ACB828E497B10051D8CB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AA53ACBC28E4A21F0051D8CB /* CommandParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParserTests.swift; sourceTree = "<group>"; };
+		AA53ACF228E759810051D8CB /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				AA53ACB328E491360051D8CB /* Component */,
 				AA53AC9728E41A870051D8CB /* Model */,
 				AA53AC9528E41A840051D8CB /* Board.swift */,
+				AA53ACF228E759810051D8CB /* BoardError.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */,
+				AA53ACF328E759810051D8CB /* BoardError.swift in Sources */,
 				AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */,
 				AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */,
 				AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */,

@@ -13,7 +13,7 @@ struct MoveCommand {
 enum CommandParserError: Error {
     /// 유효하지 않은 명령
     case invalidCommand
-    /// 검증 실패(형식에 맞지않음, 유효하지 않은 출발점/목적지 등)
+    /// 검증 실패(형식에 맞지않음, 유효하지 않은 출발점/도착점 등)
     case validationFailed
     /// 검증을 마친 문자열이 사라짐(발생하지 않음)
     case locationStringsNotExist
@@ -71,7 +71,7 @@ enum CommandParser {
         return true
     }
 
-    /// 시작점 또는 목적지와 같이 하나의 문자열을 검증한다. 예) "A1"
+    /// 시작점 또는 도착점과 같이 하나의 문자열을 검증한다. 예) "A1"
     private static func validateEach(_ locationString: Substring) -> Bool {
         guard locationString.count == 2 else {
             return false
