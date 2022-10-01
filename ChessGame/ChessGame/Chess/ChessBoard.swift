@@ -51,21 +51,15 @@ struct ChessBoard {
     
     @discardableResult
     mutating func movePiece(from origin: Position, to destination: Position) -> Bool {
+        
         guard
             canAccess(position: origin),
-            canAccess(position: destination),
-            let originPiece = self[origin]
+            let originPiece = self[origin],
+            originPiece.movementValidator.canMove(from: origin, to: destination, board: self)
         else { return false }
         
-        guard originPiece.availableMovements(at: origin)
-            .contains(destination) else { return false }
-        
-        if let targetPiece = self[destination] {
-            guard targetPiece.teamColor != originPiece.teamColor else { return false }
-        }
-        
+        self[destination] = self[origin]
         self[origin] = nil
-        self[destination] = originPiece
         
         return true
     }
