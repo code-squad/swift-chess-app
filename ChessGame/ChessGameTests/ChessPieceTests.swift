@@ -14,13 +14,13 @@ final class ChessPieceTests: XCTestCase {
         let board = ChessBoard.standardChessBoard()
         
         let whitePawn = PawnPiece(teamColor: .white)
-        XCTAssertEqual(whitePawn.availableMovingPositions(at: .init("A2")!, board: board), [.init("A3")!])
+        XCTAssertEqual(PawnPiece.availableMovingPositions(at: .init("A2")!, board: board), [.init("A3")!])
     }
     
     func testAllMovementsOfBlackPawn() {
         let board = ChessBoard.standardChessBoard()
         
         let blackPawn = PawnPiece(teamColor: .black)
-        XCTAssertEqual(blackPawn.availableMovingPositions(at: .init("A7")!, board: board), [.init("A6")!])
+        XCTAssertEqual(PawnPiece.availableMovingPositions(at: .init("A7")!, board: board), [.init("A6")!])
     }
 }

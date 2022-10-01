@@ -54,15 +54,17 @@ final class ChessBoardTests: XCTestCase {
     
     func testScoreSum() {
         var board = ChessBoard.standardChessBoard()
-        XCTAssertEqual(board.scoreSum(for: .white), 8)
-        XCTAssertEqual(board.scoreSum(for: .black), 8)
+        
+        var scoreSum = board.scoreSum()
+        XCTAssertEqual(scoreSum.white, 8)
+        XCTAssertEqual(scoreSum.black, 8)
         
         board[.init("A2")!] = nil
-        XCTAssertEqual(board.scoreSum(for: .white), 7)
-        
         board[.init("A7")!] = nil
         board[.init("B7")!] = nil
-        XCTAssertEqual(board.scoreSum(for: .black), 6)
+        
+        scoreSum = board.scoreSum()
+        XCTAssertEqual(scoreSum.white, 7)
+        XCTAssertEqual(scoreSum.black, 6)
     }
-    
 }
