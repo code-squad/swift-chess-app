@@ -11,55 +11,56 @@
 extension BoardTests {
     static let blackPawn = Pawn(color: .black)
     static let whitePawn = Pawn(color: .white)
-    static let emptyMock: [[Piece?]] = [
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil, nil, nil],
+    static let empty = Empty()
+    static let emptyMock: [[BoardElementRepresentable]] = [
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty, empty],
     ]
-    static let topLeftBlackPawnMock: [[Piece?]] = [
-        [blackPawn, nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
+    static let topLeftBlackPawnMock: [[BoardElementRepresentable]] = [
+        [blackPawn, empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
     ]
-    static let topLeftBlockedPawnsMock: [[Piece?]] = [
-        [blackPawn, nil, nil, nil, nil, nil, nil, nil],
-        [blackPawn, nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
+    static let topLeftBlockedPawnsMock: [[BoardElementRepresentable]] = [
+        [blackPawn, empty, empty, empty, empty, empty, empty, empty],
+        [blackPawn, empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
     ]
-    static let topLeftEngagedPawnsMock: [[Piece?]] = [
-        [blackPawn, nil, nil, nil, nil, nil, nil, nil],
-        [whitePawn, nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
+    static let topLeftEngagedPawnsMock: [[BoardElementRepresentable]] = [
+        [blackPawn, empty, empty, empty, empty, empty, empty, empty],
+        [whitePawn, empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
     ]
-    static let topLeftWhitePawnMock: [[Piece?]] = [
-        [whitePawn, nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
-        [nil      , nil, nil, nil, nil, nil, nil, nil],
+    static let topLeftWhitePawnMock: [[BoardElementRepresentable]] = [
+        [whitePawn, empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
+        [empty    , empty, empty, empty, empty, empty, empty, empty],
     ]
 }
 
