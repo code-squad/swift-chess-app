@@ -11,6 +11,8 @@ protocol Pieceable {
     static var maxCount: Int { get }
     
     var color: PieceColor { get }
+    
+    func howToMove(from: Location, to: Location) -> Bool
 }
 
 extension Pieceable {

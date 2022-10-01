@@ -56,18 +56,7 @@ class Board {
         guard let selectedPiece = board[from.rank][from.file] else { return false }
         guard selectedPiece.color == order else { return false }
         
-        // TODO: 추후에 Piece가 추가된다면 따로 빼야겠다
-        switch selectedPiece.getSymbol() {
-        case .pawn(.black):
-            guard from.rank - to.rank == -1 else { return false }
-        case .pawn(.white):
-            guard from.rank - to.rank == 1 else { return false }
-        case .bishop(.black):
-            return true
-        case .bishop(.white):
-            return true
-        case .empty: return false
-        }
+        guard selectedPiece.howToMove(from: from, to: to) else { return false }
         
         board[to.rank][to.file] = board[from.rank][from.file]
         board[from.rank][from.file] = nil

@@ -11,4 +11,13 @@ struct Pawn: Pieceable {
     static let maxCount: Int = 8
     
     let color: PieceColor
+    
+    func howToMove(from: Location, to: Location) -> Bool {
+        switch color {
+        case .black:
+            return from.rank - to.rank == -1
+        case .white:
+            return from.rank - to.rank == 1
+        }
+    }
 }

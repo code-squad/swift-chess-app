@@ -11,4 +11,8 @@ struct Bishop: Pieceable {
     static let maxCount: Int = 2
     
     let color: PieceColor
+    
+    func howToMove(from: Location, to: Location) -> Bool {
+        return false
+    }
 }
