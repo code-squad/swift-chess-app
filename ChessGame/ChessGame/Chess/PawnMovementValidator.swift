@@ -1,5 +1,5 @@
 //
-//  PawnMovementProvider.swift
+//  PawnMovementValidator.swift
 //  ChessGame
 //
 //  Created by Sunghyun Kim on 2022/10/01.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PawnMovementProvider: PieceMovementProviding {
+struct PawnMovementValidator: PieceMovementValidating {
     func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         guard origin.file == destination.file else { return false }
         let rankDelta = destination.rank - origin.rank
