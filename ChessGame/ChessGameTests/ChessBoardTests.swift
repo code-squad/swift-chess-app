@@ -116,16 +116,20 @@ final class ChessBoardTests: XCTestCase {
         var whitePawnCount = 8
         var whiteBishopCount = 2
         var whiteRookCount = 2
+        var whiteKightCount = 2
+        var whiteQueenCount = 1
         
         var blackPawnCount = 8
         var blackBishopCount = 2
         var blackRookCount = 2
+        var blackKightCount = 2
+        var blackQueenCount = 1
         
         func whiteScore() -> Int {
-            1 * whitePawnCount + 3 * whiteBishopCount + 5 * whiteRookCount
+            whitePawnCount * 1 + whiteBishopCount * 3 + whiteRookCount * 5 + whiteKightCount * 3 + whiteQueenCount * 9
         }
         func blackScore() -> Int {
-            1 * blackPawnCount + 3 * blackBishopCount + 5 * blackRookCount
+            blackPawnCount * 1 + blackBishopCount * 3 + blackRookCount * 5 + blackKightCount * 3 + blackQueenCount * 9
         }
         
         var scoreSum = board.scoreSum()
