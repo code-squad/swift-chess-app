@@ -72,6 +72,15 @@ final class ChessBoardTests: XCTestCase {
             }
     }
     
+    func testBishopMovementFails() {
+        var board = ChessBoard.standardChessBoard()
+        
+        // 흰색 비숍이 정면으로 2칸 이동
+        XCTAssertFalse(board.movePiece(from: .init("C1")!, to: .init("C3")!))
+        // 흰색 비숍이 아군 말 위로 이동
+        XCTAssertFalse(board.movePiece(from: .init("C1")!, to: .init("B2")!))
+    }
+    
     // MARK: - Test Rook
     
     func testRookPosition() {
@@ -90,6 +99,15 @@ final class ChessBoardTests: XCTestCase {
                 XCTAssertEqual($0?.teamColor, .black)
                 XCTAssert($0 is RookPiece)
             }
+    }
+    
+    func testRookMovementFails() {
+        var board = ChessBoard.standardChessBoard()
+        
+        // 흰색 룩이 나이트처럼 이동
+        XCTAssertFalse(board.movePiece(from: .init("A1")!, to: .init("B2")!))
+        // 흰색 룩이 아군 말 위로 이동
+        XCTAssertFalse(board.movePiece(from: .init("A1")!, to: .init("A2")!))
     }
     
     func testScoreSum() {
