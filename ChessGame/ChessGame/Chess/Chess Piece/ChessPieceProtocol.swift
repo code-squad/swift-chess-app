@@ -9,7 +9,7 @@ import Foundation
 
 protocol ChessPieceProtocol {
     var teamColor: TeamColor { get }
-    var score: Int { get }
+    static var score: Int { get }
     var symbol: Character { get }
     
     init(teamColor: TeamColor)
@@ -22,11 +22,11 @@ protocol ChessPieceProtocol {
     /// - 목적지에 접근할 수 있음
     /// - 시작점에 기물이 있음
     /// - 시작점 기물과 목적지 기물의 팀 색상이 다름
-    func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool
+    static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool
 }
 
 extension ChessPieceProtocol {
-    func canMove(from origin: Position, to destination: Position, board: ChessBoard) -> Bool {
+    static func canMove(from origin: Position, to destination: Position, board: ChessBoard) -> Bool {
         guard
             origin != destination,
             board.canAccess(position: origin),
@@ -37,7 +37,7 @@ extension ChessPieceProtocol {
         return isMovementValid(origin: origin, destination: destination, board: board)
     }
     
-    func availableMovingPositions(at origin: Position, board: ChessBoard) -> [Position] {
+    static func availableMovingPositions(at origin: Position, board: ChessBoard) -> [Position] {
         return board.allPositions
             .filter { canMove(from: origin, to: $0, board: board) }
     }

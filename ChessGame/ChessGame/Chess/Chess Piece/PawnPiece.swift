@@ -9,12 +9,12 @@ import Foundation
 
 struct PawnPiece: ChessPieceProtocol {
     let teamColor: TeamColor
-    var score: Int { 1 }
+    static let score = 1
     var symbol: Character {
         teamColor == .white ? "♙" : "♟"
     }
     
-    func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
+    static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         guard origin.file == destination.file else { return false }
         let rankDelta = destination.rank - origin.rank
         // 상위 함수에서 board에 말이 있음을 검증하기 때문에 강제 옵셔널 언래핑한다.
