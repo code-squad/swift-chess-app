@@ -94,12 +94,15 @@ struct ChessBoard: Equatable {
 
 extension ChessBoard {
     static func standardChessBoard() -> ChessBoard {
+        
         var board = ChessBoard(files: 8, ranks: 8)
+        
         // 폰 추가
         for file in 0..<8 {
             board[Position(file: file, rank: 1)] = PawnPiece(teamColor: .white)
             board[Position(file: file, rank: 6)] = PawnPiece(teamColor: .black)
         }
+        
         // 비숍 추가
         board[Position("C1")!] = BishopPiece(teamColor: .white)
         board[Position("F1")!] = BishopPiece(teamColor: .white)
@@ -117,6 +120,13 @@ extension ChessBoard {
         // 퀸 추가
         board[Position("D1")!] = QueenPiece(teamColor: .white)
         board[Position("D8")!] = QueenPiece(teamColor: .black)
+        
+        // 나이트 추가
+        board[Position("B1")!] = KightPiece(teamColor: .white)
+        board[Position("G1")!] = KightPiece(teamColor: .white)
+        
+        board[Position("B8")!] = KightPiece(teamColor: .black)
+        board[Position("G8")!] = KightPiece(teamColor: .black)
         
         return board
     }
