@@ -33,7 +33,7 @@ final class SymbolTests: XCTestCase {
     }
     
     func testRook() throws {
-        XCTAssertEqual(Bishop.maxCount, 2)
+        XCTAssertEqual(Rook.maxCount, 2)
         
         var sut: Rook!
         sut = Rook(color: .black)
@@ -44,7 +44,7 @@ final class SymbolTests: XCTestCase {
     }
     
     func testQueen() throws {
-        XCTAssertEqual(Bishop.maxCount, 1)
+        XCTAssertEqual(Queen.maxCount, 1)
         
         var sut: Queen!
         sut = Queen(color: .black)
@@ -55,7 +55,7 @@ final class SymbolTests: XCTestCase {
     }
     
     func testKnight() throws {
-        XCTAssertEqual(Bishop.maxCount, 2)
+        XCTAssertEqual(Knight.maxCount, 2)
         
         var sut: Knight!
         sut = Knight(color: .black)

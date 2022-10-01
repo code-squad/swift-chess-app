@@ -10,13 +10,19 @@ import Foundation
 enum Symbol {
     case pawn(PieceColor)
     case bishop(PieceColor)
+    case rook(PieceColor)
+    case queen(PieceColor)
+    case knight(PieceColor)
     case empty
     
     var image: String {
         switch self {
-        case .pawn(let color): return color == .black ? "♟" : "♙"
-        case .bishop(let color): return color == .black ? "♝" : "♗"
-        case .empty: return "."
+        case .pawn(let color):      return color == .black ? "♟" : "♙"
+        case .bishop(let color):    return color == .black ? "♝" : "♗"
+        case .rook(let color):      return color == .black ? "♜" : "♖"
+        case .queen(let color):     return color == .black ? "♛" : "♕"
+        case .knight(let color):    return color == .black ? "♞" : "♘"
+        case .empty:                return "."
         }
     }
     
@@ -24,6 +30,9 @@ enum Symbol {
         switch self {
         case .pawn:     return "pawn"
         case .bishop:   return "bishop"
+        case .rook:     return "rook"
+        case .queen:    return "queen"
+        case .knight:   return "knight"
         default:        return "empty"
         }
     }
@@ -32,7 +41,10 @@ enum Symbol {
         switch name {
         case Self.pawn(color).rawValue:     self = .pawn(color)
         case Self.bishop(color).rawValue:   self = .bishop(color)
-        default: self = .empty
+        case Self.rook(color).rawValue:     self = .rook(color)
+        case Self.queen(color).rawValue:    self = .queen(color)
+        case Self.knight(color).rawValue:   self = .knight(color)
+        default:                            self = .empty
         }
     }
 }
