@@ -21,6 +21,9 @@
 		993ACC2728E7E1A100924666 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC2628E7E1A100924666 /* PawnTests.swift */; };
 		993ACC3328E7ED1F00924666 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC3228E7ED1F00924666 /* BoardTests.swift */; };
 		993ACC3528E7EEC700924666 /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC3428E7EEC700924666 /* BishopTests.swift */; };
+		993ACC3F28E7F54B00924666 /* RookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC3E28E7F54B00924666 /* RookTests.swift */; };
+		993ACC4128E7F55400924666 /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC4028E7F55400924666 /* QueenTests.swift */; };
+		993ACC4328E7F55C00924666 /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC4228E7F55C00924666 /* KnightTests.swift */; };
 		995A60D728E6670200AB7162 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60D628E6670200AB7162 /* Pawn.swift */; };
 		995A60D928E6676000AB7162 /* Pieceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60D828E6676000AB7162 /* Pieceable.swift */; };
 		995A60DD28E66DA400AB7162 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60DC28E66DA400AB7162 /* Board.swift */; };
@@ -66,6 +69,9 @@
 		993ACC2628E7E1A100924666 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		993ACC3228E7ED1F00924666 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		993ACC3428E7EEC700924666 /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
+		993ACC3E28E7F54B00924666 /* RookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTests.swift; sourceTree = "<group>"; };
+		993ACC4028E7F55400924666 /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
+		993ACC4228E7F55C00924666 /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
 		995A60D628E6670200AB7162 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		995A60D828E6676000AB7162 /* Pieceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pieceable.swift; sourceTree = "<group>"; };
 		995A60DC28E66DA400AB7162 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -161,6 +167,9 @@
 				995A60E528E6768900AB7162 /* SymbolTests.swift */,
 				993ACC2628E7E1A100924666 /* PawnTests.swift */,
 				993ACC3428E7EEC700924666 /* BishopTests.swift */,
+				993ACC3E28E7F54B00924666 /* RookTests.swift */,
+				993ACC4028E7F55400924666 /* QueenTests.swift */,
+				993ACC4228E7F55C00924666 /* KnightTests.swift */,
 			);
 			path = Piece;
 			sourceTree = "<group>";
@@ -360,8 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993ACC3F28E7F54B00924666 /* RookTests.swift in Sources */,
+				993ACC4128E7F55400924666 /* QueenTests.swift in Sources */,
 				995A60E628E6768900AB7162 /* SymbolTests.swift in Sources */,
 				9932591528E33BC70099D0B6 /* swift_chess_appTests.swift in Sources */,
+				993ACC4328E7F55C00924666 /* KnightTests.swift in Sources */,
 				993ACC3528E7EEC700924666 /* BishopTests.swift in Sources */,
 				993ACC3328E7ED1F00924666 /* BoardTests.swift in Sources */,
 				993ACC2728E7E1A100924666 /* PawnTests.swift in Sources */,

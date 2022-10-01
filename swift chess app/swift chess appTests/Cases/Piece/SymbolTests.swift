@@ -31,4 +31,37 @@ final class SymbolTests: XCTestCase {
         sut = Bishop(color: .white)
         XCTAssertEqual(sut.getSymbol().image, "♗")
     }
+    
+    func testRook() throws {
+        XCTAssertEqual(Bishop.maxCount, 2)
+        
+        var sut: Rook!
+        sut = Rook(color: .black)
+        XCTAssertEqual(sut.getSymbol().image, "♜")
+        
+        sut = Rook(color: .white)
+        XCTAssertEqual(sut.getSymbol().image, "♖")
+    }
+    
+    func testQueen() throws {
+        XCTAssertEqual(Bishop.maxCount, 1)
+        
+        var sut: Queen!
+        sut = Queen(color: .black)
+        XCTAssertEqual(sut.getSymbol().image, "♛")
+        
+        sut = Queen(color: .white)
+        XCTAssertEqual(sut.getSymbol().image, "♕")
+    }
+    
+    func testKnight() throws {
+        XCTAssertEqual(Bishop.maxCount, 2)
+        
+        var sut: Knight!
+        sut = Knight(color: .black)
+        XCTAssertEqual(sut.getSymbol().image, "♞")
+        
+        sut = Knight(color: .white)
+        XCTAssertEqual(sut.getSymbol().image, "♘")
+    }
 }
