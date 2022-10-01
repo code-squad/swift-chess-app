@@ -15,8 +15,8 @@ final class BoardTests: XCTestCase {
     func testStartGame() throws {
         sut = Board()
         
-        XCTAssertEqual(sut.score.black, 15)
-        XCTAssertEqual(sut.score.white, 15)
+        XCTAssertEqual(sut.score.black, 39)
+        XCTAssertEqual(sut.score.white, 39)
         XCTAssertEqual(sut.display(), """
  ABCDEFGH
 1♜♞♝.♛♝♞♜
@@ -52,6 +52,9 @@ final class BoardTests: XCTestCase {
         
         // 선택된 곳에 말이 없는 경우
         XCTAssertFalse(sut.move(from: "B2", to: "B3"))
+        // 같은 색의 말을 잡는 경우
+        XCTAssertFalse(sut.move(from: "H8", to: "H7"))
+        
         // 순서가 안맞는 경우
         XCTAssertFalse(sut.move(from: "B3", to: "B4"))
         // 이동이 틀린 경우
@@ -74,12 +77,12 @@ final class BoardTests: XCTestCase {
         XCTAssertTrue(sut.move(from: "G4", to: "G3"))
         
         XCTAssertTrue(sut.move(from: "B6", to: "B7"))
-        XCTAssertEqual(sut.score.black, 15)
-        XCTAssertEqual(sut.score.white, 14)
+        XCTAssertEqual(sut.score.black, 39)
+        XCTAssertEqual(sut.score.white, 38)
         
         XCTAssertTrue(sut.move(from: "G3", to: "G2"))
-        XCTAssertEqual(sut.score.black, 14)
-        XCTAssertEqual(sut.score.white, 14)
+        XCTAssertEqual(sut.score.black, 38)
+        XCTAssertEqual(sut.score.white, 38)
         
         XCTAssertEqual(sut.display(), """
  ABCDEFGH

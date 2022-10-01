@@ -9,10 +9,11 @@ import Foundation
 
 struct Rook: Pieceable {
     static var maxCount: Int = 2
+    static var score: Int = 5
     
     var color: PieceColor
     
-    func howToMove(from: Location, to: Location) -> Bool {
+    func move(from: Location, to: Location) -> Bool {
         from.rank == to.rank || from.file == to.file
     }
 }

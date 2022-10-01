@@ -9,10 +9,11 @@ import Foundation
 
 protocol Pieceable {
     static var maxCount: Int { get }
+    static var score: Int { get }
     
     var color: PieceColor { get }
     
-    func howToMove(from: Location, to: Location) -> Bool
+    func move(from: Location, to: Location) -> Bool
 }
 
 extension Pieceable {

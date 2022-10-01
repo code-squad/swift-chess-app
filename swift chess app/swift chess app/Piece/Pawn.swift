@@ -9,10 +9,11 @@ import Foundation
 
 struct Pawn: Pieceable {
     static let maxCount: Int = 8
+    static var score: Int = 1
     
     let color: PieceColor
     
-    func howToMove(from: Location, to: Location) -> Bool {
+    func move(from: Location, to: Location) -> Bool {
         switch color {
         case .black:
             return from.rank - to.rank == -1

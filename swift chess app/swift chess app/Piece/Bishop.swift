@@ -9,10 +9,11 @@ import Foundation
 
 struct Bishop: Pieceable {
     static let maxCount: Int = 2
+    static var score: Int = 3
     
     let color: PieceColor
     
-    func howToMove(from: Location, to: Location) -> Bool {
+    func move(from: Location, to: Location) -> Bool {
         abs(from.rank - to.rank) == abs(from.file - to.file)
     }
 }

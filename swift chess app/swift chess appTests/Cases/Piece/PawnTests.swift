@@ -20,11 +20,11 @@ final class PawnTests: XCTestCase {
         
         from = Location(rank: 1, file: 1)
         to = Location(rank: 2, file: 1)
-        XCTAssertTrue(sut.howToMove(from: from, to: to))
+        XCTAssertTrue(sut.move(from: from, to: to))
         
         from = Location(rank: 3, file: 4)
         to = Location(rank: 2, file: 4)
-        XCTAssertFalse(sut.howToMove(from: from, to: to))
+        XCTAssertFalse(sut.move(from: from, to: to))
     }
     
     func testWhitePawnMove() throws {
@@ -35,10 +35,10 @@ final class PawnTests: XCTestCase {
 
         from = Location(rank: 1, file: 1)
         to = Location(rank: 2, file: 1)
-        XCTAssertFalse(sut.howToMove(from: from, to: to))
+        XCTAssertFalse(sut.move(from: from, to: to))
         
         from = Location(rank: 3, file: 4)
         to = Location(rank: 2, file: 4)
-        XCTAssertTrue(sut.howToMove(from: from, to: to))
+        XCTAssertTrue(sut.move(from: from, to: to))
     }
 }

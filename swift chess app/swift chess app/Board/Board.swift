@@ -58,10 +58,16 @@ class Board {
         guard let from = getLocation(input: from),
               let to = getLocation(input: to) else { return false }
         guard from != to else { return false }
-        guard let selectedPiece = board[from.rank][from.file] else { return false }
-        guard selectedPiece.color == order else { return false }
         
-        guard selectedPiece.howToMove(from: from, to: to) else { return false }
+        guard let selectedPiece = board[from.rank][from.file] else { return false }
+        
+        if let targetPiece = board[to.rank][to.file] {
+            guard selectedPiece.color != targetPiece.color else { return false }
+        }
+        
+        guard selectedPiece.color == order else { return false }
+        guard selectedPiece.move(from: from, to: to) else { return false }
+        
         
         board[to.rank][to.file] = board[from.rank][from.file]
         board[from.rank][from.file] = nil
@@ -81,7 +87,7 @@ private extension Board {
     func getScore(color: PieceColor) -> Int {
         pieces
             .filter { $0.color == color}
-            .count
+            .reduce(0) { $0 + type(of: $1).score }
     }
     
     func putPieces(piece: Pieceable, input locations: String...) {
