@@ -7,21 +7,15 @@
 
 import Foundation
 
-protocol Piece {
-    var emoji: String { get }
-    var team: Team { get }
-
-    func canMove(from: Position, to: Position) -> Bool
-    func movablePositions(from: Position) -> [Position]
-}
-
 class Pawn: Piece {
-    let emoji: String
+    let emoji: Emoji
     let team: Team
+    let score: Score
 
     init(team: Team) {
-        self.emoji = team == .white ? "♙" : "♟"
+        self.emoji = team == .white ? .whitePawn : .blackPawn
         self.team = team
+        self.score = Score(point: 1)
     }
 
     func canMove(from: Position, to: Position) -> Bool {
@@ -30,57 +24,31 @@ class Pawn: Piece {
     }
 
     private func canMoveHorizontally(from: Position, to: Position) -> Bool {
-        if from.rankIndex == to.rankIndex,
-           abs(from.fileIndex - to.fileIndex) == 1 {
-            return true
-        }
-
-        return false
+        return from.right == to || from.left == to
     }
 
     private func canMoveVertically(from: Position, to: Position) -> Bool {
-        if from.fileIndex == to.fileIndex {
-            return team == .white
-            ? from.rankIndex - 1 == to.rankIndex
-            : from.rankIndex + 1 == to.rankIndex
-        }
-
-        return false
+        return team == .white
+        ? from.top == to
+        : from.bottom == to
     }
 
     func movablePositions(from: Position) -> [Position] {
         var movablePositions: [Position] = []
 
-        if 0..<8 ~= from.fileIndex - 1 {
-            movablePositions.append(
-                Position(
-                    fileIndex: from.fileIndex - 1,
-                    rankIndex: from.rankIndex
-                )
-            )
+        if let left = from.left {
+            movablePositions.append(left)
         }
-        if 0..<8 ~= from.fileIndex + 1 {
-            movablePositions.append(
-                Position(
-                    fileIndex: from.fileIndex + 1,
-                    rankIndex: from.rankIndex
-                )
-            )
+        if let right = from.right {
+            movablePositions.append(right)
         }
-        if team == .white && 0..<8 ~= from.rankIndex - 1 {
-            movablePositions.append(
-                Position(
-                    fileIndex: from.fileIndex,
-                    rankIndex: from.rankIndex - 1
-                )
-            )
-        } else if team == .black && 0..<8 ~= from.rankIndex + 1 {
-            movablePositions.append(
-                Position(
-                    fileIndex: from.fileIndex,
-                    rankIndex: from.rankIndex + 1
-                )
-            )
+        if team == .white,
+           let top = from.top {
+            movablePositions.append(top)
+        }
+        if team == .black,
+           let bottom = from.bottom {
+            movablePositions.append(bottom)
         }
 
         return movablePositions
