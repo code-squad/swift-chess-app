@@ -21,6 +21,7 @@
 		F298BA2F28E855A0007A495A /* BishopPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F298BA2E28E855A0007A495A /* BishopPiece.swift */; };
 		F298BA3128E85ABD007A495A /* RookPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F298BA3028E85ABD007A495A /* RookPiece.swift */; };
 		F298BA3328E87D5B007A495A /* QueenPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F298BA3228E87D5B007A495A /* QueenPiece.swift */; };
+		F298BA3528E87E55007A495A /* KnightPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F298BA3428E87E55007A495A /* KnightPiece.swift */; };
 		F2A3AFA028E8244800E912E1 /* ChessPieceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AF9F28E8244800E912E1 /* ChessPieceProtocol.swift */; };
 		F2A3AFA228E8253F00E912E1 /* PawnPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AFA128E8253F00E912E1 /* PawnPiece.swift */; };
 		F2A3AFA528E8438C00E912E1 /* ChessStringRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */; };
@@ -64,6 +65,7 @@
 		F298BA2E28E855A0007A495A /* BishopPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopPiece.swift; sourceTree = "<group>"; };
 		F298BA3028E85ABD007A495A /* RookPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookPiece.swift; sourceTree = "<group>"; };
 		F298BA3228E87D5B007A495A /* QueenPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenPiece.swift; sourceTree = "<group>"; };
+		F298BA3428E87E55007A495A /* KnightPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightPiece.swift; sourceTree = "<group>"; };
 		F2A3AF9F28E8244800E912E1 /* ChessPieceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceProtocol.swift; sourceTree = "<group>"; };
 		F2A3AFA128E8253F00E912E1 /* PawnPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnPiece.swift; sourceTree = "<group>"; };
 		F2A3AFA628E84C3900E912E1 /* ChessPieceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceTests.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				F298BA2E28E855A0007A495A /* BishopPiece.swift */,
 				F298BA3028E85ABD007A495A /* RookPiece.swift */,
 				F298BA3228E87D5B007A495A /* QueenPiece.swift */,
+				F298BA3428E87E55007A495A /* KnightPiece.swift */,
 			);
 			path = "Chess Piece";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				F27B331428DE0716002AC78C /* ContentView.swift in Sources */,
 				F298BA3128E85ABD007A495A /* RookPiece.swift in Sources */,
 				F284F0A328DF3F900037F860 /* TeamColor.swift in Sources */,
+				F298BA3528E87E55007A495A /* KnightPiece.swift in Sources */,
 				F298BA3328E87D5B007A495A /* QueenPiece.swift in Sources */,
 				F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */,
 			);
