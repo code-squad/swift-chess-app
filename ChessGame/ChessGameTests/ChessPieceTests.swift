@@ -33,13 +33,11 @@ final class ChessPieceTests: XCTestCase {
         
         let positions = BishopPiece.availableMovingPositions(at: .init("D5")!, board: board)
         let expected = Set(
-            [
-                "A2", "B3", "C4",
-                "C6", "B7", "A8",
-                "E6", "F7", "G8",
-                "E4", "F3", "G2", "H1"
-            ]
-                .map { Position($0)! }
+            ["A2", "B3", "C4",
+             "C6", "B7", "A8",
+             "E6", "F7", "G8",
+             "E4", "F3", "G2", "H1"
+            ].map { Position($0)! }
         )
         XCTAssertEqual(positions, expected)
     }
@@ -61,6 +59,41 @@ final class ChessPieceTests: XCTestCase {
         }
         expected.remove(initialPosition)
         
+        XCTAssertEqual(positions, expected)
+    }
+    
+    func testAllMovementsOfKight() {
+        var board = ChessBoard(files: 8, ranks: 8)
+        
+        board[.init("D4")!] = KightPiece(teamColor: .white)
+        
+        let positions = KightPiece.availableMovingPositions(at: .init("D4")!, board: board)
+        let expected = Set(
+            ["B3", "C2",
+             "B5", "C6",
+             "E6", "F5",
+             "F3", "E2"
+            ].map { Position($0)! }
+        )
+        XCTAssertEqual(positions, expected)
+    }
+    
+    func testAllMovementsOfQueen() {
+        var board = ChessBoard(files: 8, ranks: 8)
+        
+        board[.init("D4")!] = QueenPiece(teamColor: .white)
+        let positions = QueenPiece.availableMovingPositions(at: .init("D4")!, board: board)
+        let expected = Set(
+            ["A1", "A4", "A7",
+             "B2", "B4", "B6",
+             "C3", "C4", "C5",
+             "D1", "D2", "D3", "D5", "D6", "D7", "D8",
+             "E3", "E4", "E5",
+             "F2", "F4", "F6",
+             "G1", "G4", "G7",
+             "H4", "H8"
+            ].map { Position($0)! }
+        )
         XCTAssertEqual(positions, expected)
     }
 }
