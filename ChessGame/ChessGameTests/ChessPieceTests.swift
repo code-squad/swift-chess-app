@@ -26,58 +26,41 @@ final class ChessPieceTests: XCTestCase {
         XCTAssertEqual(positions, expected)
     }
     
-    func testAllMovementsOfWhiteBishop() {
-        let board = ChessBoard.standardChessBoard()
+    func testAllMovementsOfBishop() {
+        var board = ChessBoard(files: 8, ranks: 8)
         
-        let positions = BishopPiece.availableMovingPositions(at: .init("C1")!, board: board)
+        board[.init("D5")!] = BishopPiece(teamColor: .black)
+        
+        let positions = BishopPiece.availableMovingPositions(at: .init("D5")!, board: board)
         let expected = Set(
             [
-                "A3",
-                "E3", "F4", "G5", "H6"
+                "A2", "B3", "C4",
+                "C6", "B7", "A8",
+                "E6", "F7", "G8",
+                "E4", "F3", "G2", "H1"
             ]
                 .map { Position($0)! }
         )
         XCTAssertEqual(positions, expected)
     }
     
-    func testAllMovementsOfBlackBishop() {
-        let board = ChessBoard.standardChessBoard()
+    func testAllMovementsOfRook() {
+        var board = ChessBoard(files: 8, ranks: 8)
         
-        let positions = BishopPiece.availableMovingPositions(at: .init("C8")!, board: board)
-        let expected = Set(
-            [
-                "A6",
-                "E6", "F5", "G4", "H3"
-            ]
-                .map { Position($0)! }
-        )
-        XCTAssertEqual(positions, expected)
-    }
-    
-    func testAllMovementsOfWhiteRook() {
-        let board = ChessBoard.standardChessBoard()
+        let initialPosition = Position("D5")!
         
-        let positions = RookPiece.availableMovingPositions(at: .init("A1")!, board: board)
-        let expected = Set(
-            [
-                "A3", "A4", "A5", "A6", "A7", "A8",
-                "B1", "D1", "E1", "G1"
-            ]
-                .map { Position($0)! }
-        )
-        XCTAssertEqual(positions, expected)
-    }
-    func testAllMovementsOfBlackRook() {
-        let board = ChessBoard.standardChessBoard()
+        board[initialPosition] = RookPiece(teamColor: .white)
         
-        let positions = RookPiece.availableMovingPositions(at: .init("A8")!, board: board)
-        let expected = Set(
-            [
-                "A6", "A5", "A4", "A3", "A2", "A1",
-                "B8", "D8", "E8", "G8"
-            ]
-                .map { Position($0)! }
-        )
+        let positions = RookPiece.availableMovingPositions(at: initialPosition, board: board)
+        var expected = Set<Position>()
+        for file in 0..<8 {
+            expected.insert(.init(file: file, rank: 4))
+        }
+        for rank in 0..<8 {
+            expected.insert(.init(file: 3, rank: rank))
+        }
+        expected.remove(initialPosition)
+        
         XCTAssertEqual(positions, expected)
     }
 }
