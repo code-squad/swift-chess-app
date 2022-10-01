@@ -1,5 +1,5 @@
 //
-//  PieceTests.swift
+//  SymbolTests.swift
 //  swift chess appTests
 //
 //  Created by 윤태민(Yun, Taemin) on 2022/09/30.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import swift_chess_app
 
-final class PieceTests: XCTestCase {
+final class SymbolTests: XCTestCase {
 
     func testPawn() throws {
         XCTAssertEqual(Pawn.maxCount, 8)
