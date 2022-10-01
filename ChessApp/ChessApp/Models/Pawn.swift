@@ -7,33 +7,31 @@
 
 import Foundation
 
-protocol PawnDelegate: AnyObject {
-    func didMovePawn(_ pawn: Pawn, prePosition: IndexPath)
-}
-
-final class Pawn {
+final class Pawn: Piece {
 
     enum ColorType {
         case black
         case white
     }
 
-    var postion: IndexPath
+    var position: Position
     let type: ColorType
     let iconString: String
-    weak var delegate: PawnDelegate?
-    var nextPossiblePositions: [IndexPath] {
+    
+    var nextPossiblePositions: [Position] {
         switch type {
         case .black:
-            return [IndexPath(row: postion.row, section: postion.section + 1)]
+            return [Position(rank: position.rank, file: File(position.file.value + 1))]
+                .compactMap { $0 }
         case .white:
-            return [IndexPath(row: postion.row, section: postion.section - 1)]
+            return [Position(rank: position.rank, file: File(position.file.value - 1))]
+                .compactMap { $0 }
         }
 
     }
 
-    init(postion: IndexPath, type: ColorType) {
-        self.postion = postion
+    init(position: Position, type: ColorType) {
+        self.position = position
         self.type = type
         switch type {
         case .black:
@@ -43,13 +41,11 @@ final class Pawn {
         }
     }
 
-    func move(to postion: IndexPath) {
-        let prePosition = self.postion
-        self.postion = postion
-        delegate?.didMovePawn(self, prePosition: prePosition)
+    func move(to position: Position) {
+        self.position = position
     }
 
-    func canMove(postion: IndexPath) -> Bool {
-        return nextPossiblePositions.contains(postion)
+    func canMove(position: Position) -> Bool {
+        return nextPossiblePositions.contains(position)
     }
 }

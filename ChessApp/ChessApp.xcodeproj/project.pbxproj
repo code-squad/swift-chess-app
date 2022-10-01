@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B93DE60728E833CB0035F09E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60628E833CB0035F09E /* Piece.swift */; };
+		B93DE60928E833DA0035F09E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60828E833DA0035F09E /* User.swift */; };
+		B93DE60D28E834310035F09E /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60C28E834310035F09E /* Position.swift */; };
 		B95908B128E1E234001DE78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B028E1E234001DE78D /* AppDelegate.swift */; };
 		B95908B328E1E234001DE78D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B228E1E234001DE78D /* SceneDelegate.swift */; };
 		B95908B528E1E234001DE78D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B428E1E234001DE78D /* ViewController.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B93DE60628E833CB0035F09E /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		B93DE60828E833DA0035F09E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B93DE60C28E834310035F09E /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		B95908AD28E1E234001DE78D /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95908B028E1E234001DE78D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B95908B228E1E234001DE78D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,9 @@
 				B95908E428E1E5B0001DE78D /* Board.swift */,
 				B95908E628E1E5BB001DE78D /* Pawn.swift */,
 				B95908EA28E2001A001DE78D /* ChessGame.swift */,
+				B93DE60628E833CB0035F09E /* Piece.swift */,
+				B93DE60828E833DA0035F09E /* User.swift */,
+				B93DE60C28E834310035F09E /* Position.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,11 +249,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B95908EB28E2001A001DE78D /* ChessGame.swift in Sources */,
+				B93DE60728E833CB0035F09E /* Piece.swift in Sources */,
 				B95908B528E1E234001DE78D /* ViewController.swift in Sources */,
 				B95908B128E1E234001DE78D /* AppDelegate.swift in Sources */,
+				B93DE60928E833DA0035F09E /* User.swift in Sources */,
 				B95908E528E1E5B0001DE78D /* Board.swift in Sources */,
 				B95908E728E1E5BB001DE78D /* Pawn.swift in Sources */,
 				B95908B328E1E234001DE78D /* SceneDelegate.swift in Sources */,
+				B93DE60D28E834310035F09E /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
