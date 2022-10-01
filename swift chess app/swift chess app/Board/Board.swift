@@ -48,7 +48,10 @@ class Board {
         board = [[Pieceable?]](repeating: rank, count: rankCount)
         
         putPawns()
-        putBishop()
+        putBishops()
+        putRooks()
+        putQueens()
+        putKnights()
     }
     
     func move(from: String, to: String) -> Bool {
@@ -126,11 +129,35 @@ private extension Board {
                   input: "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7")
     }
     
-    func putBishop() {
+    func putBishops() {
         putPieces(piece: Bishop(color: .black),
                   input: "C1", "F1")
         
         putPieces(piece: Bishop(color: .white),
                   input: "C8", "F8")
+    }
+    
+    func putRooks() {
+        putPieces(piece: Rook(color: .black),
+                  input: "A1", "H1")
+        
+        putPieces(piece: Rook(color: .white),
+                  input: "A8", "H8")
+    }
+    
+    func putQueens() {
+        putPieces(piece: Queen(color: .black),
+                  input: "E1")
+        
+        putPieces(piece: Queen(color: .white),
+                  input: "E8")
+    }
+    
+    func putKnights() {
+        putPieces(piece: Knight(color: .black),
+                  input: "B1", "G1")
+        
+        putPieces(piece: Knight(color: .white),
+                  input: "B8", "G8")
     }
 }
