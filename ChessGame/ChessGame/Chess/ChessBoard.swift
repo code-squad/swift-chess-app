@@ -35,9 +35,18 @@ struct ChessBoard {
         data.flatMap { $0 }
             .compactMap { $0 }
     }
+    var allPositions: [Position] {
+        var positions = [Position]()
+        for file in 0..<filesCount {
+            for rank in 0..<ranksCount {
+                positions.append(Position(file: file, rank: rank))
+            }
+        }
+        return positions
+    }
     
     func canAccess(position: Position) -> Bool {
-        return filesCount > position.file && ranksCount > position.rank
+        return 0..<filesCount ~= position.file && 0..<ranksCount ~= position.rank
     }
     
     @discardableResult
