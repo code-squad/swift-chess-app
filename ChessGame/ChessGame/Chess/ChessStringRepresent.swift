@@ -7,15 +7,6 @@
 
 import Foundation
 
-extension ChessPiece {
-    var symbolString: Character {
-        switch type {
-        case .pawn:
-            return teamColor == .white ? "♙" : "♟"
-        }
-    }
-}
-
 extension ChessBoard {
     func display() -> String {
         var strings: [String] = [makeFileNamesRowString(filesCount: filesCount)]
@@ -37,10 +28,10 @@ extension ChessBoard {
         return " " + String(filesRow)
     }
     
-    private func makeRankRowString(_ rankRow: [ChessPiece?]) -> String {
+    private func makeRankRowString(_ rankRow: [ChessPieceProtocol?]) -> String {
         let rankRowCharacters = rankRow.map { piece in
             if let piece {
-                return piece.symbolString
+                return piece.symbol
             } else {
                 return "."
             }
