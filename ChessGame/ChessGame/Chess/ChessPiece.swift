@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol StringRepresentable {
-    var name: String { get }
-    var symbol: Character { get }
-}
-
 enum PieceType {
     case pawn
     
