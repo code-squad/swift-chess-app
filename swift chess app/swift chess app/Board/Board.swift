@@ -51,8 +51,8 @@ class Board {
     }
     
     func move(from: String, to: String) -> Bool {
-        guard let from = validate(location: from),
-              let to = validate(location: to) else { return false }
+        guard let from = getLocation(input: from),
+              let to = getLocation(input: to) else { return false }
         guard let selectedPiece = board[from.rank][from.file] else { return false }
         guard selectedPiece.color == order else { return false }
         
@@ -79,22 +79,28 @@ private extension Board {
             .count
     }
     
-    func putPiece(piece: Pieceable, rank: Int, file: Int) {
-        guard rank >= 0 && rank < fileCount else { return }
-        guard file >= 0 && file < fileCount else { return }
-        guard board[rank][file] == nil else { return }
-        
-        let count = pieces
-            .filter { $0.getSymbol().image == piece.getSymbol().image }
-            .count
-        
-        guard count < type(of: piece).maxCount else { return }
-        
-        
-        board[rank][file] = piece
+    func putPieces(piece: Pieceable, input locations: String...) {
+        locations.forEach {
+            guard let location = getLocation(input: $0) else { return }
+            
+            let rank = location.rank
+            let file = location.file
+            
+            guard rank >= 0 && rank < fileCount else { return }
+            guard file >= 0 && file < fileCount else { return }
+            guard board[rank][file] == nil else { return }
+            
+            let count = pieces
+                .filter { $0.getSymbol().image == piece.getSymbol().image }
+                .count
+            
+            guard count < type(of: piece).maxCount else { return }
+            
+            board[rank][file] = piece
+        }
     }
     
-    func validate(location: String) -> Location? {
+    func getLocation(input location: String) -> Location? {
         guard location.count == 2 else { return nil }
         
         var rank = Int(location.unicodeScalars.last!.value)
@@ -111,12 +117,10 @@ private extension Board {
     }
     
     func putPawns() {
-        for i in 0 ..< fileCount {
-            putPiece(piece: Pawn(color: .black), rank: 1, file: i)
-        }
+        putPieces(piece: Pawn(color: .black),
+                  input: "A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2")
         
-        for i in 0 ..< fileCount {
-            putPiece(piece: Pawn(color: .white), rank: 6, file: i)
-        }
+        putPieces(piece: Pawn(color: .white),
+                  input: "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7")
     }
 }
