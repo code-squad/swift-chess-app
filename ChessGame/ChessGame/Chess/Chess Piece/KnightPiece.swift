@@ -16,19 +16,19 @@ struct KightPiece: ChessPieceProtocol {
     
     static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         let availableDeltas = [
-            [1, 2],
-            [2, 1],
-            [2, -1],
-            [-2, 1],
-            [-1, -2],
-            [-2, -1],
-            [1, -2],
-            [-1, 2]
+            (1, 2),
+            (2, 1),
+            (2, -1),
+            (-2, 1),
+            (-1, -2),
+            (-2, -1),
+            (1, -2),
+            (-1, 2)
         ]
-        let delta = [
+        let delta = (
             destination.file - origin.file,
             destination.rank - origin.rank
-        ]
-        return availableDeltas.contains(delta)
+        )
+        return availableDeltas.contains { $0 == delta }
     }
 }
