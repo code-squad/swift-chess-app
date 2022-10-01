@@ -53,3 +53,9 @@ extension Position {
         self.init(file: file, rank: rankValue - 1)
     }
 }
+extension Position: CustomStringConvertible {
+    var description: String {
+        let fileUnicode = UInt8(ascii: "A") + UInt8(file)
+        return "\(Character(UnicodeScalar(fileUnicode)))\(rank + 1)"
+    }
+}

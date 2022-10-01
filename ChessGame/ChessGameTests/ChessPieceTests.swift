@@ -29,11 +29,11 @@ final class ChessPieceTests: XCTestCase {
     func testAllMovementsOfWhiteBishop() {
         let board = ChessBoard.standardChessBoard()
         
-        let positions = PawnPiece.availableMovingPositions(at: .init("C1")!, board: board)
+        let positions = BishopPiece.availableMovingPositions(at: .init("C1")!, board: board)
         let expected = Set(
             [
-                "B2", "A3",
-                "D2", "E3", "F4", "G5", "H6"
+                "A3",
+                "E3", "F4", "G5", "H6"
             ]
                 .map { Position($0)! }
         )
