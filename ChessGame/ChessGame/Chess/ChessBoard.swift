@@ -9,14 +9,14 @@ import Foundation
 
 struct ChessBoard {
     
-    private(set) var data: [[ChessPiece?]]
+    private(set) var data: [[ChessPieceProtocol?]]
     
     init(files: Int, ranks: Int) {
-        let fileRow = [ChessPiece?](repeating: nil, count: files)
+        let fileRow = [ChessPieceProtocol?](repeating: nil, count: files)
         data = Array(repeating: fileRow, count: ranks)
     }
     
-    subscript(_ position: Position) -> ChessPiece? {
+    subscript(_ position: Position) -> ChessPieceProtocol? {
         get {
             data[position.rank][position.file]
         }
@@ -31,7 +31,7 @@ struct ChessBoard {
     var ranksCount: Int {
         data.count
     }
-    var allPieces: [ChessPiece] {
+    var allPieces: [ChessPieceProtocol] {
         data.flatMap { $0 }
             .compactMap { $0 }
     }
@@ -55,7 +55,7 @@ struct ChessBoard {
         guard
             canAccess(position: origin),
             let originPiece = self[origin],
-            originPiece.movementValidator.canMove(from: origin, to: destination, board: self)
+            originPiece.canMove(from: origin, to: destination, board: self)
         else { return false }
         
         self[destination] = self[origin]
@@ -68,7 +68,7 @@ struct ChessBoard {
         var score = 0
         for piece in allPieces {
             if piece.teamColor == teamColor {
-                score += piece.type.score
+                score += piece.score
             }
         }
         return score
@@ -80,8 +80,8 @@ extension ChessBoard {
         var board = ChessBoard(files: 8, ranks: 8)
         // 폰 추가
         for file in 0..<8 {
-            board[Position(file: file, rank: 1)] = ChessPiece(type: .pawn, teamColor: .white)
-            board[Position(file: file, rank: 6)] = ChessPiece(type: .pawn, teamColor: .black)
+            board[Position(file: file, rank: 1)] = PawnPiece(teamColor: .white)
+            board[Position(file: file, rank: 6)] = PawnPiece(teamColor: .black)
         }
         return board
     }
