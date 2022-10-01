@@ -114,6 +114,10 @@ extension ChessBoard {
         board[Position("A8")!] = RookPiece(teamColor: .black)
         board[Position("H8")!] = RookPiece(teamColor: .black)
         
+        // 퀸 추가
+        board[Position("D1")!] = QueenPiece(teamColor: .white)
+        board[Position("D8")!] = QueenPiece(teamColor: .black)
+        
         return board
     }
 }
