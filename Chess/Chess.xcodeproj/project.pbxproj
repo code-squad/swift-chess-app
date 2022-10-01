@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00739FE328E89F7C0025E40F /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FE228E89F7C0025E40F /* Emoji.swift */; };
 		0099CE8328DDF90F00AFCCCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */; };
 		0099CE8528DDF90F00AFCCCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */; };
 		0099CE8728DDF90F00AFCCCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099CE8628DDF90F00AFCCCF /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00739FE228E89F7C0025E40F /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		0099CE7F28DDF90F00AFCCCF /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */,
 				0099CEB428E07B6400AFCCCF /* Pawn.swift */,
+				00739FE228E89F7C0025E40F /* Emoji.swift */,
 				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
 				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
 				0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */,
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00739FE328E89F7C0025E40F /* Emoji.swift in Sources */,
 				0099CE8728DDF90F00AFCCCF /* ViewController.swift in Sources */,
 				0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */,
 				0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */,
