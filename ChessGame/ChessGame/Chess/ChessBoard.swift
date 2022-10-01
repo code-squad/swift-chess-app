@@ -7,13 +7,26 @@
 
 import Foundation
 
-struct ChessBoard {
+struct ChessBoard: Equatable {
     
     private(set) var data: [[ChessPieceProtocol?]]
     
     init(files: Int, ranks: Int) {
         let fileRow = [ChessPieceProtocol?](repeating: nil, count: files)
         data = Array(repeating: fileRow, count: ranks)
+    }
+    
+    static func ==(lhs: ChessBoard, rhs: ChessBoard) -> Bool {
+        guard lhs.allPositions == rhs.allPositions else { return false }
+        for position in lhs.allPositions {
+            let lPiece = lhs[position]
+            let rPiece = rhs[position]
+            guard
+                type(of: lPiece) == type(of: rPiece),
+                lPiece?.teamColor == rPiece?.teamColor
+            else { return false }
+        }
+        return true
     }
     
     subscript(_ position: Position) -> ChessPieceProtocol? {
