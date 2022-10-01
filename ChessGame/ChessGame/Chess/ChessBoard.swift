@@ -68,7 +68,7 @@ struct ChessBoard: Equatable {
         guard
             canAccess(position: origin),
             let originPiece = self[origin],
-            originPiece.canMove(from: origin, to: destination, board: self)
+            type(of: originPiece).canMove(from: origin, to: destination, board: self)
         else { return false }
         
         self[destination] = self[origin]
@@ -77,14 +77,18 @@ struct ChessBoard: Equatable {
         return true
     }
     
-    func scoreSum(for teamColor: TeamColor) -> Int {
-        var score = 0
+    func scoreSum() -> (white: Int, black: Int) {
+        var whiteScore = 0
+        var blackScore = 0
         for piece in allPieces {
-            if piece.teamColor == teamColor {
-                score += piece.score
+            switch piece.teamColor {
+            case .white:
+                whiteScore += type(of: piece).score
+            case .black:
+                blackScore += type(of: piece).score
             }
         }
-        return score
+        return (whiteScore, blackScore)
     }
 }
 
