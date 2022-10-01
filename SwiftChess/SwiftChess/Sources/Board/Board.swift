@@ -8,10 +8,10 @@
 /// 체스판 타입.
 final class Board {
 
-    /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다. 빈 위치는 `nil`로 표현한다.
-    private(set) var status: [[BoardElementRepresentable?]] = []
+    /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다.
+    private(set) var status: [[BoardElementRepresentable]] = []
 
-    subscript(_ location: Board.Location) -> BoardElementRepresentable? {
+    subscript(_ location: Board.Location) -> BoardElementRepresentable {
         get {
             return status[location.rank.asIndex][location.file.asIndex]
         }
@@ -22,7 +22,7 @@ final class Board {
 
     /// 주어진 상태로 체스판을 초기화한다.
     init(
-        status: [[BoardElementRepresentable?]]
+        status: [[BoardElementRepresentable]]
     ) {
         self.status = status
     }
@@ -42,8 +42,8 @@ final class Board {
 
     /// ``Board/status``를 빈 상태로 설정한다. 크기는 ``Board/Configuration/size``를 따른다.
     private func setEmptyState() {
-        let emptyRank: [BoardElementRepresentable?] = Array(
-            repeating: nil,
+        let emptyRank: [BoardElementRepresentable] = Array(
+            repeating: Empty(),
             count: Self.Configuration.size.file
         )
         status = Array(
@@ -117,7 +117,7 @@ final class Board {
             throw BoardError.identicalColoredPieceAlreadyExists(endPoint: endPoint)
         }
 
-        if self[endPoint] != nil {
+        if self[endPoint] is Empty {
             captureEnemyPiece(at: endPoint)
             let currentPoints = currentPoints()
             // TODO: 출력 타입 마련해서 포매팅 후 출력
@@ -169,7 +169,7 @@ final class Board {
 
     /// 지정된 위치에 있는 체스말을 없앤다. 대상 체스말이 이동할 체스말과 다른 색상임을 확인하고 사용해야한다.
     private func captureEnemyPiece(at location: Board.Location) {
-        self[location] = nil
+        self[location] = Empty()
     }
 
     /// 지정된 체스말을 시작점에서 도착점으로 이동시킨다.
@@ -178,7 +178,7 @@ final class Board {
         from startPoint: Board.Location,
         to endPoint: Board.Location
     ) {
-        self[startPoint] = nil
+        self[startPoint] = Empty()
         self[endPoint] = piece
     }
 
@@ -223,8 +223,7 @@ final class Board {
     func display() -> String {
         let graphicalRepresentation = status.map { rank in
             return rank
-                .compactMap { $0?.asSymbol ?? .empty }
-                .map(\.rawValue)
+                .map(\.asSymbol.rawValue)
                 .joined()
         }
             .joined(separator: "\n")
