@@ -10,17 +10,17 @@ import XCTest
 
 final class ChessBoardTests: XCTestCase {
     
+    // MARK: - Test Pawn
+    
     func testPawnPosition() {
         let board = ChessBoard.standardChessBoard()
         
         for file in 0..<board.filesCount {
             let whitePawn = board[Position(file: file, rank: 1)]
-            XCTAssertNotNil(whitePawn)
             XCTAssertEqual(whitePawn?.teamColor, .white)
             XCTAssert(whitePawn is PawnPiece)
             
             let blackPawn = board[Position(file: file, rank: 6)]
-            XCTAssertNotNil(blackPawn)
             XCTAssertEqual(blackPawn?.teamColor, .black)
             XCTAssert(blackPawn is PawnPiece)
         }
@@ -40,7 +40,7 @@ final class ChessBoardTests: XCTestCase {
         XCTAssertEqual(blackPawnCount, 8)
     }
     
-    func testMovementFails() {
+    func testPawnMovementFails() {
         var board = ChessBoard(files: 8, ranks: 8)
         
         board[Position("A2")!] = PawnPiece(teamColor: .white)
@@ -50,6 +50,26 @@ final class ChessBoardTests: XCTestCase {
         XCTAssertFalse(board.movePiece(from: .init("A2")!, to: .init("A1")!))
         // 흰색 폰이 다른 흰색 폰 위치로 이동
         XCTAssertFalse(board.movePiece(from: .init("A2")!, to: .init("A3")!))
+    }
+    
+    // MARK: - Test Bishop
+    
+    func testBishopPosition() {
+        let board = ChessBoard.standardChessBoard()
+        
+        ["C1", "F1"]
+            .map { board[Position($0)!] }
+            .forEach {
+                XCTAssertEqual($0?.teamColor, .white)
+                XCTAssert($0 is BishopPiece)
+            }
+        
+        ["C8", "F8"]
+            .map { board[Position($0)!] }
+            .forEach {
+                XCTAssertEqual($0?.teamColor, .black)
+                XCTAssert($0 is BishopPiece)
+            }
     }
     
     func testScoreSum() {
