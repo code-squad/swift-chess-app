@@ -72,19 +72,79 @@ final class ChessBoardTests: XCTestCase {
             }
     }
     
+    // MARK: - Test Rook
+    
+    func testRookPosition() {
+        let board = ChessBoard.standardChessBoard()
+        
+        ["A1", "H1"]
+            .map { board[Position($0)!] }
+            .forEach {
+                XCTAssertEqual($0?.teamColor, .white)
+                XCTAssert($0 is RookPiece)
+            }
+        
+        ["A8", "H8"]
+            .map { board[Position($0)!] }
+            .forEach {
+                XCTAssertEqual($0?.teamColor, .black)
+                XCTAssert($0 is RookPiece)
+            }
+    }
+    
     func testScoreSum() {
         var board = ChessBoard.standardChessBoard()
         
+        var whitePawnCount = 8
+        var whiteBishopCount = 2
+        var whiteRookCount = 2
+        
+        var blackPawnCount = 8
+        var blackBishopCount = 2
+        var blackRookCount = 2
+        
+        func whiteScore() -> Int {
+            1 * whitePawnCount + 3 * whiteBishopCount + 5 * whiteRookCount
+        }
+        func blackScore() -> Int {
+            1 * blackPawnCount + 3 * blackBishopCount + 5 * blackRookCount
+        }
+        
         var scoreSum = board.scoreSum()
-        XCTAssertEqual(scoreSum.white, 1*8 + 3*2 + 5*2)
-        XCTAssertEqual(scoreSum.black, 1*8 + 3*2 + 5*2)
+        XCTAssertEqual(scoreSum.white, whiteScore())
+        XCTAssertEqual(scoreSum.black, blackScore())
         
         board[.init("A2")!] = nil
+        whitePawnCount -= 1
+        
         board[.init("A7")!] = nil
         board[.init("B7")!] = nil
+        blackPawnCount -= 2
         
         scoreSum = board.scoreSum()
-        XCTAssertEqual(scoreSum.white, 1*7 + 3*2 + 5*2)
-        XCTAssertEqual(scoreSum.black, 1*6 + 3*2 + 5*2)
+        XCTAssertEqual(scoreSum.white, whiteScore())
+        XCTAssertEqual(scoreSum.black, blackScore())
+        
+        board[.init("C1")!] = nil
+        whiteBishopCount -= 1
+        
+        board[.init("C8")!] = nil
+        board[.init("F8")!] = nil
+        blackBishopCount -= 2
+        
+        scoreSum = board.scoreSum()
+        XCTAssertEqual(scoreSum.white, whiteScore())
+        XCTAssertEqual(scoreSum.black, blackScore())
+        
+        board[.init("A1")!] = nil
+        whiteRookCount -= 1
+        
+        board[.init("A8")!] = nil
+        board[.init("H8")!] = nil
+        blackRookCount -= 2
+        
+        scoreSum = board.scoreSum()
+        XCTAssertEqual(scoreSum.white, whiteScore())
+        XCTAssertEqual(scoreSum.black, blackScore())
     }
 }
