@@ -16,85 +16,15 @@ final class ChessGameTests: XCTestCase {
         game = ChessGame()
     }
     
-    // MARK: - ChessPiece
-    
-    func testAllMovementsOfPawn() {
-        let whitePawn = ChessPiece(type: .pawn, teamColor: .white)
-        XCTAssertEqual(whitePawn.availableMovements(at: .init("A2")!), [.init("A3")!])
-        let blackPawn = ChessPiece(type: .pawn, teamColor: .black)
-        XCTAssertEqual(blackPawn.availableMovements(at: .init("A7")!), [.init("A6")!])
-    }
-    
-    // MARK: - ChessBoard
-    
-    func testPawnPosition() {
-        let board = ChessBoard.standardChessBoard()
-        
-        for file in 0..<board.filesCount {
-            XCTAssertEqual(
-                board[Position(file: file, rank: 1)],
-                ChessPiece(type: .pawn, teamColor: .white)
-            )
-            XCTAssertEqual(
-                board[Position(file: file, rank: 6)],
-                ChessPiece(type: .pawn, teamColor: .black)
-            )
-        }
-    }
-    
-    func testCountBoardHas8Pawns() {
-        let board = ChessBoard.standardChessBoard()
-        let whitePawnCount = board.allPieces
-            .filter { $0.teamColor == .white && $0.type == .pawn }
-            .count
-        XCTAssertEqual(whitePawnCount, 8)
-        let blackPawnCount = board.allPieces
-            .filter { $0.teamColor == .black && $0.type == .pawn }
-            .count
-        XCTAssertEqual(blackPawnCount, 8)
-    }
-    
-    func testBoardMovementFails() {
-        var board = ChessBoard(files: 8, ranks: 8)
-        board[Position("A2")!] = ChessPiece(type: .pawn, teamColor: .white)
-        board[Position("A3")!] = ChessPiece(type: .pawn, teamColor: .white)
-        
-        // 흰색 폰이 뒤로 이동
-        XCTAssertFalse(board.movePiece(from: .init("A2")!, to: .init("A1")!))
-        // 흰색 폰이 다른 흰색 폰 위치로 이동
-        XCTAssertFalse(board.movePiece(from: .init("A2")!, to: .init("A3")!))
-    }
-    
-    func testScoreSum() {
-        var board = ChessBoard.standardChessBoard()
-        XCTAssertEqual(board.scoreSum(for: .white), 8)
-        XCTAssertEqual(board.scoreSum(for: .black), 8)
-        
-        board[.init("A2")!] = nil
-        XCTAssertEqual(board.scoreSum(for: .white), 7)
-        
-        board[.init("A7")!] = nil
-        board[.init("B7")!] = nil
-        XCTAssertEqual(board.scoreSum(for: .black), 6)
-    }
-    
-    // MARK: - ChessGame
-    
     func testMovement() {
         func moveAndAssert(_ command: String) {
-            let args = Array(command)
             XCTAssert(move(command))
-            XCTAssertNil(game.board[.init(String(args[0...1]))!])
-            XCTAssertNotNil(game.board[.init(String(args[2...3]))!])
+            let command = parseCommand(command)
+            XCTAssertNil(game.board[command.origin])
+            XCTAssertNotNil(game.board[command.destination])
         }
         
-        [
-            "A2A3",
-            "A7A6",
-            "A3A4",
-            "A6A5",
-            "A4A5"
-        ]
+        ["A2A3", "A7A6", "A3A4", "A6A5", "A4A5"]
             .forEach { moveAndAssert($0) }
     }
     
@@ -107,10 +37,12 @@ final class ChessGameTests: XCTestCase {
     }
     
     private func move(_ command: String) -> Bool {
+        let command = parseCommand(command)
+        return game.movePiece(from: command.origin, to: command.destination)
+    }
+    
+    private func parseCommand(_ command: String) -> (origin: Position, destination: Position) {
         let args = Array(command)
-        return game.movePiece(
-            from: .init(String(args[0...1]))!,
-            to: .init(String(args[2...3]))!
-        )
+        return (Position(String(args[0...1]))!, Position(String(args[2...3]))!)
     }
 }

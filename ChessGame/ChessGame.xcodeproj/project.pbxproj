@@ -21,6 +21,8 @@
 		F2A3AFA028E8244800E912E1 /* ChessPieceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AF9F28E8244800E912E1 /* ChessPieceProtocol.swift */; };
 		F2A3AFA228E8253F00E912E1 /* PawnPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AFA128E8253F00E912E1 /* PawnPiece.swift */; };
 		F2A3AFA528E8438C00E912E1 /* ChessStringRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */; };
+		F2A3AFA728E84C3900E912E1 /* ChessPieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AFA628E84C3900E912E1 /* ChessPieceTests.swift */; };
+		F2A3AFA928E84C8400E912E1 /* ChessBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3AFA828E84C8400E912E1 /* ChessBoardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		F2977FBE28E00A5900ECF817 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		F2A3AF9F28E8244800E912E1 /* ChessPieceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceProtocol.swift; sourceTree = "<group>"; };
 		F2A3AFA128E8253F00E912E1 /* PawnPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnPiece.swift; sourceTree = "<group>"; };
+		F2A3AFA628E84C3900E912E1 /* ChessPieceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceTests.swift; sourceTree = "<group>"; };
+		F2A3AFA828E84C8400E912E1 /* ChessBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				F27B332228DE0717002AC78C /* ChessGameTests.swift */,
+				F2A3AFA828E84C8400E912E1 /* ChessBoardTests.swift */,
+				F2A3AFA628E84C3900E912E1 /* ChessPieceTests.swift */,
 			);
 			path = ChessGameTests;
 			sourceTree = "<group>";
@@ -302,7 +308,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A3AFA728E84C3900E912E1 /* ChessPieceTests.swift in Sources */,
 				F27B332328DE0717002AC78C /* ChessGameTests.swift in Sources */,
+				F2A3AFA928E84C8400E912E1 /* ChessBoardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
