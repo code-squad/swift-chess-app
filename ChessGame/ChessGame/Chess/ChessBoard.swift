@@ -100,6 +100,20 @@ extension ChessBoard {
             board[Position(file: file, rank: 1)] = PawnPiece(teamColor: .white)
             board[Position(file: file, rank: 6)] = PawnPiece(teamColor: .black)
         }
+        // 비숍 추가
+        board[Position("C1")!] = BishopPiece(teamColor: .white)
+        board[Position("F1")!] = BishopPiece(teamColor: .white)
+        
+        board[Position("C8")!] = BishopPiece(teamColor: .black)
+        board[Position("F8")!] = BishopPiece(teamColor: .black)
+        
+        // 룩 추가
+        board[Position("A1")!] = RookPiece(teamColor: .white)
+        board[Position("H1")!] = RookPiece(teamColor: .white)
+        
+        board[Position("A8")!] = RookPiece(teamColor: .black)
+        board[Position("H8")!] = RookPiece(teamColor: .black)
+        
         return board
     }
 }
