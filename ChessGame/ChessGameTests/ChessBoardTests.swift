@@ -76,15 +76,15 @@ final class ChessBoardTests: XCTestCase {
         var board = ChessBoard.standardChessBoard()
         
         var scoreSum = board.scoreSum()
-        XCTAssertEqual(scoreSum.white, 8)
-        XCTAssertEqual(scoreSum.black, 8)
+        XCTAssertEqual(scoreSum.white, 1*8 + 3*2 + 5*2)
+        XCTAssertEqual(scoreSum.black, 1*8 + 3*2 + 5*2)
         
         board[.init("A2")!] = nil
         board[.init("A7")!] = nil
         board[.init("B7")!] = nil
         
         scoreSum = board.scoreSum()
-        XCTAssertEqual(scoreSum.white, 7)
-        XCTAssertEqual(scoreSum.black, 6)
+        XCTAssertEqual(scoreSum.white, 1*7 + 3*2 + 5*2)
+        XCTAssertEqual(scoreSum.black, 1*6 + 3*2 + 5*2)
     }
 }
