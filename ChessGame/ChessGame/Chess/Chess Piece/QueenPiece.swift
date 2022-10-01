@@ -9,7 +9,7 @@ import Foundation
 
 struct QueenPiece: ChessPieceProtocol {
     let teamColor: TeamColor
-    static let score = 8
+    static let score = 9
     var symbol: Character {
         teamColor == .white ? "♕" : "♛"
     }
