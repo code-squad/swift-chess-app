@@ -20,6 +20,7 @@
 		9932592128E33BC70099D0B6 /* swift_chess_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932592028E33BC70099D0B6 /* swift_chess_appUITestsLaunchTests.swift */; };
 		993ACC2728E7E1A100924666 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC2628E7E1A100924666 /* PawnTests.swift */; };
 		993ACC3328E7ED1F00924666 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC3228E7ED1F00924666 /* BoardTests.swift */; };
+		993ACC3528E7EEC700924666 /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993ACC3428E7EEC700924666 /* BishopTests.swift */; };
 		995A60D728E6670200AB7162 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60D628E6670200AB7162 /* Pawn.swift */; };
 		995A60D928E6676000AB7162 /* Pieceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60D828E6676000AB7162 /* Pieceable.swift */; };
 		995A60DD28E66DA400AB7162 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60DC28E66DA400AB7162 /* Board.swift */; };
@@ -64,6 +65,7 @@
 		9932592028E33BC70099D0B6 /* swift_chess_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_chess_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		993ACC2628E7E1A100924666 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		993ACC3228E7ED1F00924666 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		993ACC3428E7EEC700924666 /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
 		995A60D628E6670200AB7162 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		995A60D828E6676000AB7162 /* Pieceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pieceable.swift; sourceTree = "<group>"; };
 		995A60DC28E66DA400AB7162 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				995A60E528E6768900AB7162 /* SymbolTests.swift */,
 				993ACC2628E7E1A100924666 /* PawnTests.swift */,
+				993ACC3428E7EEC700924666 /* BishopTests.swift */,
 			);
 			path = Piece;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				995A60E628E6768900AB7162 /* SymbolTests.swift in Sources */,
 				9932591528E33BC70099D0B6 /* swift_chess_appTests.swift in Sources */,
+				993ACC3528E7EEC700924666 /* BishopTests.swift in Sources */,
 				993ACC3328E7ED1F00924666 /* BoardTests.swift in Sources */,
 				993ACC2728E7E1A100924666 /* PawnTests.swift in Sources */,
 			);

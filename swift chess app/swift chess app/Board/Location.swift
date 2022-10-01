@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location {
+struct Location: Equatable {
     var rank: Int
     var file: Int
 }

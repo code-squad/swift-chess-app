@@ -48,11 +48,13 @@ class Board {
         board = [[Pieceable?]](repeating: rank, count: rankCount)
         
         putPawns()
+        putBishop()
     }
     
     func move(from: String, to: String) -> Bool {
         guard let from = getLocation(input: from),
               let to = getLocation(input: to) else { return false }
+        guard from != to else { return false }
         guard let selectedPiece = board[from.rank][from.file] else { return false }
         guard selectedPiece.color == order else { return false }
         
@@ -122,5 +124,13 @@ private extension Board {
         
         putPieces(piece: Pawn(color: .white),
                   input: "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7")
+    }
+    
+    func putBishop() {
+        putPieces(piece: Bishop(color: .black),
+                  input: "C1", "F1")
+        
+        putPieces(piece: Bishop(color: .white),
+                  input: "C8", "F8")
     }
 }

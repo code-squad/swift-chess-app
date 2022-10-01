@@ -15,18 +15,18 @@ final class BoardTests: XCTestCase {
     func testStartGame() throws {
         sut = Board()
         
-        XCTAssertEqual(sut.score.black, 8)
-        XCTAssertEqual(sut.score.white, 8)
+        XCTAssertEqual(sut.score.black, 10)
+        XCTAssertEqual(sut.score.white, 10)
         XCTAssertEqual(sut.display(), """
  ABCDEFGH
-1........
+1♜♞♝.♛♝♞♜
 2♟♟♟♟♟♟♟♟
 3........
 4........
 5........
 6........
 7♙♙♙♙♙♙♙♙
-8........
+8♖♘♗.♕♗♘♖
  ABCDEFGH
 """
         )
@@ -38,14 +38,14 @@ final class BoardTests: XCTestCase {
         XCTAssertTrue(sut.move(from: "B2", to: "B3"))
         XCTAssertEqual(sut.display(), """
  ABCDEFGH
-1........
+1♜♞♝.♛♝♞♜
 2♟.♟♟♟♟♟♟
 3.♟......
 4........
 5........
 6........
 7♙♙♙♙♙♙♙♙
-8........
+8♖♘♗.♕♗♘♖
  ABCDEFGH
 """
         )
@@ -74,23 +74,23 @@ final class BoardTests: XCTestCase {
         XCTAssertTrue(sut.move(from: "G4", to: "G3"))
         
         XCTAssertTrue(sut.move(from: "B6", to: "B7"))
-        XCTAssertEqual(sut.score.black, 8)
-        XCTAssertEqual(sut.score.white, 7)
+        XCTAssertEqual(sut.score.black, 10)
+        XCTAssertEqual(sut.score.white, 9)
         
         XCTAssertTrue(sut.move(from: "G3", to: "G2"))
-        XCTAssertEqual(sut.score.black, 7)
-        XCTAssertEqual(sut.score.white, 7)
+        XCTAssertEqual(sut.score.black, 9)
+        XCTAssertEqual(sut.score.white, 9)
         
         XCTAssertEqual(sut.display(), """
  ABCDEFGH
-1........
+1♜♞♝.♛♝♞♜
 2♟.♟♟♟♟♙♟
 3........
 4........
 5........
 6........
 7♙♟♙♙♙♙.♙
-8........
+8♖♘♗.♕♗♘♖
  ABCDEFGH
 """
         )
