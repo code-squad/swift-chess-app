@@ -12,36 +12,30 @@ protocol Board {
     func move(from: String, to: String) -> Bool
 }
 
-enum Team {
-    case white
-    case black
-}
-
 class ChessBoard: Board {
-    private let ranks: [String: Int] = ["1": 0, "2": 1, "3": 2, "4": 3, "5": 4, "6": 5, "7": 6, "8": 7]
-    private let files: [String: Int] = ["A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7]
-
     private var boards: [[Piece?]]
-    var scores: [Team: Int]
+    var scores: [Team: Score]
+    private let boardSize: Int
 
     init() {
+        boardSize = 8
         boards = .init(
             repeating: .init(
                 repeating: nil,
-                count: files.count
+                count: boardSize
             ),
-            count: ranks.count
+            count: boardSize
         )
 
-        scores = [.white: 8, .black: 8]
+        scores = [.white: Score(point: 8), .black: Score(point: 8)]
         reset()
     }
 
     func reset() {
-        scores = [.white: 8, .black: 8]
+        scores = [.white: Score(point: 8), .black: Score(point: 8)]
 
-        for i in 0..<ranks.count {
-            for j in 0..<files.count {
+        for i in 0..<boardSize {
+            for j in 0..<boardSize {
                 if i == 1 {
                     boards[i][j] = Pawn(team: .black)
                 } else if i == 6 {
@@ -54,16 +48,15 @@ class ChessBoard: Board {
     }
 
     func display() -> String {
-        let filesString = files.keys.sorted().reduce("") {
-            $0 + $1
+        let filesString = File.allCases.reduce("") {
+            $0 + $1.toString
         }
 
-        let rankString = ranks.keys.sorted()
-            .enumerated()
-            .map { index, rank in
-                var str = rank
-                str += boards[index].reduce("") {
-                    $0 + ($1?.emoji ?? ".")
+        let rankString = Rank.allCases
+            .map { rank in
+                var str = rank.toString
+                str += boards[rank.index].reduce("") {
+                    $0 + ($1?.emoji.rawValue ?? ".")
                 }
                 return str
             }
@@ -85,38 +78,29 @@ class ChessBoard: Board {
     }
 
     private func move(from: Position, to: Position) -> Bool {
-        guard let fromPiece = boards[from.rankIndex][from.fileIndex],
-              fromPiece.canMove(from: from, to: to)
+        guard let fromPiece = boards[from.rank.index][from.file.index],
+              fromPiece.canMove(from: from, to: to),
+              fromPiece.team != boards[to.rank.index][to.file.index]?.team
         else { return false }
 
-        let toPiece = boards[to.rankIndex][to.fileIndex]
-
-        if fromPiece.team != toPiece?.team {
-            if let toPieceTeam = toPiece?.team,
-               let score = scores[toPieceTeam] {
-                scores[toPieceTeam] = score - 1
-            }
-
-            boards[to.rankIndex][to.fileIndex] = fromPiece
-            boards[from.rankIndex][from.fileIndex] = nil
-            return true
+        if let toPiece = boards[to.rank.index][to.file.index],
+            let score = scores[toPiece.team] {
+            scores[toPiece.team] = score - toPiece.score
         }
 
-        return false
+        boards[to.rank.index][to.file.index] = fromPiece
+        boards[from.rank.index][from.file.index] = nil
+        return true
     }
 
     private func position(_ str: String) -> (Position)? {
         guard str.count == 2,
-              let file = str.first,
-              let fileIndex = files[String(file)],
-              0..<8 ~= fileIndex,
-              let rank = str.last,
-              let rankIndex = ranks[String(rank)],
-              0..<8 ~= rankIndex
+              let file = File(rawValue: str.first),
+              let rank = Rank(str: str.last)
         else {
             return nil
         }
 
-        return Position(fileIndex: fileIndex, rankIndex: rankIndex)
+        return Position(file: file, rank: rank)
     }
 }
