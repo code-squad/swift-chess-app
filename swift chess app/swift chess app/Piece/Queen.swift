@@ -13,6 +13,7 @@ struct Queen: Pieceable {
     var color: PieceColor
     
     func howToMove(from: Location, to: Location) -> Bool {
-        false
+        (abs(from.rank - to.rank) == abs(from.file - to.file)) ||
+        (from.rank == to.rank || from.file == to.file)
     }
 }

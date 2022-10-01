@@ -12,7 +12,7 @@ final class QueenTests: XCTestCase {
     
     var sut: Queen!
     
-    func testBishopMove() throws {
+    func testQueenMove() throws {
         let sut = Queen(color: .black)
         
         let from = Location(rank: 4, file: 5)
@@ -47,12 +47,12 @@ final class QueenTests: XCTestCase {
         XCTAssertFalse(sut.howToMove(from: from, to: to))
         
         to = Location(rank: 2, file: 8)
-        XCTAssertTrue(sut.howToMove(from: from, to: to))
+        XCTAssertFalse(sut.howToMove(from: from, to: to))
         
         to = Location(rank: 7, file: 3)
-        XCTAssertTrue(sut.howToMove(from: from, to: to))
+        XCTAssertFalse(sut.howToMove(from: from, to: to))
         
         to = Location(rank: 6, file: 6)
-        XCTAssertTrue(sut.howToMove(from: from, to: to))
+        XCTAssertFalse(sut.howToMove(from: from, to: to))
     }
 }

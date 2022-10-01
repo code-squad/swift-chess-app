@@ -12,7 +12,7 @@ final class RookTests: XCTestCase {
     
     var sut: Rook!
     
-    func testBishopMove() throws {
+    func testRookMove() throws {
         let sut = Rook(color: .black)
         
         let from = Location(rank: 4, file: 5)

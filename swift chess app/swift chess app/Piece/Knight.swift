@@ -13,6 +13,7 @@ struct Knight: Pieceable {
     var color: PieceColor
     
     func howToMove(from: Location, to: Location) -> Bool {
-        false
+        (abs(from.rank - to.rank) == 2 && abs(from.file - to.file) == 1) ||
+        (abs(from.rank - to.rank) == 1 && abs(from.file - to.file) == 2)
     } 
 }

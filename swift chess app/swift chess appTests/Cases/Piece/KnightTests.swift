@@ -12,7 +12,7 @@ final class KnightTests: XCTestCase {
     
     var sut: Knight!
     
-    func testBishopMove() throws {
+    func testKnightMove() throws {
         let sut = Knight(color: .black)
         
         let from = Location(rank: 4, file: 5)
