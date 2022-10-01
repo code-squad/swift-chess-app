@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00739FDB28E89EDC0025E40F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDA28E89EDC0025E40F /* File.swift */; };
+		00739FDD28E89F1B0025E40F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDC28E89F1B0025E40F /* Rank.swift */; };
 		00739FDF28E89F4F0025E40F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDE28E89F4F0025E40F /* Team.swift */; };
 		00739FE328E89F7C0025E40F /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FE228E89F7C0025E40F /* Emoji.swift */; };
 		00739FE528E89F8B0025E40F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FE428E89F8B0025E40F /* Score.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		00739FDA28E89EDC0025E40F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		00739FDC28E89F1B0025E40F /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		00739FDE28E89F4F0025E40F /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		00739FE228E89F7C0025E40F /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		00739FE428E89F8B0025E40F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
 				00739FDE28E89F4F0025E40F /* Team.swift */,
 				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
+				00739FDC28E89F1B0025E40F /* Rank.swift */,
 				00739FDA28E89EDC0025E40F /* File.swift */,
 				0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */,
 				0099CE8628DDF90F00AFCCCF /* ViewController.swift */,
@@ -288,6 +291,7 @@
 				00739FE328E89F7C0025E40F /* Emoji.swift in Sources */,
 				00739FDF28E89F4F0025E40F /* Team.swift in Sources */,
 				0099CE8728DDF90F00AFCCCF /* ViewController.swift in Sources */,
+				00739FDD28E89F1B0025E40F /* Rank.swift in Sources */,
 				0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */,
 				00739FDB28E89EDC0025E40F /* File.swift in Sources */,
 				0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */,
