@@ -9,9 +9,9 @@ import XCTest
 @testable import swift_chess_app
 
 
-class ChessFileTests: XCTestCase {
+class FileTests: XCTestCase {
     
-    var sut: ChessFile?
+    var sut: File?
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -28,7 +28,7 @@ class ChessFileTests: XCTestCase {
         let string = "A"
         
         // when
-        sut = ChessFile(string)
+        sut = File(string)
         
         // then
         XCTAssertNotNil(sut)
@@ -40,7 +40,7 @@ class ChessFileTests: XCTestCase {
         let string = "B"
         
         // when
-        sut = ChessFile(string)
+        sut = File(string)
         
         // then
         XCTAssertNotNil(sut)
@@ -52,7 +52,7 @@ class ChessFileTests: XCTestCase {
         let string = "X"
         
         // when
-        sut = ChessFile(string)
+        sut = File(string)
         
         // then
         XCTAssertNil(sut)

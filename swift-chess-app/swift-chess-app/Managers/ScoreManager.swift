@@ -14,14 +14,13 @@ class ScoreManager {
 
         static let white = ScoreOptions(rawValue: 1 << 0)
         static let black = ScoreOptions(rawValue: 2 << 0)
-        
         static let all: ScoreOptions = [.white, .black]
     }
     
-    func caculateScore(board: ChessBoard.BoardDataType, option: ScoreOptions) -> Int {
+    func caculateScore(board: Board.BoardDataType, option: ScoreOptions) -> Int {
         
         let boardPieces = board.map { $1 }
-        var pieces = [ChessPiece]()
+        var pieces = [Piece]()
         
         if option.contains(.white) {
             pieces.append(contentsOf: boardPieces.filter({ $0.color == .white }))

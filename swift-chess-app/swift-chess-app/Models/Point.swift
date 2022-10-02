@@ -1,5 +1,5 @@
 //
-//  ChessPoint.swift
+//  Point.swift
 //  swift-chess-app
 //
 //  Created by Haeseok Lee on 2022/09/25.
@@ -7,33 +7,33 @@
 
 import Foundation
 
-struct ChessPoint: Hashable {
+struct Point: Hashable {
     
-    let rank: ChessRank
+    let rank: Rank
     
-    let file: ChessFile
+    let file: File
     
     var toString: String { file.toString + rank.toString }
     
     var toTuple: (row: Int, col: Int) { (row: rank.num - 1, col: file.toInt) }
 }
 
-extension ChessPoint {
+extension Point {
     
     init?(string: String) {
         guard string.count == 2,
               let firstCharacter = string.first,
               let secondCharacter = string.last,
-              let file = ChessFile(String(firstCharacter)),
-              let rank = ChessRank(String(secondCharacter)) else { return nil }
+              let file = File(String(firstCharacter)),
+              let rank = Rank(String(secondCharacter)) else { return nil }
         self.rank = rank
         self.file = file
     }
 }
 
-extension ChessPoint: Equatable {
+extension Point: Equatable {
     
-    static func == (lhs: ChessPoint, rhs: ChessPoint) -> Bool {
+    static func == (lhs: Point, rhs: Point) -> Bool {
         return lhs.file == rhs.file && lhs.rank == rhs.rank
     }
 }
