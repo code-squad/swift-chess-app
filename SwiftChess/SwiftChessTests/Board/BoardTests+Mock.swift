@@ -7,7 +7,7 @@
 
 @testable import SwiftChess
 
-// swiftlint:disable comma identifier_name
+// swiftlint:disable comma
 extension BoardTests {
     static let blackPawn = Pawn(color: .black)
     static let whitePawn = Pawn(color: .white)
@@ -65,19 +65,17 @@ extension BoardTests {
 }
 
 extension Board.Location {
-    /// invalid location
-    static let A0 = Self(rank: 0, file: 1)
-    static let A1 = Self(rank: 1, file: 1)
-    static let A2 = Self(rank: 2, file: 1)
-    static let A7 = Self(rank: 7, file: 1)
-    static let A8 = Self(rank: 8, file: 1)
-    static let B1 = Self(rank: 1, file: 2)
-    static let D4 = Self(rank: 4, file: 4)
-    static let D5 = Self(rank: 5, file: 4)
-    static let G1 = Self(rank: 1, file: 7)
-    static let G8 = Self(rank: 8, file: 7)
-    static let H1 = Self(rank: 1, file: 8)
-    static let H7 = Self(rank: 7, file: 8)
-    static let H8 = Self(rank: 8, file: 8)
+    static let A1 = Self(file: .A, rank: .one)
+    static let A2 = Self(file: .A, rank: .two)
+    static let A7 = Self(file: .A, rank: .seven)
+    static let A8 = Self(file: .A, rank: .eight)
+    static let B1 = Self(file: .B, rank: .one)
+    static let D4 = Self(file: .D, rank: .four)
+    static let D5 = Self(file: .D, rank: .five)
+    static let G1 = Self(file: .G, rank: .one)
+    static let G8 = Self(file: .G, rank: .eight)
+    static let H1 = Self(file: .H, rank: .one)
+    static let H7 = Self(file: .H, rank: .seven)
+    static let H8 = Self(file: .H, rank: .eight)
 }
-// swiftlint:enable comma identifier_name
+// swiftlint:enable comma

@@ -150,28 +150,6 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(currentPoints.white, initialPoints.white + 1)
     }
 
-    func test_체스판안에있지않은출발점을지정하면_이동시킬수없다() {
-        let sut = Board(status: Self.topLeftBlackPawnMock)
-
-        XCTAssertThrowsError(try sut.move(from: .A0, to: .A1)) { error in
-            XCTAssertEqual(
-                error as? BoardError,
-                .invalidStartPoint(.A0)
-            )
-        }
-    }
-
-    func test_체스판안에있지않은도착점을지정하면_이동시킬수없다() {
-        let sut = Board(status: Self.topLeftWhitePawnMock)
-
-        XCTAssertThrowsError(try sut.move(from: .A1, to: .A0)) { error in
-            XCTAssertEqual(
-                error as? BoardError,
-                .invalidEndPoint(.A0)
-            )
-        }
-    }
-
     func test_출발점과도착점이동일하면_이동시킬수없다() {
         let sut = Board(status: Self.topLeftWhitePawnMock)
 

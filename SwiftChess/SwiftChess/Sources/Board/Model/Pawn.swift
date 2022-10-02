@@ -7,7 +7,7 @@
 
 /// 체스말 폰.
 struct Pawn: Piece {
-    static let moveRules: Set<MoveRule> = [MoveRule(rank: 1, file: 0)]
+    static let moveRules: Set<MoveRule> = [MoveRule(file: .none, rank: .increment(.one))]
     static let maxCount: Int = 8
     static let point: Int = 1
 
@@ -33,16 +33,16 @@ extension Pawn {
     func movableLocations(
         from location: Board.Location
     ) -> [Board.Location] {
-        guard let moveRule = Self.moveRules.first else { return [] }
+        Self.moveRules.flatMap { moveRule in
+            switch color {
+            case .black:
+                return [location + moveRule]
+                    .compactMap { $0 }
 
-        switch color {
-        case .black:
-            return [location + moveRule]
-                .filter(\.isValid)
-
-        case .white:
-            return [location - moveRule]
-                .filter(\.isValid)
+            case .white:
+                return [location - moveRule]
+                    .compactMap { $0 }
+            }
         }
     }
 }

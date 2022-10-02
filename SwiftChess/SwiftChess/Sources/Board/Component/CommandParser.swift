@@ -10,7 +10,7 @@ struct MoveCommand {
     let endPoint: Board.Location
 }
 
-enum CommandParserError: Error {
+enum CommandParserError: Error, Equatable {
     /// 유효하지 않은 명령
     case invalidCommand
     /// 검증 실패(형식에 맞지않음, 유효하지 않은 출발점/도착점 등)
@@ -19,6 +19,12 @@ enum CommandParserError: Error {
     case locationStringsNotExist
     /// 검증을 마친 캐릭터가 사라짐(발생하지 않음)
     case fileOrRankCharacterNotExists
+    /// Location 인스턴스 생성 중 rank 전달인자가 정수형이 아님
+    case enteredRankCannotBeCastedToInteger
+    /// 유효하지 않은 범위의 Rank가 전달됨
+    case invalidRank(Int)
+    /// 유효하지 않은 범위의 File이 전달됨
+    case invalidFile(String)
 }
 
 /// 사용자 입력을 해석하는 타입.
@@ -90,15 +96,19 @@ enum CommandParser {
             return false
         }
 
-        let minimumFileAsciiValue = Board.Configuration.minimumFile.asAsciiValue
-        let maximumFileAsciiValue = Board.Configuration.maximumFile.asAsciiValue
+        guard let minimumFileAsciiValue = Board.Location.File.minimumCase?.asciiValue,
+              let maximumFileAsciiValue = Board.Location.File.maximumCase?.asciiValue else {
+            return false
+        }
 
         guard (minimumFileAsciiValue...maximumFileAsciiValue).contains(file.asAsciiValue) else {
             return false
         }
 
-        let minimumRank = Board.Configuration.minimumRank
-        let maximumRank = Board.Configuration.maximumRank
+        guard let minimumRank = Board.Location.Rank.minimumRawValue,
+              let maximumRank = Board.Location.Rank.maximumRawValue else {
+            return false
+        }
 
         guard (minimumRank...maximumRank).contains(rank) else {
             return false
@@ -109,14 +119,25 @@ enum CommandParser {
     /// `Substring` 타입의 문자열을 ``Board/Location`` 인스턴스로 바꾸어 반환한다.
     /// ``CommandParser/validate(_:)``를 통해 검증된 결과만 전달해주어야 한다.
     private static func makeLocation(with substring: Substring) throws -> Board.Location {
-        guard let file = substring.first,
-              let rank = substring.last else {
+        guard let fileSubstring = substring.first,
+              let rankSubstring = substring.last else {
             throw CommandParserError.fileOrRankCharacterNotExists
         }
 
-        return Board.Location(
-            rank: String(rank).asRankIndex,
-            file: String(file).asFileIndex
-        )
+        let minimumFileAsciiValue = Board.Location.File.minimumCase?.asciiValue ?? 0
+        let fileInteger = String(fileSubstring).asAsciiValue - minimumFileAsciiValue
+
+        guard let rankInteger = Int(String(rankSubstring)) else {
+            throw CommandParserError.enteredRankCannotBeCastedToInteger
+        }
+
+        guard let file = Board.Location.File(rawValue: fileInteger + 1) else {
+            throw CommandParserError.invalidFile(String(fileSubstring))
+        }
+
+        guard let rank = Board.Location.Rank(rawValue: rankInteger) else {
+            throw CommandParserError.invalidRank(rankInteger)
+        }
+        return Board.Location(file: file, rank: rank)
     }
 }

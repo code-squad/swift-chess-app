@@ -45,10 +45,42 @@ enum PieceColor: CaseIterable {
 
 /// 체스말의 이동 규칙을 정의한 타입.
 ///
-///  예를 들어, `MoveRule(rank: 2, file:1)`은 해당 체스말이 rank로 2 칸, file로 1 칸 이동하는 규칙을 가지고 있다는 의미이다.
+///  예를 들어, `MoveRule(rank: .increment(.two), file: .increment(.one)`은 해당 체스말이 rank로 2 칸, file로 1 칸 이동하는 규칙을 가지고 있다는 의미이다.
 struct MoveRule: Hashable {
-    let rank: Int
-    let file: Int
+    let file: Step
+    let rank: Step
+
+    enum Step: Hashable {
+        case decrement(Value)
+        case increment(Value)
+        case none
+
+        enum Value: Int, Hashable {
+            case one = 1
+            case two
+            case three
+            case four
+            case five
+            case six
+            case seven
+        }
+    }
+}
+
+extension MoveRule.Step {
+
+    var extractedValue: Int {
+        switch self {
+        case let .increment(value):
+            return value.rawValue
+
+        case let .decrement(value):
+            return -value.rawValue
+
+        case .none:
+            return 0
+        }
+    }
 }
 
 /// 체스판 요소를 콘솔에 표현할 때 사용하는 표식을 정의한 타입.
