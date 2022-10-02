@@ -26,7 +26,7 @@ final class BoardTests: XCTestCase {
 
     func test_흑색Pawn의최초생성위치는_2rank이다() throws {
         let expectedPieceColor = PieceColor.black
-        let secondRank = try sut?.rank(2)
+        let secondRank = sut?.status[1]
 
         secondRank?.forEach { piece in
             guard let piece = piece as? Pawn else {
@@ -38,7 +38,7 @@ final class BoardTests: XCTestCase {
 
     func test_백색Pawn의최초생성위치는_7rank이다() throws {
         let expectedPieceColor = PieceColor.white
-        let secondRank = try sut?.rank(7)
+        let secondRank = sut?.status[6]
 
         secondRank?.forEach { piece in
             guard let piece = piece as? Pawn else {
@@ -204,13 +204,6 @@ final class BoardTests: XCTestCase {
 }
 
 extension Board {
-
-    func rank(_ rank: Int) throws -> [BoardElementRepresentable?] {
-        guard (1...Self.Configuration.size.rank).contains(rank) else {
-            throw BoardError.invalidRank(rank)
-        }
-        return status[rank.asIndex]
-    }
 
     func pieceCount<P: Piece>(for pieceType: P.Type) -> (black: Int, white: Int) {
         let existingPieces = status

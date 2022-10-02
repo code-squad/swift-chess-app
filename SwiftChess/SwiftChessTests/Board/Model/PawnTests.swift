@@ -13,12 +13,12 @@ final class PawnTests: XCTestCase {
     func test_흑색Pawn의최초Rank는_2이다() {
         let blackPawn = Pawn(color: .black)
 
-        XCTAssertEqual(blackPawn.initialRank, 2)
+        XCTAssertEqual(blackPawn.initialRank, .two)
     }
 
     func test_백색Pawn의최초Rank는_7이다() {
         let whitePawn = Pawn(color: .white)
 
-        XCTAssertEqual(whitePawn.initialRank, 7)
+        XCTAssertEqual(whitePawn.initialRank, .seven)
     }
 }

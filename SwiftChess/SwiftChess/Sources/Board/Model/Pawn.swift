@@ -17,13 +17,13 @@ struct Pawn: Piece {
     }
 
     /// 색상별 ``Pawn``이 최초에 위치할 수 있는 rank
-    var initialRank: Int {
+    var initialRank: Board.Location.Rank {
         switch color {
         case .black:
-            return 2
+            return .two
 
         case .white:
-            return 7
+            return .seven
         }
     }
 }
