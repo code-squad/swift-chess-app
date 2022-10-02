@@ -20,14 +20,14 @@ final class BoardTests: XCTestCase {
   func testInitialPiecesDisplay() {
     let result = """
      ABCDEFGH
-    1........
+    1♜♞♝.♛♝♞♜
     2♟♟♟♟♟♟♟♟
     3........
     4........
     5........
     6........
     7♙♙♙♙♙♙♙♙
-    8........
+    8♖♘♗.♕♗♘♖
      ABCDEFGH
     """
 
@@ -37,14 +37,14 @@ final class BoardTests: XCTestCase {
   func testMovePiecesAndDisplay() {
     let result = """
      ABCDEFGH
-    1........
+    1♜♞♝.♛♝♞♜
     2.♟♟♟♟♟♟♟
     3.♟......
     4........
     5.......♙
     6........
     7♙♙♙♙♙♙♙.
-    8........
+    8♖♘♗.♕♗♘♖
      ABCDEFGH
     """
 
@@ -56,7 +56,7 @@ final class BoardTests: XCTestCase {
   }
 
   func testInitialScore() {
-    XCTAssertEqual(board.scores, [.black: 8, .white: 8])
+    XCTAssertEqual(board.scores, [.black: 39, .white: 39])
   }
 
   func testMovePiecesAndScore() {
@@ -65,13 +65,13 @@ final class BoardTests: XCTestCase {
     XCTAssertTrue(board.move(from: .init(string: "A4"), to: .init(string: "A5")))
     XCTAssertTrue(board.move(from: .init(string: "A5"), to: .init(string: "A6")))
     XCTAssertTrue(board.move(from: .init(string: "A6"), to: .init(string: "A7")))
-    XCTAssertEqual(board.scores, [.black: 8, .white: 7])
+    XCTAssertEqual(board.scores, [.black: 39, .white: 38])
 
     XCTAssertTrue(board.move(from: .init(string: "A7"), to: .init(string: "B7")))
-    XCTAssertEqual(board.scores, [.black: 8, .white: 6])
+    XCTAssertEqual(board.scores, [.black: 39, .white: 37])
 
     XCTAssertTrue(board.move(from: .init(string: "C7"), to: .init(string: "B7")))
-    XCTAssertEqual(board.scores, [.black: 7, .white: 6])
+    XCTAssertEqual(board.scores, [.black: 38, .white: 37])
   }
 
   func testMoveWrongPositions() {

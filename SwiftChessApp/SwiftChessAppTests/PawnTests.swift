@@ -20,13 +20,13 @@ final class PawnTests: XCTestCase {
   }
 
   func testBlackPawnNextPositions() {
-    let positions = blackPawn.availableNextPositions(from: .init(string: "B2")!)
+    let positions = blackPawn.availableNextPositions(from: .init(string: "B2")!, in: nil)
 
-    XCTAssertEqual(Set(positions), Set([.init(string: "A2")!, .init(string: "C2")!, .init(string: "B3")!]))
+    XCTAssertEqual(positions, Set([.init(string: "A2")!, .init(string: "C2")!, .init(string: "B3")!]))
   }
 
   func testWhitePawnNextPositions() {
-    let positions = whitePawn.availableNextPositions(from: .init(string: "G7")!)
+    let positions = whitePawn.availableNextPositions(from: .init(string: "G7")!, in: nil)
 
     XCTAssertTrue(positions.contains(Position(string: "G6")!))
     XCTAssertTrue(positions.contains(Position(string: "F7")!))
