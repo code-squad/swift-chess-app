@@ -32,9 +32,7 @@ struct Pawn: Piece {
 
 extension Pawn {
 
-    func movableLocations(
-        from location: Board.Location
-    ) -> [Board.Location] {
+    func movableLocations(from location: Board.Location) -> [Board.Location] {
         Self.moveRules.flatMap { moveRule in
             switch color {
             case .black:
