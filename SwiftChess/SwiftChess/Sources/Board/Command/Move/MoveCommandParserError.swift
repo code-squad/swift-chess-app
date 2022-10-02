@@ -1,5 +1,5 @@
 //
-//  CommandParserError.swift
+//  MoveMoveCommandParserError.swift
 //  SwiftChess
 //
 //  Created by Geonhee on 2022/10/02.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CommandParserError: Equatable {
+enum MoveMoveCommandParserError: Equatable {
     /// 유효하지 않은 명령
     case invalidCommand
     /// 검증 실패(형식에 맞지않음 등)
@@ -24,7 +24,7 @@ enum CommandParserError: Equatable {
     case invalidFile(String)
 }
 
-extension CommandParserError: LocalizedError {
+extension MoveMoveCommandParserError: LocalizedError {
 
     var errorDescription: String? {
         switch self {

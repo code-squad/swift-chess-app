@@ -7,10 +7,10 @@
 
 enum CommandValidator {
 
-    /// ``CommandParser/Configuration/commandSeparator``를 기준으로 분리된 문자열들을 검증한다. 예) ["A1", "A2"]
+    /// ``MoveCommandParser/Configuration/commandSeparator``를 기준으로 분리된 문자열들을 검증한다. 예) ["A1", "A2"]
     static func validate(_ locationStrings: [String.SubSequence]) -> Bool {
         guard locationStrings.count == 2 else {
-            // TODO: 로그 CommandParserError.invalidCommand
+            // TODO: 로그 MoveMoveCommandParserError.invalidCommand
             return false
         }
 
