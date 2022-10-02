@@ -83,32 +83,27 @@ final class Board {
 
     // MARK: - 체스말 이동
 
-    /// 체스말을 시작점에서 도착점로 이동시킨다.
-    /// - Parameters:
-    ///   - startPoint: 이동을 시작하는 시작점.
-    ///   - endPoint: 이동하고자 하는 도착점.
-    func move(
-        from startPoint: Board.Location,
-        to endPoint: Board.Location
-    ) throws {
-        try validate(startPoint: startPoint, endPoint: endPoint)
+    /// 이동 명령을 통해 체스말을 이동시킨다.
+    /// - Parameter moveCommand: 이동 명령 인스턴스. 시작점과 도착점이 포함되어 있다.
+    func move(with command: MoveCommand) throws {
+        try validate(startPoint: command.startPoint, endPoint: command.endPoint)
 
-        guard let piece = self[startPoint] as? Piece else {
-            throw BoardError.pieceNotExistsAtStartPoint(startPoint)
+        guard let piece = self[command.startPoint] as? Piece else {
+            throw BoardError.pieceNotExistsAtStartPoint(command.startPoint)
         }
 
-        guard canMove(piece: piece, from: startPoint, to: endPoint) else {
-            throw BoardError.identicalColoredPieceAlreadyExists(endPoint: endPoint)
+        guard canMove(piece: piece, from: command.startPoint, to: command.endPoint) else {
+            throw BoardError.identicalColoredPieceAlreadyExists(endPoint: command.endPoint)
         }
 
-        if self[endPoint] is Empty {
-            captureEnemyPiece(at: endPoint)
+        if self[command.endPoint] is Empty {
+            captureEnemyPiece(at: command.endPoint)
             let currentPoints = currentPoints()
             // TODO: 출력 타입 마련해서 포매팅 후 출력
             print(currentPoints)
         }
 
-        move(piece, from: startPoint, to: endPoint)
+        move(piece, from: command.startPoint, to: command.endPoint)
     }
 
     /// 시작점과 도착점이 체스판 안의 위치를 가리키고 있는지, 그리고 서로 같지 않은지 검증한다.

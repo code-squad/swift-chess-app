@@ -59,11 +59,16 @@ struct MoveRule: Hashable {
     let file: Step
     let rank: Step
 
+    /// 체스말 이동 규칙의 이동 단위
     enum Step: Hashable {
+        /// File: 8 -> 1, Rank: H -> A 방향으로의 이동. 연관값으로 이동 칸수를 전달한다.
         case decrement(Value)
+        /// File: 1 -> 8, Rank: A -> H 방향으로의 이동. 연관값으로 이동 칸수를 전달한다.
         case increment(Value)
+        /// 해당 방향으로 이동하지 않음.
         case none
 
+        /// 이동 칸수. 체스판의 크기가 8x8이므로 1~7 단위로 이동할 수 있다.
         enum Value: Int, Hashable {
             case one = 1
             case two
@@ -78,6 +83,7 @@ struct MoveRule: Hashable {
 
 extension MoveRule.Step {
 
+    /// 연관값의 rawValue를 추출한 값. 이동 칸수를 정수형으로 표현한다.
     var extractedValue: Int {
         switch self {
         case let .increment(value):
