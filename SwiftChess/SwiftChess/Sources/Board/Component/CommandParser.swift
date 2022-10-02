@@ -101,7 +101,7 @@ enum CommandParser {
             return false
         }
 
-        guard (minimumFileAsciiValue...maximumFileAsciiValue).contains(file.asAsciiValue) else {
+        guard (minimumFileAsciiValue...maximumFileAsciiValue).contains(file.asciiValue) else {
             return false
         }
 
@@ -125,7 +125,7 @@ enum CommandParser {
         }
 
         let minimumFileAsciiValue = Board.Location.File.minimumCase?.asciiValue ?? 0
-        let fileInteger = String(fileSubstring).asAsciiValue - minimumFileAsciiValue
+        let fileInteger = String(fileSubstring).asciiValue - minimumFileAsciiValue
 
         guard let rankInteger = Int(String(rankSubstring)) else {
             throw CommandParserError.enteredRankCannotBeCastedToInteger
