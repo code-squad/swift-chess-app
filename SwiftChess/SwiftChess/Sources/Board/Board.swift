@@ -60,6 +60,7 @@ final class Board {
     }
 
     /// 지정된 색상의 ``Pawn``을 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRankIndex``를 참고한다.
+    /// - Parameter pieceColor: 흑백 진영을 의미하는 체스말 색깔.
     private func setPawns(for pieceColor: PieceColor) {
         switch pieceColor {
         case .black:
@@ -103,6 +104,9 @@ final class Board {
     // MARK: - 체스말 이동
 
     /// 체스말을 시작점에서 도착점로 이동시킨다.
+    /// - Parameters:
+    ///   - startPoint: 이동을 시작하는 시작점.
+    ///   - endPoint: 이동하고자 하는 도착점.
     func move(
         from startPoint: Board.Location,
         to endPoint: Board.Location
@@ -128,6 +132,9 @@ final class Board {
     }
 
     /// 시작점과 도착점이 체스판 안의 위치를 가리키고 있는지, 그리고 서로 같지 않은지 검증한다.
+    /// - Parameters:
+    ///   - startPoint: 이동을 시작하는 시작점.
+    ///   - endPoint: 이동하고자 하는 도착점.
     private func validate(
         startPoint: Board.Location,
         endPoint: Board.Location
@@ -138,6 +145,11 @@ final class Board {
     }
 
     /// 주어진 체스말의 시작점에서 도착점으로 이동 가능 여부를 반환한다.
+    /// - Parameters:
+    ///   - piece: 이동시키고자 하는 체스말.
+    ///   - startPoint: 이동을 시작하는 시작점.
+    ///   - endPoint: 이동하고자 하는 도착점.
+    /// - Returns: 이동 가능 여부. 가능하다면 `true`를 반환한다.
     private func canMove(
         piece: Piece,
         from startPoint: Board.Location,
@@ -160,11 +172,16 @@ final class Board {
     }
 
     /// 지정된 위치에 있는 체스말을 없앤다. 대상 체스말이 이동할 체스말과 다른 색상임을 확인하고 사용해야한다.
+    /// - Parameter location: 상대방 체스말이 있는 위치.
     private func captureEnemyPiece(at location: Board.Location) {
         self[location] = Empty()
     }
 
     /// 지정된 체스말을 시작점에서 도착점으로 이동시킨다.
+    /// - Parameters:
+    ///   - piece: 이동시키고자 하는 체스말.
+    ///   - startPoint: 이동을 시작하는 시작점.
+    ///   - endPoint: 이동하고자 하는 도착점.
     private func move(
         _ piece: Piece,
         from startPoint: Board.Location,
@@ -177,6 +194,7 @@ final class Board {
     // MARK: - 점수 계산
 
     /// black, white 양 진영의 현재 점수를 반환한다.
+    /// - Returns: 흑백 양 진영의 현재 점수 튜플.
     func currentPoints() -> (black: Int, white: Int) {
         let existingPieces = status
             .flatMap { $0.compactMap { $0 as? Piece } }
@@ -184,6 +202,8 @@ final class Board {
     }
 
     /// 체스판에 존재하는 ``Piece``를 이용해 black, white 양 진영의 점수를 계산하여 반환한다.
+    /// - Parameter existingPieces: 체스판 위에 존재하는 체스말들.
+    /// - Returns: 체스판 위에 존재하는 체스말을 통해 계산된 흑백 양 진영의 현재 점수 튜플.
     private func reducePoints(
         from existingPieces: [Piece]
     ) -> (black: Int, white: Int) {
@@ -211,6 +231,7 @@ final class Board {
     // MARK: - 체스판 표현
 
     /// 현재 체스판 상황을 콘솔에 출력한다.
+    /// - Returns: 콘솔에 표현할 문자열 형식 체스판 상황.
     @discardableResult
     func display() -> String {
         let graphicalRepresentation = status.map { rank in

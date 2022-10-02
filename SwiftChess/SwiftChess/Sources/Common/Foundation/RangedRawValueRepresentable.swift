@@ -5,10 +5,15 @@
 //  Created by Geonhee on 2022/10/02.
 //
 
+/// `RawValue`를 범위 형태로 정의한 타입.
 protocol RangedRawRepresentable: RawRepresentable, CaseIterable {
+    /// 인스턴스 중 최소 RawValue 값.
     static var minimumRawValue: RawValue? { get }
+    /// 인스턴스 중 최대 RawValue 값.
     static var maximumRawValue: RawValue? { get }
+    /// 인스턴스 중 최소 Case.
     static var minimumCase: Self? { get }
+    /// 인스턴스 중 최대 Case.
     static var maximumCase: Self? { get }
 }
 

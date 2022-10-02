@@ -28,6 +28,8 @@ protocol Piece: BoardElementRepresentable {
     var color: PieceColor { get }
 
     /// 입력된 위치에서 이동할 수 있는 위치 후보를 반환한다.
+    /// - Parameter location: 이동을 시도하는 시작점
+    /// - Returns: 현재 위치에서 이동할 수 있는 모든 위치 배열. 해당 위치에 장애물 존재 유무를 고려하지 않는다.
     func movableLocations(from location: Board.Location) -> [Board.Location]
 }
 
@@ -45,7 +47,14 @@ enum PieceColor: CaseIterable {
 
 /// 체스말의 이동 규칙을 정의한 타입.
 ///
-///  예를 들어, `MoveRule(rank: .increment(.two), file: .increment(.one)`은 해당 체스말이 rank로 2 칸, file로 1 칸 이동하는 규칙을 가지고 있다는 의미이다.
+///  예를 들어, 아래 인스턴스는 해당 체스말이 file로 1 칸, rank로 2 칸 이동하는 규칙을 가지고 있다는 의미이다.
+///
+///  ```swift
+///  MoveRule(
+///      file: .increment(.one),
+///      rank: .increment(.two)
+///  )
+///  ```
 struct MoveRule: Hashable {
     let file: Step
     let rank: Step
