@@ -18,11 +18,19 @@ struct Pawn: Piece {
     return 1
   }
 
-  func availableNextPositions(from position: Position) -> [Position] {
-    return [
-      Position(rankIndex: position.rankIndex + player.forwardRankIndex(1), fileIndex: position.fileIndex),
-      Position(rankIndex: position.rankIndex, fileIndex: position.fileIndex + 1),
-      Position(rankIndex: position.rankIndex, fileIndex: position.fileIndex - 1),
-    ].compactMap { $0 }
+  static func makePiecesWithPosition() -> [PieceWithPosition] {
+    let blackPawns = (0..<Position.maxFiles)
+      .compactMap { Position(rankIndex: 1, fileIndex: $0) }
+      .map { PieceWithPosition(piece: Pawn(player: .black), position: $0) }
+    let whitePawns = (0..<Position.maxFiles)
+      .compactMap { Position(rankIndex: 6, fileIndex: $0) }
+      .map { PieceWithPosition(piece: Pawn(player: .white), position: $0) }
+    return blackPawns + whitePawns
+  }
+
+  func availableNextPositions(from position: Position, in pieces: PiecesOnBoard?) -> Set<Position> {
+    return validatePositions(
+      [position.forward(player: player), position.nearestPosition(.west), position.nearestPosition(.east)],
+      in: pieces ?? .single(.init(piece: self, position: position)))
   }
 }
