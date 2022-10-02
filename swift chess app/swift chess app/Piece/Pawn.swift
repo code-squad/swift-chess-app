@@ -13,12 +13,12 @@ struct Pawn: Pieceable {
     
     let color: PieceColor
     
-    func move(from: Location, to: Location) -> Bool {
+    func isMovable(from: Location, to: Location) -> Bool {
         switch color {
         case .black:
-            return from.rank - to.rank == -1
+            return from.row - to.row == -1
         case .white:
-            return from.rank - to.rank == 1
+            return from.row - to.row == 1
         }
     }
 }

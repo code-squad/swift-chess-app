@@ -10,7 +10,7 @@ import XCTest
 
 final class SymbolTests: XCTestCase {
 
-    func testPawn() throws {
+    func testPawn() {
         XCTAssertEqual(Pawn.maxCount, 8)
         
         var sut: Pawn!
@@ -21,7 +21,7 @@ final class SymbolTests: XCTestCase {
         XCTAssertEqual(sut.getSymbol().image, "♙")
     }
     
-    func testBishop() throws {
+    func testBishop() {
         XCTAssertEqual(Bishop.maxCount, 2)
         
         var sut: Bishop!
@@ -32,7 +32,7 @@ final class SymbolTests: XCTestCase {
         XCTAssertEqual(sut.getSymbol().image, "♗")
     }
     
-    func testRook() throws {
+    func testRook() {
         XCTAssertEqual(Rook.maxCount, 2)
         
         var sut: Rook!
@@ -43,7 +43,7 @@ final class SymbolTests: XCTestCase {
         XCTAssertEqual(sut.getSymbol().image, "♖")
     }
     
-    func testQueen() throws {
+    func testQueen() {
         XCTAssertEqual(Queen.maxCount, 1)
         
         var sut: Queen!
@@ -54,7 +54,7 @@ final class SymbolTests: XCTestCase {
         XCTAssertEqual(sut.getSymbol().image, "♕")
     }
     
-    func testKnight() throws {
+    func testKnight() {
         XCTAssertEqual(Knight.maxCount, 2)
         
         var sut: Knight!

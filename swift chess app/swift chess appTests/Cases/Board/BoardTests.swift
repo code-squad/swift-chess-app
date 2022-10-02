@@ -12,7 +12,7 @@ final class BoardTests: XCTestCase {
 
     var sut: Board!
 
-    func testStartGame() throws {
+    func testStartGame() {
         sut = Board()
         
         XCTAssertEqual(sut.score.black, 39)
@@ -98,5 +98,4 @@ final class BoardTests: XCTestCase {
 """
         )
     }
-
 }

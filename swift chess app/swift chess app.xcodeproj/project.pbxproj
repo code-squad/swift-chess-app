@@ -33,6 +33,9 @@
 		995A60E628E6768900AB7162 /* SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60E528E6768900AB7162 /* SymbolTests.swift */; };
 		995A60EA28E6805500AB7162 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60E928E6805500AB7162 /* Score.swift */; };
 		995A60EC28E69F0200AB7162 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A60EB28E69F0200AB7162 /* Location.swift */; };
+		997E714428E9C8C200400AC2 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997E714328E9C8C200400AC2 /* LocationTests.swift */; };
+		997E714628E9C8CC00400AC2 /* PositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997E714528E9C8CC00400AC2 /* PositionTests.swift */; };
+		99A95C7728E914BC0099A225 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A95C7628E914BC0099A225 /* Position.swift */; };
 		99ACDAAA28E6F9CD0080678C /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ACDAA928E6F9CD0080678C /* Symbol.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +87,9 @@
 		995A60E528E6768900AB7162 /* SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolTests.swift; sourceTree = "<group>"; };
 		995A60E928E6805500AB7162 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		995A60EB28E69F0200AB7162 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		997E714328E9C8C200400AC2 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
+		997E714528E9C8CC00400AC2 /* PositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTests.swift; sourceTree = "<group>"; };
+		99A95C7628E914BC0099A225 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		99ACDAA928E6F9CD0080678C /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				993ACC3228E7ED1F00924666 /* BoardTests.swift */,
+				997E714328E9C8C200400AC2 /* LocationTests.swift */,
+				997E714528E9C8CC00400AC2 /* PositionTests.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 				995A60DC28E66DA400AB7162 /* Board.swift */,
 				995A60E928E6805500AB7162 /* Score.swift */,
 				995A60EB28E69F0200AB7162 /* Location.swift */,
+				99A95C7628E914BC0099A225 /* Position.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -368,6 +377,7 @@
 				993258FE28E33BC60099D0B6 /* AppDelegate.swift in Sources */,
 				993ACC4928E7FA9B00924666 /* Knight.swift in Sources */,
 				9923885828E7248C0011AA1F /* PieceColor.swift in Sources */,
+				99A95C7728E914BC0099A225 /* Position.swift in Sources */,
 				995A60DD28E66DA400AB7162 /* Board.swift in Sources */,
 				99ACDAAA28E6F9CD0080678C /* Symbol.swift in Sources */,
 				993ACC4528E7FA9000924666 /* Rook.swift in Sources */,
@@ -385,9 +395,11 @@
 				993ACC4128E7F55400924666 /* QueenTests.swift in Sources */,
 				995A60E628E6768900AB7162 /* SymbolTests.swift in Sources */,
 				9932591528E33BC70099D0B6 /* swift_chess_appTests.swift in Sources */,
+				997E714628E9C8CC00400AC2 /* PositionTests.swift in Sources */,
 				993ACC4328E7F55C00924666 /* KnightTests.swift in Sources */,
 				993ACC3528E7EEC700924666 /* BishopTests.swift in Sources */,
 				993ACC3328E7ED1F00924666 /* BoardTests.swift in Sources */,
+				997E714428E9C8C200400AC2 /* LocationTests.swift in Sources */,
 				993ACC2728E7E1A100924666 /* PawnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

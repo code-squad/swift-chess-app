@@ -13,7 +13,7 @@ struct Bishop: Pieceable {
     
     let color: PieceColor
     
-    func move(from: Location, to: Location) -> Bool {
-        abs(from.rank - to.rank) == abs(from.file - to.file)
+    func isMovable(from: Location, to: Location) -> Bool {
+        abs(from.row - to.row) == abs(from.col - to.col)
     }
 }

@@ -12,35 +12,35 @@ final class RookTests: XCTestCase {
     
     var sut: Rook!
     
-    func testRookMove() throws {
+    func testRookMove() {
         let sut = Rook(color: .black)
         
-        let from = Location(rank: 4, file: 5)
+        let from = Location(row: 4, col: 5)
         var to: Location
         
-        to = Location(rank: 2, file: 5)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 5)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 7, file: 5)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 7, col: 5)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 4, file: 1)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 4, col: 1)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 4, file: 6)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 4, col: 6)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
         
-        to = Location(rank: 3, file: 4)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 3, col: 4)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 2, file: 7)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 7)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 6, file: 3)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 6, col: 3)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 6, file: 7)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 6, col: 7)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
     }
 }

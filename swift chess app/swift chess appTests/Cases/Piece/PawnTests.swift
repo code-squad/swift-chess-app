@@ -12,33 +12,33 @@ final class PawnTests: XCTestCase {
 
     var sut: Pawn!
     
-    func testBlackPawnMove() throws {
+    func testBlackPawnMove() {
         let sut = Pawn(color: .black)
         
         var from: Location
         var to: Location
         
-        from = Location(rank: 1, file: 1)
-        to = Location(rank: 2, file: 1)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        from = Location(row: 1, col: 1)
+        to = Location(row: 2, col: 1)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        from = Location(rank: 3, file: 4)
-        to = Location(rank: 2, file: 4)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        from = Location(row: 3, col: 4)
+        to = Location(row: 2, col: 4)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
     }
     
-    func testWhitePawnMove() throws {
+    func testWhitePawnisMovable() {
         let sut = Pawn(color: .white)
         
         var from: Location
         var to: Location
 
-        from = Location(rank: 1, file: 1)
-        to = Location(rank: 2, file: 1)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        from = Location(row: 1, col: 1)
+        to = Location(row: 2, col: 1)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        from = Location(rank: 3, file: 4)
-        to = Location(rank: 2, file: 4)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        from = Location(row: 3, col: 4)
+        to = Location(row: 2, col: 4)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
     }
 }

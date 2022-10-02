@@ -8,6 +8,15 @@
 import Foundation
 
 struct Location: Equatable {
-    var rank: Int
-    var file: Int
+    private(set) var row: Int
+    private(set) var col: Int
+    
+    func getPosition() -> Position? {
+        guard let rank = UnicodeScalar(row + Int(UnicodeScalar("1").value)),
+              let file = UnicodeScalar(col + Int(UnicodeScalar("A").value)) else {
+            return nil
+        }
+        
+        return Position(input: "\(file)\(rank)")
+    }
 }

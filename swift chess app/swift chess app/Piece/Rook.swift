@@ -13,7 +13,7 @@ struct Rook: Pieceable {
     
     var color: PieceColor
     
-    func move(from: Location, to: Location) -> Bool {
-        from.rank == to.rank || from.file == to.file
+    func isMovable(from: Location, to: Location) -> Bool {
+        from.row == to.row || from.col == to.col
     }
 }

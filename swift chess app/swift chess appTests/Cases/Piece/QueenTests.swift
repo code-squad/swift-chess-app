@@ -12,47 +12,47 @@ final class QueenTests: XCTestCase {
     
     var sut: Queen!
     
-    func testQueenMove() throws {
+    func testQueenMove() {
         let sut = Queen(color: .black)
         
-        let from = Location(rank: 4, file: 5)
+        let from = Location(row: 4, col: 5)
         var to: Location
         
-        to = Location(rank: 3, file: 4)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 3, col: 4)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 2, file: 7)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 7)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 6, file: 3)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 6, col: 3)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 6, file: 7)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 6, col: 7)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 2, file: 5)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 5)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 7, file: 5)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 7, col: 5)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 4, file: 1)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 4, col: 1)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 4, file: 6)
-        XCTAssertTrue(sut.move(from: from, to: to))
+        to = Location(row: 4, col: 6)
+        XCTAssertTrue(sut.isMovable(from: from, to: to))
         
         
-        to = Location(rank: 2, file: 4)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 4)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 2, file: 8)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 2, col: 8)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 7, file: 3)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 7, col: 3)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
         
-        to = Location(rank: 6, file: 6)
-        XCTAssertFalse(sut.move(from: from, to: to))
+        to = Location(row: 6, col: 6)
+        XCTAssertFalse(sut.isMovable(from: from, to: to))
     }
 }

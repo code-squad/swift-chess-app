@@ -8,69 +8,60 @@
 import Foundation
 
 class Board {
+    private let rowCount: Int = 8
+    private let colCount: Int = 8
     
-    private let rankCount: Int = 8          // row: 1, 2, ..., 8
-    private let fileCount: Int = 8          // column: A, B, ..., H
-    
-    var board: [[Pieceable?]] = []
-    var order: PieceColor = .black
+    private var board: [[Pieceable?]] = []
+    private var order: PieceColor = .black
     
     init() {
         startGame()
     }
     
     var score: Score {
-        return Score(black: getScore(color: .black),
-                     white: getScore(color: .white))
+        Score(black: getScore(color: .black),
+              white: getScore(color: .white))
     }
     
     func display() -> String {
         var result: String
-        result = " ABCDEFGH\n"
-        for i in 0 ..< rankCount {
-            result += "\(i + 1)"
-            for j in 0 ..< fileCount {
-                if let piece = board[i][j] {
-                    result += piece.getSymbol().image
-                } else {
-                    result += Symbol.empty.image
-                }
+        result = " ABCDEFGH"
+        for i in 0 ..< rowCount {
+            result += "\n\(i + 1)"
+            for j in 0 ..< colCount {
+                result += (board[i][j]?.getSymbol() ?? Symbol.empty).image
             }
-            result += "\n"
         }
-        result += " ABCDEFGH"
+        result += "\n ABCDEFGH"
         
         return result
     }
-    
-    func startGame() {
-        let rank = [Pieceable?](repeating: nil, count: fileCount)
-        board = [[Pieceable?]](repeating: rank, count: rankCount)
         
-        putPawns()
-        putBishops()
-        putRooks()
-        putQueens()
-        putKnights()
-    }
-    
     func move(from: String, to: String) -> Bool {
+        // 해당 위치로 이동할 수 없는 경우
         guard let from = getLocation(input: from),
               let to = getLocation(input: to) else { return false }
+        
+        // 현재 위치에 피스가 없는 경우
+        guard let selectedPiece = board[from.row][from.col] else { return false }
+        
+        // 이동하려는 위치와 현재 위치가 같은 경우
         guard from != to else { return false }
         
-        guard let selectedPiece = board[from.rank][from.file] else { return false }
+        // 차례가 아닌 경우
+        guard selectedPiece.color == order else { return false }
         
-        if let targetPiece = board[to.rank][to.file] {
+        // 이동하려는 곳에 같은 색 피스가 있는 경우
+        if let targetPiece = board[to.row][to.col] {
             guard selectedPiece.color != targetPiece.color else { return false }
         }
         
-        guard selectedPiece.color == order else { return false }
-        guard selectedPiece.move(from: from, to: to) else { return false }
+        // 선택된 피스의 이동 규칙이 잘못된 경우
+        guard selectedPiece.isMovable(from: from, to: to) else { return false }
         
         
-        board[to.rank][to.file] = board[from.rank][from.file]
-        board[from.rank][from.file] = nil
+        board[to.row][to.col] = board[from.row][from.col]
+        board[from.row][from.col] = nil
         
         order = order == .black ? .white : .black
         return true
@@ -90,16 +81,27 @@ private extension Board {
             .reduce(0) { $0 + type(of: $1).score }
     }
     
+    func startGame() {
+        let row = [Pieceable?](repeating: nil, count: colCount)
+        board = [[Pieceable?]](repeating: row, count: rowCount)
+        
+        putPawns()
+        putBishops()
+        putRooks()
+        putQueens()
+        putKnights()
+    }
+    
     func putPieces(piece: Pieceable, input locations: String...) {
         locations.forEach {
             guard let location = getLocation(input: $0) else { return }
             
-            let rank = location.rank
-            let file = location.file
+            let row = location.row
+            let col = location.col
             
-            guard rank >= 0 && rank < fileCount else { return }
-            guard file >= 0 && file < fileCount else { return }
-            guard board[rank][file] == nil else { return }
+            guard row >= 0 && row < rowCount else { return }
+            guard col >= 0 && col < colCount else { return }
+            guard board[row][col] == nil else { return }
             
             let count = pieces
                 .filter { $0.getSymbol().image == piece.getSymbol().image }
@@ -107,24 +109,18 @@ private extension Board {
             
             guard count < type(of: piece).maxCount else { return }
             
-            board[rank][file] = piece
+            board[row][col] = piece
         }
     }
     
-    func getLocation(input location: String) -> Location? {
-        guard location.count == 2 else { return nil }
+    func getLocation(input: String) -> Location? {
+        guard let position = Position(input: input) else { return nil }
+        guard let location = position.getLocation() else { return nil }
         
-        var rank = Int(location.unicodeScalars.last!.value)
-        rank -= Int(UnicodeScalar("0").value)
-        rank -= 1
-        var file = Int(location.unicodeScalars.first!.value)
-        file -= Int(UnicodeScalar("A").value)
+        guard location.row >= 0 && location.row < rowCount else { return nil }
+        guard location.col >= 0 && location.col < colCount else { return nil }
         
-        
-        guard rank >= 0 && rank < fileCount else { return nil }
-        guard file >= 0 && file < fileCount else { return nil }
-        
-        return Location(rank: rank, file: file)
+        return location
     }
     
     func putPawns() {

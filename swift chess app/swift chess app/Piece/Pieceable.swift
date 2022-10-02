@@ -13,7 +13,7 @@ protocol Pieceable {
     
     var color: PieceColor { get }
     
-    func move(from: Location, to: Location) -> Bool
+    func isMovable(from: Location, to: Location) -> Bool
 }
 
 extension Pieceable {
