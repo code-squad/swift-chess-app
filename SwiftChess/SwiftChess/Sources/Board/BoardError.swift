@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 체스판 타입에서 발생할 수 있는 에러 타입.
 enum BoardError: Equatable {
     /// 유효하지 않은 rank를 전달함
     case invalidRank(Int)
