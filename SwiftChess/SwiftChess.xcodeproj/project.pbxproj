@@ -38,7 +38,6 @@
 		AABA53BC28E1D31B00006508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABA53BA28E1D31B00006508 /* Main.storyboard */; };
 		AABA53BE28E1D31C00006508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABA53BD28E1D31C00006508 /* Assets.xcassets */; };
 		AABA53C128E1D31C00006508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABA53BF28E1D31C00006508 /* LaunchScreen.storyboard */; };
-		AABA53CC28E1D31C00006508 /* SwiftChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53CB28E1D31C00006508 /* SwiftChessTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +85,6 @@
 		AABA53C028E1D31C00006508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AABA53C228E1D31C00006508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AABA53C728E1D31C00006508 /* SwiftChessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AABA53CB28E1D31C00006508 /* SwiftChessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,7 +284,6 @@
 				AA53AC9D28E43D240051D8CB /* Board */,
 				AA53ACBB28E4A2030051D8CB /* Command */,
 				AA53AD1528E98B900051D8CB /* Common */,
-				AABA53CB28E1D31C00006508 /* SwiftChessTests.swift */,
 			);
 			path = SwiftChessTests;
 			sourceTree = "<group>";
@@ -495,7 +492,6 @@
 				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
 				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
 				AA53AD1C28E98D800051D8CB /* FoundationTests.swift in Sources */,
-				AABA53CC28E1D31C00006508 /* SwiftChessTests.swift in Sources */,
 				AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */,
 			);
