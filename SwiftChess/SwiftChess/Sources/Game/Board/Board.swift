@@ -5,15 +5,6 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
-struct GamePoint: Equatable {
-    var black: Int
-    var white: Int
-}
-
-extension GamePoint {
-    static let zeros = Self(black: 0, white: 0)
-}
-
 /// 체스판 타입.
 final class Board {
 

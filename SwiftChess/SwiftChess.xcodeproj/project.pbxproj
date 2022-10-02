@@ -28,6 +28,7 @@
 		AA53AD0228E94E340051D8CB /* Board+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0128E94E340051D8CB /* Board+Location.swift */; };
 		AA53AD0728E968170051D8CB /* MoveCommandParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0628E968170051D8CB /* MoveCommandParserError.swift */; };
 		AA53AD0928E96C190051D8CB /* MoveCommandValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0828E96C190051D8CB /* MoveCommandValidator.swift */; };
+		AA53AD0F28E986C80051D8CB /* GamePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0E28E986C80051D8CB /* GamePoint.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -78,6 +79,7 @@
 		AA53AD0128E94E340051D8CB /* Board+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Location.swift"; sourceTree = "<group>"; };
 		AA53AD0628E968170051D8CB /* MoveCommandParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandParserError.swift; sourceTree = "<group>"; };
 		AA53AD0828E96C190051D8CB /* MoveCommandValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandValidator.swift; sourceTree = "<group>"; };
+		AA53AD0E28E986C80051D8CB /* GamePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePoint.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,16 +120,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA53AC9428E414140051D8CB /* Board */ = {
+		AA53AC9428E414140051D8CB /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				AA53ACB328E491360051D8CB /* Command */,
-				AA53AC9728E41A870051D8CB /* Model */,
-				AA53AC9528E41A840051D8CB /* Board.swift */,
-				AA53AD0128E94E340051D8CB /* Board+Location.swift */,
-				AA53ACF228E759810051D8CB /* BoardError.swift */,
+				AA53AD1028E9872D0051D8CB /* Board */,
+				AA53AD0D28E986BC0051D8CB /* SharedModel */,
 			);
-			path = Board;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		AA53AC9728E41A870051D8CB /* Model */ = {
@@ -223,6 +222,26 @@
 			path = Move;
 			sourceTree = "<group>";
 		};
+		AA53AD0D28E986BC0051D8CB /* SharedModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD0E28E986C80051D8CB /* GamePoint.swift */,
+			);
+			path = SharedModel;
+			sourceTree = "<group>";
+		};
+		AA53AD1028E9872D0051D8CB /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				AA53ACB328E491360051D8CB /* Command */,
+				AA53AC9728E41A870051D8CB /* Model */,
+				AA53AC9528E41A840051D8CB /* Board.swift */,
+				AA53AD0128E94E340051D8CB /* Board+Location.swift */,
+				AA53ACF228E759810051D8CB /* BoardError.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
 		AABA53A828E1D31A00006508 = {
 			isa = PBXGroup;
 			children = (
@@ -293,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				AABA53E428E1D3FA00006508 /* Application */,
-				AA53AC9428E414140051D8CB /* Board */,
+				AA53AC9428E414140051D8CB /* Game */,
 				AA53ACA228E43E580051D8CB /* Common */,
 				AABA53E528E1D4C900006508 /* Home */,
 			);
@@ -473,6 +492,7 @@
 			files = (
 				AA53ACFE28E94D9F0051D8CB /* RangedRawValueRepresentable.swift in Sources */,
 				AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */,
+				AA53AD0F28E986C80051D8CB /* GamePoint.swift in Sources */,
 				AA53ACFC28E94D6D0051D8CB /* AsciiValueRepresentable.swift in Sources */,
 				AA53ACFA28E94C970051D8CB /* IndexRepresentable.swift in Sources */,
 				AA53AD0028E94DD80051D8CB /* RawValueInitializable.swift in Sources */,
