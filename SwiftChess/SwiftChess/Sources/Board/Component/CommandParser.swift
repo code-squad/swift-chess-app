@@ -10,23 +10,6 @@ struct MoveCommand {
     let endPoint: Board.Location
 }
 
-enum CommandParserError: Error, Equatable {
-    /// 유효하지 않은 명령
-    case invalidCommand
-    /// 검증 실패(형식에 맞지않음, 유효하지 않은 출발점/도착점 등)
-    case validationFailed
-    /// 검증을 마친 문자열이 사라짐(발생하지 않음)
-    case locationStringsNotExist
-    /// 검증을 마친 캐릭터가 사라짐(발생하지 않음)
-    case fileOrRankCharacterNotExists
-    /// Location 인스턴스 생성 중 rank 전달인자가 정수형이 아님
-    case enteredRankCannotBeCastedToInteger
-    /// 유효하지 않은 범위의 Rank가 전달됨
-    case invalidRank(Int)
-    /// 유효하지 않은 범위의 File이 전달됨
-    case invalidFile(String)
-}
-
 /// 사용자 입력을 해석하는 타입.
 enum CommandParser {
 

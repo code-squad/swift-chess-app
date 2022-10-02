@@ -26,6 +26,7 @@
 		AA53ACFE28E94D9F0051D8CB /* RangedRawValueRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACFD28E94D9F0051D8CB /* RangedRawValueRepresentable.swift */; };
 		AA53AD0028E94DD80051D8CB /* RawValueInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACFF28E94DD80051D8CB /* RawValueInitializable.swift */; };
 		AA53AD0228E94E340051D8CB /* Board+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0128E94E340051D8CB /* Board+Location.swift */; };
+		AA53AD0728E968170051D8CB /* CommandParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0628E968170051D8CB /* CommandParserError.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -74,6 +75,7 @@
 		AA53ACFD28E94D9F0051D8CB /* RangedRawValueRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedRawValueRepresentable.swift; sourceTree = "<group>"; };
 		AA53ACFF28E94DD80051D8CB /* RawValueInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawValueInitializable.swift; sourceTree = "<group>"; };
 		AA53AD0128E94E340051D8CB /* Board+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Location.swift"; sourceTree = "<group>"; };
+		AA53AD0628E968170051D8CB /* CommandParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParserError.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				AA53ACB428E491430051D8CB /* CommandParser.swift */,
+				AA53AD0628E968170051D8CB /* CommandParserError.swift */,
 				AA53ACB628E491540051D8CB /* CommandReader.swift */,
 			);
 			path = Component;
@@ -458,6 +461,7 @@
 				AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */,
 				AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */,
 				AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */,
+				AA53AD0728E968170051D8CB /* CommandParserError.swift in Sources */,
 				AA53AD0228E94E340051D8CB /* Board+Location.swift in Sources */,
 				AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */,
 				AA53ACB528E491430051D8CB /* CommandParser.swift in Sources */,

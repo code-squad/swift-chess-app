@@ -45,7 +45,7 @@ extension Board.Location {
 
 extension Board.Location {
 
-    /// 위치와 이동규칙을 더해 도착점을 계산한다.
+    /// 위치와 이동규칙을 더해 새로운 위치를 계산한다.
     /// - Parameters:
     ///   - lhs: 위치. 주로 현재 위치를 사용한다.
     ///   - rhs: 체스말의 이동 규칙.
@@ -58,8 +58,7 @@ extension Board.Location {
         return Self(file: calculatedFile, rank: calculatedRank)
     }
 
-
-    /// 위치와 이동규칙의 차를 통해 새로운 위치을 계산한다.
+    /// 위치와 이동규칙의 차를 통해 새로운 위치를 계산한다.
     /// - Parameters:
     ///   - lhs: 위치. 주로 현재 위치를 사용한다.
     ///   - rhs: 체스말의 이동 규칙.
@@ -84,7 +83,7 @@ extension Board.Location.File: AsciiValueRepresentable {
 
 extension Board.Location.Rank {
 
-    /// ``Rank``와 이동규칙의 이동 단위를 더해 새로운 rank를 구한다.
+    /// ``Rank``와 이동규칙의 이동 단위를 더해 새로운 rank를 계산한다.
     /// - Parameters:
     ///   - lhs: Rank. 주로 현재 rank를 사용한다.
     ///   - rhs: 체스말 이동규칙의 이동 단위.
@@ -93,7 +92,7 @@ extension Board.Location.Rank {
         return Self(rawValue: lhs.rawValue + rhs.extractedValue)
     }
 
-    /// ``Rank``와 이동규칙의 차를 통해 새로운 rank를 구한다.
+    /// ``Rank``와 이동규칙의 차를 통해 새로운 rank를 계산한다.
     /// - Parameters:
     ///   - lhs: Rank. 주로 현재 rank를 사용한다.
     ///   - rhs: 체스말 이동규칙의 이동 단위.
