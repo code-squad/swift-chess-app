@@ -5,11 +5,26 @@
 //  Created by Geonhee on 2022/09/28.
 //
 
+struct GamePoint: Equatable {
+    var black: Int
+    var white: Int
+}
+
+extension GamePoint {
+    static let zeros = Self(black: 0, white: 0)
+}
+
 /// 체스판 타입.
 final class Board {
 
     /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다.
     private(set) var status: [[BoardElementRepresentable]] = []
+    private var gamePoint: GamePoint {
+        didSet {
+            onGamePointChange?(gamePoint)
+        }
+    }
+    private let onGamePointChange: ((GamePoint) -> Void)?
 
     subscript(_ location: Board.Location) -> BoardElementRepresentable {
         get {
@@ -22,13 +37,22 @@ final class Board {
 
     /// 주어진 상태로 체스판을 초기화한다.
     init(
-        status: [[BoardElementRepresentable]]
+        status: [[BoardElementRepresentable]],
+        gamePoint: GamePoint = .zeros,
+        onGamePointChange: @escaping ((GamePoint) -> Void) = { _ in }
     ) {
         self.status = status
+        self.gamePoint = gamePoint
+        self.onGamePointChange = onGamePointChange
     }
 
     /// 지정된 방식으로 체스판을 초기화한다.
-    init() {
+    init(
+        gamePoint: GamePoint = .zeros,
+        gamePointChanged: @escaping ((GamePoint) -> Void) = { _ in }
+    ) {
+        self.gamePoint = gamePoint
+        self.onGamePointChange = gamePointChanged
         setInitialState()
     }
 
@@ -99,6 +123,7 @@ final class Board {
         if self[command.endPoint] is Empty {
             captureEnemyPiece(at: command.endPoint)
             let currentPoints = currentPoints()
+            onGamePointChange?(currentPoints)
             // TODO: 출력 타입 마련해서 포매팅 후 출력
             print(currentPoints)
         }
@@ -170,7 +195,7 @@ final class Board {
 
     /// black, white 양 진영의 현재 점수를 반환한다.
     /// - Returns: 흑백 양 진영의 현재 점수 튜플.
-    func currentPoints() -> (black: Int, white: Int) {
+    func currentPoints() -> GamePoint {
         let existingPieces = status
             .flatMap { $0.compactMap { $0 as? Piece } }
         return reducePoints(from: existingPieces)
@@ -179,23 +204,21 @@ final class Board {
     /// 체스판에 존재하는 ``Piece``를 이용해 black, white 양 진영의 점수를 계산하여 반환한다.
     /// - Parameter existingPieces: 체스판 위에 존재하는 체스말들.
     /// - Returns: 체스판 위에 존재하는 체스말을 통해 계산된 흑백 양 진영의 현재 점수 튜플.
-    private func reducePoints(
-        from existingPieces: [Piece]
-    ) -> (black: Int, white: Int) {
-        let points = (
+    private func reducePoints(from existingPieces: [Piece]) -> GamePoint {
+        let points = GamePoint(
             black: Board.Configuration.totalAvailablePoints,
             white: Board.Configuration.totalAvailablePoints
         )
         return existingPieces.reduce(points) { partialResult, piece in
             switch piece.color {
             case .black:
-                return (
+                return GamePoint(
                     black: partialResult.black,
                     white: partialResult.white - piece.point
                 )
 
             case .white:
-                return (
+                return GamePoint(
                     black: partialResult.black - piece.point,
                     white: partialResult.white
                 )

@@ -59,32 +59,32 @@ final class BoardTests: XCTestCase {
     // MARK: - 점수 측정
 
     func test_체스판초기화후_점수를측정하면_각진영의점수는0이다() {
-        let expectedPoints = (black: 0, white: 0)
+        let expectedPoints = GamePoint.zeros
 
         let currentPoints = sut?.currentPoints()
 
-        XCTAssertEqual(currentPoints?.black, expectedPoints.black)
-        XCTAssertEqual(currentPoints?.white, expectedPoints.white)
+        XCTAssertEqual(currentPoints, expectedPoints)
     }
 
     func test_각진영에Pawn이하나씩남아있을때_점수를측정하면_모든진영의점수는7이다() {
         let sut = Board(status: Self.topLeftEngagedPawnsMock)
-        let expectedPoint = 7
+        let expectedPoints = GamePoint(black: 7, white: 7)
 
         let currentPoints = sut.currentPoints()
 
-        XCTAssertEqual(currentPoints.black, expectedPoint)
-        XCTAssertEqual(currentPoints.white, expectedPoint)
+        XCTAssertEqual(currentPoints, expectedPoints)
     }
 
     func test_체스판에말이없을때_점수를측정하면_각진영모두최대점수이다() {
         let sut = Board(status: Self.emptyMock)
-        let expectedPoint = Board.Configuration.totalAvailablePoints
+        let expectedPoints = GamePoint(
+            black: Board.Configuration.totalAvailablePoints,
+            white: Board.Configuration.totalAvailablePoints
+        )
 
         let currentPoints = sut.currentPoints()
 
-        XCTAssertEqual(currentPoints.black, expectedPoint)
-        XCTAssertEqual(currentPoints.white, expectedPoint)
+        XCTAssertEqual(currentPoints, expectedPoints)
     }
 
     // MARK: - 이동
@@ -114,42 +114,50 @@ final class BoardTests: XCTestCase {
 
     func test_흑색진영이백색Pawn을잡으면_흑색진영이1점을얻는다() throws {
         let sut = Board(status: Self.topLeftEngagedPawnsMock)
+        let expectedInitialPawnCount = 1
+        let expectedInitialPoints = GamePoint(black: 7, white: 7)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
-        XCTAssertEqual(initialPawnCounts.black, 1)
-        XCTAssertEqual(initialPawnCounts.white, 1)
-        XCTAssertEqual(initialPoints.black, 7)
-        XCTAssertEqual(initialPoints.white, 7)
+        XCTAssertEqual(initialPawnCounts.black, expectedInitialPawnCount)
+        XCTAssertEqual(initialPawnCounts.white, expectedInitialPawnCount)
+        XCTAssertEqual(initialPoints, expectedInitialPoints)
 
         let moveCommand = MoveCommand(startPoint: .A1, endPoint: .A2)
         try sut.move(with: moveCommand)
 
+        let expectedCurrentPoints = GamePoint(
+            black: initialPoints.black + 1,
+            white: initialPoints.white
+        )
         let currentPawnCounts = sut.pieceCount(for: Pawn.self)
         let currentPoints = sut.currentPoints()
         XCTAssertEqual(currentPawnCounts.black, initialPawnCounts.black)
         XCTAssertEqual(currentPawnCounts.white, initialPawnCounts.white - 1)
-        XCTAssertEqual(currentPoints.black, initialPoints.black + 1)
-        XCTAssertEqual(currentPoints.white, initialPoints.white)
+        XCTAssertEqual(currentPoints, expectedCurrentPoints)
     }
 
     func test_백색진영이흑색Pawn을잡으면_백색진영이1점을얻는다() throws {
         let sut = Board(status: Self.topLeftEngagedPawnsMock)
+        let expectedInitialPawnCount = 1
+        let expectedInitialPoints = GamePoint(black: 7, white: 7)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
-        XCTAssertEqual(initialPawnCounts.black, 1)
-        XCTAssertEqual(initialPawnCounts.white, 1)
-        XCTAssertEqual(initialPoints.black, 7)
-        XCTAssertEqual(initialPoints.white, 7)
+        XCTAssertEqual(initialPawnCounts.black, expectedInitialPawnCount)
+        XCTAssertEqual(initialPawnCounts.white, expectedInitialPawnCount)
+        XCTAssertEqual(initialPoints, expectedInitialPoints)
 
         let moveCommand = MoveCommand(startPoint: .A2, endPoint: .A1)
         try sut.move(with: moveCommand)
 
+        let expectedCurrentPoints = GamePoint(
+            black: initialPoints.black,
+            white: initialPoints.white + 1
+        )
         let currentPawnCounts = sut.pieceCount(for: Pawn.self)
         let currentPoints = sut.currentPoints()
         XCTAssertEqual(currentPawnCounts.black, initialPawnCounts.black - 1)
         XCTAssertEqual(currentPawnCounts.white, initialPawnCounts.white)
-        XCTAssertEqual(currentPoints.black, initialPoints.black)
-        XCTAssertEqual(currentPoints.white, initialPoints.white + 1)
+        XCTAssertEqual(currentPoints, expectedCurrentPoints)
     }
 
     func test_출발점과도착점이동일하면_이동시킬수없다() {
