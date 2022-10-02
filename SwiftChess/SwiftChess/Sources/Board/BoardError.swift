@@ -14,10 +14,6 @@ enum BoardError: Equatable {
     case pieceNotExistsAtStartPoint(Board.Location)
     /// 이동 가능한 위치가 존재하지 않음
     case movableLocationsNotExists
-    /// 이동을 시도하였으나 시작점이 유효하지 않음
-    case invalidStartPoint(Board.Location)
-    /// 이동을 시도하였으나 도착점이 유효하지 않음
-    case invalidEndPoint(Board.Location)
     /// 이동 시 시작점과 도착점이 동일할 수 없음
     case startEndPointShouldNotBeIdentical
     /// 이동 규칙에 따라 해당 체스말은 지정한 도착점로 이동할 수 없음
@@ -33,7 +29,7 @@ extension BoardError: LocalizedError {
         case let .invalidRank(rank):
             return """
             유효하지 않은 rank를 입력했습니다. 입력한 Rank: \(rank)"
-            입력 가능한 범위 \(Board.Configuration.minimumRank) ~ \(Board.Configuration.maximumRank)
+            입력 가능한 범위 \(Board.Location.Rank.minimumRawValue ?? 0) ~ \(Board.Location.Rank.maximumRawValue ?? 0)
             """
 
         case let .pieceNotExistsAtStartPoint(startPoint):
@@ -41,12 +37,6 @@ extension BoardError: LocalizedError {
 
         case .movableLocationsNotExists:
             return "현재 지점에서 이동 가능한 위치가 존재하지 않습니다."
-
-        case let .invalidStartPoint(startPoint):
-            return "지정한 시작점이 체스판에 존재하지 않습니다. 입력한 시작점: \(startPoint)"
-
-        case let .invalidEndPoint(endPoint):
-            return "지정한 도착점이 체스판에 존재하지 않습니다. 입력한 도착점: \(endPoint)"
 
         case .startEndPointShouldNotBeIdentical:
             return "시작점과 도착점이 동일합니다. 입력을 다시 확인해주세요."

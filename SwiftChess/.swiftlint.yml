@@ -1,0 +1,8 @@
+disabled_rules:
+  - identifier_name
+  - trailing_comma
+  - nesting
+
+line_length:
+  ignores_comments: true
+  ignores_interpolated_strings: true

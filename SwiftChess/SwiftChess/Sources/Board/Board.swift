@@ -13,10 +13,10 @@ final class Board {
 
     subscript(_ location: Board.Location) -> BoardElementRepresentable {
         get {
-            return status[location.rank.asIndex][location.file.asIndex]
+            return status[location.rank.index][location.file.index]
         }
         set {
-            status[location.rank.asIndex][location.file.asIndex] = newValue
+            status[location.rank.index][location.file.index] = newValue
         }
     }
 
@@ -132,14 +132,6 @@ final class Board {
         startPoint: Board.Location,
         endPoint: Board.Location
     ) throws {
-        guard startPoint.isValid else {
-            throw BoardError.invalidStartPoint(startPoint)
-        }
-
-        guard endPoint.isValid else {
-            throw BoardError.invalidEndPoint(endPoint)
-        }
-
         guard startPoint != endPoint else {
             throw BoardError.startEndPointShouldNotBeIdentical
         }
@@ -242,34 +234,128 @@ extension Board {
         static let size = Size(rank: 8, file: 8)
         /// 진영별 얻을 수 있는 총 점수
         static let totalAvailablePoints = Pawn.point * Pawn.maxCount
-        static let minimumRank = 1
-        static let maximumRank = 8
         static let minimumFile: String = "A"
-        static let maximumFile: String = "H"
     }
 
     /// 체스판 내 위치를 나타내는 타입.
     struct Location: Equatable {
-        /// 행(Row)
-        var rank: Int
         /// 열(Column)
-        var file: Int
+        var file: File
+        /// 행(Row)
+        var rank: Rank
     }
 }
 
 extension Board.Location {
 
-    static func + (lhs: Self, rhs: MoveRule) -> Self {
-        return Self(rank: lhs.rank + rhs.rank, file: lhs.file + rhs.file)
+    enum Rank: Int, Equatable, RawValueInitializable, RangedRawRepresentable {
+        case one = 1
+        case two
+        case three
+        case four
+        case five
+        case six
+        case seven
+        case eight
     }
 
-    static func - (lhs: Self, rhs: MoveRule) -> Self {
-        return Self(rank: lhs.rank - rhs.rank, file: lhs.file - rhs.file)
+    enum File: Int, Equatable, RawValueInitializable, RangedRawRepresentable {
+        case A = 1
+        case B
+        case C
+        case D
+        case E
+        case F
+        case G
+        case H
+    }
+}
+
+protocol IndexRepresentable {
+    var index: Int { get }
+}
+
+extension IndexRepresentable where Self: RawRepresentable, RawValue == Int {
+    var index: Int {
+        return self.rawValue - 1
+    }
+}
+
+extension Board.Location.Rank: IndexRepresentable {}
+extension Board.Location.File: IndexRepresentable {}
+
+protocol AsciiValueRepresentable {
+    var asciiValue: Int { get }
+}
+
+extension Board.Location.File: AsciiValueRepresentable {
+    var asciiValue: Int {
+        return Board.Configuration.minimumFile.asAsciiValue + self.rawValue - 1
+    }
+}
+
+protocol RangedRawRepresentable: RawRepresentable, CaseIterable {
+    static var minimumRawValue: RawValue? { get }
+    static var maximumRawValue: RawValue? { get }
+    static var minimumCase: Self? { get }
+    static var maximumCase: Self? { get }
+}
+
+protocol RawValueInitializable: RawRepresentable {
+    init?(rawValue: RawValue)
+}
+
+extension RangedRawRepresentable where Self: RawValueInitializable, RawValue: Comparable {
+
+    static var minimumRawValue: RawValue? {
+        return allCases.map(\.rawValue).min()
     }
 
-    /// 해당 위치가 체스판 안에 존재하는지 여부를 반환한다.
-    var isValid: Bool {
-        return (1...Board.Configuration.size.rank).contains(self.rank) &&
-        (1...Board.Configuration.size.file).contains(self.file)
+    static var maximumRawValue: RawValue? {
+        return allCases.map(\.rawValue).max()
+    }
+
+    static var minimumCase: Self? {
+        guard let minimumRawValue = minimumRawValue else { return nil }
+        return Self(rawValue: minimumRawValue)
+    }
+
+    static var maximumCase: Self? {
+        guard let maximumRawValue = maximumRawValue else { return nil }
+        return Self(rawValue: maximumRawValue)
+    }
+}
+
+extension Board.Location.Rank {
+    static func + (lhs: Self, rhs: MoveRule.Step) -> Self? {
+        return Self(rawValue: lhs.rawValue + rhs.extractedValue)
+    }
+
+    static func - (lhs: Self, rhs: MoveRule.Step) -> Self? {
+        return Self(rawValue: lhs.rawValue - rhs.extractedValue)
+    }
+}
+
+extension Board.Location {
+    static func + (lhs: Self, rhs: MoveRule) -> Self? {
+        guard let calculatedRank = Rank(rawValue: lhs.rank.rawValue + rhs.rank.extractedValue),
+              let calculatedFile = File(rawValue: lhs.file.rawValue + rhs.file.extractedValue) else {
+            return nil
+        }
+        return Self(
+            file: calculatedFile,
+            rank: calculatedRank
+        )
+    }
+
+    static func - (lhs: Self, rhs: MoveRule) -> Self? {
+        guard let calculatedRank = Rank(rawValue: lhs.rank.rawValue - rhs.rank.extractedValue),
+              let calculatedFile = File(rawValue: lhs.file.rawValue - rhs.file.extractedValue) else {
+            return nil
+        }
+        return Self(
+            file: calculatedFile,
+            rank: calculatedRank
+        )
     }
 }
