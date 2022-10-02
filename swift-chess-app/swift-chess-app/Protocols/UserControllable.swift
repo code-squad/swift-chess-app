@@ -9,5 +9,5 @@ import Foundation
 
 protocol UserControllable {
     
-    func doAction() -> Action
+    func enterCommand() -> Action?
 }

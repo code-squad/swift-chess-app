@@ -16,17 +16,19 @@ class BoardTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
+        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white),
-            user2: User(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white, controller: inputManager),
+            user2: User(name: "test2", color: .black, controller: inputManager)
         )
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
+        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white),
-            user2: User(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white, controller: inputManager),
+            user2: User(name: "test2", color: .black, controller: inputManager)
         )
     }
     
@@ -113,7 +115,7 @@ class BoardTests: XCTestCase {
         // when
         chessBrain.start()
         let result = sut.data
-            .filter { (point, piece) in point.rank.num == 1 || point.rank.num == 2 }
+            .filter { (point, piece) in point.rank.rawValue == 1 || point.rank.rawValue == 2 }
             .reduce(true) { partial, keyValue -> Bool in
                 let (_, piece) = keyValue
                 return partial && (piece.color == pieceColor)
@@ -130,7 +132,7 @@ class BoardTests: XCTestCase {
         // when
         chessBrain.start()
         let result = sut.data
-            .filter { (point, piece) in point.rank.num == 7 || point.rank.num == 8 }
+            .filter { (point, piece) in point.rank.rawValue == 7 || point.rank.rawValue == 8 }
             .reduce(true) { partial, keyValue -> Bool in
                 let (_, piece) = keyValue
                 return partial && (piece.color == pieceColor)
@@ -149,10 +151,10 @@ class BoardTests: XCTestCase {
             .filter { (_, piece) in piece is Pawn }
             .map { $0.key }
             .sorted { lhs, rhs in
-                if lhs.rank.num == rhs.rank.num {
+                if lhs.rank.rawValue == rhs.rank.rawValue {
                     return lhs.file.rawValue < rhs.file.rawValue
                 }
-                return lhs.rank.num < rhs.rank.num
+                return lhs.rank.rawValue < rhs.rank.rawValue
             }
         
         // then

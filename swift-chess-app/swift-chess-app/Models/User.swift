@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User: UserProtocol {
+class User: UserInformable, Equatable {
     
     let id: String
     
@@ -15,7 +15,7 @@ class User: UserProtocol {
     
     let color: PieceColor
     
-    private let inputManager: InputManager
+    private let controller: UserControllable
     
     private(set) var state: UserState
     
@@ -25,19 +25,20 @@ class User: UserProtocol {
         id: String = UUID().uuidString,
         name: String,
         color: PieceColor,
-        inputManager: InputManager = .init()
+        controller: UserControllable
     ) {
+        self.id = id
+        self.name = name
         self.color = color
-        self.inputManager = inputManager
+        self.controller = controller
         self.state = .init()
-        super.init(id: id, name: name)
     }
 }
 
 extension User {
     
     func doAction() -> Action {
-        if let action = inputManager.enterCommand() {
+        if let action = controller.enterCommand() {
             return action
         }
         return .unknown
