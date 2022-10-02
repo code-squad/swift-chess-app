@@ -7,54 +7,58 @@
 
 import Foundation
 
-struct Rank: Hashable {
+enum Rank: Int, CaseIterable, Hashable {
     
-    let num: Int
+    case one = 1, two, three, four, five, six, seven, eight
     
-    var toString: String { String(num) }
+    var toString: String { String(rawValue) }
+}
+
+private extension Rank {
     
-    static let allCases: ClosedRange<Int> = (1...8)
-    
-    private init(num: Int) {
-        self.num = num
+    init(num: Int) {
+        guard let rank = Rank(rawValue: num) else {
+            fatalError("Rank cannot be initialized")
+        }
+        self = rank
     }
 }
 
 extension Rank {
     
     init?(_ num: Int) {
-        guard num >= 1 && num <= 8 else { return nil}
-        self.num = num
+        guard let rank = Rank(rawValue: num) else { return nil }
+        self = rank
     }
     
     init?(_ string: String) {
-        guard let num = Int(string), num >= 1 && num <= 8 else { return nil }
-        self.num = num
+        guard let num = Int(string), let rank = Rank(rawValue: num) else { return nil }
+        self = rank
     }
 }
 
 extension Rank: Equatable {
     
     static func == (lhs: Rank, rhs: Rank) -> Bool {
-        return lhs.num == rhs.num
+        return lhs.rawValue == rhs.rawValue
     }
 }
 
 extension Rank {
     
     static func + (left: Rank, right: Rank) -> Rank {
-        return Rank(num: left.num + right.num)
+        return Rank(num: left.rawValue + right.rawValue)
     }
     
     static func + (left: Rank, right: Int) -> Rank {
-        return Rank(num: left.num + right)
+        return Rank(num: left.rawValue + right)
     }
     
     static func - (left: Rank, right: Rank) -> Rank {
-        return Rank(num: left.num - right.num)
+        return Rank(num: left.rawValue - right.rawValue)
     }
     
     static func - (left: Rank, right: Int) -> Rank {
-        return Rank(num: left.num - right)
+        return Rank(num: left.rawValue - right)
     }
 }

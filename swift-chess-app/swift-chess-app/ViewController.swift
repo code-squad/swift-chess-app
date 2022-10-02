@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     
     func chessMain() {
 //        print("(프로그램 실행)")
-//        let user1 = User(name: "JK", color: .white)
-//        let user2 = User(name: "Louie", color: .black)
+//        let inputManager = InputManager()
+//        let user1 = User(name: "JK", color: .white, controller: inputManager)
+//        let user2 = User(name: "Louie", color: .black, controller: inputManager)
 //
 //        print("체스 보드를 초기화했습니다.")
 //        let chessBrain = ChessBrain(user1: user1, user2: user2)

@@ -15,7 +15,7 @@ struct Point: Hashable {
     
     var toString: String { file.toString + rank.toString }
     
-    var toTuple: (row: Int, col: Int) { (row: rank.num - 1, col: file.toInt) }
+    var toTuple: (row: Int, col: Int) { (row: rank.rawValue - 1, col: file.toInt) }
 }
 
 extension Point {

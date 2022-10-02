@@ -16,12 +16,10 @@ final class Board {
     var data: BoardDataType = [:]
     
     var toList: [[Piece?]] {
-        var lists = Rank.allCases.map { _ -> [Piece?] in
-            File.allCases.map { _ -> Piece? in nil }
-        }
-        data.forEach { (point, piece) in
-            let location = piece.point.toTuple
-            lists[location.row][location.col] = piece
+        var lists = Rank.allCases.map { _ -> [Piece?] in File.allCases.map { _ -> Piece? in nil } }
+        data.forEach { (_, piece) in
+            let loc = piece.point.toTuple
+            lists[loc.row][loc.col] = piece
         }
         return lists
     }

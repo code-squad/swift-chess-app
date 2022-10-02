@@ -16,18 +16,20 @@ class BoardPresenterTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
+        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white),
-            user2: User(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white, controller: inputManager),
+            user2: User(name: "test2", color: .black, controller: inputManager)
         )
         sut = BoardPresenter()
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
+        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white),
-            user2: User(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white, controller: inputManager),
+            user2: User(name: "test2", color: .black, controller: inputManager)
         )
         sut = BoardPresenter()
     }

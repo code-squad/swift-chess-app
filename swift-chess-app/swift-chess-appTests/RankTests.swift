@@ -32,7 +32,7 @@ class RankTests: XCTestCase {
         
         // then
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut!.num, 3)
+        XCTAssertEqual(sut!.rawValue, 3)
     }
     
     func test_rank_is_valid_when_num_is_0() {
@@ -66,7 +66,7 @@ class RankTests: XCTestCase {
         
         // then
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut!.num, 8)
+        XCTAssertEqual(sut!.rawValue, 8)
     }
     
     func test_rank_is_valid_when_num_is_9() {
@@ -89,7 +89,7 @@ class RankTests: XCTestCase {
         
         // then
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut!.num, 3)
+        XCTAssertEqual(sut!.rawValue, 3)
     }
     
     func test_rank_is_valid_when_string_is_0() {
@@ -123,7 +123,7 @@ class RankTests: XCTestCase {
         
         // then
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut!.num, 8)
+        XCTAssertEqual(sut!.rawValue, 8)
     }
     
     func test_rank_is_valid_when_string_is_9() {
