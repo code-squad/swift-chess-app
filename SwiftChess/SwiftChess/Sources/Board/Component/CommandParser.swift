@@ -30,9 +30,13 @@ enum CommandParserError: Error, Equatable {
 /// 사용자 입력을 해석하는 타입.
 enum CommandParser {
 
+    enum Configuration {
+        static let commandSeparator: String = "->"
+    }
+
     /// 문자열 형식의 사용자 명령문을 해석하여 ``MoveCommand`` 인스턴스로 반환한다.
     static func parse(_ command: String) throws -> MoveCommand {
-        let locations = command.split(separator: "->")
+        let locations = command.split(separator: Self.Configuration.commandSeparator)
 
         guard validate(locations) else {
             throw CommandParserError.validationFailed
@@ -51,7 +55,7 @@ enum CommandParser {
         )
     }
 
-    /// 구분자 `->`를 기준으로 분리된 문자열들을 검증한다. 예) ["A1", "A2"]
+    /// ``CommandParser/Configuration/commandSeparator``를 기준으로 분리된 문자열들을 검증한다. 예) ["A1", "A2"]
     private static func validate(_ locationStrings: [String.SubSequence]) -> Bool {
         guard locationStrings.count == 2 else {
             // TODO: 로그 CommandParserError.invalidCommand
