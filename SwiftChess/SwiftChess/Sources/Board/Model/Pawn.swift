@@ -7,7 +7,9 @@
 
 /// 체스말 폰.
 struct Pawn: Piece {
-    static let moveRules: Set<MoveRule> = [MoveRule(file: .none, rank: .increment(.one))]
+    static let moveRules: Set<MoveRule> = [
+        MoveRule(file: .none, rank: .increment(.one))
+    ]
     static let maxCount: Int = 8
     static let point: Int = 1
 

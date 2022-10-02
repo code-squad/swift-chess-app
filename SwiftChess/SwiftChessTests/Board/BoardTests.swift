@@ -121,7 +121,8 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(initialPoints.black, 7)
         XCTAssertEqual(initialPoints.white, 7)
 
-        try sut.move(from: .A1, to: .A2)
+        let moveCommand = MoveCommand(startPoint: .A1, endPoint: .A2)
+        try sut.move(with: moveCommand)
 
         let currentPawnCounts = sut.pieceCount(for: Pawn.self)
         let currentPoints = sut.currentPoints()
@@ -140,7 +141,8 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(initialPoints.black, 7)
         XCTAssertEqual(initialPoints.white, 7)
 
-        try sut.move(from: .A2, to: .A1)
+        let moveCommand = MoveCommand(startPoint: .A2, endPoint: .A1)
+        try sut.move(with: moveCommand)
 
         let currentPawnCounts = sut.pieceCount(for: Pawn.self)
         let currentPoints = sut.currentPoints()
@@ -153,7 +155,8 @@ final class BoardTests: XCTestCase {
     func test_출발점과도착점이동일하면_이동시킬수없다() {
         let sut = Board(status: Self.topLeftWhitePawnMock)
 
-        XCTAssertThrowsError(try sut.move(from: .A1, to: .A1)) { error in
+        let moveCommand = MoveCommand(startPoint: .A1, endPoint: .A1)
+        XCTAssertThrowsError(try sut.move(with: moveCommand)) { error in
             XCTAssertEqual(
                 error as? BoardError,
                 .startEndPointShouldNotBeIdentical
@@ -164,7 +167,8 @@ final class BoardTests: XCTestCase {
     func test_출발점에체스말이없으면_이동시킬수없다() {
         let sut = Board(status: Self.emptyMock)
 
-        XCTAssertThrowsError(try sut.move(from: .A1, to: .A2)) { error in
+        let moveCommand = MoveCommand(startPoint: .A1, endPoint: .A2)
+        XCTAssertThrowsError(try sut.move(with: moveCommand)) { error in
             XCTAssertEqual(
                 error as? BoardError,
                 .pieceNotExistsAtStartPoint(.A1)
@@ -175,7 +179,8 @@ final class BoardTests: XCTestCase {
     func test_같은색상의말이도착점에있으면_이동할수없다() {
         let sut = Board(status: Self.topLeftBlockedPawnsMock)
 
-        XCTAssertThrowsError(try sut.move(from: .A1, to: .A2)) { error in
+        let moveCommand = MoveCommand(startPoint: .A1, endPoint: .A2)
+        XCTAssertThrowsError(try sut.move(with: moveCommand)) { error in
             XCTAssertEqual(
                 error as? BoardError,
                 .identicalColoredPieceAlreadyExists(endPoint: .A2)
