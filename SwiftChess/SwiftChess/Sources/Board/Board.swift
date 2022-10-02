@@ -81,26 +81,6 @@ final class Board {
         }
     }
 
-    // MARK: - 사용자 입력
-
-    func readCommand() -> String? {
-        do {
-            return try CommandReader.read()
-        } catch {
-            // TODO: Log error
-            return nil
-        }
-    }
-
-    func parseCommand(_ command: String) -> MoveCommand? {
-        do {
-            return try CommandParser.parse(command)
-        } catch {
-            // TODO: Log error
-            return nil
-        }
-    }
-
     // MARK: - 체스말 이동
 
     /// 체스말을 시작점에서 도착점로 이동시킨다.
