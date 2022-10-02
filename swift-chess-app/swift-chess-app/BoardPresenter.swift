@@ -1,5 +1,5 @@
 //
-//  ChessBoardPresenter.swift
+//  BoardPresenter.swift
 //  swift-chess-app
 //
 //  Created by Haeseok Lee on 2022/09/25.
@@ -7,24 +7,24 @@
 
 import Foundation
 
-class ChessBoardPresenter: ChessBoardViewable {
+class BoardPresenter: BoardViewable {
     
-    func display(from pieces: [[ChessPiece?]]) -> [String] {
+    func display(from pieces: [[Piece?]]) -> [String] {
         return initialized(pieces).map {
             $0.joined(separator: "")
         }
     }
     
-    func decoratedDisplay(from pieces: [[ChessPiece?]]) -> [String] {
+    func decoratedDisplay(from pieces: [[Piece?]]) -> [String] {
         decorated(initialized(pieces)).map {
             $0.joined(separator: "")
         }
     }
 }
 
-private extension ChessBoardPresenter {
+private extension BoardPresenter {
     
-    func initialized(_ pieces: [[ChessPiece?]]) -> [[String]] {
+    func initialized(_ pieces: [[Piece?]]) -> [[String]] {
         return pieces.map { row in
             row.map { piece in
                 return piece == nil ? "." : (piece?.toIcon ?? ".")
@@ -34,7 +34,7 @@ private extension ChessBoardPresenter {
     
     func decorated(_ strings: [[String]]) -> [[String]] {
         var newStrings = [[String]]()
-        let rowString = [" "] + ChessFile.allCases.map({ $0.toString })
+        let rowString = [" "] + File.allCases.map({ $0.toString })
         newStrings.append(rowString)
         (0..<strings.count).forEach { row in
             newStrings.append(["\(row + 1)"] + strings[row])

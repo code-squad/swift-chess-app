@@ -1,5 +1,5 @@
 //
-//  ChessRankTests.swift
+//  RankTests.swift
 //  swift-chess-appTests
 //
 //  Created by Haeseok Lee on 2022/09/27.
@@ -9,9 +9,9 @@ import XCTest
 @testable import swift_chess_app
 
 
-class ChessRankTests: XCTestCase {
+class RankTests: XCTestCase {
     
-    var sut: ChessRank?
+    var sut: Rank?
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -28,7 +28,7 @@ class ChessRankTests: XCTestCase {
         let num = 3
         
         // when
-        sut = ChessRank(num)
+        sut = Rank(num)
         
         // then
         XCTAssertNotNil(sut)
@@ -40,7 +40,7 @@ class ChessRankTests: XCTestCase {
         let num = 0
         
         // when
-        sut = ChessRank(num)
+        sut = Rank(num)
         
         // then
         XCTAssertNil(sut)
@@ -51,7 +51,7 @@ class ChessRankTests: XCTestCase {
         let num = -1
         
         // when
-        sut = ChessRank(num)
+        sut = Rank(num)
         
         // then
         XCTAssertNil(sut)
@@ -62,7 +62,7 @@ class ChessRankTests: XCTestCase {
         let num = 8
         
         // when
-        sut = ChessRank(num)
+        sut = Rank(num)
         
         // then
         XCTAssertNotNil(sut)
@@ -74,7 +74,7 @@ class ChessRankTests: XCTestCase {
         let num = 9
         
         // when
-        sut = ChessRank(num)
+        sut = Rank(num)
         
         // then
         XCTAssertNil(sut)
@@ -85,7 +85,7 @@ class ChessRankTests: XCTestCase {
         let string = "3"
         
         // when
-        sut = ChessRank(string)
+        sut = Rank(string)
         
         // then
         XCTAssertNotNil(sut)
@@ -97,7 +97,7 @@ class ChessRankTests: XCTestCase {
         let string = "0"
         
         // when
-        sut = ChessRank(string)
+        sut = Rank(string)
         
         // then
         XCTAssertNil(sut)
@@ -108,7 +108,7 @@ class ChessRankTests: XCTestCase {
         let string = "-1"
         
         // when
-        sut = ChessRank(string)
+        sut = Rank(string)
         
         // then
         XCTAssertNil(sut)
@@ -119,7 +119,7 @@ class ChessRankTests: XCTestCase {
         let string = "8"
         
         // when
-        sut = ChessRank(string)
+        sut = Rank(string)
         
         // then
         XCTAssertNotNil(sut)
@@ -131,7 +131,7 @@ class ChessRankTests: XCTestCase {
         let string = "9"
         
         // when
-        sut = ChessRank(string)
+        sut = Rank(string)
         
         // then
         XCTAssertNil(sut)

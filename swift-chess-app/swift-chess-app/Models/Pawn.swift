@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct Pawn: ChessPiece {
+struct Pawn: Piece {
     
     let score: Int = 1
     
-    let color: ChessPieceColor
+    let color: PieceColor
     
-    var point: ChessPoint
+    var point: Point
     
-    var movablePoints: [ChessPoint] {
+    var movablePoints: [Point] {
         switch color {
-        case .white: return [ChessPoint(rank: point.rank - 1, file: point.file)]
-        case .black: return [ChessPoint(rank: point.rank + 1, file: point.file)]
+        case .white: return [Point(rank: point.rank - 1, file: point.file)]
+        case .black: return [Point(rank: point.rank + 1, file: point.file)]
         }
     }
     
@@ -31,7 +31,7 @@ struct Pawn: ChessPiece {
         }
     }
     
-    init(color: ChessPieceColor, point: ChessPoint) {
+    init(color: PieceColor, point: Point) {
         self.color = color
         self.point = point
     }

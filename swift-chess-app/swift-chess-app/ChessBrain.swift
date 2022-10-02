@@ -9,25 +9,25 @@ import Foundation
 
 class ChessBrain {
     
-    private var user1: ChessUser
+    private var user1: User
     
-    private var user2: ChessUser
+    private var user2: User
     
-    let board: ChessBoard = .init()
+    let board: Board = .init()
     
     private(set) var isOnGoing: Bool = false
     
-    private(set) var currentTurnUser: ChessUser
+    private(set) var currentTurnUser: User
     
-    var boardToList: [[ChessPiece?]] { board.toList }
+    var boardToList: [[Piece?]] { board.toList }
     
-    var currentTurnColor: ChessPieceColor { currentTurnUser.color }
+    var currentTurnColor: PieceColor { currentTurnUser.color }
     
-    var users: [ChessUser] { [user1, user2] }
+    var users: [User] { [user1, user2] }
     
-    var allUserPieces: [ChessPiece] { users.reduce([]) { $0 + $1.pieces } }
+    var allUserPieces: [Piece] { users.reduce([]) { $0 + $1.pieces } }
     
-    init(user1: ChessUser, user2: ChessUser) {
+    init(user1: User, user2: User) {
         self.user1 = user1
         self.user2 = user2
         self.currentTurnUser = user1.color == .white ? user1 : user2
@@ -51,7 +51,7 @@ extension ChessBrain {
 
 private extension ChessBrain {
     
-    func startTurn() -> ChessAction {
+    func startTurn() -> Action {
         return currentTurnUser.doAction()
     }
     
@@ -59,7 +59,7 @@ private extension ChessBrain {
         currentTurnUser = currentTurnUser == user1 ? user2 : user1
     }
 
-    func apply(action: ChessAction) {
+    func apply(action: Action) {
         let verifiedAction = verify(action: action)
         let transformedAction = transform(action: verifiedAction)
         switch transformedAction {
@@ -74,7 +74,7 @@ private extension ChessBrain {
         }
     }
     
-    func verify(action: ChessAction) -> ChessAction {
+    func verify(action: Action) -> Action {
         switch action {
         case .move(_, _):
             return action
@@ -85,7 +85,7 @@ private extension ChessBrain {
         }
     }
     
-    func transform(action: ChessAction) -> ChessAction {
+    func transform(action: Action) -> Action {
         switch action {
         case let .move(from, to):
             guard let fromPiece = board.find(point: from) else { return action }
@@ -100,7 +100,7 @@ private extension ChessBrain {
         }
     }
     
-    func calculateScore(color: ChessPieceColor, option: ScoreManager.ScoreOptions) -> Int {
+    func calculateScore(color: PieceColor, option: ScoreManager.ScoreOptions) -> Int {
         return board.calculateScore(color: color, option: option)
     }
 }
@@ -108,24 +108,22 @@ private extension ChessBrain {
 extension ChessBrain {
     
     func prepareChessGame() {
-        users.forEach { user in
-            preparePawns(user: user)
-        }
+        users.forEach { preparePawns(user: $0) }
     }
     
-    func preparePieces(user: ChessUser) {
+    func preparePieces(user: User) {
         preparePawns(user: user)
     }
     
-    func preparePawns(user: ChessUser) {
-        let rank: ChessRank?
+    func preparePawns(user: User) {
+        let rank: Rank?
         switch user.color {
-        case .white: rank = ChessRank(7)
-        case .black: rank = ChessRank(2)
+        case .white: rank = Rank(7)
+        case .black: rank = Rank(2)
         }
         guard let rank = rank else { return }
-        let pieces = ChessFile.allCases.compactMap { file -> ChessPiece in
-            Pawn(color: user.color, point: ChessPoint(rank: rank, file: file))
+        let pieces = File.allCases.compactMap { file -> Piece in
+            Pawn(color: user.color, point: Point(rank: rank, file: file))
         }
         user.pieces.append(contentsOf: pieces)
     }

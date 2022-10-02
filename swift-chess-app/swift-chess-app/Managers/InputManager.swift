@@ -15,7 +15,7 @@ class InputManager {
         self.parser = parser
     }
     
-    func enterCommand() -> ChessAction? {
+    func enterCommand() -> Action? {
         print("명령을 입력하세요> ")
         guard let command = readLine() else { return nil }
         return parser.parse(command: command)

@@ -8,28 +8,28 @@
 import XCTest
 @testable import swift_chess_app
 
-class ChessBoardPresenterTests: XCTestCase {
+class BoardPresenterTests: XCTestCase {
     
     var chessBrain: ChessBrain!
     
-    var sut: ChessBoardViewable!
+    var sut: BoardViewable!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         chessBrain = .init(
-            user1: ChessUser(name: "test1", color: .white),
-            user2: ChessUser(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
-        sut = ChessBoardPresenter()
+        sut = BoardPresenter()
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         chessBrain = .init(
-            user1: ChessUser(name: "test1", color: .white),
-            user2: ChessUser(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
-        sut = ChessBoardPresenter()
+        sut = BoardPresenter()
     }
     
     func test_board_display() {

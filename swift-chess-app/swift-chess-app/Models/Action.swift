@@ -1,5 +1,5 @@
 //
-//  ChessAction.swift
+//  Action.swift
 //  swift-chess-app
 //
 //  Created by Haeseok Lee on 2022/09/25.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum ChessAction {
+enum Action {
     
-    case move(from: ChessPoint, to: ChessPoint)
+    case move(from: Point, to: Point)
     
-    case capture(_ piece: ChessPiece, by: ChessPiece)
+    case capture(_ piece: Piece, by: Piece)
     
     case giveUp
     

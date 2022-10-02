@@ -1,5 +1,5 @@
 //
-//  ChessBoard.swift
+//  Board.swift
 //  swift-chess-app
 //
 //  Created by Haeseok Lee on 2022/09/25.
@@ -7,17 +7,17 @@
 
 import Foundation
 
-final class ChessBoard {
+final class Board {
     
-    typealias BoardDataType = [ChessPoint: ChessPiece]
+    typealias BoardDataType = [Point: Piece]
     
-    static var boardSize: Int { ChessRank.allCases.count * ChessFile.allCases.count }
+    static var boardSize: Int { Rank.allCases.count * File.allCases.count }
     
     var data: BoardDataType = [:]
     
-    var toList: [[ChessPiece?]] {
-        var lists = ChessRank.allCases.map { _ -> [ChessPiece?] in
-            ChessFile.allCases.map { _ -> ChessPiece? in nil }
+    var toList: [[Piece?]] {
+        var lists = Rank.allCases.map { _ -> [Piece?] in
+            File.allCases.map { _ -> Piece? in nil }
         }
         data.forEach { (point, piece) in
             let location = piece.point.toTuple
@@ -33,13 +33,13 @@ final class ChessBoard {
     }
 }
 
-extension ChessBoard {
+extension Board {
     
-    func set(pieces: [ChessPiece]) {
+    func set(pieces: [Piece]) {
         data = Dictionary(uniqueKeysWithValues: pieces.map { ($0.point, $0) })
     }
     
-    func set(point: ChessPoint, piece: ChessPiece?) {
+    func set(point: Point, piece: Piece?) {
         if var newPiece = piece {
             newPiece.update(point: point)
             data[point] = newPiece
@@ -48,12 +48,12 @@ extension ChessBoard {
         data[point] = nil
     }
     
-    func find(point: ChessPoint) -> ChessPiece? {
+    func find(point: Point) -> Piece? {
         return data[point]
     }
     
     @discardableResult
-    func move(_ from: ChessPoint, to: ChessPoint) -> Bool {
+    func move(_ from: Point, to: Point) -> Bool {
         guard let fromPiece = data[from] else {
             return false
         }
@@ -70,7 +70,7 @@ extension ChessBoard {
         return true
     }
     
-    func calculateScore(color: ChessPieceColor, option: ScoreManager.ScoreOptions) -> Int {
+    func calculateScore(color: PieceColor, option: ScoreManager.ScoreOptions) -> Int {
         return scoreManager.caculateScore(board: data, option: option)
     }
 }

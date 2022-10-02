@@ -12,4 +12,10 @@ protocol UserInformable {
     var id: String { get }
     
     var name: String { get }
+    
+    var color: PieceColor { get }
+    
+    var state: UserState { get }
+    
+    var pieces: [Piece] { get set }
 }

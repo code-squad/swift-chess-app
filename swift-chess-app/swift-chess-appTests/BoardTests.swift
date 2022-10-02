@@ -8,53 +8,53 @@
 import XCTest
 @testable import swift_chess_app
 
-class ChessBoardTests: XCTestCase {
+class BoardTests: XCTestCase {
     
     var chessBrain: ChessBrain!
     
-    var sut: ChessBoard! { chessBrain.board }
+    var sut: Board! { chessBrain.board }
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         chessBrain = .init(
-            user1: ChessUser(name: "test1", color: .white),
-            user2: ChessUser(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         chessBrain = .init(
-            user1: ChessUser(name: "test1", color: .white),
-            user2: ChessUser(name: "test2", color: .black)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
     }
     
     func test_move_when_movable() {
         // given
-        let pawn = Pawn(color: .white, point: ChessPoint(string: "A2")!)
-        let pieces: [ChessPiece] = [pawn]
+        let pawn = Pawn(color: .white, point: Point(string: "A2")!)
+        let pieces: [Piece] = [pawn]
         
         // when
         sut.set(pieces: pieces)
-        let canMove = sut.move(ChessPoint(string: "A2")!, to: ChessPoint(string: "A3")!)
+        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A3")!)
         
         // then
         XCTAssertTrue(canMove)
-        XCTAssertNil(sut.data[ChessPoint(string: "A2")!])
-        XCTAssertNotNil(sut.data[ChessPoint(string: "A3")!])
-        XCTAssertEqual(sut.data[ChessPoint(string: "A3")!]!.color, pawn.color)
+        XCTAssertNil(sut.data[Point(string: "A2")!])
+        XCTAssertNotNil(sut.data[Point(string: "A3")!])
+        XCTAssertEqual(sut.data[Point(string: "A3")!]!.color, pawn.color)
     }
     
     func test_move_when_unmovable() {
         // given
-        let pawn1 = Pawn(color: .white, point: ChessPoint(string: "A2")!)
-        let pawn2 = Pawn(color: .white, point: ChessPoint(string: "A3")!)
-        let pieces: [ChessPiece] = [pawn1, pawn2]
+        let pawn1 = Pawn(color: .white, point: Point(string: "A2")!)
+        let pawn2 = Pawn(color: .white, point: Point(string: "A3")!)
+        let pieces: [Piece] = [pawn1, pawn2]
         
         // when
         sut.set(pieces: pieces)
-        let canMove = sut.move(ChessPoint(string: "A2")!, to: ChessPoint(string: "A3")!)
+        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A3")!)
         
         // then
         XCTAssertFalse(canMove)
@@ -62,24 +62,24 @@ class ChessBoardTests: XCTestCase {
     
     func test_move_when_capturable() {
         // given
-        let blackPawn = Pawn(color: .black, point: ChessPoint(string: "A2")!)
-        let whitePawn = Pawn(color: .white, point: ChessPoint(string: "A3")!)
-        let pieces: [ChessPiece] = [blackPawn, whitePawn]
+        let blackPawn = Pawn(color: .black, point: Point(string: "A2")!)
+        let whitePawn = Pawn(color: .white, point: Point(string: "A3")!)
+        let pieces: [Piece] = [blackPawn, whitePawn]
         
         // when
         sut.set(pieces: pieces)
-        let canMove = sut.move(ChessPoint(string: "A2")!, to: ChessPoint(string: "A3")!)
+        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A3")!)
         
         // then
         XCTAssertTrue(canMove)
-        XCTAssertNil(sut.data[ChessPoint(string: "A2")!])
-        XCTAssertNotNil(sut.data[ChessPoint(string: "A3")!])
-        XCTAssertEqual(sut.data[ChessPoint(string: "A3")!]!.color, .black)
+        XCTAssertNil(sut.data[Point(string: "A2")!])
+        XCTAssertNotNil(sut.data[Point(string: "A3")!])
+        XCTAssertEqual(sut.data[Point(string: "A3")!]!.color, .black)
     }
     
     func test_black_pawn_count() {
         // given
-        let pieceColor: ChessPieceColor = .black
+        let pieceColor: PieceColor = .black
 
         // when
         chessBrain.start()
@@ -93,7 +93,7 @@ class ChessBoardTests: XCTestCase {
     
     func test_white_pawn_count() {
         // given
-        let pieceColor: ChessPieceColor = .white
+        let pieceColor: PieceColor = .white
 
         // when
         chessBrain.start()
@@ -108,7 +108,7 @@ class ChessBoardTests: XCTestCase {
     
     func test_1and2rank_color_is_black() {
         // given
-        let pieceColor: ChessPieceColor = .black
+        let pieceColor: PieceColor = .black
         
         // when
         chessBrain.start()
@@ -125,7 +125,7 @@ class ChessBoardTests: XCTestCase {
     
     func test_7and8rank_color_is_white() {
         // given
-        let pieceColor: ChessPieceColor = .white
+        let pieceColor: PieceColor = .white
         
         // when
         chessBrain.start()
@@ -157,23 +157,23 @@ class ChessBoardTests: XCTestCase {
         
         // then
         XCTAssertEqual(result, [
-            ChessPoint(string: "A2"),
-            ChessPoint(string: "B2"),
-            ChessPoint(string: "C2"),
-            ChessPoint(string: "D2"),
-            ChessPoint(string: "E2"),
-            ChessPoint(string: "F2"),
-            ChessPoint(string: "G2"),
-            ChessPoint(string: "H2"),
+            Point(string: "A2"),
+            Point(string: "B2"),
+            Point(string: "C2"),
+            Point(string: "D2"),
+            Point(string: "E2"),
+            Point(string: "F2"),
+            Point(string: "G2"),
+            Point(string: "H2"),
             
-            ChessPoint(string: "A7"),
-            ChessPoint(string: "B7"),
-            ChessPoint(string: "C7"),
-            ChessPoint(string: "D7"),
-            ChessPoint(string: "E7"),
-            ChessPoint(string: "F7"),
-            ChessPoint(string: "G7"),
-            ChessPoint(string: "H7"),
+            Point(string: "A7"),
+            Point(string: "B7"),
+            Point(string: "C7"),
+            Point(string: "D7"),
+            Point(string: "E7"),
+            Point(string: "F7"),
+            Point(string: "G7"),
+            Point(string: "H7"),
         ].compactMap { $0 })
     }
     
@@ -192,7 +192,7 @@ class ChessBoardTests: XCTestCase {
     func test_white_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: ChessPieceColor = .white
+        let pawnColor: PieceColor = .white
         
         // when
         chessBrain.start()
@@ -206,7 +206,7 @@ class ChessBoardTests: XCTestCase {
     func test_black_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: ChessPieceColor = .black
+        let pawnColor: PieceColor = .black
         
         // when
         chessBrain.start()
@@ -219,7 +219,7 @@ class ChessBoardTests: XCTestCase {
     
     func test_white_color_score() {
         // given
-        let pieceColor: ChessPieceColor = .white
+        let pieceColor: PieceColor = .white
         let scoreOption: ScoreManager.ScoreOptions = [.white]
         
         // when
@@ -232,7 +232,7 @@ class ChessBoardTests: XCTestCase {
     
     func test_black_color_score() {
         // given
-        let pieceColor: ChessPieceColor = .black
+        let pieceColor: PieceColor = .black
         let scoreOption: ScoreManager.ScoreOptions = [.black]
         
         // when
