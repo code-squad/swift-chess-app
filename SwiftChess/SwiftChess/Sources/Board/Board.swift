@@ -15,7 +15,7 @@ final class Board {
             onGamePointChange?(gamePoint)
         }
     }
-    private let onGamePointChange: ((GamePoint) -> Void)?
+    var onGamePointChange: ((GamePoint) -> Void)?
 
     subscript(_ location: Board.Location) -> BoardElementRepresentable {
         get {
@@ -29,21 +29,17 @@ final class Board {
     /// 주어진 상태로 체스판을 초기화한다.
     init(
         status: [[BoardElementRepresentable]],
-        gamePoint: GamePoint = .zeros,
-        onGamePointChange: @escaping ((GamePoint) -> Void) = { _ in }
+        gamePoint: GamePoint = .zeros
     ) {
         self.status = status
         self.gamePoint = gamePoint
-        self.onGamePointChange = onGamePointChange
     }
 
     /// 지정된 방식으로 체스판을 초기화한다.
     init(
-        gamePoint: GamePoint = .zeros,
-        gamePointChanged: @escaping ((GamePoint) -> Void) = { _ in }
+        gamePoint: GamePoint = .zeros
     ) {
         self.gamePoint = gamePoint
-        self.onGamePointChange = gamePointChanged
         setInitialState()
     }
 
