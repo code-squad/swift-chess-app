@@ -18,20 +18,8 @@ extension Board {
 
 extension Board.Location {
 
-    /// 체스판의 행(Row)을 나타내는 타입.
-    enum Rank: Int, Equatable, RawValueInitializable, RangedRawRepresentable {
-        case one = 1
-        case two
-        case three
-        case four
-        case five
-        case six
-        case seven
-        case eight
-    }
-
     /// 체스판의 열(Column)을 나타내는 타입.
-    enum File: Int, Equatable, RawValueInitializable, RangedRawRepresentable {
+    enum File: Int, BoardLocationRepresentable {
         case A = 1
         case B
         case C
@@ -40,6 +28,18 @@ extension Board.Location {
         case F
         case G
         case H
+    }
+
+    /// 체스판의 행(Row)을 나타내는 타입.
+    enum Rank: Int, BoardLocationRepresentable {
+        case one = 1
+        case two
+        case three
+        case four
+        case five
+        case six
+        case seven
+        case eight
     }
 }
 
@@ -72,15 +72,6 @@ extension Board.Location {
     }
 }
 
-extension Board.Location.File: IndexRepresentable {}
-extension Board.Location.Rank: IndexRepresentable {}
-
-extension Board.Location.File: AsciiValueRepresentable {
-    var asciiValue: Int {
-        return Board.Configuration.minimumFile.asciiValue + self.rawValue - 1
-    }
-}
-
 extension Board.Location.Rank {
 
     /// ``Rank``와 이동규칙의 이동 단위를 더해 새로운 rank를 계산한다.
@@ -101,3 +92,27 @@ extension Board.Location.Rank {
         return Self(rawValue: lhs.rawValue - rhs.extractedValue)
     }
 }
+
+// MARK: - Protocol conformance
+
+protocol BoardLocationRepresentable: Equatable, RawValueInitializable, RangedRawRepresentable {}
+
+extension IndexRepresentable where Self: BoardLocationRepresentable, RawValue == Int {
+    var index: Int {
+        return self.rawValue - 1
+    }
+}
+
+// MARK: - Board.Location.File
+
+extension Board.Location.File: IndexRepresentable {}
+
+extension Board.Location.File: AsciiValueRepresentable {
+    var asciiValue: Int {
+        return Board.Configuration.minimumFile.asciiValue + self.rawValue - 1
+    }
+}
+
+// MARK: - Board.Location.Rank
+
+extension Board.Location.Rank: IndexRepresentable {}

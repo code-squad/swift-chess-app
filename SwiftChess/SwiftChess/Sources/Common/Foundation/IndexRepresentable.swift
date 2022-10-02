@@ -9,9 +9,3 @@
 protocol IndexRepresentable {
     var index: Int { get }
 }
-
-extension IndexRepresentable where Self: RawRepresentable, RawValue == Int {
-    var index: Int {
-        return self.rawValue - 1
-    }
-}

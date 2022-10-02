@@ -214,6 +214,48 @@ final class BoardTests: XCTestCase {
 
         XCTAssertEqual(currentGraphicalRepresentation, expectedGraphicalRepresentation)
     }
+
+    // MARK: - Foundation
+
+    func test_Rank의각케이스를Index로나타내면_rawValue보다1작다() {
+        let allRanks = Board.Location.Rank.allCases
+
+        allRanks.forEach { rank in
+            XCTAssertEqual(rank.index, rank.rawValue - 1)
+        }
+    }
+
+    func test_File의각케이스를Index로나타내면_rawValue보다1작다() {
+        let allFiles = Board.Location.File.allCases
+
+        allFiles.forEach { file in
+            XCTAssertEqual(file.index, file.rawValue - 1)
+        }
+    }
+
+    func test_Rank의최소RawValue는_1이다() {
+        let expectedMinimumRankRawValue: Int = 1
+
+        XCTAssertEqual(Board.Location.Rank.minimumRawValue, expectedMinimumRankRawValue)
+    }
+
+    func test_Rank의최소Case는_one이다() {
+        let expectedMinimumRankRawValue = Board.Location.Rank.one
+
+        XCTAssertEqual(Board.Location.Rank.minimumCase, expectedMinimumRankRawValue)
+    }
+
+    func test_File의최소RawValue는_1이다() {
+        let expectedMinimumFileRawValue: Int = 1
+
+        XCTAssertEqual(Board.Location.File.minimumRawValue, expectedMinimumFileRawValue)
+    }
+
+    func test_File의최소Case는_A이다() {
+        let expectedMinimumFileRawValue = Board.Location.File.A
+
+        XCTAssertEqual(Board.Location.File.minimumCase, expectedMinimumFileRawValue)
+    }
 }
 
 extension Board {

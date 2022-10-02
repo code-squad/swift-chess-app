@@ -31,7 +31,6 @@
 		AA53AD0F28E986C80051D8CB /* GamePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0E28E986C80051D8CB /* GamePoint.swift */; };
 		AA53AD1328E987D50051D8CB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD1228E987D50051D8CB /* Game.swift */; };
 		AA53AD1828E98D0C0051D8CB /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */; };
-		AA53AD1C28E98D800051D8CB /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD1B28E98D800051D8CB /* FoundationTests.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -75,7 +74,6 @@
 		AA53AD0E28E986C80051D8CB /* GamePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePoint.swift; sourceTree = "<group>"; };
 		AA53AD1228E987D50051D8CB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
-		AA53AD1B28E98D800051D8CB /* FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				AA53AD1928E98D130051D8CB /* Extensions */,
-				AA53AD1A28E98D1A0051D8CB /* Foundation */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -239,14 +236,6 @@
 				AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		AA53AD1A28E98D1A0051D8CB /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				AA53AD1B28E98D800051D8CB /* FoundationTests.swift */,
-			);
-			path = Foundation;
 			sourceTree = "<group>";
 		};
 		AABA53A828E1D31A00006508 = {
@@ -491,7 +480,6 @@
 				AA53AD1828E98D0C0051D8CB /* StringExtensionsTests.swift in Sources */,
 				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
 				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
-				AA53AD1C28E98D800051D8CB /* FoundationTests.swift in Sources */,
 				AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */,
 			);
