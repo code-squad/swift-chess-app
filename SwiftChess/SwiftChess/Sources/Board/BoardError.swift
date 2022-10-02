@@ -9,8 +9,6 @@ import Foundation
 
 /// 체스판 타입에서 발생할 수 있는 에러 타입.
 enum BoardError: Equatable {
-    /// 유효하지 않은 rank를 전달함
-    case invalidRank(Int)
     /// 이동을 시도하였으나 시작점에 체스말이 없음
     case pieceNotExistsAtStartPoint(Board.Location)
     /// 이동 가능한 위치가 존재하지 않음
@@ -27,12 +25,6 @@ extension BoardError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case let .invalidRank(rank):
-            return """
-            유효하지 않은 rank를 입력했습니다. 입력한 Rank: \(rank)"
-            입력 가능한 범위 \(Board.Location.Rank.minimumRawValue ?? 0) ~ \(Board.Location.Rank.maximumRawValue ?? 0)
-            """
-
         case let .pieceNotExistsAtStartPoint(startPoint):
             return "시작점에 체스말이 없습니다. 입력한 시작점: \(startPoint)"
 
