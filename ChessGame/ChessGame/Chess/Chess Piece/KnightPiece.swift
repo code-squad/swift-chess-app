@@ -18,7 +18,7 @@ struct KightPiece: ChessPieceProtocol {
     
     static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         
-        let delta = origin - destination
+        let delta = destination - origin
         let availableDeltas: [Delta]
         let steppingPosition: Position
         
