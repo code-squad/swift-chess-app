@@ -9,22 +9,16 @@
 protocol Board {
     /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다.
     var status: [[BoardElementRepresentable]] { get }
-    var gamePoint: GamePoint { get }
-    var onGamePointChange: ((GamePoint) -> Void)? { get }
 
     subscript(_ location: BoardLocation) -> BoardElementRepresentable { get set }
 
     /// 주어진 상태로 체스판을 초기화한다.
     init(
         status: [[BoardElementRepresentable]],
-        gamePoint: GamePoint,
         boardPrinter: BoardPrinter
     )
     /// 지정된 방식으로 체스판을 초기화한다.
-    init(
-        gamePoint: GamePoint,
-        boardPrinter: BoardPrinter
-    )
+    init(boardPrinter: BoardPrinter)
 
     /// 이동 명령을 통해 체스말을 이동시킨다.
     /// - Parameter moveCommand: 이동 명령 인스턴스. 시작점과 도착점이 포함되어 있다.
@@ -41,13 +35,7 @@ protocol Board {
 final class DefaultBoard: Board {
 
     private(set) var status: [[BoardElementRepresentable]] = []
-    private(set) var gamePoint: GamePoint {
-        didSet {
-            onGamePointChange?(gamePoint)
-        }
-    }
     private let boardPrinter: BoardPrinter
-    private(set) var onGamePointChange: ((GamePoint) -> Void)?
 
     subscript(_ location: BoardLocation) -> BoardElementRepresentable {
         get {
@@ -60,19 +48,15 @@ final class DefaultBoard: Board {
 
     init(
         status: [[BoardElementRepresentable]],
-        gamePoint: GamePoint = .zeros,
         boardPrinter: BoardPrinter = .live()
     ) {
         self.status = status
-        self.gamePoint = gamePoint
         self.boardPrinter = boardPrinter
     }
 
     init(
-        gamePoint: GamePoint = .zeros,
         boardPrinter: BoardPrinter = .live()
     ) {
-        self.gamePoint = gamePoint
         self.boardPrinter = boardPrinter
         setInitialState()
     }
@@ -139,12 +123,8 @@ final class DefaultBoard: Board {
             throw BoardError.identicalColoredPieceAlreadyExists(endPoint: command.endPoint)
         }
 
-        if self[command.endPoint] is Empty {
+        if self[command.endPoint] is Piece {
             captureEnemyPiece(at: command.endPoint)
-            let currentPoints = currentPoints()
-            onGamePointChange?(currentPoints)
-            // TODO: 출력 타입 마련해서 포매팅 후 출력
-            print(currentPoints)
         }
 
         move(piece, from: command.startPoint, to: command.endPoint)
@@ -194,6 +174,7 @@ final class DefaultBoard: Board {
     /// - Parameter location: 상대방 체스말이 있는 위치.
     private func captureEnemyPiece(at location: BoardLocation) {
         self[location] = Empty()
+        _ = boardPrinter.printCurrentPoints(currentPoints())
     }
 
     /// 지정된 체스말을 시작점에서 도착점으로 이동시킨다.
@@ -246,8 +227,7 @@ final class DefaultBoard: Board {
     // MARK: - 체스판 표현
 
     func display() -> String {
-        return boardPrinter.printFormattedBoard(status)
-
+        return boardPrinter.printBoard(status)
     }
 }
 

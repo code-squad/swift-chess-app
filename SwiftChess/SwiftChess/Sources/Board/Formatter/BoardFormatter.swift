@@ -8,6 +8,8 @@
 struct BoardFormatter {
 
     var formatBoard: (_ status: [[BoardElementRepresentable]]) -> String
+    var formatGamePoint: (GamePoint) -> String
+
 }
 
 extension BoardFormatter {
@@ -33,10 +35,14 @@ extension BoardFormatter {
 
             let formatted = rankTaggedSymbolized.joined(separator: "\n")
             return formatted
+        },
+        formatGamePoint: { gamePoint in
+            return "체스말을 잡았습니다. 현재점수 - 백: \(gamePoint.white), 흑: \(gamePoint.black)"
         }
     )
 
     static let unimplemented = Self(
-        formatBoard: { _ in "" }
+        formatBoard: { _ in "" },
+        formatGamePoint: { _ in "" }
     )
 }

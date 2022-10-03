@@ -7,7 +7,8 @@
 
 struct BoardPrinter {
 
-    var printFormattedBoard: (_ status: [[BoardElementRepresentable]]) -> String
+    var printBoard: (_ status: [[BoardElementRepresentable]]) -> String
+    var printCurrentPoints: (GamePoint) -> String
 }
 
 extension BoardPrinter {
@@ -16,19 +17,19 @@ extension BoardPrinter {
         boardFormatter: BoardFormatter = .live
     ) -> Self {
         return Self(
-            printFormattedBoard: { status in
+            printBoard: { status in
                 let formattedBoard = boardFormatter.formatBoard(status)
                 print(formattedBoard)
                 return formattedBoard
+            },
+            printCurrentPoints: { gamePoint in
+                boardFormatter.formatGamePoint(gamePoint)
             }
         )
     }
 
-    static func unimplemented(
-        boardFormatter: BoardFormatter = .unimplemented
-    ) -> Self {
-        return Self(
-            printFormattedBoard: { _ in "" }
-        )
-    }
+    static let unimplemented = Self(
+        printBoard: { _ in "" },
+        printCurrentPoints: { _ in "" }
+    )
 }
