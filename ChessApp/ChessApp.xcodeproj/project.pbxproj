@@ -20,6 +20,7 @@
 		4671BF9F28E3EE0A00A11817 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF9E28E3EE0A00A11817 /* Pawn.swift */; };
 		4671BFA128E3EE5900A11817 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BFA028E3EE5900A11817 /* Board.swift */; };
 		4671BFA328E415C100A11817 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BFA228E415C100A11817 /* ChessGame.swift */; };
+		4671BFA628EAF57500A11817 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BFA528EAF57500A11817 /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		4671BF9E28E3EE0A00A11817 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		4671BFA028E3EE5900A11817 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		4671BFA228E415C100A11817 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
+		4671BFA528EAF57500A11817 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,11 +158,20 @@
 			isa = PBXGroup;
 			children = (
 				4671BF9C28E3EDF100A11817 /* Position.swift */,
-				4671BF9E28E3EE0A00A11817 /* Pawn.swift */,
+				4671BFA428EAF56900A11817 /* Piece */,
 				4671BFA028E3EE5900A11817 /* Board.swift */,
 				4671BFA228E415C100A11817 /* ChessGame.swift */,
 			);
 			path = Chess;
+			sourceTree = "<group>";
+		};
+		4671BFA428EAF56900A11817 /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				4671BFA528EAF57500A11817 /* Piece.swift */,
+				4671BF9E28E3EE0A00A11817 /* Pawn.swift */,
+			);
+			path = Piece;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 				4671BF6928E28A8C00A11817 /* AppDelegate.swift in Sources */,
 				4671BFA328E415C100A11817 /* ChessGame.swift in Sources */,
 				4671BFA128E3EE5900A11817 /* Board.swift in Sources */,
+				4671BFA628EAF57500A11817 /* Piece.swift in Sources */,
 				4671BF9D28E3EDF100A11817 /* Position.swift in Sources */,
 				4671BF9F28E3EE0A00A11817 /* Pawn.swift in Sources */,
 				4671BF6B28E28A8C00A11817 /* SceneDelegate.swift in Sources */,

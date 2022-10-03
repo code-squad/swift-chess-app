@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Position {
+struct Position {
     let file: File
     let rank: Rank
     
@@ -24,7 +24,7 @@ extension Position {
     }
 
     enum Rank: Int, CaseIterable {
-        case One = 0
-        case Two, Three, Four, Five, Six, Seven, Eight
+        case one = 0
+        case two, three, four, five, six, seven, eight
     }
 }
