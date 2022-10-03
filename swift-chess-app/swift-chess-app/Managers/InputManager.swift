@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InputManager: UserControllable {
+struct InputManager: UserControllable {
     
     let parser: Parser
     

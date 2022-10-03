@@ -15,7 +15,9 @@ class Piece {
     
     var score: Int { 0 }
     
-    var movablePoints: [Point] { [] }
+    var steps: [Tuple] { [] }
+    
+    var maxStepDistance: Int { 1 }
     
     var toString: String { "" }
     
@@ -24,6 +26,19 @@ class Piece {
     init(color: Color, point: Point) {
         self.color = color
         self.point = point
+    }
+}
+
+extension Piece: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(color)
+        hasher.combine(point)
+        hasher.combine(score)
+    }
+    
+    static func == (lhs: Piece, rhs: Piece) -> Bool {
+        lhs.hashValue == rhs.hashValue
     }
 }
 

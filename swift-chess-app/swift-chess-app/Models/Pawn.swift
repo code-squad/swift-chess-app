@@ -11,15 +11,14 @@ final class Pawn: Piece {
     
     override var score: Int { 1 }
     
-    override var movablePoints: [Point] {
-        let results: [Point?]
+    override var steps: [Tuple] {
         switch color {
         case .white:
-            results = [point + Direction.n]
+            return [Direction.n].map { $0.toTuple }
+            
         case .black:
-            results = [point + Direction.s]
+            return [Direction.s].map { $0.toTuple }
         }
-        return results.compactMap { $0 }
     }
     
     override var toString: String { "Pawn" }

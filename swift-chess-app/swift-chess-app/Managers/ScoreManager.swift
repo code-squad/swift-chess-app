@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ScoreManager {
+struct ScoreManager {
     
     struct ScoreOptions: OptionSet {
         let rawValue: Int

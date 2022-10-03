@@ -40,6 +40,8 @@
 		1CE8F9CA28E9EF63007AAA9B /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9C928E9EF63007AAA9B /* Bishop.swift */; };
 		1CE8F9CC28EA8295007AAA9B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9CB28EA8295007AAA9B /* Direction.swift */; };
 		1CE8F9CE28EA84B9007AAA9B /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9CD28EA84B9007AAA9B /* Tuple.swift */; };
+		1CE8F9D128EA9E67007AAA9B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9D028EA9E67007AAA9B /* Global.swift */; };
+		1CE8F9E328EB2683007AAA9B /* ChessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9E228EB2683007AAA9B /* ChessError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		1CE8F9C928E9EF63007AAA9B /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		1CE8F9CB28EA8295007AAA9B /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		1CE8F9CD28EA84B9007AAA9B /* Tuple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		1CE8F9D028EA9E67007AAA9B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		1CE8F9E228EB2683007AAA9B /* ChessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				1CE8F9C928E9EF63007AAA9B /* Bishop.swift */,
 				1CE8F9CB28EA8295007AAA9B /* Direction.swift */,
 				1CE8F9CD28EA84B9007AAA9B /* Tuple.swift */,
+				1CE8F9E228EB2683007AAA9B /* ChessError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				1C715C6528E08FF4009FD474 /* Parser.swift */,
+				1CE8F9D028EA9E67007AAA9B /* Global.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -323,10 +329,12 @@
 				1C715C5E28E08B91009FD474 /* Action.swift in Sources */,
 				1C715C5828E08888009FD474 /* UserInformable.swift in Sources */,
 				1C715C6228E08C06009FD474 /* Rank.swift in Sources */,
+				1CE8F9E328EB2683007AAA9B /* ChessError.swift in Sources */,
 				1CE8F9C428E9EF40007AAA9B /* Knight.swift in Sources */,
 				1C715C4A28E07D99009FD474 /* BoardViewable.swift in Sources */,
 				1C715C4428E07D85009FD474 /* ChessBrain.swift in Sources */,
 				1C715C6628E08FF4009FD474 /* Parser.swift in Sources */,
+				1CE8F9D128EA9E67007AAA9B /* Global.swift in Sources */,
 				1C715C6028E08BEA009FD474 /* Point.swift in Sources */,
 				1CE8F9CE28EA84B9007AAA9B /* Tuple.swift in Sources */,
 				1CE8F9CA28E9EF63007AAA9B /* Bishop.swift in Sources */,

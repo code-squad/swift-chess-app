@@ -15,7 +15,7 @@ struct Point: Hashable {
     
     var toString: String { file.toString + rank.toString }
     
-    var toTuple: Tuple { (row: rank.rawValue - 1, col: file.toInt) }
+    var toTuple: Tuple { Tuple(row: rank.rawValue - 1, col: file.toInt) }
 }
 
 extension Point {
@@ -40,15 +40,9 @@ extension Point: Equatable {
 
 extension Point {
     
-    static func + (left: Point, right: (row: Int, col: Int)) -> Point? {
+    static func + (left: Point, right: Tuple) -> Point? {
         guard let rank = left.rank + right.row,
               let file = left.file + right.col else { return nil }
-        return Point(rank: rank, file: file)
-    }
-    
-    static func - (left: Point, right: (row: Int, col: Int)) -> Point? {
-        guard let rank = left.rank - right.row,
-              let file = left.file - right.col else { return nil }
         return Point(rank: rank, file: file)
     }
     
@@ -57,6 +51,12 @@ extension Point {
         let vector = right.toTuple
         guard let rank = Rank(location.row + vector.row),
               let file = File(location.col + vector.col) else { return nil }
+        return Point(rank: rank, file: file)
+    }
+    
+    static func - (left: Point, right: Tuple) -> Point? {
+        guard let rank = left.rank - right.row,
+              let file = left.file - right.col else { return nil }
         return Point(rank: rank, file: file)
     }
     

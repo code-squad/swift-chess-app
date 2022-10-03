@@ -13,17 +13,18 @@ enum File: String, CaseIterable, Hashable  {
     
     var toString: String { self.rawValue.uppercased() }
     
+    private static let asciiCodeLowerA: Int = Int(UnicodeScalar("a").value)
+    
     var toInt: Int {
         guard let value = UnicodeScalar(rawValue)?.value else { return 0 }
-        return Int(value) - Int(UnicodeScalar("a").value)
+        return Int(value) - File.asciiCodeLowerA
     }
 }
 
 extension File {
     
     init?(_ num: Int) {
-        let asciiLowerA = Int(UnicodeScalar("a").value)
-        let string = String(UnicodeScalar(UInt8(num + asciiLowerA)))
+        let string = String(UnicodeScalar(UInt8(num + File.asciiCodeLowerA)))
         guard let file = File(rawValue: string) else { return nil }
         self = file
     }

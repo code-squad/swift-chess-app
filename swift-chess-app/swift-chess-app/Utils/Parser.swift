@@ -7,10 +7,9 @@
 
 import Foundation
 
-class Parser {
+struct Parser {
     
     func parse(command: String) -> Action? {
-        
         if command.contains("->") {
             let results = command.components(separatedBy: "->")
             guard results.count == 2,
@@ -20,7 +19,6 @@ class Parser {
                   let point2 = Point(string: string2) else { return nil }
             return .move(from: point1, to: point2)
         }
-        
         return nil
     }
 }
