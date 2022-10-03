@@ -13,7 +13,7 @@ class User: UserInformable, Equatable {
     
     let name: String
     
-    let color: PieceColor
+    let color: Piece.Color
     
     private let controller: UserControllable
     
@@ -24,7 +24,7 @@ class User: UserInformable, Equatable {
     init(
         id: String = UUID().uuidString,
         name: String,
-        color: PieceColor,
+        color: Piece.Color,
         controller: UserControllable
     ) {
         self.id = id

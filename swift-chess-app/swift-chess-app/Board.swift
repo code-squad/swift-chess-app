@@ -38,12 +38,8 @@ extension Board {
     }
     
     func set(point: Point, piece: Piece?) {
-        if var newPiece = piece {
-            newPiece.update(point: point)
-            data[point] = newPiece
-            return
-        }
-        data[point] = nil
+        piece?.point = point
+        data[point] = piece
     }
     
     func find(point: Point) -> Piece? {
@@ -68,7 +64,7 @@ extension Board {
         return true
     }
     
-    func calculateScore(color: PieceColor, option: ScoreManager.ScoreOptions) -> Int {
+    func calculateScore(color: Piece.Color, option: ScoreManager.ScoreOptions) -> Int {
         return scoreManager.caculateScore(board: data, option: option)
     }
 }

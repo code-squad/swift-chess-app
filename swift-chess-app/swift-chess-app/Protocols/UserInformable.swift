@@ -13,7 +13,7 @@ protocol UserInformable {
     
     var name: String { get }
     
-    var color: PieceColor { get }
+    var color: Piece.Color { get }
     
     var state: UserState { get }
     
