@@ -12,6 +12,9 @@
 		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
 		E894128828E37E6C00DB15AE /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128728E37E6C00DB15AE /* Pawn.swift */; };
 		E894128B28E38EF300DB15AE /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128A28E38EF300DB15AE /* Position.swift */; };
+		E894129A28E8FE6F00DB15AE /* PositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894129928E8FE6F00DB15AE /* PositionType.swift */; };
+		E894129D28E8FEA800DB15AE /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894129C28E8FEA800DB15AE /* File.swift */; };
+		E894129F28E8FEAF00DB15AE /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894129E28E8FEAF00DB15AE /* Rank.swift */; };
 		E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */; };
 		E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */; };
 		E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C67FEC28E1DDD50033DE60 /* ViewController.swift */; };
@@ -45,6 +48,9 @@
 		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		E894128728E37E6C00DB15AE /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		E894128A28E38EF300DB15AE /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		E894129928E8FE6F00DB15AE /* PositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionType.swift; sourceTree = "<group>"; };
+		E894129C28E8FEA800DB15AE /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E894129E28E8FEAF00DB15AE /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		E8C67FE528E1DDD50033DE60 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C67FE828E1DDD50033DE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C67FEA28E1DDD50033DE60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 		E894127F28E37DFD00DB15AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E894129B28E8FE9E00DB15AE /* PositionType */,
 				E894128228E37E2400DB15AE /* Color.swift */,
 				E894128728E37E6C00DB15AE /* Pawn.swift */,
 				E894128A28E38EF300DB15AE /* Position.swift */,
@@ -98,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				E894128528E37E5300DB15AE /* Piece.swift */,
+				E894129928E8FE6F00DB15AE /* PositionType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -108,6 +116,15 @@
 				E894128028E37E1000DB15AE /* Board.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		E894129B28E8FE9E00DB15AE /* PositionType */ = {
+			isa = PBXGroup;
+			children = (
+				E894129C28E8FEA800DB15AE /* File.swift */,
+				E894129E28E8FEAF00DB15AE /* Rank.swift */,
+			);
+			path = PositionType;
 			sourceTree = "<group>";
 		};
 		E8C67FDC28E1DDD40033DE60 = {
@@ -294,9 +311,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */,
+				E894129F28E8FEAF00DB15AE /* Rank.swift in Sources */,
 				E894128828E37E6C00DB15AE /* Pawn.swift in Sources */,
+				E894129A28E8FE6F00DB15AE /* PositionType.swift in Sources */,
 				E8C67FE928E1DDD50033DE60 /* AppDelegate.swift in Sources */,
 				E894128628E37E5300DB15AE /* Piece.swift in Sources */,
+				E894129D28E8FEA800DB15AE /* File.swift in Sources */,
 				E894128128E37E1000DB15AE /* Board.swift in Sources */,
 				E894128328E37E2400DB15AE /* Color.swift in Sources */,
 				E894128B28E38EF300DB15AE /* Position.swift in Sources */,

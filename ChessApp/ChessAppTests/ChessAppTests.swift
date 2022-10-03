@@ -14,7 +14,7 @@ final class ChessAppTests: XCTestCase {
   override func setUp() {
     super.setUp()
     
-    self.board = Board()
+    self.board = Board(size: 8)
   }
   
   func testBoardDisplay() {
@@ -45,10 +45,33 @@ final class ChessAppTests: XCTestCase {
   }
   
   func testChecValidationkMoviePosition() {
-    let expectResult = false
-    
     let isMovable = self.board.movePiece(from: "AA", to: "A1")
     
-    XCTAssertEqual(expectResult, isMovable)
+    XCTAssertFalse(isMovable)
+  }
+  
+  // MARK: Position Test
+  func test_valid_rank_initializer() {
+    let rank = Rank(position: ["1", "2"], size: 2)
+    
+    XCTAssertNotNil(rank)
+  }
+  
+  func test_invalid_rank_initializer() {
+    let rank = Rank(position: ["1", "2", "3"], size: 2)
+    
+    XCTAssertNil(rank)
+  }
+  
+  func test_valid_file_initializer() {
+    let rank = File(position: ["1", "2"], size: 2)
+    
+    XCTAssertNotNil(rank)
+  }
+  
+  func test_invalid_file_initializer() {
+    let rank = File(position: ["1", "2"], size: 3)
+    
+    XCTAssertNil(rank)
   }
 }
