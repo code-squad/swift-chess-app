@@ -8,9 +8,11 @@
 import Foundation
 
 protocol Piece {
-  var shape: String { get set }
+  var shape: String { get }
   var color: Color { get set }
-  var value: Int { get set }
+  var value: Int { get }
+  var maxCount: Int { get }
+  var movableRankIndex: Int { get }
   
-  func movablePositions(from: String) -> [String]
+  func movablePositions(from: Position) -> [Position]
 }
