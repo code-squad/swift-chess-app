@@ -28,10 +28,10 @@ final class Board {
 
     }
     
-    func move(pawn: Piece, from: Position, to: Position) {
-//        guard checkEnableToMove(pawn: pawn, from: from, to: to) else { return }
-//        board[from.rank.rawValue][from.file.rawValue] = nil
-//        board[to.rank.rawValue][to.file.rawValue] = pawn
+    func move(piece: Piece, from: Position, to: Position) {
+        guard checkEnableToMove(piece: piece, from: from, to: to) else { return }
+        board[from.rank.rawValue][from.file.rawValue] = nil
+        board[to.rank.rawValue][to.file.rawValue] = piece
     }
     
     // 움직일 pawn의 현재 위치와 목표 위치를 받아온다
