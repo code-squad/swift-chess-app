@@ -6,8 +6,11 @@
 //
 
 import XCTest
+@testable import ChessApp
 
 final class PieceTest: XCTestCase {
+    
+   
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,6 +26,17 @@ final class PieceTest: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    }
+    
+    func test_pawn이동_성공() throws {
+        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .A, rank: .two), to: Position(file: .A, rank: .three)))
+        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .B, rank: .two), to: Position(file: .B, rank: .four)))
+        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .five)))
+    }
+    
+    func test_pawn이동_실패() throws {
+        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .D, rank: .two), to: Position(file: .A, rank: .two)))
+        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .E, rank: .two), to: Position(file: .F, rank: .six)))
     }
 
     func testPerformanceExample() throws {

@@ -37,12 +37,6 @@ final class ChessAppTests: XCTestCase {
         XCTAssertEqual(board.displayBoard(), result)
     }
     
-    func test_시작시_점수_출력() throws {
-        let result = "현재 스코어\nblack -> 0\nwhite -> 0"
-        board.startGame()
-        XCTAssertEqual(board.score(), result)
-    }
-    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
