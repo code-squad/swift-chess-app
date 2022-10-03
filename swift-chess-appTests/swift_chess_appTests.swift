@@ -21,21 +21,8 @@ final class swift_chess_appTests: XCTestCase {
         "........"
     ]
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        
-        try super.tearDownWithError()
-    }
-    
     // MARK: - Utility 테스트
-    /// Utility에 존재하는 함수들을 테스트합니다.
-    /// Command -> ChessPosition까지의 변환입니다.
-    func testCommandInput() {
+    fileprivate func test_String_커맨드_유효성() {
         /// 실제 로직의 기본 순서는 Command 체크 (CommandValidate)-> (Command 체크 마지막에) 유효 위치 체크(postionStringValidate) -> Chess Position 변환 체크 (stringToChessPosition)
         
         /// positionStringValidate 먼저 테스트
@@ -54,7 +41,9 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertFalse(chessPositionStringValidate("AB"))
         XCTAssertFalse(chessPositionStringValidate("5B"))
         XCTAssertFalse(chessPositionStringValidate("5959"))
-        
+    }
+    
+    fileprivate func test_커맨드_유효성2() {
         /// CommandValidate 테스트
         /// 중점을 둔 부분
         /// 올바른 커맨드, 올바르지 않은 커맨드
@@ -71,7 +60,9 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertFalse(commandStringValidate("A2A3"))
         XCTAssertFalse(commandStringValidate("Z1->A5"))
         XCTAssertFalse(commandStringValidate("ZZ->ㅋㅋ"))
-        
+    }
+    
+    fileprivate func test_커맨드_ChessPosition_변환() {
         /// stringToChessPosition 테스트
         /// 중점을 둔 부분
         /// 역으로 확인했을 때 제대로 결과가 나오는가?
@@ -82,70 +73,73 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertNil(commandStringToChessPosition("->H8"))
         XCTAssertNil(commandStringToChessPosition("->"))
         XCTAssertNil(commandStringToChessPosition(""))
+    }
+    
+    /// Utility에 존재하는 함수들을 테스트합니다.
+    /// Command -> ChessPosition까지의 변환입니다.
+    func test_Utility_테스트() {
+        test_String_커맨드_유효성()
+        
+        test_커맨드_유효성2()
+        
+        test_커맨드_ChessPosition_변환()
         
         // 위에서 성공으로 테스트 된것에 대해서 추가적으로 제대로 구조체를 뽑아냈는지 테스트
         let testPosition1 = commandStringToChessPosition("A2->A3")!
         
-        let successPosition1 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 2, file: 0))
-        let failPosition1 = (current: ChessPosition(rank: 1, file: 1), move: ChessPosition(rank: 1, file: 1))
+        let successPosition1 = (currentChessPosition: ChessPosition(rank: 1, file: 0), moveChessPosition: ChessPosition(rank: 2, file: 0))
+        let failPosition1 = (currentChessPosition: ChessPosition(rank: 1, file: 1), moveChessPosition: ChessPosition(rank: 1, file: 1))
         
         let testPosition2 = commandStringToChessPosition("A2->H8")!
         
-        let successPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 7, file: 7))
-        let failPosition2 = (current: ChessPosition(rank: 1, file: 0), move: ChessPosition(rank: 5, file: 7))
+        let successPosition2 = (currentChessPosition: ChessPosition(rank: 1, file: 0), moveChessPosition: ChessPosition(rank: 7, file: 7))
+        let failPosition2 = (currentChessPosition: ChessPosition(rank: 1, file: 0), moveChessPosition: ChessPosition(rank: 5, file: 7))
         
-        XCTAssertEqual(testPosition1.current, successPosition1.current)
-        XCTAssertEqual(testPosition1.move, successPosition1.move)
+        XCTAssertEqual(testPosition1.currentChessPosition, successPosition1.currentChessPosition)
+        XCTAssertEqual(testPosition1.moveChessPosition, successPosition1.moveChessPosition)
         
-        XCTAssertNotEqual(testPosition1.current, failPosition1.current)
-        XCTAssertNotEqual(testPosition1.move, failPosition1.move)
+        XCTAssertNotEqual(testPosition1.currentChessPosition, failPosition1.currentChessPosition)
+        XCTAssertNotEqual(testPosition1.moveChessPosition, failPosition1.moveChessPosition)
         
-        XCTAssertEqual(testPosition2.current, successPosition2.current)
-        XCTAssertEqual(testPosition2.move, successPosition2.move)
+        XCTAssertEqual(testPosition2.currentChessPosition, successPosition2.currentChessPosition)
+        XCTAssertEqual(testPosition2.moveChessPosition, successPosition2.moveChessPosition)
         
-        XCTAssertEqual(testPosition2.current, failPosition2.current)
-        XCTAssertNotEqual(testPosition2.move, failPosition2.move)
+        XCTAssertEqual(testPosition2.currentChessPosition, failPosition2.currentChessPosition)
+        XCTAssertNotEqual(testPosition2.moveChessPosition, failPosition2.moveChessPosition)
     }
     
     // MARK: - Chess Position 테스트
     /// Chess Position을 테스트합니다.
     /// 상호 변환이 들어있기에 각각 테스트를 합니다
-    func testChessPosition() {
+    func test_ChessPosition() {
         /// 현재 코드상 ChessPosition은 오직 Utility 함수에서만 제작되기 때문에, 유효성 검사를 따로 하지 않습니다.
-        XCTAssertEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 0))
-        XCTAssertEqual(ChessPosition("A1").positionString, "A1")
         
-        XCTAssertTrue(ChessPosition("A1") == "A1")
+        XCTAssertEqual(ChessPosition("A1"), ChessPosition(rank: 0, file: 0))
+        XCTAssertEqual(ChessPosition("A1")?.positionString ?? "", "A1")
+        
+        XCTAssertTrue(ChessPosition("A1")! == "A1")
         XCTAssertTrue("A1" == ChessPosition(rank: 0, file: 0))
         XCTAssertFalse("A3" == ChessPosition(rank: 0, file: 0))
-        XCTAssertFalse("H8" == ChessPosition("A9"))
+        XCTAssertFalse("H8" == ChessPosition("A9") ?? ChessPosition(rank: -1, file: -1))
     }
     
     // MARK: - Pawn 테스트
     /// Pawn같은 경우 제가 설계한 팩션에 따른 이동 가능 거리를 테스트합니다.
-    func testPawn() {
-        let blackPawn = Pawn(faction: .Black)
-        let whitePawn = Pawn(faction: .White)
+    func test_Pawn() {
+        let blackPawn = Pawn(playerFaction: .Black)
+        let whitePawn = Pawn(playerFaction: .White)
         
-        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("A2")))
-        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("B1")))
-        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A3")))
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")!).contains(ChessPosition("A2")!))
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A1")!).contains(ChessPosition("B1")!))
+        XCTAssertTrue(blackPawn.movablePaths(ChessPosition("A2")!).contains(ChessPosition("A3")!))
         
-        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A1")).contains(ChessPosition("B2")))
-        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A1")))
-        XCTAssertFalse(whitePawn.movablePaths(ChessPosition("A2")).contains(ChessPosition("A3")))
+        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A1")!).contains(ChessPosition("B2")!))
+        XCTAssertFalse(blackPawn.movablePaths(ChessPosition("A2")!).contains(ChessPosition("A1")!))
+        XCTAssertFalse(whitePawn.movablePaths(ChessPosition("A2")!).contains(ChessPosition("A3")!))
     }
     
     // MARK: - Board 테스트
-    /// 현재까지의 구현만 놓고 봤을 때, Board는
-    func testBoard() {
-        /// Board를 생성하면, 설정된대로 초기화가 이루어진다.
-        /// 설정 -> 8x8의 보드판 생성, rank-2에 흑색Pawn 8개, rank-7에 백색Pawn 8개, 생성 이후 유효성 검사, 흑색 플레이어부터 시작.
-        /// 체스 위치를 몇번 바꿔보고, 이후 초기화(clear)를 진행해 다시한번 테스트를 진행해본다.
-        
-        /// init / clear 테스트
-        let board = ChessBoard()
-        testClear(board)
+    fileprivate func test_Board_Sequence1(_ board: ChessBoard) {
         /// moveCheck, move 테스트
         /// 보드는 초기화만 되어있는 상태.
         XCTAssertTrue(board.moveCheck("C2", "C3"))
@@ -183,7 +177,7 @@ final class swift_chess_appTests: XCTestCase {
         /// .♙♙♙♙♙♙♙
         /// ........
         /// 올바른 상태인지 display로 체크
-        var currentDisplay = [
+        let currentDisplay = [
         "........",
         "♟♟.♟♟♟♟♟",
         "...♟....",
@@ -195,7 +189,9 @@ final class swift_chess_appTests: XCTestCase {
         ]
         
         XCTAssertEqual(board.display(), currentDisplay)
-        
+    }
+    
+    fileprivate func test_Board_Sequence2(_ board: ChessBoard) {
         XCTAssertTrue(board.moveCheck("D3", "D4")) // 현재는 백색플레이어가 플레이중이므로, 이동은 가능하지만, 실제 이동은 이루어지지 않는다.
         XCTAssertFalse(board.move("D3", "D4"))
         
@@ -206,18 +202,31 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertEqual(board.getScore().white, 8)
         
         // 현재 상태의 display 체크
-        currentDisplay = [
-        "........",
-        "♟♟.♟♟♟♟♟",
-        "...♙....",
-        "........",
-        "........",
-        "........",
-        ".♙♙♙♙♙♙♙",
-        "........"
+        let currentDisplay = [
+            "........",
+            "♟♟.♟♟♟♟♟",
+            "...♙....",
+            "........",
+            "........",
+            "........",
+            ".♙♙♙♙♙♙♙",
+            "........"
         ]
         
         XCTAssertEqual(board.display(), currentDisplay)
+    }
+    
+    /// 현재까지의 구현만 놓고 봤을 때, Board는
+    func testBoard() {
+        /// Board를 생성하면, 설정된대로 초기화가 이루어진다.
+        /// 설정 -> 8x8의 보드판 생성, rank-2에 흑색Pawn 8개, rank-7에 백색Pawn 8개, 생성 이후 유효성 검사, 흑색 플레이어부터 시작.
+        /// 체스 위치를 몇번 바꿔보고, 이후 초기화(clear)를 진행해 다시한번 테스트를 진행해본다.
+        
+        /// init / clear 테스트
+        let board = ChessBoard()
+        testClear(board)
+        test_Board_Sequence1(board)
+        test_Board_Sequence2(board)
         
         // clear 함수를 실행해서, 모든 항목이 초기화 되었는지 체크, (말 위치 | 점수 | 현재 플레이어)
         board.clear()
@@ -230,27 +239,19 @@ final class swift_chess_appTests: XCTestCase {
         XCTAssertEqual(board.getScore().white, 8)
         XCTAssertEqual(board.currentFaction, .Black)
     }
-    
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 }
 
 extension ChessBoard {
     func moveCheck(_ current: String, _ move: String) -> Bool {
-        let currentPosition = ChessPosition(current)
-        let movePosition = ChessPosition(move)
+        guard let currentPosition = ChessPosition(current),
+              let movePosition = ChessPosition(move) else { return false }
         
         return moveCheck(currentPosition, movePosition)
     }
     
     func move(_ currentChessPosition: String, _ moveChessPosition: String) -> Bool {
-        let currentPosition = ChessPosition(currentChessPosition)
-        let movePosition = ChessPosition(moveChessPosition)
+        guard let currentPosition = ChessPosition(currentChessPosition),
+              let movePosition = ChessPosition(moveChessPosition) else { return false }
 
         return move(currentPosition, movePosition)
     }
