@@ -8,19 +8,7 @@
 import Foundation
 
 struct File: PositionType {
-  var position: [String]
-  var size: Int
-  
-  init?(position: [String], size: Int) {
-    guard position.count == size else { return nil }
-    
-    self.position = position
-    self.size = size
-  }
-  
-  func index(value: String) -> Int? {
-    guard self.position.contains(value) else { return nil }
-    
-    return self.position.firstIndex(of: value)
+  var position: [String] {
+    ["A", "B", "C", "D", "E", "F", "G", "H"]
   }
 }

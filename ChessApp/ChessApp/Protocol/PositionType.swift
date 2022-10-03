@@ -9,9 +9,6 @@ import Foundation
 
 protocol PositionType {
   var position: [String] { get }
-  var size: Int { get set }
-  
-  init?(position: [String], size: Int)
   
   func index(value: String) -> Int?
 }
