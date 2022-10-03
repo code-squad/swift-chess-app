@@ -160,6 +160,29 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(currentPoints, expectedCurrentPoints)
     }
 
+    func test_상대방진영의말을잡으면_현재점수출력메서드가호출된다() throws {
+        let expectedPrintCallCount = 1
+        var actualPrintCallCount = 0
+        let expectedPoints = GamePoint(black: 7, white: 8)
+        var actualPoints: GamePoint?
+        var boardPrinter: BoardPrinter = .unimplemented
+        boardPrinter.printCurrentPoints = { currentPoints in
+            actualPrintCallCount += 1
+            actualPoints = currentPoints
+            return ""
+        }
+        let sut = DefaultBoard(
+            status: Self.topLeftEngagedPawnsMock,
+            boardPrinter: boardPrinter
+        )
+
+        let moveCommand = MoveCommand(startPoint: .A2, endPoint: .A1)
+        try sut.move(with: moveCommand)
+
+        XCTAssertEqual(actualPrintCallCount, expectedPrintCallCount)
+        XCTAssertEqual(actualPoints, expectedPoints)
+    }
+
     func test_출발점과도착점이동일하면_이동시킬수없다() {
         let sut = DefaultBoard(status: Self.topLeftWhitePawnMock)
 
@@ -215,21 +238,6 @@ final class BoardTests: XCTestCase {
         let currentGraphicalRepresentation = sut?.display()
 
         XCTAssertEqual(currentGraphicalRepresentation, expectedGraphicalRepresentation)
-    }
-
-    func test_보드초기화후_display를호출하면_boardPrinter의메서드를한번호출한다() {
-        var printFormattedBoardCallCount = 0
-        let expectedCallCount = 1
-        var boardPrinter: BoardPrinter = .unimplemented()
-        boardPrinter.printFormattedBoard = { _ in
-            printFormattedBoardCallCount += 1
-            return ""
-        }
-        let sut = DefaultBoard(boardPrinter: boardPrinter)
-
-        sut.display()
-
-        XCTAssertEqual(printFormattedBoardCallCount, expectedCallCount)
     }
 
     // MARK: - Foundation

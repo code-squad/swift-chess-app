@@ -13,15 +13,14 @@ final class BoardPrinterTests: XCTestCase {
     func test_printFormattedBoard를호출하면_BoardFormatter의formatBoard를한번호출한다() {
         var actualFormatBoardCallCount = 0
         let expectedFormatBoardCallCount = 1
-        let boardFormatter = BoardFormatter(
-            formatBoard: { _ in
-                actualFormatBoardCallCount += 1
-                return ""
-            }
-        )
+        var boardFormatter: BoardFormatter = .unimplemented
+        boardFormatter.formatBoard = { _ in
+            actualFormatBoardCallCount += 1
+            return ""
+        }
         let sut: BoardPrinter = .live(boardFormatter: boardFormatter)
 
-        sut.printFormattedBoard([])
+        sut.printBoard([])
 
         XCTAssertEqual(actualFormatBoardCallCount, expectedFormatBoardCallCount)
     }

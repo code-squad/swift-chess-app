@@ -35,6 +35,7 @@
 		AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD2A28EA8E640051D8CB /* BoardPrinter.swift */; };
 		AA53AD2E28EA9A410051D8CB /* BoardPrinterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD2D28EA9A410051D8CB /* BoardPrinterTests.swift */; };
 		AA53AD3128EA9C7E0051D8CB /* BoardFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */; };
+		AA53AD3428EAA0210051D8CB /* GamePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3328EAA0210051D8CB /* GamePrinter.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -82,6 +83,7 @@
 		AA53AD2A28EA8E640051D8CB /* BoardPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPrinter.swift; sourceTree = "<group>"; };
 		AA53AD2D28EA9A410051D8CB /* BoardPrinterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPrinterTests.swift; sourceTree = "<group>"; };
 		AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFormatterTests.swift; sourceTree = "<group>"; };
+		AA53AD3328EAA0210051D8CB /* GamePrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrinter.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		AA53AC9428E414140051D8CB /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				AA53AD3228EAA0160051D8CB /* Printer */,
 				AA53AD1228E987D50051D8CB /* Game.swift */,
 			);
 			path = Game;
@@ -280,6 +283,14 @@
 				AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */,
 			);
 			path = Formatter;
+			sourceTree = "<group>";
+		};
+		AA53AD3228EAA0160051D8CB /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD3328EAA0210051D8CB /* GamePrinter.swift */,
+			);
+			path = Printer;
 			sourceTree = "<group>";
 		};
 		AABA53A828E1D31A00006508 = {
@@ -511,6 +522,7 @@
 				AA53ACB528E491430051D8CB /* MoveCommandParser.swift in Sources */,
 				AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
+				AA53AD3428EAA0210051D8CB /* GamePrinter.swift in Sources */,
 				AA53AD1328E987D50051D8CB /* Game.swift in Sources */,
 				AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */,
 				AA53ACF528E766AB0051D8CB /* Empty.swift in Sources */,
