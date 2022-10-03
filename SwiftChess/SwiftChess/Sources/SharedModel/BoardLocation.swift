@@ -5,18 +5,15 @@
 //  Created by Geonhee on 2022/10/02.
 //
 
-extension Board {
-
-    /// 체스판 내 위치를 나타내는 타입.
-    struct Location: Equatable {
-        /// 열(Column)
-        var file: File
-        /// 행(Row)
-        var rank: Rank
-    }
+/// 체스판 내 위치를 나타내는 타입.
+struct BoardLocation: Equatable {
+    /// 열(Column)
+    var file: File
+    /// 행(Row)
+    var rank: Rank
 }
 
-extension Board.Location {
+extension BoardLocation {
 
     /// 체스판의 열(Column)을 나타내는 타입.
     enum File: Int, BoardLocationRepresentable {
@@ -43,7 +40,7 @@ extension Board.Location {
     }
 }
 
-extension Board.Location {
+extension BoardLocation {
 
     /// 위치와 이동규칙을 더해 새로운 위치를 계산한다.
     /// - Parameters:
@@ -72,7 +69,7 @@ extension Board.Location {
     }
 }
 
-extension Board.Location.Rank {
+extension BoardLocation.Rank {
 
     /// ``Rank``와 이동규칙의 이동 단위를 더해 새로운 rank를 계산한다.
     /// - Parameters:
@@ -103,16 +100,16 @@ extension IndexRepresentable where Self: BoardLocationRepresentable, RawValue ==
     }
 }
 
-// MARK: - Board.Location.File
+// MARK: - BoardLocation.File
 
-extension Board.Location.File: IndexRepresentable {}
+extension BoardLocation.File: IndexRepresentable {}
 
-extension Board.Location.File: AsciiValueRepresentable {
+extension BoardLocation.File: AsciiValueRepresentable {
     var asciiValue: Int {
-        return Board.Configuration.minimumFile.asciiValue + self.rawValue - 1
+        return DefaultBoard.Configuration.minimumFile.asciiValue + self.rawValue - 1
     }
 }
 
-// MARK: - Board.Location.Rank
+// MARK: - BoardLocation.Rank
 
-extension Board.Location.Rank: IndexRepresentable {}
+extension BoardLocation.Rank: IndexRepresentable {}

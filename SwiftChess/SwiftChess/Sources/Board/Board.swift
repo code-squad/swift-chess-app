@@ -6,18 +6,50 @@
 //
 
 /// 체스판 타입.
-final class Board {
-
+protocol Board {
     /// 체스판의 상태. 체스말이 놓여진 상태를 확인할 수 있다.
+    var status: [[BoardElementRepresentable]] { get }
+    var gamePoint: GamePoint { get }
+    var onGamePointChange: ((GamePoint) -> Void)? { get }
+
+    subscript(_ location: BoardLocation) -> BoardElementRepresentable { get set }
+
+    /// 주어진 상태로 체스판을 초기화한다.
+    init(
+        status: [[BoardElementRepresentable]],
+        gamePoint: GamePoint,
+        boardPrinter: BoardPrinter
+    )
+    /// 지정된 방식으로 체스판을 초기화한다.
+    init(
+        gamePoint: GamePoint,
+        boardPrinter: BoardPrinter
+    )
+
+    /// 이동 명령을 통해 체스말을 이동시킨다.
+    /// - Parameter moveCommand: 이동 명령 인스턴스. 시작점과 도착점이 포함되어 있다.
+    func move(with command: MoveCommand) throws
+    /// black, white 양 진영의 현재 점수를 반환한다.
+    /// - Returns: 흑백 양 진영의 현재 점수.
+    func currentPoints() -> GamePoint
+    /// 현재 체스판 상황을 콘솔에 출력한다.
+    /// - Returns: 콘솔에 표현할 문자열 형식 체스판 상황.
+    @discardableResult
+    func display() -> String
+}
+
+final class DefaultBoard: Board {
+
     private(set) var status: [[BoardElementRepresentable]] = []
-    private var gamePoint: GamePoint {
+    private(set) var gamePoint: GamePoint {
         didSet {
             onGamePointChange?(gamePoint)
         }
     }
-    var onGamePointChange: ((GamePoint) -> Void)?
+    private let boardPrinter: BoardPrinter
+    private(set) var onGamePointChange: ((GamePoint) -> Void)?
 
-    subscript(_ location: Board.Location) -> BoardElementRepresentable {
+    subscript(_ location: BoardLocation) -> BoardElementRepresentable {
         get {
             return status[location.rank.index][location.file.index]
         }
@@ -26,32 +58,34 @@ final class Board {
         }
     }
 
-    /// 주어진 상태로 체스판을 초기화한다.
     init(
         status: [[BoardElementRepresentable]],
-        gamePoint: GamePoint = .zeros
+        gamePoint: GamePoint = .zeros,
+        boardPrinter: BoardPrinter = .live()
     ) {
         self.status = status
         self.gamePoint = gamePoint
+        self.boardPrinter = boardPrinter
     }
 
-    /// 지정된 방식으로 체스판을 초기화한다.
     init(
-        gamePoint: GamePoint = .zeros
+        gamePoint: GamePoint = .zeros,
+        boardPrinter: BoardPrinter = .live()
     ) {
         self.gamePoint = gamePoint
+        self.boardPrinter = boardPrinter
         setInitialState()
     }
 
     // MARK: - Board 초기화 시 status 구성
 
-    /// 지정된 구성으로 ``Board``의 ``Board/status``를 초기화한다.
+    /// 지정된 구성으로 ``DefaultBoard/status``를 초기화한다.
     private func setInitialState() {
         setEmptyState()
         setPawns()
     }
 
-    /// ``Board/status``를 빈 상태로 설정한다. 크기는 ``Board/Configuration/size``를 따른다.
+    /// ``Board/status``를 빈 상태로 설정한다. 크기는 ``DefaultBoard/Configuration/size-swift.type.property``를 따른다.
     private func setEmptyState() {
         let emptyRank: [BoardElementRepresentable] = Array(
             repeating: Empty(),
@@ -63,14 +97,14 @@ final class Board {
         )
     }
 
-    /// 색상별 ``Pawn``을 지정된 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRankIndex``를 참고한다.
+    /// 색상별 ``Pawn``을 지정된 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRank``를 참고한다.
     private func setPawns() {
         for pieceColor in PieceColor.allCases {
             setPawns(for: pieceColor)
         }
     }
 
-    /// 지정된 색상의 ``Pawn``을 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRankIndex``를 참고한다.
+    /// 지정된 색상의 ``Pawn``을 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRank``를 참고한다.
     /// - Parameter pieceColor: 흑백 진영을 의미하는 체스말 색깔.
     private func setPawns(for pieceColor: PieceColor) {
         switch pieceColor {
@@ -94,8 +128,6 @@ final class Board {
 
     // MARK: - 체스말 이동
 
-    /// 이동 명령을 통해 체스말을 이동시킨다.
-    /// - Parameter moveCommand: 이동 명령 인스턴스. 시작점과 도착점이 포함되어 있다.
     func move(with command: MoveCommand) throws {
         try validate(startPoint: command.startPoint, endPoint: command.endPoint)
 
@@ -123,8 +155,8 @@ final class Board {
     ///   - startPoint: 이동을 시작하는 시작점.
     ///   - endPoint: 이동하고자 하는 도착점.
     private func validate(
-        startPoint: Board.Location,
-        endPoint: Board.Location
+        startPoint: BoardLocation,
+        endPoint: BoardLocation
     ) throws {
         guard startPoint != endPoint else {
             throw BoardError.startEndPointShouldNotBeIdentical
@@ -139,8 +171,8 @@ final class Board {
     /// - Returns: 이동 가능 여부. 가능하다면 `true`를 반환한다.
     private func canMove(
         piece: Piece,
-        from startPoint: Board.Location,
-        to endPoint: Board.Location
+        from startPoint: BoardLocation,
+        to endPoint: BoardLocation
     ) -> Bool {
         let movableLocations = piece.movableLocations(from: startPoint)
 
@@ -160,7 +192,7 @@ final class Board {
 
     /// 지정된 위치에 있는 체스말을 없앤다. 대상 체스말이 이동할 체스말과 다른 색상임을 확인하고 사용해야한다.
     /// - Parameter location: 상대방 체스말이 있는 위치.
-    private func captureEnemyPiece(at location: Board.Location) {
+    private func captureEnemyPiece(at location: BoardLocation) {
         self[location] = Empty()
     }
 
@@ -171,8 +203,8 @@ final class Board {
     ///   - endPoint: 이동하고자 하는 도착점.
     private func move(
         _ piece: Piece,
-        from startPoint: Board.Location,
-        to endPoint: Board.Location
+        from startPoint: BoardLocation,
+        to endPoint: BoardLocation
     ) {
         self[startPoint] = Empty()
         self[endPoint] = piece
@@ -180,21 +212,19 @@ final class Board {
 
     // MARK: - 점수 계산
 
-    /// black, white 양 진영의 현재 점수를 반환한다.
-    /// - Returns: 흑백 양 진영의 현재 점수 튜플.
     func currentPoints() -> GamePoint {
         let existingPieces = status
             .flatMap { $0.compactMap { $0 as? Piece } }
         return reducePoints(from: existingPieces)
     }
 
-    /// 체스판에 존재하는 ``Piece``를 이용해 black, white 양 진영의 점수를 계산하여 반환한다.
+    /// 체스판에 존재하는 ``Piece``를 이용해 ``PieceColor/black``, ``PieceColor/white`` 양 진영의 점수를 계산하여 반환한다.
     /// - Parameter existingPieces: 체스판 위에 존재하는 체스말들.
     /// - Returns: 체스판 위에 존재하는 체스말을 통해 계산된 흑백 양 진영의 현재 점수 튜플.
     private func reducePoints(from existingPieces: [Piece]) -> GamePoint {
         let points = GamePoint(
-            black: Board.Configuration.totalAvailablePoints,
-            white: Board.Configuration.totalAvailablePoints
+            black: DefaultBoard.Configuration.totalAvailablePoints,
+            white: DefaultBoard.Configuration.totalAvailablePoints
         )
         return existingPieces.reduce(points) { partialResult, piece in
             switch piece.color {
@@ -215,22 +245,13 @@ final class Board {
 
     // MARK: - 체스판 표현
 
-    /// 현재 체스판 상황을 콘솔에 출력한다.
-    /// - Returns: 콘솔에 표현할 문자열 형식 체스판 상황.
-    @discardableResult
     func display() -> String {
-        let graphicalRepresentation = status.map { rank in
-            return rank
-                .map(\.asSymbol.rawValue)
-                .joined()
-        }
-            .joined(separator: "\n")
-        print(graphicalRepresentation)
-        return graphicalRepresentation
+        return boardPrinter.printFormattedBoard(status)
+
     }
 }
 
-extension Board {
+extension DefaultBoard {
 
     /// 체스판의 환경변수를 정의한 타입.
     enum Configuration {

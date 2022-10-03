@@ -30,7 +30,7 @@ protocol Piece: BoardElementRepresentable {
     /// 입력된 위치에서 이동할 수 있는 위치 후보를 반환한다.
     /// - Parameter location: 이동을 시도하는 시작점
     /// - Returns: 현재 위치에서 이동할 수 있는 모든 위치 배열. 해당 위치에 장애물 존재 유무를 고려하지 않는다.
-    func movableLocations(from location: Board.Location) -> [Board.Location]
+    func movableLocations(from location: BoardLocation) -> [BoardLocation]
 }
 
 extension Piece {

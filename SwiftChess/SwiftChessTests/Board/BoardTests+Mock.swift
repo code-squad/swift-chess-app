@@ -64,7 +64,7 @@ extension BoardTests {
     ]
 }
 
-extension Board.Location {
+extension BoardLocation {
     static let A1 = Self(file: .A, rank: .one)
     static let A2 = Self(file: .A, rank: .two)
     static let A7 = Self(file: .A, rank: .seven)
