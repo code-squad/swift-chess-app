@@ -15,8 +15,7 @@ struct BishopPiece: ChessPieceProtocol {
     }
     
     static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
-        let fileDelta = destination.file - origin.file
-        let rankDelta = destination.rank - origin.rank
-        return abs(fileDelta) == abs(rankDelta)
+        let delta = destination - origin
+        return abs(delta.file) == abs(delta.rank)
     }
 }
