@@ -19,7 +19,7 @@ struct Pawn: Piece {
     }
 
     /// 색상별 ``Pawn``이 최초에 위치할 수 있는 rank
-    var initialRank: Board.Location.Rank {
+    var initialRank: BoardLocation.Rank {
         switch color {
         case .black:
             return .two
@@ -32,7 +32,7 @@ struct Pawn: Piece {
 
 extension Pawn {
 
-    func movableLocations(from location: Board.Location) -> [Board.Location] {
+    func movableLocations(from location: BoardLocation) -> [BoardLocation] {
         Self.moveRules.flatMap { moveRule in
             switch color {
             case .black:

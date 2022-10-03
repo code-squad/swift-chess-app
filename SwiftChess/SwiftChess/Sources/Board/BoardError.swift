@@ -10,15 +10,15 @@ import Foundation
 /// 체스판 타입에서 발생할 수 있는 에러 타입.
 enum BoardError: Equatable {
     /// 이동을 시도하였으나 시작점에 체스말이 없음
-    case pieceNotExistsAtStartPoint(Board.Location)
+    case pieceNotExistsAtStartPoint(BoardLocation)
     /// 이동 가능한 위치가 존재하지 않음
     case movableLocationsNotExists
     /// 이동 시 시작점과 도착점이 동일할 수 없음
     case startEndPointShouldNotBeIdentical
     /// 이동 규칙에 따라 해당 체스말은 지정한 도착점로 이동할 수 없음
-    case moveRuleViolated(possibleEndPoints: [Board.Location])
+    case moveRuleViolated(possibleEndPoints: [BoardLocation])
     /// 도착점에 동일한 색상의 체스말이 이미 존재하여 이동할 수 없음
-    case identicalColoredPieceAlreadyExists(endPoint: Board.Location)
+    case identicalColoredPieceAlreadyExists(endPoint: BoardLocation)
 }
 
 extension BoardError: LocalizedError {

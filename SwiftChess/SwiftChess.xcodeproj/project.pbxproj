@@ -15,7 +15,7 @@
 		AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACAC28E457610051D8CB /* Occupiable.swift */; };
 		AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */; };
 		AA53ACB528E491430051D8CB /* MoveCommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB428E491430051D8CB /* MoveCommandParser.swift */; };
-		AA53ACB728E491540051D8CB /* MoveCommandReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB628E491540051D8CB /* MoveCommandReader.swift */; };
+		AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB628E491540051D8CB /* CommandReader.swift */; };
 		AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACB828E497B10051D8CB /* String+Extensions.swift */; };
 		AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACBC28E4A21F0051D8CB /* MoveCommandParserTests.swift */; };
 		AA53ACF328E759810051D8CB /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACF228E759810051D8CB /* BoardError.swift */; };
@@ -25,12 +25,16 @@
 		AA53ACFC28E94D6D0051D8CB /* AsciiValueRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACFB28E94D6D0051D8CB /* AsciiValueRepresentable.swift */; };
 		AA53ACFE28E94D9F0051D8CB /* RangedRawValueRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACFD28E94D9F0051D8CB /* RangedRawValueRepresentable.swift */; };
 		AA53AD0028E94DD80051D8CB /* RawValueInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53ACFF28E94DD80051D8CB /* RawValueInitializable.swift */; };
-		AA53AD0228E94E340051D8CB /* Board+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0128E94E340051D8CB /* Board+Location.swift */; };
+		AA53AD0228E94E340051D8CB /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0128E94E340051D8CB /* BoardLocation.swift */; };
 		AA53AD0728E968170051D8CB /* MoveCommandParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0628E968170051D8CB /* MoveCommandParserError.swift */; };
 		AA53AD0928E96C190051D8CB /* MoveCommandValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0828E96C190051D8CB /* MoveCommandValidator.swift */; };
 		AA53AD0F28E986C80051D8CB /* GamePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD0E28E986C80051D8CB /* GamePoint.swift */; };
 		AA53AD1328E987D50051D8CB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD1228E987D50051D8CB /* Game.swift */; };
 		AA53AD1828E98D0C0051D8CB /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */; };
+		AA53AD2928EA8E590051D8CB /* BoardFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD2828EA8E590051D8CB /* BoardFormatter.swift */; };
+		AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD2A28EA8E640051D8CB /* BoardPrinter.swift */; };
+		AA53AD2E28EA9A410051D8CB /* BoardPrinterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD2D28EA9A410051D8CB /* BoardPrinterTests.swift */; };
+		AA53AD3128EA9C7E0051D8CB /* BoardFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -58,7 +62,7 @@
 		AA53ACAC28E457610051D8CB /* Occupiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupiable.swift; sourceTree = "<group>"; };
 		AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardTests+Mock.swift"; sourceTree = "<group>"; };
 		AA53ACB428E491430051D8CB /* MoveCommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandParser.swift; sourceTree = "<group>"; };
-		AA53ACB628E491540051D8CB /* MoveCommandReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandReader.swift; sourceTree = "<group>"; };
+		AA53ACB628E491540051D8CB /* CommandReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReader.swift; sourceTree = "<group>"; };
 		AA53ACB828E497B10051D8CB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AA53ACBC28E4A21F0051D8CB /* MoveCommandParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandParserTests.swift; sourceTree = "<group>"; };
 		AA53ACF228E759810051D8CB /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
@@ -68,12 +72,16 @@
 		AA53ACFB28E94D6D0051D8CB /* AsciiValueRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiValueRepresentable.swift; sourceTree = "<group>"; };
 		AA53ACFD28E94D9F0051D8CB /* RangedRawValueRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedRawValueRepresentable.swift; sourceTree = "<group>"; };
 		AA53ACFF28E94DD80051D8CB /* RawValueInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawValueInitializable.swift; sourceTree = "<group>"; };
-		AA53AD0128E94E340051D8CB /* Board+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Location.swift"; sourceTree = "<group>"; };
+		AA53AD0128E94E340051D8CB /* BoardLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardLocation.swift; sourceTree = "<group>"; };
 		AA53AD0628E968170051D8CB /* MoveCommandParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandParserError.swift; sourceTree = "<group>"; };
 		AA53AD0828E96C190051D8CB /* MoveCommandValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommandValidator.swift; sourceTree = "<group>"; };
 		AA53AD0E28E986C80051D8CB /* GamePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePoint.swift; sourceTree = "<group>"; };
 		AA53AD1228E987D50051D8CB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
+		AA53AD2828EA8E590051D8CB /* BoardFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFormatter.swift; sourceTree = "<group>"; };
+		AA53AD2A28EA8E640051D8CB /* BoardPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPrinter.swift; sourceTree = "<group>"; };
+		AA53AD2D28EA9A410051D8CB /* BoardPrinterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPrinterTests.swift; sourceTree = "<group>"; };
+		AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFormatterTests.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				AA53ACA728E43F0A0051D8CB /* Model */,
+				AA53AD2F28EA9C6B0051D8CB /* Formatter */,
+				AA53AD2C28EA9A270051D8CB /* Printer */,
 				AA53ACA028E43D3E0051D8CB /* BoardTests.swift */,
 				AA53ACB128E473430051D8CB /* BoardTests+Mock.swift */,
 			);
@@ -152,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				AA53AD0A28E96DD70051D8CB /* Move */,
+				AA53ACB628E491540051D8CB /* CommandReader.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -189,7 +200,6 @@
 			children = (
 				AA53ACB428E491430051D8CB /* MoveCommandParser.swift */,
 				AA53AD0628E968170051D8CB /* MoveCommandParserError.swift */,
-				AA53ACB628E491540051D8CB /* MoveCommandReader.swift */,
 				AA53AD0828E96C190051D8CB /* MoveCommandValidator.swift */,
 			);
 			path = Move;
@@ -206,6 +216,7 @@
 		AA53AD0D28E986BC0051D8CB /* SharedModel */ = {
 			isa = PBXGroup;
 			children = (
+				AA53AD0128E94E340051D8CB /* BoardLocation.swift */,
 				AA53AD0E28E986C80051D8CB /* GamePoint.swift */,
 			);
 			path = SharedModel;
@@ -215,8 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				AA53AC9728E41A870051D8CB /* Model */,
+				AA53AD2628EA8E3C0051D8CB /* Formatter */,
+				AA53AD2728EA8E430051D8CB /* Printer */,
 				AA53AC9528E41A840051D8CB /* Board.swift */,
-				AA53AD0128E94E340051D8CB /* Board+Location.swift */,
 				AA53ACF228E759810051D8CB /* BoardError.swift */,
 			);
 			path = Board;
@@ -236,6 +248,38 @@
 				AA53AD1728E98D0C0051D8CB /* StringExtensionsTests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA53AD2628EA8E3C0051D8CB /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD2828EA8E590051D8CB /* BoardFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		AA53AD2728EA8E430051D8CB /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD2A28EA8E640051D8CB /* BoardPrinter.swift */,
+			);
+			path = Printer;
+			sourceTree = "<group>";
+		};
+		AA53AD2C28EA9A270051D8CB /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD2D28EA9A410051D8CB /* BoardPrinterTests.swift */,
+			);
+			path = Printer;
+			sourceTree = "<group>";
+		};
+		AA53AD2F28EA9C6B0051D8CB /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD3028EA9C7E0051D8CB /* BoardFormatterTests.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 		AABA53A828E1D31A00006508 = {
@@ -456,17 +500,19 @@
 				AA53ACFA28E94C970051D8CB /* IndexRepresentable.swift in Sources */,
 				AA53AD0028E94DD80051D8CB /* RawValueInitializable.swift in Sources */,
 				AA53ACF328E759810051D8CB /* BoardError.swift in Sources */,
+				AA53AD2928EA8E590051D8CB /* BoardFormatter.swift in Sources */,
 				AA53ACB928E497B10051D8CB /* String+Extensions.swift in Sources */,
 				AA53AC9B28E41AB70051D8CB /* Pawn.swift in Sources */,
 				AA53ACAD28E457610051D8CB /* Occupiable.swift in Sources */,
 				AA53AD0728E968170051D8CB /* MoveCommandParserError.swift in Sources */,
-				AA53AD0228E94E340051D8CB /* Board+Location.swift in Sources */,
+				AA53AD0228E94E340051D8CB /* BoardLocation.swift in Sources */,
 				AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */,
 				AA53AD0928E96C190051D8CB /* MoveCommandValidator.swift in Sources */,
 				AA53ACB528E491430051D8CB /* MoveCommandParser.swift in Sources */,
+				AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
 				AA53AD1328E987D50051D8CB /* Game.swift in Sources */,
-				AA53ACB728E491540051D8CB /* MoveCommandReader.swift in Sources */,
+				AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */,
 				AA53ACF528E766AB0051D8CB /* Empty.swift in Sources */,
 				AA53AC9628E41A840051D8CB /* Board.swift in Sources */,
 				AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */,
@@ -480,7 +526,9 @@
 				AA53AD1828E98D0C0051D8CB /* StringExtensionsTests.swift in Sources */,
 				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
 				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
+				AA53AD2E28EA9A410051D8CB /* BoardPrinterTests.swift in Sources */,
 				AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */,
+				AA53AD3128EA9C7E0051D8CB /* BoardFormatterTests.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
