@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - ChessBoardProtocol
 protocol ChessBoardProtocol: AnyObject {
-    var rank: Int { get }
-    var file: Int { get }
+    var row: Int { get }
+    var column: Int { get }
 
     /// 체스판 만들기
     func makeBoard()
@@ -20,38 +20,42 @@ protocol ChessBoardProtocol: AnyObject {
               to position: String) -> Bool
 
     /// 보드 위 체스말 출력
-    func display()
+    func display() -> [[String]] 
 
     /// 점수 출력
-    func getScore(in board: [[String]]) -> String
+    func getScore(in board: [[String]]) -> (Int, Int)
 }
 
 // MARK: - ChessBoard 체스판
 final class ChessBoard: ChessBoardProtocol {
 
-    let rank: Int
-    let file: Int
+    // MARK: - Properties
+    let row: Int
+    let column: Int
 
-    init(rank: Int, file: Int) {
-        self.rank = rank
-        self.file = file
+    // MARK: - Initialize
+    init(row: Int, column: Int) {
+        self.row = row
+        self.column = column
     }
 
     var boardState: [[String]] = [[""]]
 
 
+    // MARK: - Function
     func makeBoard() {
-        var board = [[String]](repeatElement([String](repeating: ".", count: file + 1), count: rank + 2))
+        var board = [[String]](repeatElement([String](repeating: ".", count: column + 1),
+                                             count: row + 2))
         board[0] = ["A", "B", "C", "D", "E", "F", "G"]
         board[8] = board[0]
 
-        for i in 1...rank {
+        for i in 1...row {
             board[i][0] = "\(i)"
         }
 
-        for i in 1...file {
-            board[2][i] = "w"
-            board[7][i] = "b"
+        for i in 1...column {
+            board[2][i] = "♙"
+            board[7][i] = "♟"
         }
         self.boardState = board
     }
@@ -68,17 +72,15 @@ final class ChessBoard: ChessBoardProtocol {
         return true
     }
 
-    func display() {
-        for i in 0..<boardState.count {
-            print(boardState[i])
-        }
+    func display() -> [[String]] {
+        boardState
     }
 
-    func getScore(in board: [[String]]) -> String {
+    func getScore(in board: [[String]]) -> (Int, Int) {
         let bo = board.flatMap { $0 }
         let whiteScore = bo.filter { $0 == "♙" }.count
         let blackScore = bo.filter { $0 == "♟" }.count
-        return "White: \(whiteScore) | Black: \(blackScore)"
+        return (whiteScore, blackScore)
     }
 }
 

@@ -19,10 +19,10 @@ enum ChessType {
     }
 }
 
-// MARK: - ChessPiecesColor 체스말 컬러
-enum ChessPiecesColor: String {
-    case black = "♟"
-    case white = "♙"
+// MARK: - ChessPieceColor 체스말 컬러
+enum ChessPieceColor {
+    case black
+    case white
 
     func toggle() -> Self {
         switch self {
@@ -34,21 +34,21 @@ enum ChessPiecesColor: String {
     }
 }
 
-// MARK: - ChessPiecesProtocol
-protocol ChessPiecesProtocol {
+// MARK: - ChessPieceProtocol
+protocol ChessPieceProtocol {
 
     var type: ChessType { get }
-    var color: ChessPiecesColor { get }
+    var color: ChessPieceColor { get }
     var currentPosition: BoardPosition { get }
 
     // 자신이 이동할 수 있는 위치 제공
-    func getMovablePositions(for chessPieces: ChessPieces,
+    func getMovablePositions(for chessPieces: ChessPiece,
                              in chessBoard: ChessBoard) -> [String]
 }
 
-extension ChessPiecesProtocol {
+extension ChessPieceProtocol {
 
-    func getMovablePositions(for chessPieces: ChessPieces,
+    func getMovablePositions(for chessPieces: ChessPiece,
                              in chessBoard: ChessBoard) -> [String] {
 
         var positions = [String]()
@@ -67,9 +67,9 @@ extension ChessPiecesProtocol {
 }
 
 // MARK: - ChessPieces 체스말
-struct ChessPieces: ChessPiecesProtocol {
+struct ChessPiece: ChessPieceProtocol {
 
-    let color: ChessPiecesColor
+    let color: ChessPieceColor
     let type: ChessType
     var currentPosition: BoardPosition
 }

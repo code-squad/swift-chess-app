@@ -10,7 +10,7 @@ import Foundation
 // MARK: - ChessGameProtocol
 protocol ChessGameProtocol: AnyObject {
     /// 현재 차례인 체스말의 컬러
-    var currentOrderColor: ChessPiecesColor { get }
+    var currentOrderColor: ChessPieceColor { get }
 
     /// 체스판 초기화. 게임 시작
     func start()
@@ -19,14 +19,14 @@ protocol ChessGameProtocol: AnyObject {
     func input()
 
     /// 번갈아가며 차례대로 게임을 진행함.
-    func play(_ currentOrderColor: ChessPiecesColor)
+    func play(_ currentOrderColor: ChessPieceColor)
 }
 
 // MARK: - ChessGame 체스게임
 final class ChessGame: ChessGameProtocol {
 
-    let chessBoard: ChessBoard = ChessBoard(rank: 8, file: 8)
-    var currentOrderColor: ChessPiecesColor = .white
+    let chessBoard: ChessBoard = ChessBoard(row: 8, column: 8)
+    var currentOrderColor: ChessPieceColor = .white
 
     func start() {
         chessBoard.makeBoard()
@@ -48,7 +48,7 @@ final class ChessGame: ChessGameProtocol {
         }
     }
 
-    func play(_ currentOrderColor: ChessPiecesColor) {
+    func play(_ currentOrderColor: ChessPieceColor) {
         self.currentOrderColor = currentOrderColor.toggle()
         print("\(currentOrderColor)색 체스말의 차례입니다.")
         input()
