@@ -13,7 +13,7 @@ protocol Piece {
     var score: Int { get }
     var maxCount: Int { get }
     func startPosition() -> [Position]
-    // func validNextPosition() -> Bool
+    func validToMovePosition(current: Position, to: Position) -> Bool
 }
 
 enum PieceColor {

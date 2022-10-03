@@ -28,12 +28,14 @@ struct Pawn: Piece {
         }
     }
     
-//    func checkEnableToMove(from: Position, to: Position) -> Bool {
-//        switch color {
-//        case .black:
-//            return from.rank.rawValue < to.rank.rawValue
-//        case .white:
-//            return from.rank.rawValue > to.rank.rawValue
-//        }
-//    }
+    func validToMovePosition(current: Position, to: Position) -> Bool {
+        switch color {
+        case .black:
+            return current.rank.rawValue < to.rank.rawValue
+            && current.file == to.file
+        case .white:
+            return current.rank.rawValue > to.rank.rawValue
+            && current.file == to.file
+        }
+    }
 }
