@@ -5,21 +5,14 @@
 //  Created by Geonhee on 2022/10/03.
 //
 
-struct GameGuideTextProvider {
-
-    enum Event {
-
-        case boardInitializationCompleted
-        case enterCommand
-    }
-
-    var boardInitializationCompleted: () -> Self.Event
-    var enterCommand: () -> Self.Event
+enum GameGuideText {
+    case boardInitializationCompleted
+    case enterCommand
 }
 
-extension GameGuideTextProvider.Event: CustomStringConvertible {
+extension GameGuideText {
 
-    var description: String {
+    var message: String {
         switch self {
         case .boardInitializationCompleted:
             return "체스 보드를 초기화했습니다."
@@ -30,26 +23,18 @@ extension GameGuideTextProvider.Event: CustomStringConvertible {
     }
 }
 
-extension GameGuideTextProvider {
-
-    static let live = Self(
-        boardInitializationCompleted: { .boardInitializationCompleted },
-        enterCommand: { .enterCommand }
-    )
-}
-
 struct GamePrinter {
 
     static func printGuideText(
-        _ event: GameGuideTextProvider.Event,
+        _ event: GameGuideText,
         terminator: String = "\n"
-    ) -> GameGuideTextProvider.Event {
-        print(event, terminator: terminator)
-        return event
+    ) -> String {
+        print(event.message, terminator: terminator)
+        return event.message
     }
 
-    var printBoardInitializationCompleted: () -> GameGuideTextProvider.Event
-    var printEnterCommand: () -> GameGuideTextProvider.Event
+    var printBoardInitializationCompleted: () -> String
+    var printEnterCommand: () -> String
 }
 
 extension GamePrinter {
