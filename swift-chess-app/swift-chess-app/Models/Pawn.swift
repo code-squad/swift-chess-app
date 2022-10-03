@@ -7,32 +7,29 @@
 
 import Foundation
 
-struct Pawn: Piece {
+final class Pawn: Piece {
     
-    let score: Int = 1
+    override var score: Int { 1 }
     
-    let color: PieceColor
-    
-    var point: Point
-    
-    var movablePoints: [Point] {
+    override var movablePoints: [Point] {
+        let results: [Point?]
         switch color {
-        case .white: return [Point(rank: point.rank - 1, file: point.file)]
-        case .black: return [Point(rank: point.rank + 1, file: point.file)]
+        case .white:
+            results = [point + Direction.n]
+        case .black:
+            results = [point + Direction.s]
         }
+        return results.compactMap { $0 }
     }
     
-    var toString: String { "Pawn" }
+    override var toString: String { "Pawn" }
     
-    var toIcon: String {
+    override var toIcon: String {
         switch color {
-        case .white: return "♙"
-        case .black: return "♟"
+        case .white:
+            return "♙"
+        case .black:
+            return "♟"
         }
-    }
-    
-    init(color: PieceColor, point: Point) {
-        self.color = color
-        self.point = point
     }
 }

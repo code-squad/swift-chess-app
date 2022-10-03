@@ -14,14 +14,19 @@ enum File: String, CaseIterable, Hashable  {
     var toString: String { self.rawValue.uppercased() }
     
     var toInt: Int {
-        for (idx, file) in File.allCases.enumerated() where file == self {
-            return idx
-        }
-        return 0
+        guard let value = UnicodeScalar(rawValue)?.value else { return 0 }
+        return Int(value) - Int(UnicodeScalar("a").value)
     }
 }
 
 extension File {
+    
+    init?(_ num: Int) {
+        let asciiLowerA = Int(UnicodeScalar("a").value)
+        let string = String(UnicodeScalar(UInt8(num + asciiLowerA)))
+        guard let file = File(rawValue: string) else { return nil }
+        self = file
+    }
     
     init?(_ string: String) {
         let lowerString = string.lowercased()
@@ -34,5 +39,24 @@ extension File: Equatable {
     
     static func == (lhs: File, rhs: File) -> Bool {
         return lhs.rawValue == rhs.rawValue
+    }
+}
+
+extension File {
+    
+    static func + (left: File, right: File) -> File? {
+        return File(left.toInt + right.toInt)
+    }
+    
+    static func + (left: File, right: Int) -> File? {
+        return File(left.toInt + right)
+    }
+    
+    static func - (left: File, right: File) -> File? {
+        return File(left.toInt - right.toInt)
+    }
+    
+    static func - (left: File, right: Int) -> File? {
+        return File(left.toInt - right)
     }
 }

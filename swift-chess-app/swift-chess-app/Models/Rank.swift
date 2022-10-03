@@ -14,16 +14,6 @@ enum Rank: Int, CaseIterable, Hashable {
     var toString: String { String(rawValue) }
 }
 
-private extension Rank {
-    
-    init(num: Int) {
-        guard let rank = Rank(rawValue: num) else {
-            fatalError("Rank cannot be initialized")
-        }
-        self = rank
-    }
-}
-
 extension Rank {
     
     init?(_ num: Int) {
@@ -46,19 +36,19 @@ extension Rank: Equatable {
 
 extension Rank {
     
-    static func + (left: Rank, right: Rank) -> Rank {
-        return Rank(num: left.rawValue + right.rawValue)
+    static func + (left: Rank, right: Rank) -> Rank? {
+        return Rank(left.rawValue + right.rawValue)
     }
     
-    static func + (left: Rank, right: Int) -> Rank {
-        return Rank(num: left.rawValue + right)
+    static func + (left: Rank, right: Int) -> Rank? {
+        return Rank(left.rawValue + right)
     }
     
-    static func - (left: Rank, right: Rank) -> Rank {
-        return Rank(num: left.rawValue - right.rawValue)
+    static func - (left: Rank, right: Rank) -> Rank? {
+        return Rank(left.rawValue - right.rawValue)
     }
     
-    static func - (left: Rank, right: Int) -> Rank {
-        return Rank(num: left.rawValue - right)
+    static func - (left: Rank, right: Int) -> Rank? {
+        return Rank(left.rawValue - right)
     }
 }
