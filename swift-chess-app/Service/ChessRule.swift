@@ -13,12 +13,81 @@ enum PlayerFaction: String, CaseIterable {
 }
 
 struct UnitRule {
-    static let pawnCount = 8
-    /// 이쪽도 피드백 반영하면서 고민을 조금 했습니다.
-    /// Pawn같은경우에는 문제가 없지만, 다른 유닛의 경우 한줄로 채워지지 않기 때문에 정확한 위치를 고지해야 합니다.
-    /// 따라서 추후 유닛이 추가될 때 새로운 설계가 필요 해 보이네요.
-    // TODO: 추후 재설계 필요
-    static let pawnPosition: [PlayerFaction: Int] = [.Black: 1, .White: 6]
+    struct Count {
+        static let pawnCount = 8
+        static let bishopCount = 2
+        static let knightCount = 2
+        static let rookCount = 2
+        static let queenCount = 1
+        static let kingCount = 0
+    }
+    
+    struct StartPosition {
+        /// 이 swift 파일은 룰에 관한 정의이므로 하드코딩을 할까, 논리적으로 풀까 고민을 조금 했습니다.
+        /// 하지만 유닛(폰, 비숍, 룩, 나이트, 퀸, 킹)별로 일일히 하드코딩을 한다면 파일이 조금 지저분해질 까봐, 논리적으로 작성했습니다.
+        static func pawn(_ playerFaction: PlayerFaction) -> [ChessPosition] {
+            var chessPositions = [ChessPosition]()
+            
+            let file = playerFaction == .Black ? ChessPosition.File.Two : ChessPosition.File.Seven
+            
+            (0 ..< 8).forEach {
+                if let position = ChessPosition(rank: $0, file: file.rawValue) {
+                    chessPositions.append(position)
+                }
+            }
+            
+            return chessPositions
+        }
+        
+        static func bishop(_ playerFaction: PlayerFaction) -> [ChessPosition] {
+            var chessPositions = [ChessPosition]()
+            
+            let file = playerFaction == .Black ? ChessPosition.File.One : ChessPosition.File.Eight
+            
+            chessPositions.append(ChessPosition(rank: .C, file: file))
+            chessPositions.append(ChessPosition(rank: .F, file: file))
+            
+            return chessPositions
+        }
+        
+        static func rook(_ playerFaction: PlayerFaction) -> [ChessPosition] {
+            var chessPositions = [ChessPosition]()
+            
+            let file = playerFaction == .Black ? ChessPosition.File.One : ChessPosition.File.Eight
+            
+            chessPositions.append(ChessPosition(rank: .A, file: file))
+            chessPositions.append(ChessPosition(rank: .H, file: file))
+            
+            return chessPositions
+        }
+        
+        static func knight(_ playerFaction: PlayerFaction) -> [ChessPosition] {
+            var chessPositions = [ChessPosition]()
+            
+            let file = playerFaction == .Black ? ChessPosition.File.One : ChessPosition.File.Eight
+            
+            chessPositions.append(ChessPosition(rank: .B, file: file))
+            chessPositions.append(ChessPosition(rank: .G, file: file))
+            
+            return chessPositions
+        }
+        
+        static func Queen(_ playerFaction: PlayerFaction) -> ChessPosition {
+            let file = playerFaction == .Black ? ChessPosition.File.One : ChessPosition.File.Eight
+            
+            return ChessPosition(rank: .E, file: file)
+        }
+        
+    }
+    
+    struct Point {
+        static let none = 0
+        static let pawn = 1
+        static let bishop = 3
+        static let knight = 3
+        static let rook = 5
+        static let queen = 8
+    }
 }
 
 struct ChessRule {

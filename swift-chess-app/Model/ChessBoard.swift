@@ -56,19 +56,17 @@ class ChessBoard {
     
     private func makePawn(playerFaction: PlayerFaction) throws {
         var count = 0
-        for i in 0 ..< ChessRule.boardSize { /// 체스판의 file길이와 pawn의 개수는 같기때문에 따로 검증하지 않습니다.
-            guard let pawnPosition = UnitRule.pawnPosition[playerFaction] else {
-                throw ChessError.UnknownFaction(playerFaction: playerFaction)
-            }
-            if board[pawnPosition][i] == nil {
-                board[pawnPosition][i] = Pawn(playerFaction: playerFaction)
-            }
+        
+        let pawnPositions = UnitRule.StartPosition.pawn(playerFaction)
+        for chessPosition in pawnPositions {
+            board[chessPosition.fileInt][chessPosition.rankInt] = Pawn(playerFaction: playerFaction)
             count += 1
         }
-        guard count == UnitRule.pawnCount else {
+        
+        guard count == UnitRule.Count.pawnCount else {
             throw ChessError.UnitCountNotMatch(playerFaction: playerFaction,
                                                unit: .Pawn,
-                                               definedCount: UnitRule.pawnCount,
+                                               definedCount: UnitRule.Count.pawnCount,
                                                makeCount: count
             )
         }
@@ -106,10 +104,10 @@ class ChessBoard {
     
     public func moveCheck(_ currentChessPosition: ChessPosition, _ moveChessPosition: ChessPosition) -> Bool {
         // 입력받은 현재 위치에 말이 있는지
-        guard let unit = board[currentChessPosition.rank][currentChessPosition.file] else { return false }
+        guard let unit = board[currentChessPosition.rankInt][currentChessPosition.fileInt] else { return false }
         
         // 해당 위치로 이동이 가능한 상황인지
-        if !unit.movablePaths(currentChessPosition).contains(moveChessPosition) { return false }
+        if !unit.movablePaths(currentChessPosition, board).contains(moveChessPosition) { return false }
         
         // 가능하다면 true 반환
         return true
@@ -118,28 +116,28 @@ class ChessBoard {
     public func move(_ currentChessPosition: ChessPosition, _ moveChessPosition: ChessPosition) -> Bool {
         // 가능한지 먼저 검사
         guard moveCheck(currentChessPosition, moveChessPosition),
-              let unit = board[currentChessPosition.rank][currentChessPosition.file], // 유닛이 있어도, 내 말이 아니면 false
+              let unit = board[currentChessPosition.fileInt][currentChessPosition.rankInt], // 유닛이 있어도, 내 말이 아니면 false
               unit.playerFaction == currentFaction else { return false }
         
         // 해당 위치에 나의 말이 없는지 검사
-        if let moveUnit = board[moveChessPosition.rank][moveChessPosition.file],
+        if let moveUnit = board[moveChessPosition.fileInt][moveChessPosition.rankInt],
            unit.playerFaction == moveUnit.playerFaction { return false }
 
         // 입력받은 위치에 상대방 말이 있다면..
-        if let unit = board[moveChessPosition.rank][moveChessPosition.file], unit.playerFaction != currentFaction {
+        if let unit = board[moveChessPosition.fileInt][moveChessPosition.rankInt], unit.playerFaction != currentFaction {
             // 삭제 및 감점
             removeUnit(moveChessPosition)
         }
         
         // 입력받은 위치의 말을 요청한 위치로 이동
-        board[moveChessPosition.rank][moveChessPosition.file] = board[currentChessPosition.rank][currentChessPosition.file]
-        board[currentChessPosition.rank][currentChessPosition.file] = nil
+        board[moveChessPosition.fileInt][moveChessPosition.rankInt] = board[currentChessPosition.fileInt][currentChessPosition.rankInt]
+        board[currentChessPosition.fileInt][currentChessPosition.rankInt] = nil
         
         return true
     }
     
     private func removeUnit(_ chessPosition: ChessPosition) {
         // TODO: 추후에 삭제될때 일어나는 룰 추가 필요. 현재는 Pawn만 구현이기에 생략
-        board[chessPosition.rank][chessPosition.file] = nil
+        board[chessPosition.fileInt][chessPosition.rankInt] = nil
     }
 }
