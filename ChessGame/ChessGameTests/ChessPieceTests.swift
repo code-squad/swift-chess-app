@@ -66,13 +66,14 @@ final class ChessPieceTests: XCTestCase {
         var board = ChessBoard(files: 8, ranks: 8)
         
         board[.init("D4")!] = KightPiece(teamColor: .white)
+        board[.init("D3")!] = PawnPiece(teamColor: .white)
         
         let positions = KightPiece.availableMovingPositions(at: .init("D4")!, board: board)
         let expected = Set(
-            ["B3", "C2",
-             "B5", "C6",
-             "E6", "F5",
-             "F3", "E2"
+            ["B5", "B3",
+             "F5", "F3",
+             "C6", "E6",
+//             "C2", "E2" // 가로막고 있어 움직일 수 없다
             ].map { Position($0)! }
         )
         XCTAssertEqual(positions, expected)
