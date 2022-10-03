@@ -43,4 +43,9 @@ extension GamePrinter {
         printBoardInitializationCompleted: { printGuideText(.boardInitializationCompleted) },
         printEnterCommand: { printGuideText(.enterCommand, terminator: "") }
     )
+
+    static let unimplemented = Self(
+        printBoardInitializationCompleted: { "" },
+        printEnterCommand: { "" }
+    )
 }

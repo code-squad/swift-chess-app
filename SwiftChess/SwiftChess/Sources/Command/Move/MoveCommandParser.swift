@@ -18,7 +18,7 @@ struct MoveCommandParser {
     }
 
     /// 문자열 형식의 사용자 명령문을 해석하여 ``MoveCommand`` 인스턴스로 반환한다.
-    var parse: (_ command: String) throws -> MoveCommand
+    var parse: (_ command: String) throws -> MoveCommand?
 }
 
 extension MoveCommandParser {
@@ -46,6 +46,10 @@ extension MoveCommandParser {
             }
         )
     }
+
+    static let unimplemented = Self(
+        parse: { _ in nil }
+    )
 
     /// `Substring` 타입의 문자열을 ``BoardLocation`` 인스턴스로 바꾸어 반환한다.
     /// ``MoveCommandParser/validate(_:)``를 통해 검증된 결과만 전달해주어야 한다.

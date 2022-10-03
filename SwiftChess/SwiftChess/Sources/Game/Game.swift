@@ -6,6 +6,8 @@
 //
 
 protocol Game {
+    var currentTurn: PieceColor { get }
+
     func start()
     func proceedNextTurn()
 }
@@ -16,7 +18,7 @@ final class DefaultGame: Game {
     let printer: GamePrinter
     let commandReader: CommandReader
     let moveCommandParser: MoveCommandParser
-    private var currentTurn: PieceColor = .white
+    private(set) var currentTurn: PieceColor = .white
 
     init(
         board: Board = DefaultBoard(),

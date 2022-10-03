@@ -13,7 +13,7 @@ enum CommandReaderError: Error {
 struct CommandReader {
 
     /// 사용자가 콘솔에 입력한 명령을 읽어 반환한다.
-    var read: () throws -> String
+    var read: () throws -> String?
 }
 
 extension CommandReader {
@@ -28,6 +28,6 @@ extension CommandReader {
     )
 
     static let unimplemented = Self(
-        read: { "" }
+        read: { nil }
     )
 }
