@@ -11,9 +11,11 @@ enum Action {
     
     case move(from: Point, to: Point)
     
-    case capture(_ piece: Piece, by: Piece)
+    case capture(_ point: Point, by: Point)
     
     case giveUp
+    
+    case error(_ error: ChessError)
     
     case unknown
 }

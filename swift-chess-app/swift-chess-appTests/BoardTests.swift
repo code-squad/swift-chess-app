@@ -32,23 +32,23 @@ class BoardTests: XCTestCase {
         )
     }
     
-    func test_move_when_movable() {
+    func test_move_when_pawn_movable() {
         // given
         let pawn = Pawn(color: .white, point: Point(string: "A2")!)
         let pieces: [Piece] = [pawn]
         
         // when
         sut.set(pieces: pieces)
-        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A3")!)
+        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A1")!)
         
         // then
         XCTAssertTrue(canMove)
-        XCTAssertNil(sut.data[Point(string: "A2")!])
-        XCTAssertNotNil(sut.data[Point(string: "A3")!])
-        XCTAssertEqual(sut.data[Point(string: "A3")!]!.color, pawn.color)
+        XCTAssertNil(sut.toPiece(Point(string: "A2")!))
+        XCTAssertNotNil(sut.toPiece(Point(string: "A1")!))
+        XCTAssertEqual(sut.toPiece(Point(string: "A1")!)!.color, pawn.color)
     }
     
-    func test_move_when_unmovable() {
+    func test_move_when_pawn_unmovable() {
         // given
         let pawn1 = Pawn(color: .white, point: Point(string: "A2")!)
         let pawn2 = Pawn(color: .white, point: Point(string: "A3")!)
@@ -62,22 +62,102 @@ class BoardTests: XCTestCase {
         XCTAssertFalse(canMove)
     }
     
-    func test_move_when_capturable() {
+    func test_capture_when_pawn_capturable() {
         // given
         let blackPawn = Pawn(color: .black, point: Point(string: "A2")!)
         let whitePawn = Pawn(color: .white, point: Point(string: "A3")!)
-        let pieces: [Piece] = [blackPawn, whitePawn]
         
         // when
-        sut.set(pieces: pieces)
-        let canMove = sut.move(Point(string: "A2")!, to: Point(string: "A3")!)
+        sut.set(pieces: [blackPawn, whitePawn])
+        let canCapture = sut.capture(Point(string: "A3")!, by: Point(string: "A2")!)
         
         // then
-        XCTAssertTrue(canMove)
-        XCTAssertNil(sut.data[Point(string: "A2")!])
-        XCTAssertNotNil(sut.data[Point(string: "A3")!])
-        XCTAssertEqual(sut.data[Point(string: "A3")!]!.color, .black)
+        XCTAssertTrue(canCapture)
+        XCTAssertNil(sut.toPiece(Point(string: "A2")!))
+        XCTAssertNotNil(sut.toPiece(Point(string: "A3")!))
+        XCTAssertEqual(sut.toPiece(Point(string: "A3")!)!.color, .black)
     }
+    
+    func test_movablePoints_for_rook() {
+        // given
+        let blackRook = Rook(color: .black, point: Point(string: "A1")!)
+        let blackBishop = Bishop(color: .black, point: Point(string: "C1")!)
+        
+        // when
+        sut.set(pieces: [blackRook, blackBishop])
+        let movablePoints = sut.movablePoints(blackRook)
+            .sorted { lhs, rhs in
+                if lhs.file.rawValue == rhs.file.rawValue {
+                    return lhs.rank.rawValue < rhs.rank.rawValue
+                }
+                return lhs.file.rawValue < rhs.file.rawValue
+            }
+        
+        // then
+        XCTAssertEqual(movablePoints, [
+            Point(string: "A2"),
+            Point(string: "A3"),
+            Point(string: "A4"),
+            Point(string: "A5"),
+            Point(string: "A6"),
+            Point(string: "A7"),
+            Point(string: "A8"),
+            Point(string: "B1"),
+        ].compactMap { $0 })
+    }
+    
+    func test_movablePoints_for_bishop() {
+        // given
+        let blackBishop = Bishop(color: .black, point: Point(string: "F1")!)
+        let blackPawn1 = Pawn(color: .black, point: Point(string: "E2")!)
+        let blackPawn2 = Pawn(color: .black, point: Point(string: "G2")!)
+        
+        // when
+        sut.set(pieces: [blackBishop, blackPawn1, blackPawn2])
+        let movablePoints = sut.movablePoints(blackBishop)
+        
+        // then
+        XCTAssertEqual(movablePoints, [])
+    }
+    
+    func test_movablePoints_for_queen() {
+        // given
+        let blackQueen = Queen(color: .black, point: Point(string: "F1")!)
+        let blackPawn1 = Pawn(color: .white, point: Point(string: "E2")!)
+        let blackPawn2 = Pawn(color: .white, point: Point(string: "G2")!)
+        
+        // when
+        sut.set(pieces: [blackQueen, blackPawn1, blackPawn2])
+        let movablePoints = sut.movablePoints(blackQueen)
+            .sorted { lhs, rhs in
+                if lhs.file.rawValue == rhs.file.rawValue {
+                    return lhs.rank.rawValue < rhs.rank.rawValue
+                }
+                return lhs.file.rawValue < rhs.file.rawValue
+            }
+        
+        // then
+        XCTAssertEqual(movablePoints, [
+            Point(string: "A1"),
+            Point(string: "B1"),
+            Point(string: "C1"),
+            Point(string: "D1"),
+            Point(string: "E1"),
+            Point(string: "E2"),
+            Point(string: "F2"),
+            Point(string: "F3"),
+            Point(string: "F4"),
+            Point(string: "F5"),
+            Point(string: "F6"),
+            Point(string: "F7"),
+            Point(string: "F8"),
+            Point(string: "G1"),
+            Point(string: "G2"),
+            Point(string: "H1"),
+        ].compactMap { $0 })
+    }
+    
+    
     
     func test_black_pawn_count() {
         // given
@@ -90,7 +170,7 @@ class BoardTests: XCTestCase {
             .count
 
         // then
-        XCTAssertEqual(result, 8)
+        XCTAssertEqual(result, 15)
     }
     
     func test_white_pawn_count() {
@@ -104,7 +184,7 @@ class BoardTests: XCTestCase {
             .count
 
         // then
-        XCTAssertEqual(result, 8)
+        XCTAssertEqual(result, 15)
     }
     
     
@@ -221,27 +301,25 @@ class BoardTests: XCTestCase {
     
     func test_white_color_score() {
         // given
-        let pieceColor: Piece.Color = .white
         let scoreOption: ScoreManager.ScoreOptions = [.white]
         
         // when
         chessBrain.start()
-        let whiteColorScore = sut.calculateScore(color: pieceColor, option: scoreOption)
+        let whiteColorScore = sut.calculateScore(option: scoreOption)
         
         // then
-        XCTAssertEqual(whiteColorScore, 8)
+        XCTAssertEqual(whiteColorScore, 39)
     }
     
     func test_black_color_score() {
         // given
-        let pieceColor: Piece.Color = .black
         let scoreOption: ScoreManager.ScoreOptions = [.black]
         
         // when
         chessBrain.start()
-        let blackColorScore = sut.calculateScore(color: pieceColor, option: scoreOption)
+        let blackColorScore = sut.calculateScore(option: scoreOption)
         
         // then
-        XCTAssertEqual(blackColorScore, 8)
+        XCTAssertEqual(blackColorScore, 39)
     }
 }

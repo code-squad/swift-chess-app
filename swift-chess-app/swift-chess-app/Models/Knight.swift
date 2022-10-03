@@ -11,8 +11,8 @@ final class Knight: Piece {
     
     override var score: Int { 3 }
     
-    override var movablePoints: [Point] {
-        return [
+    override var steps: [Tuple] {
+        [
             Direction.n + Direction.nw,
             Direction.n + Direction.ne,
             Direction.e + Direction.ne,
@@ -21,7 +21,7 @@ final class Knight: Piece {
             Direction.s + Direction.sw,
             Direction.w + Direction.nw,
             Direction.w + Direction.sw,
-        ].compactMap { point + $0 }
+        ]
     }
     
     override var toString: String { "Knight" }
