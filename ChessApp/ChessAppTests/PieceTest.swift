@@ -30,13 +30,14 @@ final class PieceTest: XCTestCase {
     
     func test_pawn이동_성공() throws {
         XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .A, rank: .two), to: Position(file: .A, rank: .three)))
-        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .B, rank: .two), to: Position(file: .B, rank: .four)))
-        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .five)))
+        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .B, rank: .three), to: Position(file: .B, rank: .four)))
+        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .three)))
     }
     
     func test_pawn이동_실패() throws {
         XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .D, rank: .two), to: Position(file: .A, rank: .two)))
         XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .E, rank: .two), to: Position(file: .F, rank: .six)))
+        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .five)))
     }
 
     func testPerformanceExample() throws {

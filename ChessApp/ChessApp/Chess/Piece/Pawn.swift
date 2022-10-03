@@ -32,9 +32,11 @@ struct Pawn: Piece {
         switch color {
         case .black:
             return current.rank.rawValue < to.rank.rawValue
+            && abs(current.rank.rawValue - to.rank.rawValue) == 1
             && current.file == to.file
         case .white:
             return current.rank.rawValue > to.rank.rawValue
+            && abs(current.rank.rawValue - to.rank.rawValue) == 1
             && current.file == to.file
         }
     }
