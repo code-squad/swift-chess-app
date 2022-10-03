@@ -7,8 +7,6 @@
 
 import Foundation
 
-typealias Delta = Position
-
 struct KightPiece: ChessPieceProtocol {
     let teamColor: TeamColor
     static let score = 3
@@ -50,23 +48,5 @@ struct KightPiece: ChessPieceProtocol {
         guard board[steppingPosition] == nil else { return false }
         
         return availableDeltas.contains(delta)
-    }
-}
-
-extension Delta {
-    static func -(lhs: Position, rhs: Position) -> Delta {
-        var lhs = lhs
-        lhs.file -= rhs.file
-        lhs.rank -= rhs.rank
-        return lhs
-    }
-}
-
-extension Position {
-    static func +(lhs: Position, rhs: Delta) -> Position {
-        var lhs = lhs
-        lhs.file += rhs.file
-        lhs.rank += rhs.rank
-        return lhs
     }
 }
