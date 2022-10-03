@@ -9,40 +9,40 @@ import Foundation
 
 final class Board {
   
-  private let file: [String] = ["A", "B", "C", "D", "E", "F", "G", "H"]
-  private let rank: [String] = ["1", "2", "3", "4", "5", "6", "7", "8"]
-  
-  private var position: [[Piece?]] = [[]]
+  // MARK: Property
+  private let boardPosition: Position
+  private let size: Int
+  private var piecePosition: [[Piece?]] = [[]]
   private var score: [Color: Int] = [.black: 0, .white: 0]
   
-  init() {
+  // MARK: Initailzer
+  init(size: Int) {
+    self.size = size
+    self.boardPosition = Position(file: File(), rank: Rank())
+    
     self.reset()
   }
   
+  // MARK: Methods
   func reset() {
-    self.position = [
-      Array(repeating: nil, count: 8),
-      Array(repeating: Pawn(color: .black), count: 8),
-      Array(repeating: nil, count: 8),
-      Array(repeating: nil, count: 8),
-      Array(repeating: nil, count: 8),
-      Array(repeating: nil, count: 8),
-      Array(repeating: Pawn(color: .white), count: 8),
-      Array(repeating: nil, count: 8),
-    ]
-    
-    self.configureScore()
+    self.piecePosition = [[Piece?]](
+      repeating: [Piece?](repeating: nil, count: self.size),
+      count: size
+    )
   }
   
   func display() -> String {
-    let fileLineString = " " + file.joined(separator: "")
+    let file = self.boardPosition.file
+    let rank = self.boardPosition.rank
+    
+    let fileLineString = " " + file.position.joined(separator: "")
     
     var rankLineString = ""
-    rank.enumerated().forEach {
+    rank.position.enumerated().forEach {
       let index = $0.offset
       let rank = $0.element
       
-      rankLineString += rank + self.position[index]
+      rankLineString += rank + self.piecePosition[index]
                                .reduce("") { $0 + ($1?.shape ?? ".")}
       rankLineString += "\n"
     }
@@ -57,15 +57,15 @@ final class Board {
     return "흑: \(blackScore) 백: \(whiteScore)"
   }
   
-  func configureScore() {
-    let blackScore = self.position.flatMap { $0 }.filter { $0?.color == .black }
-      .reduce(0) { $0 + ($1?.value ?? 0 )}
-    
-    let whiteScore = self.position.flatMap { $0 }.filter { $0?.color == .white }
-      .reduce(0) { $0 + ($1?.value ?? 0 )}
-    
-    self.score = [.black: blackScore, .white: whiteScore]
-  }
+//  func configureScore() {
+//    let blackScore = self.position.flatMap { $0 }.filter { $0?.color == .black }
+//      .reduce(0) { $0 + ($1?.value ?? 0 )}
+//
+//    let whiteScore = self.position.flatMap { $0 }.filter { $0?.color == .white }
+//      .reduce(0) { $0 + ($1?.value ?? 0 )}
+//
+//    self.score = [.black: blackScore, .white: whiteScore]
+//  }
   
   func movePiece(from: String, to: String) -> Bool {
     guard self.checkMoveValidate(position: from) && self.checkMoveValidate(position: to)
@@ -98,6 +98,6 @@ final class Board {
       return nil
     }
     
-    return Position(x: rankIndex, y: fileIndex)
+    return Position(file: rankIndex, rank: fileIndex)
   }
 }
