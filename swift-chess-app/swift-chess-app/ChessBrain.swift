@@ -21,7 +21,7 @@ class ChessBrain {
     
     var boardToList: [[Piece?]] { board.toList }
     
-    var currentTurnColor: PieceColor { currentTurnUser.color }
+    var currentTurnColor: Piece.Color { currentTurnUser.color }
     
     var users: [User] { [user1, user2] }
     
@@ -100,7 +100,7 @@ private extension ChessBrain {
         }
     }
     
-    func calculateScore(color: PieceColor, option: ScoreManager.ScoreOptions) -> Int {
+    func calculateScore(color: Piece.Color, option: ScoreManager.ScoreOptions) -> Int {
         return board.calculateScore(color: color, option: option)
     }
 }

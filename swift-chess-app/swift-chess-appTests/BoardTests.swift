@@ -81,7 +81,7 @@ class BoardTests: XCTestCase {
     
     func test_black_pawn_count() {
         // given
-        let pieceColor: PieceColor = .black
+        let pieceColor: Piece.Color = .black
 
         // when
         chessBrain.start()
@@ -95,7 +95,7 @@ class BoardTests: XCTestCase {
     
     func test_white_pawn_count() {
         // given
-        let pieceColor: PieceColor = .white
+        let pieceColor: Piece.Color = .white
 
         // when
         chessBrain.start()
@@ -110,7 +110,7 @@ class BoardTests: XCTestCase {
     
     func test_1and2rank_color_is_black() {
         // given
-        let pieceColor: PieceColor = .black
+        let pieceColor: Piece.Color = .black
         
         // when
         chessBrain.start()
@@ -127,7 +127,7 @@ class BoardTests: XCTestCase {
     
     func test_7and8rank_color_is_white() {
         // given
-        let pieceColor: PieceColor = .white
+        let pieceColor: Piece.Color = .white
         
         // when
         chessBrain.start()
@@ -194,7 +194,7 @@ class BoardTests: XCTestCase {
     func test_white_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: PieceColor = .white
+        let pawnColor: Piece.Color = .white
         
         // when
         chessBrain.start()
@@ -208,7 +208,7 @@ class BoardTests: XCTestCase {
     func test_black_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: PieceColor = .black
+        let pawnColor: Piece.Color = .black
         
         // when
         chessBrain.start()
@@ -221,7 +221,7 @@ class BoardTests: XCTestCase {
     
     func test_white_color_score() {
         // given
-        let pieceColor: PieceColor = .white
+        let pieceColor: Piece.Color = .white
         let scoreOption: ScoreManager.ScoreOptions = [.white]
         
         // when
@@ -234,7 +234,7 @@ class BoardTests: XCTestCase {
     
     func test_black_color_score() {
         // given
-        let pieceColor: PieceColor = .black
+        let pieceColor: Piece.Color = .black
         let scoreOption: ScoreManager.ScoreOptions = [.black]
         
         // when
