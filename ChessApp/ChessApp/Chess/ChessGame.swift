@@ -16,7 +16,6 @@ final class ChessGame {
     }
     
     func move(from: Position, to: Position) {
-        guard board.checkEnableToMove(pawn: pawn, from: from, to: to) else { return }
         board.move(pawn: pawn, from: from, to: to)
         pawn = pawn.color == .black ? Pawn(color: .white) : Pawn(color: .black)
     }
