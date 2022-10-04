@@ -39,11 +39,6 @@ class ChessBoardTest: XCTestCase {
         chessBoard.createKnights(color: .black, positions: blackKnightPositions)
     }
     
-    func sss() {
-        chessBoard.display()
-        XCTAssertTrue(true)
-    }
-    
     func test_블랙_플레이어_Pawns() {
         //given
         let blackPawnPositions = [Position(file: .a, rank: .two), Position(file: .b, rank: .two), Position(file: .c, rank: .two), Position(file: .d, rank: .two)]
@@ -245,7 +240,7 @@ class ChessBoardTest: XCTestCase {
         //then
         XCTAssertNotNil(result)
     }
-//
+
     func test_상대_Pawn_Not_Hit() {
         //given
         let hitPosition = Position(file: .a, rank: .three)

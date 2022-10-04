@@ -49,7 +49,6 @@ extension ChessBoard {
         var string = ""
         string += File.allCases.map{ $0.invertedTypeString }.reduce(" ", { $0 + $1 })
         string += "\n"
-
         Rank.allCases.forEach({ rank in
             string += "\(rank.invertedTypeString)"
             string +=  matrix[rank.rawValue - 1]
@@ -60,7 +59,6 @@ extension ChessBoard {
                 .reduce("", { $0 + $1 })
             string += "\n"
         })
-
         string += File.allCases.map{ $0.invertedTypeString }.reduce(" ", { $0 + $1 })
 
         print(string)
