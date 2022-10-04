@@ -232,7 +232,11 @@ extension DefaultBoard {
         /// 체스판의 크기
         static let size = Size(rank: 8, file: 8)
         /// 진영별 얻을 수 있는 총 점수
-        static let totalAvailablePoints = Pawn.point * Pawn.maxCount
+        static let totalAvailablePoints = Bishop.point * Bishop.maxCount +
+        Knight.point * Knight.maxCount +
+        Pawn.point * Pawn.maxCount +
+        Queen.point * Queen.maxCount +
+        Rook.point * Rook.maxCount
         static let minimumFile: String = "A"
     }
 }
