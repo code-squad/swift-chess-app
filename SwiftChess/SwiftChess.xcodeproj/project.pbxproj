@@ -38,6 +38,7 @@
 		AA53AD3428EAA0210051D8CB /* GamePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3328EAA0210051D8CB /* GamePrinter.swift */; };
 		AA53AD3828EAB7490051D8CB /* GamePrinterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3728EAB7490051D8CB /* GamePrinterTests.swift */; };
 		AA53AD3A28EAB9B60051D8CB /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3928EAB9B60051D8CB /* GameTests.swift */; };
+		AA53AD3D28EC175D0051D8CB /* Unimplemented.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3C28EC175D0051D8CB /* Unimplemented.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -88,6 +89,7 @@
 		AA53AD3328EAA0210051D8CB /* GamePrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrinter.swift; sourceTree = "<group>"; };
 		AA53AD3728EAB7490051D8CB /* GamePrinterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrinterTests.swift; sourceTree = "<group>"; };
 		AA53AD3928EAB9B60051D8CB /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		AA53AD3C28EC175D0051D8CB /* Unimplemented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unimplemented.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -314,6 +316,14 @@
 			path = Printer;
 			sourceTree = "<group>";
 		};
+		AA53AD3B28EC17380051D8CB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AA53AD3C28EC175D0051D8CB /* Unimplemented.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		AABA53A828E1D31A00006508 = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +360,7 @@
 				AA53ACBB28E4A2030051D8CB /* Command */,
 				AA53AD1528E98B900051D8CB /* Common */,
 				AA53AD3528EAB6F80051D8CB /* Game */,
+				AA53AD3B28EC17380051D8CB /* Shared */,
 			);
 			path = SwiftChessTests;
 			sourceTree = "<group>";
@@ -566,6 +577,7 @@
 				AA53ACB228E473430051D8CB /* BoardTests+Mock.swift in Sources */,
 				AA53AD3128EA9C7E0051D8CB /* BoardFormatterTests.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */,
+				AA53AD3D28EC175D0051D8CB /* Unimplemented.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

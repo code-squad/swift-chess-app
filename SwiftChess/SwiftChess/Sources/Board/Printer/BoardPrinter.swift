@@ -27,9 +27,4 @@ extension BoardPrinter {
             }
         )
     }
-
-    static let unimplemented = Self(
-        printBoard: { _ in "" },
-        printCurrentPoints: { _ in "" }
-    )
 }

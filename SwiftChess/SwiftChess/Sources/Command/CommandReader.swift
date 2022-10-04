@@ -26,8 +26,4 @@ extension CommandReader {
             return command
         }
     )
-
-    static let unimplemented = Self(
-        read: { nil }
-    )
 }
