@@ -44,6 +44,36 @@ struct Position {
 
         return Position(file: rightFile, rank: topRank)
     }
+
+    var topLeft: Position? {
+        guard let topRank = rank.top,
+              let leftFile = file.left
+        else {
+            return nil
+        }
+
+        return Position(file: leftFile, rank: topRank)
+    }
+
+    var bottomRight: Position? {
+        guard let bottomRank = rank.bottom,
+              let rightFile = file.right
+        else {
+            return nil
+        }
+
+        return Position(file: rightFile, rank: bottomRank)
+    }
+
+    var bottomLeft: Position? {
+        guard let bottomRank = rank.bottom,
+              let leftFile = file.left
+        else {
+            return nil
+        }
+
+        return Position(file: leftFile, rank: bottomRank)
+    }
 }
 
 extension Position: Equatable {}
