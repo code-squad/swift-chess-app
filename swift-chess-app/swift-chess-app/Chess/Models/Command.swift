@@ -14,8 +14,8 @@ struct Command {
     func fromPosition() -> Position? {
         guard let fileString = fromString.firstString(),
               let rankString = fromString.lastString(),
-              let file = File.convert(from: fileString),
-              let rank = Rank.convert(from: rankString) else { return nil }
+              let file = File(rawValue: fileString),
+              let rank = Rank(rawValue: rankString) else { return nil }
         
         return Position(file: file, rank: rank)
     }
@@ -23,8 +23,8 @@ struct Command {
     func toPosition() -> Position? {
         guard let fileString = toString.firstString(),
               let rankString = toString.lastString(),
-              let file = File.convert(from: fileString),
-              let rank = Rank.convert(from: rankString) else { return nil }
+              let file = File(rawValue: fileString),
+              let rank = Rank(rawValue: rankString) else { return nil }
         
         return Position(file: file, rank: rank)
     }
