@@ -11,6 +11,7 @@
 		0071982928ECC4ED0094CBB2 /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071982828ECC4ED0094CBB2 /* KnightTests.swift */; };
 		0071982B28ECC67B0094CBB2 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071982A28ECC67B0094CBB2 /* Bishop.swift */; };
 		0071982D28ECC6920094CBB2 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071982C28ECC6920094CBB2 /* Rook.swift */; };
+		0071982F28ECC6A10094CBB2 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071982E28ECC6A10094CBB2 /* Queen.swift */; };
 		0071983128ECC6AF0094CBB2 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071983028ECC6AF0094CBB2 /* Knight.swift */; };
 		00739FDB28E89EDC0025E40F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDA28E89EDC0025E40F /* File.swift */; };
 		00739FDD28E89F1B0025E40F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDC28E89F1B0025E40F /* Rank.swift */; };
@@ -57,6 +58,7 @@
 		0071982828ECC4ED0094CBB2 /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
 		0071982A28ECC67B0094CBB2 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		0071982C28ECC6920094CBB2 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		0071982E28ECC6A10094CBB2 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		0071983028ECC6AF0094CBB2 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		00739FDA28E89EDC0025E40F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		00739FDC28E89F1B0025E40F /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				0099CEB428E07B6400AFCCCF /* Pawn.swift */,
 				0071982A28ECC67B0094CBB2 /* Bishop.swift */,
 				0071982C28ECC6920094CBB2 /* Rook.swift */,
+				0071982E28ECC6A10094CBB2 /* Queen.swift */,
 				0071983028ECC6AF0094CBB2 /* Knight.swift */,
 			);
 			path = Pieces;
@@ -323,6 +326,7 @@
 				00739FE128E89F650025E40F /* Piece.swift in Sources */,
 				00739FDD28E89F1B0025E40F /* Rank.swift in Sources */,
 				0099CEB328E07B3E00AFCCCF /* ChessBoard.swift in Sources */,
+				0071982F28ECC6A10094CBB2 /* Queen.swift in Sources */,
 				00739FDB28E89EDC0025E40F /* File.swift in Sources */,
 				0071982B28ECC67B0094CBB2 /* Bishop.swift in Sources */,
 				0071982D28ECC6920094CBB2 /* Rook.swift in Sources */,
