@@ -7,6 +7,28 @@
 
 import Foundation
 
+//enum RankError: LocalizedError {
+//    case outOfRange(value: Int)
+//
+//    var errorDescription: String {
+//        switch self {
+//        case .outOfRange(let value):
+//            return "out of range \(value), minValue is \(Rank.Config.minValue) and maxValue is \(Rank.Config.maxValue)"
+//        }
+//    }
+//}
+//
+//enum FileError: LocalizedError {
+//    case outOfRange(value: Int)
+//
+//    var errorDescription: String {
+//        switch self {
+//        case .outOfRange(let file):
+//            return "out of range \(value), minValue is \(File.Config.minValue) and maxValue is \(File.Config.maxValue)"
+//        }
+//    }
+//}
+
 struct Position: Equatable {
 
     let rank: Rank

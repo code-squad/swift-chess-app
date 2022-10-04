@@ -1,24 +1,20 @@
 //
-//  Pawn.swift
+//  Queen.swift
 //  ChessApp
 //
-//  Created by 최동규 on 2022/09/26.
+//  Created by 최동규 on 2022/10/04.
 //
 
 import Foundation
 
-protocol PawnPolicy: PiecePolicy {
-    func possiblePositions(from position: Position) -> [Position]
-}
-
-final class Pawn: Piece {
+final class Queen: Piece {
 
     var position: Position
     var iconString: String {
-        user.pawnPolicy.iconString
+        user.queenPolicy.iconString
     }
     var nextPossiblePositions: [Position] {
-        return user.pawnPolicy.possiblePositions(from: position)
+        return []
 
     }
     let user: User

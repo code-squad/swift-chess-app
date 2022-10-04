@@ -7,7 +7,20 @@
 
 import Foundation
 
-protocol Piece {
-    var iconString: String { get }
+protocol Piece: PiecePresentable {
+    
+    var nextPossiblePositions: [Position] { get }
     var position: Position { get }
+    var user: User { get }
+    var score: Int { get }
+    
+    func move(to position: Position) -> Bool
+}
+
+protocol PiecePolicy: PiecePresentable {
+    func resetPiece(in matrix: [[Board.BlockState]], by user: User) -> [[Board.BlockState]]?
+}
+
+protocol PiecePresentable {
+    var iconString: String { get }
 }
