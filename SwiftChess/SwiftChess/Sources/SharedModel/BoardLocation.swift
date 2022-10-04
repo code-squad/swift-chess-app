@@ -69,27 +69,6 @@ extension BoardLocation {
     }
 }
 
-extension BoardLocation.Rank {
-
-    /// ``Rank``와 이동규칙의 이동 단위를 더해 새로운 rank를 계산한다.
-    /// - Parameters:
-    ///   - lhs: Rank. 주로 현재 rank를 사용한다.
-    ///   - rhs: 체스말 이동규칙의 이동 단위.
-    /// - Returns: Rank와 이동 단위으로부터 도출된 새로운 Rank. 주로 도착 Rank을 의미한다. 체스판 내부에 존재하지 않는 Rank라면 `nil`을 반환한다.
-    static func + (lhs: Self, rhs: MoveRule.Step) -> Self? {
-        return Self(rawValue: lhs.rawValue + rhs.extractedValue)
-    }
-
-    /// ``Rank``와 이동규칙의 차를 통해 새로운 rank를 계산한다.
-    /// - Parameters:
-    ///   - lhs: Rank. 주로 현재 rank를 사용한다.
-    ///   - rhs: 체스말 이동규칙의 이동 단위.
-    /// - Returns: Rank와 이동 단위으로부터 도출된 새로운 Rank. 주로 도착 Rank을 의미한다. 체스판 내부에 존재하지 않는 Rank라면 `nil`을 반환한다.
-    static func - (lhs: Self, rhs: MoveRule.Step) -> Self? {
-        return Self(rawValue: lhs.rawValue - rhs.extractedValue)
-    }
-}
-
 // MARK: - Protocol conformance
 
 protocol BoardLocationRepresentable: Equatable, RawValueInitializable, RangedRawRepresentable {}
