@@ -81,6 +81,7 @@ final class DefaultBoard: Board {
         )
     }
 
+    /// 체스판에 정해진 배치대로 체스말을 배치한다.
     private func setPieces() {
         PieceColor.allCases.forEach(setPieces(for:))
     }
