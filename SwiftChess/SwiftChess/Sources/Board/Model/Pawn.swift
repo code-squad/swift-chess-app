@@ -18,17 +18,6 @@ struct Pawn: Piece {
         return color == .black ? .blackPawn : .whitePawn
     }
 
-    /// 색상별 ``Pawn``이 최초에 위치할 수 있는 rank
-    var initialRank: BoardLocation.Rank {
-        switch color {
-        case .black:
-            return .two
-
-        case .white:
-            return .seven
-        }
-    }
-
     var initialLocations: [BoardLocation] {
         let allFiles = BoardLocation.File.allCases
 

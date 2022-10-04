@@ -390,9 +390,9 @@ final class BoardTests: XCTestCase {
     }
 
     func test_Rank의최소Case는_one이다() {
-        let expectedMinimumRankRawValue = BoardLocation.Rank.one
+        let expectedMinimumRankCase = BoardLocation.Rank.one
 
-        XCTAssertEqual(BoardLocation.Rank.minimumCase, expectedMinimumRankRawValue)
+        XCTAssertEqual(BoardLocation.Rank.minimumCase, expectedMinimumRankCase)
     }
 
     func test_File의최소RawValue는_1이다() {
@@ -402,9 +402,9 @@ final class BoardTests: XCTestCase {
     }
 
     func test_File의최소Case는_A이다() {
-        let expectedMinimumFileRawValue = BoardLocation.File.A
+        let expectedMinimumFileCase = BoardLocation.File.A
 
-        XCTAssertEqual(BoardLocation.File.minimumCase, expectedMinimumFileRawValue)
+        XCTAssertEqual(BoardLocation.File.minimumCase, expectedMinimumFileCase)
     }
 }
 
