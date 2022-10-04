@@ -16,9 +16,8 @@ class ChessBoard {
     
     @discardableResult
     func movePiece(color: ChessPieceColor, from: Position, to: Position) -> Bool {
-        guard var piece = chessPieces.find(color: color, position: from) else { return false }
-        piece.move(to: to)
-        return true
+        guard let piece = chessPieces.find(color: color, position: from) else { return false }
+        return chessPieces.move(piece, to: to)
     }
     
     func movablePositions(color: ChessPieceColor, position: Position) -> [Position] {
@@ -30,11 +29,14 @@ class ChessBoard {
         return chessPieces.find(color: color, position: position)
     }
     
-    func killChessPiece(_ piece: ChessPiecable) {
-        chessPieces.remove(piece)
+    @discardableResult
+    func killChessPiece(_ piece: ChessPiecable) -> ChessPiecable? {
+        return chessPieces.remove(piece)
     }
+}
 
-
+// MARK: - Display(Presenter)
+extension ChessBoard {
     func display() {
         var matrix: [[ChessPiecable?]]
         let rank: [ChessPiecable?] = Array(repeating: nil, count: 8)
@@ -62,6 +64,17 @@ class ChessBoard {
         string += File.allCases.map{ $0.invertedTypeString }.reduce(" ", { $0 + $1 })
 
         print(string)
+    }
+    
+    @discardableResult
+    func infoDisplay(color: ChessPieceColor, position: Position) -> Bool {
+        guard let piece = chessPieces.find(color: color, position: position) else {
+            return false
+        }
+        
+        let string = piece.movablePositions().map({ $0.description })
+        print(string)
+        return true
     }
 }
 

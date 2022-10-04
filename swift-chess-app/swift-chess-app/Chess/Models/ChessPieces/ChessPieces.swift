@@ -18,6 +18,13 @@ class ChessPieces {
         return pieces.first(where: { $0.color == color && $0.position == position })
     }
     
+    @discardableResult
+    func move(_ piece: ChessPiecable, to: Position) -> Bool {
+        guard let index = pieces.firstIndex(where: { $0.color == piece.color && $0.position == piece.position }) else { return false }
+        self.pieces[index].move(to: to)
+        return true
+    }
+    
     func all() -> [ChessPiecable] {
         return self.pieces
     }
