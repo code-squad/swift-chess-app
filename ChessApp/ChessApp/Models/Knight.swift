@@ -14,11 +14,18 @@ final class Knight: Piece {
         user.knightPolicy.iconString
     }
     var nextPossiblePositions: [Position] {
-        return []
-
+        return [Position(rank: Rank(self.position.rank.value + 1), file: File(self.position.file.value + 2)),
+                Position(rank: Rank(self.position.rank.value + 1), file: File(self.position.file.value - 2)),
+                Position(rank: Rank(self.position.rank.value - 1), file: File(self.position.file.value + 2)),
+                Position(rank: Rank(self.position.rank.value - 1), file: File(self.position.file.value - 2)),
+                Position(rank: Rank(self.position.rank.value + 2), file: File(self.position.file.value + 1)),
+                Position(rank: Rank(self.position.rank.value + 2), file: File(self.position.file.value - 1)),
+                Position(rank: Rank(self.position.rank.value - 2), file: File(self.position.file.value + 1)),
+                Position(rank: Rank(self.position.rank.value - 2), file: File(self.position.file.value - 1))]
+                .compactMap { $0 }
     }
     let user: User
-    let score: Int = 1
+    let score: Int = 3
 
     init(position: Position, user: User) {
         self.position = position
