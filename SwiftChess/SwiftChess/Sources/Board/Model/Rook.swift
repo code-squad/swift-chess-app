@@ -40,6 +40,21 @@ struct Rook: Piece {
     ]
 
     var color: PieceColor
+    var initialLocations: [BoardLocation] {
+        switch color {
+        case .black:
+            return [
+                BoardLocation(file: .A, rank: .one),
+                BoardLocation(file: .H, rank: .one),
+            ]
+
+        case .white:
+            return [
+                BoardLocation(file: .A, rank: .eight),
+                BoardLocation(file: .H, rank: .eight),
+            ]
+        }
+    }
     var asSymbol: BoardElementSymbol {
         return color == .black ? .blackRook : .whiteRook
     }

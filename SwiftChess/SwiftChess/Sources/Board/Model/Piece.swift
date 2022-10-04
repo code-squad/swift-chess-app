@@ -26,6 +26,8 @@ protocol Piece: BoardElementRepresentable {
     var point: Int { get }
     /// 체스말의 진영(흑, 백)
     var color: PieceColor { get }
+    /// 게임 초기화 시 최초 위치
+    var initialLocations: [BoardLocation] { get }
 
     /// 입력된 위치에서 이동할 수 있는 위치 후보를 반환한다.
     /// - Parameter location: 이동을 시도하는 시작점
