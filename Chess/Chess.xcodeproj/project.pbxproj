@@ -98,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0071983228ECC6CD0094CBB2 /* Pieces */ = {
+			isa = PBXGroup;
+			children = (
+				00739FE028E89F650025E40F /* Piece.swift */,
+				0099CEB428E07B6400AFCCCF /* Pawn.swift */,
+			);
+			path = Pieces;
+			sourceTree = "<group>";
+		};
 		0099CE7628DDF90F00AFCCCF = {
 			isa = PBXGroup;
 			children = (
@@ -122,10 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */,
-				0099CEB428E07B6400AFCCCF /* Pawn.swift */,
+				0071983228ECC6CD0094CBB2 /* Pieces */,
 				00739FE428E89F8B0025E40F /* Score.swift */,
 				00739FE228E89F7C0025E40F /* Emoji.swift */,
-				00739FE028E89F650025E40F /* Piece.swift */,
 				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
 				00739FDE28E89F4F0025E40F /* Team.swift */,
 				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
