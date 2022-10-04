@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B904CC8628EC731600D0DBC9 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904CC8528EC731600D0DBC9 /* Bishop.swift */; };
+		B904CC8828EC731C00D0DBC9 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904CC8728EC731C00D0DBC9 /* Rook.swift */; };
+		B904CC8A28EC733D00D0DBC9 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904CC8928EC733D00D0DBC9 /* Queen.swift */; };
+		B904CC8C28EC734600D0DBC9 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904CC8B28EC734600D0DBC9 /* Knight.swift */; };
 		B93DE60728E833CB0035F09E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60628E833CB0035F09E /* Piece.swift */; };
 		B93DE60928E833DA0035F09E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60828E833DA0035F09E /* User.swift */; };
 		B93DE60D28E834310035F09E /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60C28E834310035F09E /* Position.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B904CC8528EC731600D0DBC9 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		B904CC8728EC731C00D0DBC9 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		B904CC8928EC733D00D0DBC9 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		B904CC8B28EC734600D0DBC9 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		B93DE60628E833CB0035F09E /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		B93DE60828E833DA0035F09E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B93DE60C28E834310035F09E /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -110,11 +118,15 @@
 			isa = PBXGroup;
 			children = (
 				B95908E428E1E5B0001DE78D /* Board.swift */,
-				B95908E628E1E5BB001DE78D /* Pawn.swift */,
 				B95908EA28E2001A001DE78D /* ChessGame.swift */,
-				B93DE60628E833CB0035F09E /* Piece.swift */,
 				B93DE60828E833DA0035F09E /* User.swift */,
 				B93DE60C28E834310035F09E /* Position.swift */,
+				B93DE60628E833CB0035F09E /* Piece.swift */,
+				B95908E628E1E5BB001DE78D /* Pawn.swift */,
+				B904CC8528EC731600D0DBC9 /* Bishop.swift */,
+				B904CC8728EC731C00D0DBC9 /* Rook.swift */,
+				B904CC8928EC733D00D0DBC9 /* Queen.swift */,
+				B904CC8B28EC734600D0DBC9 /* Knight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,13 +260,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B904CC8A28EC733D00D0DBC9 /* Queen.swift in Sources */,
 				B95908EB28E2001A001DE78D /* ChessGame.swift in Sources */,
 				B93DE60728E833CB0035F09E /* Piece.swift in Sources */,
 				B95908B528E1E234001DE78D /* ViewController.swift in Sources */,
 				B95908B128E1E234001DE78D /* AppDelegate.swift in Sources */,
 				B93DE60928E833DA0035F09E /* User.swift in Sources */,
 				B95908E528E1E5B0001DE78D /* Board.swift in Sources */,
+				B904CC8628EC731600D0DBC9 /* Bishop.swift in Sources */,
+				B904CC8C28EC734600D0DBC9 /* Knight.swift in Sources */,
 				B95908E728E1E5BB001DE78D /* Pawn.swift in Sources */,
+				B904CC8828EC731C00D0DBC9 /* Rook.swift in Sources */,
 				B95908B328E1E234001DE78D /* SceneDelegate.swift in Sources */,
 				B93DE60D28E834310035F09E /* Position.swift in Sources */,
 			);

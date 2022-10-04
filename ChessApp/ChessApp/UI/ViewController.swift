@@ -12,8 +12,10 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let board = Board()
-        print(board.description())
+        let users: [User] = [BlackUser(), WhiteUser()]
+        let chessGame = ChessGame(users: users)
+
+        print(chessGame.board.description())
     }
 }
 
