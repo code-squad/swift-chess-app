@@ -411,23 +411,16 @@ final class BoardTests: XCTestCase {
 extension DefaultBoard {
 
     func pieces<P: Piece>(for pieceType: P.Type) -> [Piece] {
-        return status
-            .flatMap { $0.compactMap { $0 as? P } }
+        return status.flatMap { $0.compactMap { $0 as? P } }
     }
 
-    func pieceCount<P: Piece>(for pieceType: P.Type) -> (black: Int, white: Int) {
+    func pieceCount(for pieceType: Piece.Type) -> (black: Int, white: Int) {
         let existingPieces = pieces(for: pieceType)
-        var pieces = (black: 0, white: 0)
-
-        existingPieces.forEach { piece in
-            switch piece.color {
-            case .black:
-                pieces.black += 1
-
-            case .white:
-                pieces.white += 1
-            }
-        }
-        return pieces
+        let totalExistingPieceCount = existingPieces.count
+        let blackPieceCount = existingPieces.filter({ $0.color == .black }).count
+        return (
+            black: blackPieceCount,
+            white: totalExistingPieceCount - blackPieceCount
+        )
     }
 }
