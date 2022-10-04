@@ -43,6 +43,10 @@
 		AA53AD4128EC21290051D8CB /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4028EC21290051D8CB /* Bishop.swift */; };
 		AA53AD4328EC25D70051D8CB /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4228EC25D70051D8CB /* Rook.swift */; };
 		AA53AD4528EC27860051D8CB /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4428EC27860051D8CB /* Queen.swift */; };
+		AA53AD4728EC9C940051D8CB /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4628EC9C940051D8CB /* BishopTests.swift */; };
+		AA53AD4928ECA2590051D8CB /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4828ECA2590051D8CB /* KnightTests.swift */; };
+		AA53AD4B28ECA5A20051D8CB /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4A28ECA5A20051D8CB /* QueenTests.swift */; };
+		AA53AD4D28ECA84D0051D8CB /* RookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4C28ECA84D0051D8CB /* RookTests.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -98,6 +102,10 @@
 		AA53AD4028EC21290051D8CB /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		AA53AD4228EC25D70051D8CB /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		AA53AD4428EC27860051D8CB /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		AA53AD4628EC9C940051D8CB /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
+		AA53AD4828ECA2590051D8CB /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
+		AA53AD4A28ECA5A20051D8CB /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
+		AA53AD4C28ECA84D0051D8CB /* RookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTests.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,7 +182,11 @@
 		AA53ACA728E43F0A0051D8CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA53AD4628EC9C940051D8CB /* BishopTests.swift */,
+				AA53AD4828ECA2590051D8CB /* KnightTests.swift */,
 				AA53ACAA28E43F240051D8CB /* PawnTests.swift */,
+				AA53AD4A28ECA5A20051D8CB /* QueenTests.swift */,
+				AA53AD4C28ECA84D0051D8CB /* RookTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,7 +598,9 @@
 			files = (
 				AA53AD1828E98D0C0051D8CB /* StringExtensionsTests.swift in Sources */,
 				AA53AD3A28EAB9B60051D8CB /* GameTests.swift in Sources */,
+				AA53AD4728EC9C940051D8CB /* BishopTests.swift in Sources */,
 				AA53ACAB28E43F240051D8CB /* PawnTests.swift in Sources */,
+				AA53AD4928ECA2590051D8CB /* KnightTests.swift in Sources */,
 				AA53AD3828EAB7490051D8CB /* GamePrinterTests.swift in Sources */,
 				AA53ACA128E43D3E0051D8CB /* BoardTests.swift in Sources */,
 				AA53AD2E28EA9A410051D8CB /* BoardPrinterTests.swift in Sources */,
@@ -594,6 +608,8 @@
 				AA53AD3128EA9C7E0051D8CB /* BoardFormatterTests.swift in Sources */,
 				AA53ACBD28E4A21F0051D8CB /* MoveCommandParserTests.swift in Sources */,
 				AA53AD3D28EC175D0051D8CB /* Unimplemented.swift in Sources */,
+				AA53AD4D28ECA84D0051D8CB /* RookTests.swift in Sources */,
+				AA53AD4B28ECA5A20051D8CB /* QueenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,17 +39,6 @@
                ReferencedContainer = "container:SwiftChess.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AABA53D028E1D31C00006508"
-               BuildableName = "SwiftChessUITests.xctest"
-               BlueprintName = "SwiftChessUITests"
-               ReferencedContainer = "container:SwiftChess.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
