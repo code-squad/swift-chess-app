@@ -16,7 +16,7 @@ struct Rook: Equatable, ChessPiecable, ChessPieceMovableChecker {
     }
     
     // MARK: 룩은 직선으로만 이동이 가능 (0, 1) / (0, -1) / (1. 0) / (-1, 0)
-    var movableDirection: [ChessMovableDirection] {
+    var movableDirection: [ChessDirection] {
         return [.go, .back, .left, .right]
     }
     

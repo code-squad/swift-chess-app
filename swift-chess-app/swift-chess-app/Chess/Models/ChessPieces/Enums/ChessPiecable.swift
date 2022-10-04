@@ -23,6 +23,6 @@ extension ChessPiecable {
 
 extension ChessPiecable where Self: ChessPieceMovableChecker {
     func movablePositions() -> [Position] {
-        self.movablePositions(self.position)
+        self.movablePositions(self.position, limitDepth: Dimension.Board.length)
     }
 }

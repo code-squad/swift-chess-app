@@ -16,7 +16,7 @@ struct Queen: Equatable, ChessPiecable, ChessPieceMovableChecker {
     }
     
     // MARK: 퀸은 대각선 및 직선으로만 이동이 가능 (-1, -1) / (-1, +1) / (+1. -1) / (+1, +1) / (0, 1) / (0, -1) / (1. 0) / (-1, 0)
-    var movableDirection: [ChessMovableDirection] {
+    var movableDirection: [ChessDirection] {
         return [.go, .back, .left, .right,
                 .leftGo, .leftBack, .rightGo, .rightBack]
     }

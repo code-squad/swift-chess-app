@@ -16,7 +16,7 @@ struct Bishop: Equatable, ChessPiecable, ChessPieceMovableChecker {
     }
 
     // MARK: 비숍은 대각선으로만 이동이 가능 (-1, -1) / (-1, +1) / (+1. -1) / (+1, +1)
-    var movableDirection: [ChessMovableDirection] {
+    var movableDirection: [ChessDirection] {
         return [.leftGo, .leftBack, .rightGo, .rightBack]
     }
     

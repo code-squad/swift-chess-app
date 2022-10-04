@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChessMovableDirection {
+enum ChessDirection {
     case go, back, left, right, leftBack, leftGo, rightBack, rightGo
     case jumpToOneClock, jumpToTwoClock, jumpToFourClock, jumpToFiveClock,
          jumpToSevenClock, jumpToEightClock, jumpToTenClock, jumpToElevenClock

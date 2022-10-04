@@ -16,7 +16,7 @@ struct Knight: Equatable, ChessPiecable, ChessPieceMovableChecker {
     }
 
     // MARK: 나이트는 점프로만 이동이 가능 (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1), (-2, -1), (-1, -2)
-    var movableDirection: [ChessMovableDirection] {
+    var movableDirection: [ChessDirection] {
         return [.jumpToOneClock, .jumpToTwoClock,
                 .jumpToFourClock, .jumpToFiveClock,
                 .jumpToSevenClock, .jumpToEightClock,
@@ -25,5 +25,9 @@ struct Knight: Equatable, ChessPiecable, ChessPieceMovableChecker {
     
     var description: String {
         return color == .black ? "♞" : "♘"
+    }
+    
+    func movablePositions() -> [Position] {
+        return movablePositions(self.position, limitDepth: 1)
     }
 }
