@@ -66,15 +66,6 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(currentPoints, expectedPoints)
     }
 
-    func test_각진영에Pawn이하나씩남아있을때_점수를측정하면_모든진영의점수는7이다() {
-        let sut = DefaultBoard(status: Self.topLeftEngagedPawnsMock)
-        let expectedPoints = GamePoint(black: 7, white: 7)
-
-        let currentPoints = sut.currentPoints()
-
-        XCTAssertEqual(currentPoints, expectedPoints)
-    }
-
     func test_체스판에말이없을때_점수를측정하면_각진영모두최대점수이다() {
         let sut = DefaultBoard(status: Self.emptyMock)
         let expectedPoints = GamePoint(
@@ -115,7 +106,7 @@ final class BoardTests: XCTestCase {
     func test_흑색진영이백색Pawn을잡으면_흑색진영이1점을얻는다() throws {
         let sut = DefaultBoard(status: Self.topLeftEngagedPawnsMock)
         let expectedInitialPawnCount = 1
-        let expectedInitialPoints = GamePoint(black: 7, white: 7)
+        let expectedInitialPoints = GamePoint(black: 38, white: 38)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
         XCTAssertEqual(initialPawnCounts.black, expectedInitialPawnCount)
@@ -139,7 +130,7 @@ final class BoardTests: XCTestCase {
     func test_백색진영이흑색Pawn을잡으면_백색진영이1점을얻는다() throws {
         let sut = DefaultBoard(status: Self.topLeftEngagedPawnsMock)
         let expectedInitialPawnCount = 1
-        let expectedInitialPoints = GamePoint(black: 7, white: 7)
+        let expectedInitialPoints = GamePoint(black: 38, white: 38)
         let initialPawnCounts = sut.pieceCount(for: Pawn.self)
         let initialPoints = sut.currentPoints()
         XCTAssertEqual(initialPawnCounts.black, expectedInitialPawnCount)
@@ -163,7 +154,7 @@ final class BoardTests: XCTestCase {
     func test_상대방진영의말을잡으면_현재점수출력메서드가호출된다() throws {
         let expectedPrintCallCount = 1
         var actualPrintCallCount = 0
-        let expectedPoints = GamePoint(black: 7, white: 8)
+        let expectedPoints = GamePoint(black: 38, white: 39)
         var actualPoints: GamePoint?
         var boardPrinter: BoardPrinter = .unimplemented
         boardPrinter.printCurrentPoints = { currentPoints in
@@ -224,14 +215,14 @@ final class BoardTests: XCTestCase {
     func test_보드초기화후_체스판을그래픽으로나타내면_예상한대로출력된다() {
         let expectedGraphicalRepresentation = """
          ABCDEFGH
-        1........
+        1♜♞♝.♛♝♞♜
         2♟♟♟♟♟♟♟♟
         3........
         4........
         5........
         6........
         7♙♙♙♙♙♙♙♙
-        8........
+        8♖♘♗.♕♗♘♖
          ABCDEFGH
         """
 
