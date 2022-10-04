@@ -23,7 +23,12 @@ enum File: Int, CaseIterable {
         }
     }
     
-    static func convert(from str: String) -> File? {
+    init?(rawValue: String) {
+        guard let value = Self.convert(from: rawValue) else { return nil }
+        self.init(rawValue: value.rawValue)
+    }
+    
+    private static func convert(from str: String) -> File? {
         return File.allCases.first(where: { $0.invertedTypeString == str })
     }
 }
@@ -44,7 +49,12 @@ enum Rank: Int, CaseIterable {
         }
     }
     
-    static func convert(from str: String) -> Rank? {
+    init?(rawValue: String) {
+        guard let value = Self.convert(from: rawValue) else { return nil }
+        self.init(rawValue: value.rawValue)
+    }
+    
+    private static func convert(from str: String) -> Rank? {
         return Rank.allCases.first(where: { $0.invertedTypeString == str })
     }
 }
