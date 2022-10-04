@@ -66,7 +66,7 @@ final class DefaultBoard: Board {
     /// 지정된 구성으로 ``DefaultBoard/status``를 초기화한다.
     private func setInitialState() {
         setEmptyState()
-        setPawns()
+        setPieces()
     }
 
     /// ``Board/status``를 빈 상태로 설정한다. 크기는 ``DefaultBoard/Configuration/size-swift.type.property``를 따른다.
@@ -81,32 +81,24 @@ final class DefaultBoard: Board {
         )
     }
 
-    /// 색상별 ``Pawn``을 지정된 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRank``를 참고한다.
-    private func setPawns() {
-        for pieceColor in PieceColor.allCases {
-            setPawns(for: pieceColor)
-        }
+    private func setPieces() {
+        PieceColor.allCases.forEach(setPieces(for:))
     }
 
-    /// 지정된 색상의 ``Pawn``을 위치에 둔다. 색상별 ``Pawn``의 위치는 ``Pawn/initialRank``를 참고한다.
+    /// 지정된 색상의 ``Piece``를 배치한다. 색상별 ``Piece``의 위치는 각 ``Piece/initialLocations``를 참고한다.
     /// - Parameter pieceColor: 흑백 진영을 의미하는 체스말 색깔.
-    private func setPawns(for pieceColor: PieceColor) {
-        switch pieceColor {
-        case .black:
-            let blackPawn = Pawn(color: .black)
-            let blackPawnRank = Array(
-                repeating: blackPawn,
-                count: Self.Configuration.size.file
-            )
-            status[blackPawn.initialRank.index] = blackPawnRank
-
-        case .white:
-            let whitePawn = Pawn(color: .white)
-            let whitePawnRank = Array(
-                repeating: whitePawn,
-                count: Self.Configuration.size.file
-            )
-            status[whitePawn.initialRank.index] = whitePawnRank
+    private func setPieces(for pieceColor: PieceColor) {
+        let pieces: [Piece] = [
+            Pawn(color: pieceColor),
+            Bishop(color: pieceColor),
+            Knight(color: pieceColor),
+            Rook(color: pieceColor),
+            Queen(color: pieceColor),
+        ]
+        pieces.forEach { piece in
+            piece.initialLocations.forEach { location in
+                self[location] = piece
+            }
         }
     }
 
