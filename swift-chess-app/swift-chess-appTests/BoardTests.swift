@@ -85,25 +85,19 @@ class BoardTests: XCTestCase {
         
         // when
         sut.set(pieces: [blackRook, blackBishop])
-        let movablePoints = sut.movablePoints(blackRook)
-            .sorted { lhs, rhs in
-                if lhs.file.rawValue == rhs.file.rawValue {
-                    return lhs.rank.rawValue < rhs.rank.rawValue
-                }
-                return lhs.file.rawValue < rhs.file.rawValue
-            }
+        let movablePoints = sut.movablePoints(blackRook).sortedByFile
         
         // then
         XCTAssertEqual(movablePoints, [
-            Point(string: "A2"),
-            Point(string: "A3"),
-            Point(string: "A4"),
-            Point(string: "A5"),
-            Point(string: "A6"),
-            Point(string: "A7"),
-            Point(string: "A8"),
-            Point(string: "B1"),
-        ].compactMap { $0 })
+            Point(string: "A2")!,
+            Point(string: "A3")!,
+            Point(string: "A4")!,
+            Point(string: "A5")!,
+            Point(string: "A6")!,
+            Point(string: "A7")!,
+            Point(string: "A8")!,
+            Point(string: "B1")!,
+        ])
     }
     
     func test_movablePoints_for_bishop() {
@@ -120,6 +114,23 @@ class BoardTests: XCTestCase {
         XCTAssertEqual(movablePoints, [])
     }
     
+    func test_movablePoints_for_knight() {
+        // given
+        let blackKnight = Knight(color: .black, point: Point(string: "A4")!)
+        
+        // when
+        sut.set(pieces: [blackKnight])
+        let movablePoints = sut.movablePoints(blackKnight).sortedByFile
+        
+        // then
+        XCTAssertEqual(movablePoints, [
+            Point(string: "B2")!,
+            Point(string: "B6")!,
+            Point(string: "C3")!,
+            Point(string: "C5")!,
+        ])
+    }
+    
     func test_movablePoints_for_queen() {
         // given
         let blackQueen = Queen(color: .black, point: Point(string: "F1")!)
@@ -128,33 +139,27 @@ class BoardTests: XCTestCase {
         
         // when
         sut.set(pieces: [blackQueen, blackPawn1, blackPawn2])
-        let movablePoints = sut.movablePoints(blackQueen)
-            .sorted { lhs, rhs in
-                if lhs.file.rawValue == rhs.file.rawValue {
-                    return lhs.rank.rawValue < rhs.rank.rawValue
-                }
-                return lhs.file.rawValue < rhs.file.rawValue
-            }
+        let movablePoints = sut.movablePoints(blackQueen).sortedByFile
         
         // then
         XCTAssertEqual(movablePoints, [
-            Point(string: "A1"),
-            Point(string: "B1"),
-            Point(string: "C1"),
-            Point(string: "D1"),
-            Point(string: "E1"),
-            Point(string: "E2"),
-            Point(string: "F2"),
-            Point(string: "F3"),
-            Point(string: "F4"),
-            Point(string: "F5"),
-            Point(string: "F6"),
-            Point(string: "F7"),
-            Point(string: "F8"),
-            Point(string: "G1"),
-            Point(string: "G2"),
-            Point(string: "H1"),
-        ].compactMap { $0 })
+            Point(string: "A1")!,
+            Point(string: "B1")!,
+            Point(string: "C1")!,
+            Point(string: "D1")!,
+            Point(string: "E1")!,
+            Point(string: "E2")!,
+            Point(string: "F2")!,
+            Point(string: "F3")!,
+            Point(string: "F4")!,
+            Point(string: "F5")!,
+            Point(string: "F6")!,
+            Point(string: "F7")!,
+            Point(string: "F8")!,
+            Point(string: "G1")!,
+            Point(string: "G2")!,
+            Point(string: "H1")!,
+        ])
     }
     
     
@@ -230,33 +235,27 @@ class BoardTests: XCTestCase {
         let result = sut.data
             .filter { (_, piece) in piece is Pawn }
             .map { $0.key }
-            .sorted { lhs, rhs in
-                if lhs.rank.rawValue == rhs.rank.rawValue {
-                    return lhs.file.rawValue < rhs.file.rawValue
-                }
-                return lhs.rank.rawValue < rhs.rank.rawValue
-            }
+            .sortedByFile
         
         // then
         XCTAssertEqual(result, [
-            Point(string: "A2"),
-            Point(string: "B2"),
-            Point(string: "C2"),
-            Point(string: "D2"),
-            Point(string: "E2"),
-            Point(string: "F2"),
-            Point(string: "G2"),
-            Point(string: "H2"),
-            
-            Point(string: "A7"),
-            Point(string: "B7"),
-            Point(string: "C7"),
-            Point(string: "D7"),
-            Point(string: "E7"),
-            Point(string: "F7"),
-            Point(string: "G7"),
-            Point(string: "H7"),
-        ].compactMap { $0 })
+            Point(string: "A2")!,
+            Point(string: "A7")!,
+            Point(string: "B2")!,
+            Point(string: "B7")!,
+            Point(string: "C2")!,
+            Point(string: "C7")!,
+            Point(string: "D2")!,
+            Point(string: "D7")!,
+            Point(string: "E2")!,
+            Point(string: "E7")!,
+            Point(string: "F2")!,
+            Point(string: "F7")!,
+            Point(string: "G2")!,
+            Point(string: "G7")!,
+            Point(string: "H2")!,
+            Point(string: "H7")!,
+        ])
     }
     
     func test_pawn_count_after_prepare_pawns() {

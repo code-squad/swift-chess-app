@@ -15,7 +15,6 @@ final class Pawn: Piece {
         switch color {
         case .white:
             return [Direction.n].map { $0.toTuple }
-            
         case .black:
             return [Direction.s].map { $0.toTuple }
         }

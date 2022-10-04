@@ -33,6 +33,7 @@
 		1CA7D21428DF1F3A0049A308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA7D21228DF1F3A0049A308 /* Main.storyboard */; };
 		1CA7D21628DF1F3B0049A308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CA7D21528DF1F3B0049A308 /* Assets.xcassets */; };
 		1CA7D21928DF1F3B0049A308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA7D21728DF1F3B0049A308 /* LaunchScreen.storyboard */; };
+		1CE777E328EC5F8A00DF33EE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE777E228EC5F8A00DF33EE /* Array+Extensions.swift */; };
 		1CE8F9C228E9CAF3007AAA9B /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9C128E9CAF3007AAA9B /* Piece.swift */; };
 		1CE8F9C428E9EF40007AAA9B /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9C328E9EF40007AAA9B /* Knight.swift */; };
 		1CE8F9C628E9EF50007AAA9B /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F9C528E9EF50007AAA9B /* Rook.swift */; };
@@ -84,6 +85,7 @@
 		1CA7D21828DF1F3B0049A308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CA7D21A28DF1F3C0049A308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CA7D21F28DF1F3C0049A308 /* swift-chess-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-chess-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CE777E228EC5F8A00DF33EE /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		1CE8F9C128E9CAF3007AAA9B /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		1CE8F9C328E9EF40007AAA9B /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		1CE8F9C528E9EF50007AAA9B /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				1C715C6528E08FF4009FD474 /* Parser.swift */,
 				1CE8F9D028EA9E67007AAA9B /* Global.swift */,
+				1CE777E228EC5F8A00DF33EE /* Array+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				1CE8F9C228E9CAF3007AAA9B /* Piece.swift in Sources */,
 				1C715C5C28E08AA8009FD474 /* ScoreManager.swift in Sources */,
+				1CE777E328EC5F8A00DF33EE /* Array+Extensions.swift in Sources */,
 				1C715C5A28E08A77009FD474 /* Board.swift in Sources */,
 				1C715C6428E08C65009FD474 /* File.swift in Sources */,
 				1CA7D21128DF1F3A0049A308 /* ViewController.swift in Sources */,
