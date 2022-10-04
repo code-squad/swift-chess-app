@@ -7,11 +7,6 @@
 
 import Foundation
 
-//static func ==(lhs: Self, rhs: Self) -> Bool {
-//    return lhs.color == rhs.color
-//    && lhs.position == rhs.position
-//    && lhs.point == rhs.point
-//}
 protocol ChessPiecable: CustomStringConvertible {
     var color: ChessPieceColor { get }
     var position: Position { get set }
