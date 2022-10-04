@@ -43,3 +43,33 @@ Board와 Piece 프로토콜을 생성 후
 - `canMove(from: to:)`를 통해 특정 위치에서 특정 위치로 갈 수 있는지 계산
 - Pawn은 가로로 1칸 또는 앞으로 1칸 이동 가능
 - `movablePositions(from:)`에서는 특정 위치에서 갈 수 있는 위치를 리턴
+
+## 2. 체스보드와 체스말
+
+### 요구사항
+
+Bishop, Rook, Queen, Knight 체스말이 추가됨
+
+##### Bishop
+
+- 대각선으로 1칸 이상 이동 가능
+
+##### Rook
+
+- 좌, 우, 위, 아래로 1칸 이상 이동 가능
+
+##### Queen
+
+- 대각선, 좌, 우, 위, 아래로 1칸 이상 이동 가능
+
+##### Knight
+
+- 전진 1칸 + 대각선 1칸으로 이동 가능
+
+### 구현
+
+체스판의 행과 열을 나타내는 Rank와 File을 enum으로 정의하고  
+이를 사용하여 체스판의 위치를 나타내는 Position 구조체 정의 
+
+Position은 좌, 우, 위, 아래, 대각선에 대한 Optional Position을 리턴할 수 있음  
+이를 사용해서 각 체스말의 `movablePositions`에서 갈 수 있는 위치를 찾아 리턴
