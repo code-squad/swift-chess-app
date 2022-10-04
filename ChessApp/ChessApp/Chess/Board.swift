@@ -21,11 +21,16 @@ final class Board {
     }
     
     func startGame() {
-        initBoard(with: Pawn(color: .black), position: Pawn(color: .black).startPosition())
-        initBoard(with: Pawn(color: .white), position: Pawn(color: .white).startPosition())
-        
-        print(displayBoard())
-
+        initBoard(with: Pawn(color: .black))
+        initBoard(with: Pawn(color: .white))
+        initBoard(with: Bishop(color: .black))
+        initBoard(with: Bishop(color: .white))
+        initBoard(with: Rook(color: .black))
+        initBoard(with: Rook(color: .white))
+        initBoard(with: Knight(color: .black))
+        initBoard(with: Knight(color: .white))
+        initBoard(with: Queen(color: .black))
+        initBoard(with: Queen(color: .white))
     }
     
     func move(piece: Piece, from: Position, to: Position) {
@@ -59,10 +64,10 @@ final class Board {
 }
 
 extension Board {
-    func initBoard(with piece: Piece, position: [Position]) {
-        position.forEach {
+    func initBoard(with piece: Piece) {
+        piece.startPosition().forEach({
             board[$0.rank.rawValue][$0.file.rawValue] = piece
-        }
+        })
     }
     
     // 현재 플레이중인 체스보드 표시

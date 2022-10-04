@@ -11,7 +11,6 @@ protocol Piece {
     var color: PieceColor { get }
     var display: String { get }
     var score: Int { get }
-    var maxCount: Int { get }
     func startPosition() -> [Position]
     func validToMovePosition(current: Position, to: Position) -> Bool
 }

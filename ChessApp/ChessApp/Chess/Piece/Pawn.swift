@@ -9,9 +9,6 @@ import Foundation
 
 struct Pawn: Piece {
     let color: PieceColor
-    var maxCount: Int {
-        return 8
-    }
     var score: Int {
         return 1
     }
