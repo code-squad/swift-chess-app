@@ -19,6 +19,7 @@ struct Bishop: Equatable, ChessPiecable, ChessPieceMovableChecker {
     var movableDirection: [ChessMovableDirection] {
         return [.leftGo, .leftBack, .rightGo, .rightBack]
     }
+    
     var description: String {
         return color == .black ? "♝" : "♗"
     }
