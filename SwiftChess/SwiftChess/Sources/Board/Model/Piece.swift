@@ -112,5 +112,7 @@ enum BoardElementSymbol: String {
     case whiteBishop = "♗"
     case blackRook = "♜"
     case whiteRook = "♖"
+    case blackQueen = "♛"
+    case whiteQueen = "♕"
     case empty = "."
 }

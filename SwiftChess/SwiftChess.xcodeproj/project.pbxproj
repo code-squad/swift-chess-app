@@ -42,6 +42,7 @@
 		AA53AD3F28EC1E4A0051D8CB /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3E28EC1E4A0051D8CB /* Knight.swift */; };
 		AA53AD4128EC21290051D8CB /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4028EC21290051D8CB /* Bishop.swift */; };
 		AA53AD4328EC25D70051D8CB /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4228EC25D70051D8CB /* Rook.swift */; };
+		AA53AD4528EC27860051D8CB /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4428EC27860051D8CB /* Queen.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -96,6 +97,7 @@
 		AA53AD3E28EC1E4A0051D8CB /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		AA53AD4028EC21290051D8CB /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		AA53AD4228EC25D70051D8CB /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		AA53AD4428EC27860051D8CB /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				AA53AD3E28EC1E4A0051D8CB /* Knight.swift */,
 				AA53AC9A28E41AB70051D8CB /* Pawn.swift */,
 				AA53AC9828E41A8D0051D8CB /* Piece.swift */,
+				AA53AD4428EC27860051D8CB /* Queen.swift */,
 				AA53AD4228EC25D70051D8CB /* Rook.swift */,
 			);
 			path = Model;
@@ -562,6 +565,7 @@
 				AA53AD0228E94E340051D8CB /* BoardLocation.swift in Sources */,
 				AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */,
 				AA53AD0928E96C190051D8CB /* MoveCommandValidator.swift in Sources */,
+				AA53AD4528EC27860051D8CB /* Queen.swift in Sources */,
 				AA53ACB528E491430051D8CB /* MoveCommandParser.swift in Sources */,
 				AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
