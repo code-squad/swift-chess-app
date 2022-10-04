@@ -37,6 +37,10 @@ extension Piece {
     var point: Int {
         return Self.point
     }
+
+    func movableLocations(from location: BoardLocation) -> [BoardLocation] {
+        return Self.moveRules.compactMap { location + $0 }
+    }
 }
 
 /// 체스말의 색깔.
@@ -104,5 +108,7 @@ enum BoardElementSymbol: String {
     case whitePawn = "♙"
     case blackKnight = "♞"
     case whiteKnight = "♘"
+    case blackBishop = "♝"
+    case whiteBishop = "♗"
     case empty = "."
 }

@@ -40,6 +40,7 @@
 		AA53AD3A28EAB9B60051D8CB /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3928EAB9B60051D8CB /* GameTests.swift */; };
 		AA53AD3D28EC175D0051D8CB /* Unimplemented.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3C28EC175D0051D8CB /* Unimplemented.swift */; };
 		AA53AD3F28EC1E4A0051D8CB /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD3E28EC1E4A0051D8CB /* Knight.swift */; };
+		AA53AD4128EC21290051D8CB /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA53AD4028EC21290051D8CB /* Bishop.swift */; };
 		AABA53B528E1D31B00006508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B428E1D31B00006508 /* AppDelegate.swift */; };
 		AABA53B728E1D31B00006508 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B628E1D31B00006508 /* SceneDelegate.swift */; };
 		AABA53B928E1D31B00006508 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA53B828E1D31B00006508 /* HomeViewController.swift */; };
@@ -92,6 +93,7 @@
 		AA53AD3928EAB9B60051D8CB /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		AA53AD3C28EC175D0051D8CB /* Unimplemented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unimplemented.swift; sourceTree = "<group>"; };
 		AA53AD3E28EC1E4A0051D8CB /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		AA53AD4028EC21290051D8CB /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		AABA53B128E1D31B00006508 /* SwiftChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABA53B428E1D31B00006508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABA53B628E1D31B00006508 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		AA53AC9728E41A870051D8CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA53AD4028EC21290051D8CB /* Bishop.swift */,
 				AA53ACF428E766AB0051D8CB /* Empty.swift */,
 				AA53AD3E28EC1E4A0051D8CB /* Knight.swift */,
 				AA53AC9A28E41AB70051D8CB /* Pawn.swift */,
@@ -560,6 +563,7 @@
 				AA53AD2B28EA8E640051D8CB /* BoardPrinter.swift in Sources */,
 				AA53AC9928E41A8D0051D8CB /* Piece.swift in Sources */,
 				AA53AD3428EAA0210051D8CB /* GamePrinter.swift in Sources */,
+				AA53AD4128EC21290051D8CB /* Bishop.swift in Sources */,
 				AA53AD1328E987D50051D8CB /* Game.swift in Sources */,
 				AA53ACB728E491540051D8CB /* CommandReader.swift in Sources */,
 				AA53ACF528E766AB0051D8CB /* Empty.swift in Sources */,

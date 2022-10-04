@@ -23,8 +23,4 @@ struct Knight: Piece {
     var asSymbol: BoardElementSymbol {
         return color == .black ? .blackKnight : .whiteKnight
     }
-
-    func movableLocations(from location: BoardLocation) -> [BoardLocation] {
-        return Self.moveRules.compactMap { location + $0 }
-    }
 }
