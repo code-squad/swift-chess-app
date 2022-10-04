@@ -11,8 +11,6 @@ final class Board {
     
     typealias BoardDataType = [Point: Piece]
     
-    static var boardSize: Int { Rank.allCases.count * File.allCases.count }
-    
     private(set) var data: BoardDataType = [:]
     
     var toList: [[Piece?]] {

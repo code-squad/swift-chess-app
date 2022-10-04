@@ -50,8 +50,10 @@ extension Piece {
         
         var toKorean: String {
             switch self {
-            case .white: return "백색"
-            case .black: return "흑색"
+            case .white:
+                return "백색"
+            case .black:
+                return "흑색"
             }
         }
     }
