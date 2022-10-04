@@ -7,41 +7,74 @@
 
 import Foundation
 
+enum CommandType {
+    case info, move
+}
+
 struct Command {
-    let fromString: String
-    let toString: String
+    let type: CommandType
+    let commandStrings: [String]
     
+    init(type: CommandType, commandStrings: [String]) {
+        self.type = type
+        self.commandStrings = commandStrings
+    }
+    
+    init?(inputString: String) {
+        if let infoCommandStrings = Self.makeInfo(inputString: inputString) {
+            self.init(type: .info, commandStrings: infoCommandStrings)
+        } else if let movableCommandStrings = Self.makeMove(inputString: inputString) {
+            self.init(type: .move, commandStrings: movableCommandStrings)
+        } else {
+            return nil
+        }
+    }
+    
+    func infoPosition() -> Position? {
+        guard let infoString = commandStrings.first,
+              let fileString = infoString.firstString(),
+              let rankString = infoString.lastString(),
+              let file = File(rawValue: fileString),
+              let rank = Rank(rawValue: rankString) else { return nil }
+
+        return Position(file: file, rank: rank)
+    }
+
+
     func fromPosition() -> Position? {
-        guard let fileString = fromString.firstString(),
+        guard let fromString = commandStrings.first,
+              let fileString = fromString.firstString(),
               let rankString = fromString.lastString(),
               let file = File(rawValue: fileString),
               let rank = Rank(rawValue: rankString) else { return nil }
-        
+
         return Position(file: file, rank: rank)
     }
-    
+
     func toPosition() -> Position? {
-        guard let fileString = toString.firstString(),
+        guard let toString = commandStrings.last,
+              let fileString = toString.firstString(),
               let rankString = toString.lastString(),
               let file = File(rawValue: fileString),
               let rank = Rank(rawValue: rankString) else { return nil }
-        
-        return Position(file: file, rank: rank)
+
+        return Position(file: file, rank : rank)
     }
 }
 
 extension Command {
-    static func make(inputString: String) -> Command? {
-        let components = inputString.components(separatedBy: "->")
+    private static func checkInfoRegex(_ str: String?) -> String? {
+        guard let str = str else { return nil }
         
-        guard components.count == 2,
-              let fromString = Self.checkRegex(components.first),
-              let toString = Self.checkRegex(components.last) else { return nil }
-            
-        return Command(fromString: fromString, toString: toString)
+        let pattern: String = "[?][A-H][1-8]$"
+        if str.range(of: pattern, options: .regularExpression) != nil {
+            return str.replacingOccurrences(of: "?", with: "")
+        } else {
+            return nil
+        }
     }
     
-    static private func checkRegex(_ str: String?) -> String? {
+    private static func checkMovableRegex(_ str: String?) -> String? {
         guard let str = str else { return nil }
         
         let pattern: String = "[A-H][1-8]$"
@@ -50,6 +83,23 @@ extension Command {
         } else {
             return nil
         }
+    }
+    
+    private static func makeInfo(inputString: String) -> [String]? {
+        guard inputString.count == 3,
+              let infoString = Self.checkInfoRegex(inputString) else { return nil }
+            
+        return [infoString]
+    }
+    
+    private static func makeMove(inputString: String) -> [String]? {
+        let components = inputString.components(separatedBy: "->")
+        
+        guard components.count == 2,
+              let fromString = Self.checkMovableRegex(components.first),
+              let toString = Self.checkMovableRegex(components.last) else { return nil }
+            
+        return [fromString, toString]
     }
 }
 
