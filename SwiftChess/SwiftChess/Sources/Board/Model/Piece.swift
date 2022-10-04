@@ -102,5 +102,7 @@ extension MoveRule.Step {
 enum BoardElementSymbol: String {
     case blackPawn = "♟"
     case whitePawn = "♙"
+    case blackKnight = "♞"
+    case whiteKnight = "♘"
     case empty = "."
 }
