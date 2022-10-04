@@ -9,8 +9,7 @@ import Foundation
 
 enum Dimension {
     enum Board {
-        static let boardWidth = 8
-        static let boardHeight = 8
+        static let length = 8
     }
     
     enum Point {
