@@ -14,11 +14,21 @@ final class Rook: Piece {
         user.rookPolicy.iconString
     }
     var nextPossiblePositions: [Position] {
-        return []
+        let boundaryValue = max(Rank.Config.maxValue, File.Config.maxValue)
+        
+        let nextPossiblePositions: [Position] = (1...boundaryValue).map { int -> [Position] in
+            return [Position(rank: Rank(self.position.rank.value), file: File(self.position.file.value + int)),
+                    Position(rank: Rank(self.position.rank.value + int), file: File(self.position.file.value)),
+                    Position(rank: Rank(self.position.rank.value - int), file: File(self.position.file.value)),
+                    Position(rank: Rank(self.position.rank.value), file: File(self.position.file.value - int))]
+                .compactMap { $0 }
+        }
+        .flatMap { $0 }
 
+        return nextPossiblePositions
     }
     let user: User
-    let score: Int = 1
+    let score: Int = 5
 
     init(position: Position, user: User) {
         self.position = position
