@@ -20,3 +20,9 @@ extension ChessPiecable {
         self.position = position
     }
 }
+
+extension ChessPiecable where Self: ChessPieceMovableChecker {
+    func movablePositions() -> [Position] {
+        self.movablePositions(self.position)
+    }
+}

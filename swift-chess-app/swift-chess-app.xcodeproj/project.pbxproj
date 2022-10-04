@@ -23,6 +23,7 @@
 		CE94176E28ECE55F00E3D0F8 /* ChessMovableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94176B28ECE55F00E3D0F8 /* ChessMovableDirection.swift */; };
 		CE94176F28ECE55F00E3D0F8 /* ChessPieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94176C28ECE55F00E3D0F8 /* ChessPieceColor.swift */; };
 		CE94177028ECE55F00E3D0F8 /* ChessPiecable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94176D28ECE55F00E3D0F8 /* ChessPiecable.swift */; };
+		CE94177228ECE58F00E3D0F8 /* ChessPieceMovableChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177128ECE58F00E3D0F8 /* ChessPieceMovableChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		CE94176B28ECE55F00E3D0F8 /* ChessMovableDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessMovableDirection.swift; sourceTree = "<group>"; };
 		CE94176C28ECE55F00E3D0F8 /* ChessPieceColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceColor.swift; sourceTree = "<group>"; };
 		CE94176D28ECE55F00E3D0F8 /* ChessPiecable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPiecable.swift; sourceTree = "<group>"; };
+		CE94177128ECE58F00E3D0F8 /* ChessPieceMovableChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceMovableChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				CE94176B28ECE55F00E3D0F8 /* ChessMovableDirection.swift */,
 				CE94176C28ECE55F00E3D0F8 /* ChessPieceColor.swift */,
+				CE94177128ECE58F00E3D0F8 /* ChessPieceMovableChecker.swift */,
 				CE94176D28ECE55F00E3D0F8 /* ChessPiecable.swift */,
 			);
 			name = Enums;
@@ -260,6 +263,7 @@
 				CE94176F28ECE55F00E3D0F8 /* ChessPieceColor.swift in Sources */,
 				CE1F768128E0C7CC00383C94 /* Pawn.swift in Sources */,
 				CE1F768328E0C7E500383C94 /* ChessGame.swift in Sources */,
+				CE94177228ECE58F00E3D0F8 /* ChessPieceMovableChecker.swift in Sources */,
 				CE1F766928E0B4BC00383C94 /* ChessBoard.swift in Sources */,
 				CE1F767F28E0C7B600383C94 /* Position.swift in Sources */,
 				CE1F768528E0D07F00383C94 /* Command.swift in Sources */,
