@@ -16,5 +16,9 @@ struct Knight: Pieceable {
     func isMovable(from: Location, to: Location) -> Bool {
         (abs(from.row - to.row) == 2 && abs(from.col - to.col) == 1) ||
         (abs(from.row - to.row) == 1 && abs(from.col - to.col) == 2)
-    } 
+    }
+    
+    func isBlocked(from: Location, to: Location, board: [[Pieceable?]]) -> Bool {
+        return false
+    }
 }

@@ -14,7 +14,18 @@ struct Queen: Pieceable {
     var color: PieceColor
     
     func isMovable(from: Location, to: Location) -> Bool {
-        (abs(from.row - to.row) == abs(from.col - to.col)) ||
-        (from.row == to.row || from.col == to.col)
+        Bishop(color: color).isMovable(from: from, to: to) ||
+        Rook(color: color).isMovable(from: from, to: to)
+    }
+    
+    func isBlocked(from: Location, to: Location, board: [[Pieceable?]]) -> Bool {
+        var result: Bool
+        if from.row != to.row && from.col != to.col {
+            result = Bishop(color: color).isBlocked(from: from, to: to, board: board)
+        } else {
+            result = Rook(color: color).isBlocked(from: from, to: to, board: board)
+        }
+        
+        return result
     }
 }

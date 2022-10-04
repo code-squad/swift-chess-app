@@ -9,11 +9,11 @@ import XCTest
 @testable import swift_chess_app
 
 final class PawnTests: XCTestCase {
-
+    
     var sut: Pawn!
     
     func testBlackPawnMove() {
-        let sut = Pawn(color: .black)
+        sut = Pawn(color: .black)
         
         var from: Location
         var to: Location
@@ -28,11 +28,11 @@ final class PawnTests: XCTestCase {
     }
     
     func testWhitePawnisMovable() {
-        let sut = Pawn(color: .white)
+        sut = Pawn(color: .white)
         
         var from: Location
         var to: Location
-
+        
         from = Location(row: 1, col: 1)
         to = Location(row: 2, col: 1)
         XCTAssertFalse(sut.isMovable(from: from, to: to))

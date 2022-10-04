@@ -13,7 +13,7 @@ final class KnightTests: XCTestCase {
     var sut: Knight!
     
     func testKnightMove() {
-        let sut = Knight(color: .black)
+        sut = Knight(color: .black)
         
         let from = Location(row: 4, col: 5)
         var to: Location

@@ -11,7 +11,7 @@ class Board {
     private let rowCount: Int = 8
     private let colCount: Int = 8
     
-    private var board: [[Pieceable?]] = []
+    private(set) var board: [[Pieceable?]] = []
     private var order: PieceColor = .black
     
     init() {
@@ -26,10 +26,10 @@ class Board {
     func display() -> String {
         var result: String
         result = " ABCDEFGH"
-        for i in 0 ..< rowCount {
-            result += "\n\(i + 1)"
-            for j in 0 ..< colCount {
-                result += (board[i][j]?.getSymbol() ?? Symbol.empty).image
+        for row in 0 ..< rowCount {
+            result += "\n\(row + 1)"
+            for col in 0 ..< colCount {
+                result += (board[row][col]?.getSymbol() ?? Symbol.empty).image
             }
         }
         result += "\n ABCDEFGH"
@@ -38,7 +38,7 @@ class Board {
     }
         
     func move(from: String, to: String) -> Bool {
-        // 해당 위치로 이동할 수 없는 경우
+        // 해당 위치가 없는 경우
         guard let from = getLocation(input: from),
               let to = getLocation(input: to) else { return false }
         
@@ -59,12 +59,43 @@ class Board {
         // 선택된 피스의 이동 규칙이 잘못된 경우
         guard selectedPiece.isMovable(from: from, to: to) else { return false }
         
+        // 경로 중간에 다른 피스가 있는 경우
+        guard selectedPiece.isBlocked(from: from, to: to, board: board) == false else { return false }
+        
         
         board[to.row][to.col] = board[from.row][from.col]
         board[from.row][from.col] = nil
         
         order = order == .black ? .white : .black
         return true
+    }
+    
+    func help(input location: String) -> [String]? {
+        // 해당 위치가 없는 경우
+        guard let location = getLocation(input: location) else { return nil }
+        
+        // 현재 위치에 피스가 없는 경우
+        guard let selectedPiece = board[location.row][location.col] else { return nil }
+        
+        var result: [String] = []
+        
+        for row in 0 ..< rowCount {
+            for col in 0 ..< colCount {
+                // 도움말을 확인하려는 위치와 현재 위치가 같은 경우
+                guard Location(row: row, col: col) != location else { continue }
+                
+                // 이동하려는 곳에 같은 색 피스가 있는 경우
+                if board[location.row][location.col]?.color == board[row][col]?.color { continue }
+                
+                if selectedPiece.isMovable(from: location, to: Location(row: row, col: col)) &&
+                    selectedPiece.isBlocked(from: location, to: Location(row: row, col: col), board: board) == false {
+                    
+                    result.append(Location(row: row, col: col).getPosition()!.string)
+                }
+            }
+        }
+        
+        return result
     }
 }
 

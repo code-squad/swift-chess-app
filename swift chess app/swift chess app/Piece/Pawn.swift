@@ -16,9 +16,13 @@ struct Pawn: Pieceable {
     func isMovable(from: Location, to: Location) -> Bool {
         switch color {
         case .black:
-            return from.row - to.row == -1
+            return from.row - to.row == -1 && from.col == to.col
         case .white:
-            return from.row - to.row == 1
+            return from.row - to.row == 1  && from.col == to.col
         }
+    }
+    
+    func isBlocked(from: Location, to: Location, board: [[Pieceable?]]) -> Bool {
+        return false
     }
 }

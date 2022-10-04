@@ -159,7 +159,6 @@
 			children = (
 				9932591428E33BC70099D0B6 /* swift_chess_appTests.swift */,
 				995A60E228E6765F00AB7162 /* Cases */,
-				995A60DE28E675D600AB7162 /* Test Extensions */,
 			);
 			path = "swift chess appTests";
 			sourceTree = "<group>";
@@ -220,13 +219,6 @@
 				99A95C7628E914BC0099A225 /* Position.swift */,
 			);
 			path = Board;
-			sourceTree = "<group>";
-		};
-		995A60DE28E675D600AB7162 /* Test Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Test Extensions";
 			sourceTree = "<group>";
 		};
 		995A60E228E6765F00AB7162 /* Cases */ = {

@@ -14,6 +14,7 @@ protocol Pieceable {
     var color: PieceColor { get }
     
     func isMovable(from: Location, to: Location) -> Bool
+    func isBlocked(from: Location, to: Location, board: [[Pieceable?]]) -> Bool
 }
 
 extension Pieceable {
