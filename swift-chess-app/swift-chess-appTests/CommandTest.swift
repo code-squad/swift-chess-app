@@ -14,7 +14,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "I2->H2"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -23,7 +23,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "H9->H8"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -32,7 +32,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "H2->I2"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -41,7 +41,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "H8->H9"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -50,7 +50,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "A1-<A2"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -59,7 +59,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "A1-A2"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -68,7 +68,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "A1->A2 "
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         //then
         XCTAssertNil(command)
     }
@@ -77,7 +77,7 @@ class CommandTest: XCTestCase {
         //given
         let string = "A1->A2"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         let fromPosition = command?.fromPosition()
         let toPosition = command?.toPosition()
         //then
@@ -89,11 +89,49 @@ class CommandTest: XCTestCase {
         //given
         let string = "A1->B1"
         //when
-        let command = Command.make(inputString: string)
+        let command = Command(inputString: string)
         let fromPosition = command?.fromPosition()
         let toPosition = command?.toPosition()
         //then
         XCTAssertEqual(fromPosition, Position(file: .a, rank: .one))
         XCTAssertEqual(toPosition, Position(file: .b, rank: .one))
+    }
+    
+    func test_info_포맷_확인_에러() {
+        //given
+        let string = "??A1"
+        //when
+        let command = Command(inputString: string)
+        //then
+        XCTAssertNil(command)
+    }
+    
+    func test_info_포맷_확인_에러2_스페이싱() {
+        //given
+        let string = " ?A1"
+        //when
+        let command = Command(inputString: string)
+        //then
+        XCTAssertNil(command)
+    }
+    
+    func test_info_A1() {
+        //given
+        let string = "?A1"
+        //when
+        let command = Command(inputString: string)
+        let infoPosition = command?.infoPosition()
+        //then
+        XCTAssertEqual(infoPosition, Position(file: .a, rank: .one))
+    }
+    
+    func test_info_I1_입력범위_초과_에러() {
+        //given
+        let string = "?I1"
+        //when
+        let command = Command(inputString: string)
+        let infoPosition = command?.infoPosition()
+        //then
+        XCTAssertNil(infoPosition)
     }
 }
