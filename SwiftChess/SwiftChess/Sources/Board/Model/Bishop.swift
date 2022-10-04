@@ -40,6 +40,21 @@ struct Bishop: Piece {
     ]
 
     var color: PieceColor
+    var initialLocations: [BoardLocation] {
+        switch color {
+        case .black:
+            return [
+                BoardLocation(file: .C, rank: .one),
+                BoardLocation(file: .F, rank: .one),
+            ]
+
+        case .white:
+            return [
+                BoardLocation(file: .C, rank: .eight),
+                BoardLocation(file: .F, rank: .eight),
+            ]
+        }
+    }
     var asSymbol: BoardElementSymbol {
         return color == .black ? .blackBishop : .whiteBishop
     }

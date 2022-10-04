@@ -28,6 +28,18 @@ struct Pawn: Piece {
             return .seven
         }
     }
+
+    var initialLocations: [BoardLocation] {
+        let allFiles = BoardLocation.File.allCases
+
+        switch color {
+        case .black:
+            return allFiles.map { BoardLocation(file: $0, rank: .two) }
+
+        case .white:
+            return allFiles.map { BoardLocation(file: $0, rank: .seven) }
+        }
+    }
 }
 
 extension Pawn {

@@ -20,6 +20,21 @@ struct Knight: Piece {
     ]
 
     var color: PieceColor
+    var initialLocations: [BoardLocation] {
+        switch color {
+        case .black:
+            return [
+                BoardLocation(file: .B, rank: .one),
+                BoardLocation(file: .G, rank: .one),
+            ]
+
+        case .white:
+            return [
+                BoardLocation(file: .B, rank: .eight),
+                BoardLocation(file: .G, rank: .eight),
+            ]
+        }
+    }
     var asSymbol: BoardElementSymbol {
         return color == .black ? .blackKnight : .whiteKnight
     }
