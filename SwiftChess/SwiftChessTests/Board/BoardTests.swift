@@ -42,7 +42,7 @@ final class BoardTests: XCTestCase {
 
         secondRank?.forEach { piece in
             guard let piece = piece as? Pawn else {
-                return XCTFail("Pawn 타입이 아닙니다.")
+                return XCTFail("\(Pawn.self) 타입이 아닙니다.")
             }
             XCTAssertEqual(piece.color, expectedPieceColor)
         }
@@ -50,10 +50,144 @@ final class BoardTests: XCTestCase {
 
     func test_색상별최초Pawn의생성개수는_8개이다() {
         let expectedPawnCount = 8
-        let existingPawns = sut?.pieceCount(for: Pawn.self)
+        let pawnCounts = sut?.pieceCount(for: Pawn.self)
 
-        XCTAssertEqual(existingPawns?.black, expectedPawnCount)
-        XCTAssertEqual(existingPawns?.white, expectedPawnCount)
+        XCTAssertEqual(pawnCounts?.black, expectedPawnCount)
+        XCTAssertEqual(pawnCounts?.white, expectedPawnCount)
+    }
+
+    func test_흑색Bishop의최초생성위치는_C1과F1이다() {
+        let firstBishopLocation = BoardLocation(file: .C, rank: .one)
+        let secondBishopLocation = BoardLocation(file: .F, rank: .one)
+
+        guard let firstBishop = sut?[firstBishopLocation] as? Bishop else {
+            return XCTFail("\(firstBishopLocation)에 있는 체스말은 \(Bishop.self) 타입이 아닙니다.")
+        }
+        guard let secondBishop = sut?[secondBishopLocation] as? Bishop else {
+            return XCTFail("\(secondBishopLocation)에 있는 체스말은 \(Bishop.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstBishop.color, .black)
+        XCTAssertEqual(secondBishop.color, .black)
+    }
+
+    func test_백색Bishop의최초생성위치는_C8과F8이다() {
+        let firstBishopLocation = BoardLocation(file: .C, rank: .eight)
+        let secondBishopLocation = BoardLocation(file: .F, rank: .eight)
+
+        guard let firstBishop = sut?[firstBishopLocation] as? Bishop else {
+            return XCTFail("\(firstBishopLocation)에 있는 체스말은 \(Bishop.self) 타입이 아닙니다.")
+        }
+        guard let secondBishop = sut?[secondBishopLocation] as? Bishop else {
+            return XCTFail("\(secondBishopLocation)에 있는 체스말은 \(Bishop.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstBishop.color, .white)
+        XCTAssertEqual(secondBishop.color, .white)
+    }
+
+    func test_색상별최초Bishop의생성개수는_2개이다() {
+        let expectedBishopCount = 2
+        let bishopCounts = sut?.pieceCount(for: Bishop.self)
+
+        XCTAssertEqual(bishopCounts?.black, expectedBishopCount)
+        XCTAssertEqual(bishopCounts?.white, expectedBishopCount)
+    }
+
+    func test_흑색Knight의최초생성위치는_B1과G1이다() {
+        let firstKnightLocation = BoardLocation(file: .B, rank: .one)
+        let secondKnightLocation = BoardLocation(file: .G, rank: .one)
+
+        guard let firstKnight = sut?[firstKnightLocation] as? Knight else {
+            return XCTFail("\(firstKnightLocation)에 있는 체스말은 \(Knight.self) 타입이 아닙니다.")
+        }
+        guard let secondKnight = sut?[secondKnightLocation] as? Knight else {
+            return XCTFail("\(secondKnightLocation)에 있는 체스말은 \(Knight.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstKnight.color, .black)
+        XCTAssertEqual(secondKnight.color, .black)
+    }
+
+    func test_백색Knight의최초생성위치는_B8과G8이다() {
+        let firstKnightLocation = BoardLocation(file: .B, rank: .eight)
+        let secondKnightLocation = BoardLocation(file: .G, rank: .eight)
+
+        guard let firstKnight = sut?[firstKnightLocation] as? Knight else {
+            return XCTFail("\(firstKnightLocation)에 있는 체스말은 \(Knight.self) 타입이 아닙니다.")
+        }
+        guard let secondKnight = sut?[secondKnightLocation] as? Knight else {
+            return XCTFail("\(secondKnightLocation)에 있는 체스말은 \(Knight.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstKnight.color, .white)
+        XCTAssertEqual(secondKnight.color, .white)
+    }
+
+    func test_색상별최초Knight의생성개수는_2개이다() {
+        let expectedKnightCount = 2
+        let knightCounts = sut?.pieceCount(for: Knight.self)
+
+        XCTAssertEqual(knightCounts?.black, expectedKnightCount)
+        XCTAssertEqual(knightCounts?.white, expectedKnightCount)
+    }
+
+    func test_흑색Queen의최초생성위치는_E1이다() {
+        let queenLocation = BoardLocation(file: .E, rank: .one)
+
+        guard let queen = sut?[queenLocation] as? Queen else {
+            return XCTFail("\(queenLocation)에 있는 체스말은 \(Queen.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(queen.color, .black)
+    }
+
+    func test_백색Queen의최초생성위치는_E8이다() {
+        let queenLocation = BoardLocation(file: .E, rank: .eight)
+
+        guard let queen = sut?[queenLocation] as? Queen else {
+            return XCTFail("\(queenLocation)에 있는 체스말은 \(Queen.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(queen.color, .white)
+    }
+
+    func test_색상별최초Queen의생성개수는_1개이다() {
+        let expectedQueenCount = 1
+        let queenCounts = sut?.pieceCount(for: Queen.self)
+
+        XCTAssertEqual(queenCounts?.black, expectedQueenCount)
+        XCTAssertEqual(queenCounts?.white, expectedQueenCount)
+    }
+
+    func test_흑색Rook의최초생성위치는_A1과H1이다() {
+        let firstRookLocation = BoardLocation(file: .A, rank: .one)
+        let secondRookLocation = BoardLocation(file: .H, rank: .one)
+
+        guard let firstRook = sut?[firstRookLocation] as? Rook else {
+            return XCTFail("\(firstRookLocation)에 있는 체스말은 \(Rook.self) 타입이 아닙니다.")
+        }
+        guard let secondRook = sut?[secondRookLocation] as? Rook else {
+            return XCTFail("\(secondRookLocation)에 있는 체스말은 \(Rook.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstRook.color, .black)
+        XCTAssertEqual(secondRook.color, .black)
+    }
+
+    func test_백색Rook의최초생성위치는_A8과H8이다() {
+        let firstRookLocation = BoardLocation(file: .A, rank: .eight)
+        let secondRookLocation = BoardLocation(file: .H, rank: .eight)
+
+        guard let firstRook = sut?[firstRookLocation] as? Rook else {
+            return XCTFail("\(firstRookLocation)에 있는 체스말은 \(Rook.self) 타입이 아닙니다.")
+        }
+        guard let secondRook = sut?[secondRookLocation] as? Rook else {
+            return XCTFail("\(secondRookLocation)에 있는 체스말은 \(Rook.self) 타입이 아닙니다.")
+        }
+        XCTAssertEqual(firstRook.color, .white)
+        XCTAssertEqual(secondRook.color, .white)
+    }
+
+    func test_색상별최초Rook의생성개수는_2개이다() {
+        let expectedRookCount = 2
+        let rookCounts = sut?.pieceCount(for: Rook.self)
+
+        XCTAssertEqual(rookCounts?.black, expectedRookCount)
+        XCTAssertEqual(rookCounts?.white, expectedRookCount)
     }
 
     // MARK: - 점수 측정
@@ -276,19 +410,16 @@ final class BoardTests: XCTestCase {
 
 extension DefaultBoard {
 
-    func pieceCount<P: Piece>(for pieceType: P.Type) -> (black: Int, white: Int) {
-        let existingPieces = status
-            .flatMap { $0.compactMap { $0 } }
-            .filter { $0 is P }
+    func pieces<P: Piece>(for pieceType: P.Type) -> [Piece] {
+        return status
+            .flatMap { $0.compactMap { $0 as? P } }
+    }
 
+    func pieceCount<P: Piece>(for pieceType: P.Type) -> (black: Int, white: Int) {
+        let existingPieces = pieces(for: pieceType)
         var pieces = (black: 0, white: 0)
 
         existingPieces.forEach { piece in
-            guard let piece = piece as? Piece else {
-                XCTFail("\(Piece.self) 타입이 아닙니다. 타입을 다시 확인해주세요.")
-                return
-            }
-
             switch piece.color {
             case .black:
                 pieces.black += 1
@@ -297,7 +428,6 @@ extension DefaultBoard {
                 pieces.white += 1
             }
         }
-
         return pieces
     }
 }
