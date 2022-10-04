@@ -28,6 +28,7 @@
 		CE94178428ECE5D000E3D0F8 /* ChessPiecable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177B28ECE5D000E3D0F8 /* ChessPiecable.swift */; };
 		CE94178528ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177C28ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift */; };
 		CE94178628ECE5D000E3D0F8 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177D28ECE5D000E3D0F8 /* Rook.swift */; };
+		CE94178828ECE61300E3D0F8 /* ChessPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94178728ECE61300E3D0F8 /* ChessPieces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CE94177B28ECE5D000E3D0F8 /* ChessPiecable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPiecable.swift; sourceTree = "<group>"; };
 		CE94177C28ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceMovableChecker.swift; sourceTree = "<group>"; };
 		CE94177D28ECE5D000E3D0F8 /* Rook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		CE94178728ECE61300E3D0F8 /* ChessPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChessPieces.swift; path = "swift-chess-app/Chess/Models/ChessPieces/ChessPieces.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		CE94177828ECE5D000E3D0F8 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				CE94178728ECE61300E3D0F8 /* ChessPieces.swift */,
 				CE94177928ECE5D000E3D0F8 /* ChessMovableDirection.swift */,
 				CE94177A28ECE5D000E3D0F8 /* ChessPieceColor.swift */,
 				CE94177B28ECE5D000E3D0F8 /* ChessPiecable.swift */,
@@ -295,6 +298,7 @@
 				CE1F770B28E1DE6A00383C94 /* Error.swift in Sources */,
 				CE94178528ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift in Sources */,
 				CE94178328ECE5D000E3D0F8 /* ChessPieceColor.swift in Sources */,
+				CE94178828ECE61300E3D0F8 /* ChessPieces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
