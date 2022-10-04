@@ -62,6 +62,7 @@ class ChessGame {
     }
     
     func checkValidatePosition(playerColor: PlayerColor, from: Position, to: Position) -> Bool {
+        guard chessBoard.myPieces(color: playerColor).first == nil else { return false }
         let movablePosition = chessBoard.movablePositions(color: playerColor, position: from )
         return movablePosition.first(where: { $0 == to }) != nil
     }
