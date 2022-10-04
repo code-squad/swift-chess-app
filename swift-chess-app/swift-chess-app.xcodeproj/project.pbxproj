@@ -29,6 +29,7 @@
 		CE94178528ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177C28ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift */; };
 		CE94178628ECE5D000E3D0F8 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94177D28ECE5D000E3D0F8 /* Rook.swift */; };
 		CE94178828ECE61300E3D0F8 /* ChessPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94178728ECE61300E3D0F8 /* ChessPieces.swift */; };
+		CE94178A28ECE63E00E3D0F8 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94178928ECE63E00E3D0F8 /* Dimension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CE94177C28ECE5D000E3D0F8 /* ChessPieceMovableChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceMovableChecker.swift; sourceTree = "<group>"; };
 		CE94177D28ECE5D000E3D0F8 /* Rook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		CE94178728ECE61300E3D0F8 /* ChessPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChessPieces.swift; path = "swift-chess-app/Chess/Models/ChessPieces/ChessPieces.swift"; sourceTree = SOURCE_ROOT; };
+		CE94178928ECE63E00E3D0F8 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		CE1F767928E0B9F600383C94 /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				CE94178928ECE63E00E3D0F8 /* Dimension.swift */,
 			);
 			path = "\U0010Utills";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				CE1F763B28E0AD2E00383C94 /* ViewController.swift in Sources */,
 				CE94177E28ECE5D000E3D0F8 /* Pawn.swift in Sources */,
 				CE94177F28ECE5D000E3D0F8 /* Knight.swift in Sources */,
+				CE94178A28ECE63E00E3D0F8 /* Dimension.swift in Sources */,
 				CE1F768328E0C7E500383C94 /* ChessGame.swift in Sources */,
 				CE94178128ECE5D000E3D0F8 /* Queen.swift in Sources */,
 				CE94178628ECE5D000E3D0F8 /* Rook.swift in Sources */,
