@@ -40,9 +40,4 @@ extension BoardFormatter {
             return "체스말을 잡았습니다. 현재점수 - 백: \(gamePoint.white), 흑: \(gamePoint.black)"
         }
     )
-
-    static let unimplemented = Self(
-        formatBoard: { _ in "" },
-        formatGamePoint: { _ in "" }
-    )
 }

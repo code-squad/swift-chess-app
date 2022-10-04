@@ -47,10 +47,6 @@ extension MoveCommandParser {
         )
     }
 
-    static let unimplemented = Self(
-        parse: { _ in nil }
-    )
-
     /// `Substring` 타입의 문자열을 ``BoardLocation`` 인스턴스로 바꾸어 반환한다.
     /// ``MoveCommandParser/validate(_:)``를 통해 검증된 결과만 전달해주어야 한다.
     private static func makeLocation(with substring: Substring) throws -> BoardLocation {

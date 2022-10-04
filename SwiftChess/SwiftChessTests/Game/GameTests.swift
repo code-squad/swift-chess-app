@@ -11,24 +11,35 @@ import XCTest
 final class GameTests: XCTestCase {
 
     func test_게임을시작하면_초기화완료와체스판현황출력메서드가한번씩호출된다() {
+        // set GamePrinter
+        var gamePrinter: GamePrinter = .unimplemented
         let expectedInitializationCompletedCallCount = 1
         var actualInitializationCompletedCallCount = 0
-        let expectedPrintBoardCallCount = 1
-        var actualPrintBoardCallCount = 0
-        var gamePrinter: GamePrinter = .unimplemented
         gamePrinter.printBoardInitializationCompleted = {
             actualInitializationCompletedCallCount += 1
             return ""
         }
+        let expectedEnterCommandCallCount = 1
+        var actualEnterCommandCallCount = 0
+        gamePrinter.printEnterCommand = {
+            actualEnterCommandCallCount += 1
+            return ""
+        }
+        // set BoardPrinter
         var boardPrinter: BoardPrinter = .unimplemented
+        let expectedPrintBoardCallCount = 1
+        var actualPrintBoardCallCount = 0
         boardPrinter.printBoard = { _ in
             actualPrintBoardCallCount += 1
             return ""
         }
+        // set CommandReader
+        var commandReader: CommandReader = .unimplemented
+        commandReader.read = { nil }
         let sut: Game = DefaultGame(
             board: DefaultBoard(boardPrinter: boardPrinter),
             printer: gamePrinter,
-            commandReader: .unimplemented,
+            commandReader: commandReader,
             moveCommandParser: .unimplemented
         )
 
@@ -37,6 +48,10 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(
             actualInitializationCompletedCallCount,
             expectedInitializationCompletedCallCount
+        )
+        XCTAssertEqual(
+            actualEnterCommandCallCount,
+            expectedEnterCommandCallCount
         )
         XCTAssertEqual(
             actualPrintBoardCallCount,
