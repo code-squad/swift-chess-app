@@ -20,7 +20,7 @@ final class BoardPrinterTests: XCTestCase {
         }
         let sut: BoardPrinter = .live(boardFormatter: boardFormatter)
 
-        sut.printBoard([])
+        _ = sut.printBoard([])
 
         XCTAssertEqual(actualFormatBoardCallCount, expectedFormatBoardCallCount)
     }
