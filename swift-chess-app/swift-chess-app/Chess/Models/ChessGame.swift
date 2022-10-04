@@ -20,37 +20,41 @@ class ChessGame {
         // 게임 진행
         while checkContinueGame() {
             let inputString = ""
-
-            guard let command = Command.make(inputString: inputString),
-                  let from = command.fromPosition(),
-                  let to = command.toPosition()
-            else {
-                printError(.invalidFormat)
+            guard let command = Command(inputString: inputString) else {
+                printError(CommandError.invalidFormat)
                 continue
             }
 
-            guard checkValidatePosition(playerColor: currentPalyerColor, from: from, to: to)
-            else {
-                printError(.invalidPosition)
-                continue
-            }
+            if command.type == .move,
+               let from = command.fromPosition(),
+               let to = command.toPosition() {
+                guard checkValidatePosition(playerColor: currentPalyerColor, from: from, to: to)
+                else {
+                    printError(PieceError.invalidPosition)
+                    continue
+                }
 
-            guard chessBoard.movePiece(color: currentPalyerColor, from: from, to: to)
-            else {
-                printError(.notFindPawn)
-                continue
-            }
+                guard chessBoard.movePiece(color: currentPalyerColor, from: from, to: to)
+                else {
+                    printError(PieceError.notFindPiece)
+                    continue
+                }
 
-            if let removeTarget = chessBoard.checkHitPiece(color: currentPalyerColor, position: to) {
-                chessBoard.killChessPiece(removeTarget)
-            }
+                if let removeTarget = chessBoard.checkHitPiece(color: currentPalyerColor, position: to) {
+                    chessBoard.killChessPiece(removeTarget)
+                }
 
-            // 출력
-            chessBoard.display()
-            changeTurnPalyer()
+                chessBoard.display()
+                changeTurnPalyer()
+            } else if command.type == .info,
+                      let infoPosition = command.infoPosition(){
+                if chessBoard.infoDisplay(color: currentPalyerColor, position: infoPosition) == false {
+                    let otherPalyerColor: PlayerColor = self.currentPalyerColor == .black ? .white : .black
+                    printError(CommandError.invaildPlayer(otherPalyerColor))
+                }
+            }
         }
     }
-    
     
     func changeTurnPalyer() {
         let turnPalyer: PlayerColor = currentPalyerColor == .black ? .white : .black
@@ -58,6 +62,7 @@ class ChessGame {
     }
     
     func checkValidatePosition(playerColor: PlayerColor, from: Position, to: Position) -> Bool {
+        guard chessBoard.myPieces(color: playerColor).first == nil else { return false }
         let movablePosition = chessBoard.movablePositions(color: playerColor, position: from )
         return movablePosition.first(where: { $0 == to }) != nil
     }
@@ -73,7 +78,7 @@ class ChessGame {
         return shouldContinue
     }
     
-    private func printError(_ error: Error) {
+    private func printError(_ error: ChessBoardError) {
         print(error.message)
     }
     
