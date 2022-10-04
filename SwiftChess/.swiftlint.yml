@@ -6,3 +6,6 @@ disabled_rules:
 line_length:
   ignores_comments: true
   ignores_interpolated_strings: true
+
+excluded:
+  - SwiftChessTests

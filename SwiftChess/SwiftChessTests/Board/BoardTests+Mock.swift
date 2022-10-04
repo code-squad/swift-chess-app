@@ -7,7 +7,6 @@
 
 @testable import SwiftChess
 
-// swiftlint:disable comma
 extension BoardTests {
     static let blackPawn = Pawn(color: .black)
     static let whitePawn = Pawn(color: .white)
@@ -78,4 +77,3 @@ extension BoardLocation {
     static let H7 = Self(file: .H, rank: .seven)
     static let H8 = Self(file: .H, rank: .eight)
 }
-// swiftlint:enable comma
