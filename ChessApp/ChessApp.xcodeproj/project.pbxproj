@@ -14,6 +14,7 @@
 		B93DE60728E833CB0035F09E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60628E833CB0035F09E /* Piece.swift */; };
 		B93DE60928E833DA0035F09E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60828E833DA0035F09E /* User.swift */; };
 		B93DE60D28E834310035F09E /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DE60C28E834310035F09E /* Position.swift */; };
+
 		B95908B128E1E234001DE78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B028E1E234001DE78D /* AppDelegate.swift */; };
 		B95908B328E1E234001DE78D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B228E1E234001DE78D /* SceneDelegate.swift */; };
 		B95908B528E1E234001DE78D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95908B428E1E234001DE78D /* ViewController.swift */; };
