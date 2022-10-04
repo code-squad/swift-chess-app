@@ -11,12 +11,6 @@ import XCTest
 final class PawnTests: XCTestCase {
     var sut: Pawn!
 
-    override func setUp() {
-        super.setUp()
-
-        sut = Pawn(team: .black)
-    }
-
     func test_white_pawn_emoji() {
         sut = Pawn(team: .white)
 
@@ -37,12 +31,18 @@ final class PawnTests: XCTestCase {
             Position(file: .B, rank: .eight),
             Position(file: .A, rank: .seven)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
@@ -56,12 +56,18 @@ final class PawnTests: XCTestCase {
             Position(file: .G, rank: .eight),
             Position(file: .H, rank: .seven)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
@@ -76,12 +82,18 @@ final class PawnTests: XCTestCase {
             Position(file: .E, rank: .eight),
             Position(file: .D, rank: .seven)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
@@ -95,12 +107,18 @@ final class PawnTests: XCTestCase {
             Position(file: .B, rank: .three),
             Position(file: .A, rank: .four)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
@@ -114,12 +132,18 @@ final class PawnTests: XCTestCase {
             Position(file: .G, rank: .three),
             Position(file: .H, rank: .four)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
@@ -134,12 +158,18 @@ final class PawnTests: XCTestCase {
             Position(file: .E, rank: .three),
             Position(file: .D, rank: .four)
         ].sorted {
-            $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+            if $0.file != $1.file {
+                return $0.file.index < $1.file.index
+            }
+            return $0.rank.index < $1.rank.index
         }
 
         let result = sut.movablePositions(from: position)
             .sorted {
-                $0.file.index < $1.file.index && $0.rank.index < $1.rank.index
+                if $0.file != $1.file {
+                    return $0.file.index < $1.file.index
+                }
+                return $0.rank.index < $1.rank.index
             }
 
         XCTAssertEqual(result, expectedResult)
