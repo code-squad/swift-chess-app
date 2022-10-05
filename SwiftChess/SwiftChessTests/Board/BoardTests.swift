@@ -406,6 +406,30 @@ final class BoardTests: XCTestCase {
 
         XCTAssertEqual(BoardLocation.File.minimumCase, expectedMinimumFileCase)
     }
+
+    func test_Rank의최대RawValue는_8이다() {
+        let expectedMaximumRankRawValue: Int = 8
+
+        XCTAssertEqual(BoardLocation.Rank.maximumRawValue, expectedMaximumRankRawValue)
+    }
+
+    func test_Rank의최대Case는_eight이다() {
+        let expectedMaximumRankCase = BoardLocation.Rank.eight
+
+        XCTAssertEqual(BoardLocation.Rank.maximumCase, expectedMaximumRankCase)
+    }
+
+    func test_File의최대RawValue는_8이다() {
+        let expectedMaximumFileRawValue: Int = 8
+
+        XCTAssertEqual(BoardLocation.File.maximumRawValue, expectedMaximumFileRawValue)
+    }
+
+    func test_File의최대Case는_H이다() {
+        let expectedMaximumFileCase = BoardLocation.File.H
+
+        XCTAssertEqual(BoardLocation.File.maximumCase, expectedMaximumFileCase)
+    }
 }
 
 extension DefaultBoard {
