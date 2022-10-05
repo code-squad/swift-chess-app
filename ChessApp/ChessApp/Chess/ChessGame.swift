@@ -16,8 +16,7 @@ final class ChessGame {
     }
     
     func move(from: Position, to: Position) {
-        board.move(piece: pawn, from: from, to: to)
-        print(board.displayBoard())
-        pawn = pawn.color == .black ? Pawn(color: .white) : Pawn(color: .black)
+//        board.move(piece: pawn, from: from, to: to)
+//        pawn = pawn.color == .black ? Pawn(color: .white) : Pawn(color: .black)
     }
 }
