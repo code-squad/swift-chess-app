@@ -52,26 +52,26 @@ final class ChessAppTests: XCTestCase {
   
   // MARK: Position Test
   func test_valid_rank_get_index() {
-    let rank = Rank()
+    let rank = Rank("B")
     
-    XCTAssertNotNil(rank.index(value: "1"))
+    XCTAssertTrue(rank == .B)
   }
   
   func test_invalid_rank_get_index() {
-    let rank = Rank()
+    let rank = Rank("Z")
     
-    XCTAssertNil(rank.index(value: "0"))
+    XCTAssertNil(rank)
   }
   
   func test_valid_file_get_index() {
-    let file = File()
+    let file = File("1")
     
-    XCTAssertNotNil(file.index(value: "B"))
+    XCTAssertTrue(file == .one)
   }
   
   func test_invalid_file_get_index() {
-    let file = File()
+    let file = File("9")
     
-    XCTAssertNil(file.index(value: "Z"))
+    XCTAssertNil(file)
   }
 }
