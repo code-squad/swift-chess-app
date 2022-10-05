@@ -7,8 +7,24 @@
 
 import Foundation
 
-struct File: PositionType {
-  var position: [String] {
-    ["A", "B", "C", "D", "E", "F", "G", "H"]
+enum File: Int {
+  case one = 1, two, three, four, five, six, seven, eight
+  
+  init?(_ rawValue: Character?) {
+    guard let rawValue = rawValue,
+          let intValue = Int(String(rawValue))
+    else {
+      return nil
+    }
+    
+    self = .init(rawValue: intValue) ?? .one
+  }
+  
+  var toDisplay: String {
+    String(self.rawValue)
+  }
+  
+  var index: Int {
+    self.rawValue - 1
   }
 }
