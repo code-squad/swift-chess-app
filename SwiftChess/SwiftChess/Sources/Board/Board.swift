@@ -205,12 +205,12 @@ final class DefaultBoard: Board {
             case .black:
                 return GamePoint(
                     black: partialResult.black,
-                    white: partialResult.white - piece.point
+                    white: partialResult.white - piece.point.rawValue
                 )
 
             case .white:
                 return GamePoint(
-                    black: partialResult.black - piece.point,
+                    black: partialResult.black - piece.point.rawValue,
                     white: partialResult.white
                 )
             }
@@ -233,11 +233,11 @@ extension DefaultBoard {
         /// 체스판의 크기
         static let size = Size(rank: 8, file: 8)
         /// 진영별 얻을 수 있는 총 점수
-        static let totalAvailablePoints = Bishop.point * Bishop.maxCount +
-        Knight.point * Knight.maxCount +
-        Pawn.point * Pawn.maxCount +
-        Queen.point * Queen.maxCount +
-        Rook.point * Rook.maxCount
+        static let totalAvailablePoints = Bishop.point.rawValue * Bishop.maxCount.rawValue +
+        Knight.point.rawValue * Knight.maxCount.rawValue +
+        Pawn.point.rawValue * Pawn.maxCount.rawValue +
+        Queen.point.rawValue * Queen.maxCount.rawValue +
+        Rook.point.rawValue * Rook.maxCount.rawValue
         static let minimumFile: String = "A"
     }
 }

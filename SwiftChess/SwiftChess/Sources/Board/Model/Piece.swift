@@ -16,14 +16,14 @@ protocol BoardElementRepresentable {
 protocol Piece: BoardElementRepresentable {
 
     /// 체스판에 존재할 수 있는 최대 개수
-    static var maxCount: Int { get }
+    static var maxCount: InitialPieceCount { get }
     /// 이동할 수 있는 규칙 모음. 자세한 내용은 ``MoveRule``을 참고한다.
     static var moveRules: Set<MoveRule> { get }
     /// 체스말이 잡혔을 때 획득할 수 있는 점수.
-    static var point: Int { get }
+    static var point: CapturePoint { get }
 
     /// 체스말이 잡혔을 때 획득할 수 있는 점수. 타입 상수 `point`값을 참조한다.
-    var point: Int { get }
+    var point: CapturePoint { get }
     /// 체스말의 진영(흑, 백)
     var color: PieceColor { get }
     /// 게임 초기화 시 최초 위치
@@ -36,7 +36,7 @@ protocol Piece: BoardElementRepresentable {
 }
 
 extension Piece {
-    var point: Int {
+    var point: CapturePoint {
         return Self.point
     }
 
@@ -117,4 +117,26 @@ enum BoardElementSymbol: String {
     case blackQueen = "♛"
     case whiteQueen = "♕"
     case empty = "."
+}
+
+/// 체스말을 잡으면 획득할 수 있는 점수.
+enum CapturePoint: Int {
+    /// ``Pawn``
+    case one = 1
+    /// ``Knight``, ``Bishop``
+    case three = 3
+    /// ``Rook``
+    case five = 5
+    /// ``Queen``
+    case nine = 9
+}
+
+/// 최초 게임 시작 시 체스말 수.
+enum InitialPieceCount: Int {
+    /// ``Queen``
+    case one = 1
+    /// ``Bishop``, ``Knight``,  ``Rook``
+    case two = 2
+    /// ``Pawn``
+    case eight = 8
 }

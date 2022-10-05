@@ -6,8 +6,8 @@
 //
 
 struct Knight: Piece {
-    static var point: Int = 3
-    static var maxCount: Int = 2
+    static var point: CapturePoint = .three
+    static var maxCount: InitialPieceCount = .two
     static var moveRules: Set<MoveRule> = [
         MoveRule(file: .increment(.one), rank: .increment(.two)),
         MoveRule(file: .increment(.one), rank: .decrement(.two)),
