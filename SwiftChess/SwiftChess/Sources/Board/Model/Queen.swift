@@ -6,9 +6,9 @@
 //
 
 struct Queen: Piece {
-    static var point: CapturePoint = .nine
-    static var maxCount: InitialPieceCount = .one
-    static var moveRules: Set<MoveRule> = Bishop.moveRules.union(Rook.moveRules)
+    static let point: CapturePoint = .nine
+    static let maxCount: InitialPieceCount = .one
+    static let moveRules: Set<MoveRule> = Bishop.moveRules.union(Rook.moveRules)
 
     var color: PieceColor
     var initialLocations: [BoardLocation] {
