@@ -194,7 +194,7 @@ final class DefaultBoard: Board {
 
     /// 체스판에 존재하는 ``Piece``를 이용해 ``PieceColor/black``, ``PieceColor/white`` 양 진영의 점수를 계산하여 반환한다.
     /// - Parameter existingPieces: 체스판 위에 존재하는 체스말들.
-    /// - Returns: 체스판 위에 존재하는 체스말을 통해 계산된 흑백 양 진영의 현재 점수 튜플.
+    /// - Returns: 체스판 위에 존재하는 체스말을 통해 계산된 흑백 양 진영의 현재 점수.
     private func reducePoints(from existingPieces: [Piece]) -> GamePoint {
         let points = GamePoint(
             black: DefaultBoard.Configuration.totalAvailablePoints,
