@@ -6,8 +6,8 @@
 //
 
 struct Rook: Piece {
-    static var point: Int = 5
-    static var maxCount: Int = 2
+    static var point: CapturePoint = .five
+    static var maxCount: InitialPieceCount = .two
     static var moveRules: Set<MoveRule> = [
         MoveRule(file: .increment(.one  ), rank: .none),
         MoveRule(file: .increment(.two  ), rank: .none),

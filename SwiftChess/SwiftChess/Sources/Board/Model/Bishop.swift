@@ -6,8 +6,8 @@
 //
 
 struct Bishop: Piece {
-    static var point: Int = 3
-    static var maxCount: Int = 2
+    static var point: CapturePoint = .three
+    static var maxCount: InitialPieceCount = .two
     static var moveRules: Set<MoveRule> = [
         MoveRule(file: .increment(.one  ), rank: .increment(.one  )),
         MoveRule(file: .increment(.two  ), rank: .increment(.two  )),

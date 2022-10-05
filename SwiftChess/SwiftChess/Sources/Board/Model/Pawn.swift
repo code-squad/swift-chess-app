@@ -10,8 +10,8 @@ struct Pawn: Piece {
     static let moveRules: Set<MoveRule> = [
         MoveRule(file: .none, rank: .increment(.one))
     ]
-    static let maxCount: Int = 8
-    static let point: Int = 1
+    static let maxCount: InitialPieceCount = .eight
+    static let point: CapturePoint = .one
 
     let color: PieceColor
     var asSymbol: BoardElementSymbol {
