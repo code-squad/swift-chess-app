@@ -9,147 +9,330 @@ import Foundation
 
 typealias Distance = (dx: Int, dy: Int)
 
-enum Piece {
-    enum Color {
-        case white
-        case black
-    }
-    enum `Type` {
-        case king
-        case queen
-        case bishop
-        case knight
-        case rook
-        case pawn
-    }
+enum Color {
+    case white
+    case black
+}
 
-    case whiteKing
-    case whiteQueen
-    case whiteBishop
-    case whiteKnight
-    case whiteRook
-    case whitePawn
-    case blackKing
-    case blackQueen
-    case blackBishop
-    case blackKnight
-    case blackRook
-    case blackPawn
+protocol Piece: BoardPositionable {
+    var color: Color { get }
+    var image: String { get }
+    var value: Int { get }
+}
 
-    init(color: Color, type: `Type`) {
-        switch (color, type) {
-        case (.white, .king): self = .whiteKing
-        case (.white, .queen): self = .whiteQueen
-        case (.white, .bishop): self = .whiteBishop
-        case (.white, .knight): self = .whiteKnight
-        case (.white, .rook): self = .whiteRook
-        case (.white, .pawn): self = .whitePawn
-        case (.black, .king): self = .blackKing
-        case (.black, .queen): self = .blackQueen
-        case (.black, .bishop): self = .blackBishop
-        case (.black, .knight): self = .blackKnight
-        case (.black, .rook): self = .blackRook
-        case (.black, .pawn): self = .blackPawn
-        }
-    }
 
-    var color: Color {
-        switch self {
-        case .whiteKing: return .white
-        case .whiteQueen: return .white
-        case .whiteBishop: return .white
-        case .whiteKnight: return .white
-        case .whiteRook: return .white
-        case .whitePawn: return .white
-        case .blackKing: return .black
-        case .blackQueen: return .black
-        case .blackBishop: return .black
-        case .blackKnight: return .black
-        case .blackRook: return .black
-        case .blackPawn: return .black
-        }
-    }
-
-    var type: `Type` {
-        switch self {
-        case .whiteKing: return .king
-        case .whiteQueen: return .queen
-        case .whiteBishop: return .bishop
-        case .whiteKnight: return .knight
-        case .whiteRook: return .rook
-        case .whitePawn: return .pawn
-        case .blackKing: return .king
-        case .blackQueen: return .queen
-        case .blackBishop: return .bishop
-        case .blackKnight: return .knight
-        case .blackRook: return .rook
-        case .blackPawn: return .pawn
-        }
-    }
-
+struct Pawn: Piece {
+    let color: Color
+    var value: Int { 1 }
     var image: String {
-        switch self {
-        case .whiteKing: return "♔"
-        case .whiteQueen: return "♕"
-        case .whiteBishop: return "♗"
-        case .whiteKnight: return "♘"
-        case .whiteRook: return "♖"
-        case .whitePawn: return "♙"
-        case .blackKing: return "♚"
-        case .blackQueen: return "♛"
-        case .blackBishop: return "♝"
-        case .blackKnight: return "♞"
-        case .blackRook: return "♜"
-        case .blackPawn: return "♟"
+        switch color {
+        case .black: return "♟"
+        case .white: return "♙"
         }
     }
 
-    var score: Int {
-        switch type {
-        case .king:   return 1
-        case .queen:  return 1
-        case .bishop: return 1
-        case .knight: return 1
-        case .rook:   return 1
-        case .pawn:   return 1
+    func availablePositions(from current: Board.Position, on board: [Board.Position:Piece]) -> [Board.Position] {
+        let y = current.y.coordinate
+        var targets: [Board.Position] = []
+        var newRank: Board.Rank? = nil
+        switch color {
+        case .white:
+            newRank = Board.Rank(coordinate: y - 1)
+        case .black:
+            newRank = Board.Rank(coordinate: y + 1)
+        }
+        guard let newRank = newRank else { return targets }
+        targets.append(.init(x: current.x, y: newRank))
+        return targets
+    }
+}
+
+struct Bishop: Piece {
+    let color: Color
+    var value: Int { 3 }
+    var image: String {
+        switch color {
+        case .black: return "♝"
+        case .white: return "♗"
         }
     }
 
-    func distances() -> [Distance] {
-        switch (color, type) {
-        case (_, .king):
-            return [(0, 1), (0, -1), (-1, 1), (-1, -1), (1, 1), (1, -1), (1, 0), (-1, 0)]
-        case (_, .queen):
-            return [
-                (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
-                (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-                (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-                (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-                (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6),
-                (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6),
-                (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6),
-                (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6),
-            ]
-        case (_, .bishop):
-            return [
-                (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6),
-                (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6),
-                (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6),
-                (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6),
-            ]
-        case (_, .knight):
-            return [(2, 1), (2, -1), (1, 2), (1, -2), (-2, 1), (-2, -1), (-1, 2), (-1, -2)]
-        case (_, .rook):
-            return [
-                (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
-                (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-                (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-                (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-            ]
-        case (.white, .pawn):
-            return [(0, -1)]
-        case (.black, .pawn):
-            return [(0, 1)]
+    func availablePositions(from current: Board.Position, on board: [Board.Position: Piece]) -> [Board.Position] {
+        let x = current.x.coordinate
+        let y = current.y.coordinate
+        var targets: [Board.Position] = []
+        targets.append(contentsOf: xLoop(from: x, through: Board.File.maxCoordinate, by: 1, y: y, board: board))
+        targets.append(contentsOf: xLoop(from: x, through: Board.File.minCoordinate, by: -1, y: y, board: board))
+        return targets
+    }
+
+    private func xLoop(from: Int, through: Int, by: Int, y: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        var plusGapAvailable: Bool = true
+        var minusGapAvailable: Bool = true
+        for _x in stride(from: from, through: through, by: by) {
+            guard _x != from else { continue }
+            guard let newFile = Board.File(coordinate: _x) else { break }
+            let gap = abs(from - newFile.coordinate)
+            if plusGapAvailable {
+                plusGapAvailable = addTarget(file: newFile, yCoordinate: y + gap, board: board, targets: &targets)
+            }
+            if minusGapAvailable {
+                minusGapAvailable = addTarget(file: newFile, yCoordinate: y - gap, board: board, targets: &targets)
+            }
+        }
+        return targets
+    }
+
+    private func addTarget(file: Board.File, yCoordinate: Int, board: [Board.Position: Piece], targets: inout [Board.Position]) -> Bool {
+        guard let position = availablePosition(file: file, yCoordinate: yCoordinate, board: board) else { return false }
+        targets.append(position)
+        return board[position] == nil
+    }
+
+    private func availablePosition(file: Board.File, yCoordinate: Int, board: [Board.Position: Piece]) -> Board.Position? {
+        guard let rank = Board.Rank(coordinate: yCoordinate) else { return nil }
+        let position = Board.Position(x: file, y: rank)
+        if let piece = board[position] {
+            if piece.color == color {
+                return nil
+            } else {
+                return position
+            }
+        } else {
+            return position
+        }
+    }
+}
+
+struct Knight: Piece {
+    let color: Color
+    var value: Int { 3 }
+    var image: String {
+        switch color {
+        case .black: return "♞"
+        case .white: return "♘"
+        }
+    }
+
+    func availablePositions(from current: Board.Position, on board: [Board.Position: Piece]) -> [Board.Position] {
+        let x = current.x.coordinate
+        let y = current.y.coordinate
+        var targets: [Board.Position] = []
+        targets.append(contentsOf: filebasePositions(x: x, direction: 1, rank: current.y, board: board))
+        targets.append(contentsOf: filebasePositions(x: x, direction: -1, rank: current.y, board: board))
+        targets.append(contentsOf: rankbasePositions(y: y, direction: 1, file: current.x, board: board))
+        targets.append(contentsOf: rankbasePositions(y: y, direction: -1, file: current.x, board: board))
+        return targets
+    }
+
+    private func filebasePositions(x: Int, direction: Int, rank: Board.Rank, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        guard let file = Board.File(coordinate: x + direction) else { return targets }
+        let position = Board.Position(x: file, y: rank)
+        guard
+            board[position] == nil,
+            let newFile = Board.File(coordinate: file.coordinate + direction)
+        else { return targets }
+        if let newPosition = getPosition(file: newFile, yCoordinate: rank.coordinate + 1, board: board) {
+            targets.append(newPosition)
+        }
+        if let newPosition = getPosition(file: newFile, yCoordinate: rank.coordinate - 1, board: board) {
+            targets.append(newPosition)
+        }
+        return targets
+    }
+
+    private func getPosition(file: Board.File, yCoordinate: Int, board: [Board.Position: Piece]) -> Board.Position? {
+        guard let rank = Board.Rank(coordinate: yCoordinate) else { return nil }
+        let position = Board.Position(x: file, y: rank)
+        if let piece = board[position], piece.color == color {
+            return nil
+        } else {
+            return position
+        }
+    }
+
+    private func rankbasePositions(y: Int, direction: Int, file: Board.File, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        guard let rank = Board.Rank(coordinate: y + direction) else { return targets }
+        let position = Board.Position(x: file, y: rank)
+        guard
+            board[position] == nil,
+            let newRank = Board.Rank(coordinate: rank.coordinate + direction)
+        else { return targets }
+        if let newPosition = getPosition(rank: newRank, xCoordinate: file.coordinate + 1, board: board) {
+            targets.append(newPosition)
+        }
+        if let newPosition = getPosition(rank: newRank, xCoordinate: file.coordinate - 1, board: board) {
+            targets.append(newPosition)
+        }
+        return targets
+    }
+
+    private func getPosition(rank: Board.Rank, xCoordinate: Int, board: [Board.Position: Piece]) -> Board.Position? {
+        guard let file = Board.File(coordinate: xCoordinate) else { return nil }
+        let position = Board.Position(x: file, y: rank)
+        if let piece = board[position], piece.color == color {
+            return nil
+        } else {
+            return position
+        }
+    }
+}
+
+struct Rook: Piece {
+    let color: Color
+    var value: Int { 5 }
+    var image: String {
+        switch color {
+        case .black: return "♜"
+        case .white: return "♖"
+        }
+    }
+
+    func availablePositions(from current: Board.Position, on board: [Board.Position: Piece]) -> [Board.Position] {
+        let x = current.x.coordinate
+        let y = current.y.coordinate
+        var targets: [Board.Position] = []
+        targets.append(contentsOf: rankbasePositions(rank: current.y, from: x, throgh: Board.File.maxCoordinate, by: 1, board: board))
+        targets.append(contentsOf: rankbasePositions(rank: current.y, from: x, throgh: Board.File.minCoordinate, by: -1, board: board))
+        targets.append(contentsOf: filebasePositions(file: current.x, from: y, throgh: Board.Rank.maxCoordinate, by: 1, board: board))
+        targets.append(contentsOf: filebasePositions(file: current.x, from: y, throgh: Board.Rank.minCoordinate, by: -1, board: board))
+        return targets
+    }
+
+    private func rankbasePositions(rank: Board.Rank, from: Int, throgh: Int, by: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        for x in stride(from: from, through: throgh, by: by) {
+            guard x != from else { continue }
+            guard let file = Board.File(coordinate: x) else { break }
+            let position = Board.Position(x: file, y: rank)
+            if let piece = board[position] {
+                if piece.color != color {
+                    targets.append(position)
+                }
+                break
+            } else {
+                targets.append(position)
+            }
+        }
+        return targets
+    }
+
+    private func filebasePositions(file: Board.File, from: Int, throgh: Int, by: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        for y in stride(from: from, through: throgh, by: by) {
+            guard y != from else { continue }
+            guard let rank = Board.Rank(coordinate: y) else { break }
+            let position = Board.Position(x: file, y: rank)
+            if let piece = board[position] {
+                if piece.color != color {
+                    targets.append(position)
+                }
+                break
+            } else {
+                targets.append(position)
+            }
+        }
+        return targets
+    }
+}
+
+struct Queen: Piece {
+    let color: Color
+    var value: Int { 9 }
+    var image: String {
+        switch color {
+        case .black: return "♛"
+        case .white: return "♕"
+        }
+    }
+
+    func availablePositions(from current: Board.Position, on board: [Board.Position: Piece]) -> [Board.Position] {
+        let x = current.x.coordinate
+        let y = current.y.coordinate
+        var targets: [Board.Position] = []
+        targets.append(contentsOf: rankbasePositions(rank: current.y, from: x, throgh: Board.File.maxCoordinate, by: 1, board: board))
+        targets.append(contentsOf: rankbasePositions(rank: current.y, from: x, throgh: Board.File.minCoordinate, by: -1, board: board))
+        targets.append(contentsOf: filebasePositions(file: current.x, from: y, throgh: Board.Rank.maxCoordinate, by: 1, board: board))
+        targets.append(contentsOf: filebasePositions(file: current.x, from: y, throgh: Board.Rank.minCoordinate, by: -1, board: board))
+        targets.append(contentsOf: xLoop(from: x, through: Board.File.maxCoordinate, by: 1, y: y, board: board))
+        targets.append(contentsOf: xLoop(from: x, through: Board.File.minCoordinate, by: -1, y: y, board: board))
+        return targets
+    }
+
+    private func rankbasePositions(rank: Board.Rank, from: Int, throgh: Int, by: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        for x in stride(from: from, through: throgh, by: by) {
+            guard x != from else { continue }
+            guard let file = Board.File(coordinate: x) else { break }
+            let position = Board.Position(x: file, y: rank)
+            if let piece = board[position] {
+                if piece.color != color {
+                    targets.append(position)
+                }
+                break
+            } else {
+                targets.append(position)
+            }
+        }
+        return targets
+    }
+
+    private func filebasePositions(file: Board.File, from: Int, throgh: Int, by: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        for y in stride(from: from, through: throgh, by: by) {
+            guard y != from else { continue }
+            guard let rank = Board.Rank(coordinate: y) else { break }
+            let position = Board.Position(x: file, y: rank)
+            if let piece = board[position] {
+                if piece.color != color {
+                    targets.append(position)
+                }
+                break
+            } else {
+                targets.append(position)
+            }
+        }
+        return targets
+    }
+
+    private func xLoop(from: Int, through: Int, by: Int, y: Int, board: [Board.Position: Piece]) -> [Board.Position] {
+        var targets: [Board.Position] = []
+        var plusGapAvailable: Bool = true
+        var minusGapAvailable: Bool = true
+        for _x in stride(from: from, through: through, by: by) {
+            guard _x != from else { continue }
+            guard let newFile = Board.File(coordinate: _x) else { break }
+            let gap = abs(from - newFile.coordinate)
+            if plusGapAvailable {
+                plusGapAvailable = addTarget(file: newFile, yCoordinate: y + gap, board: board, targets: &targets)
+            }
+            if minusGapAvailable {
+                minusGapAvailable = addTarget(file: newFile, yCoordinate: y - gap, board: board, targets: &targets)
+            }
+        }
+        return targets
+    }
+
+    private func addTarget(file: Board.File, yCoordinate: Int, board: [Board.Position: Piece], targets: inout [Board.Position]) -> Bool {
+        guard let position = availablePosition(file: file, yCoordinate: yCoordinate, board: board) else { return false }
+        targets.append(position)
+        return board[position] == nil
+    }
+
+    private func availablePosition(file: Board.File, yCoordinate: Int, board: [Board.Position: Piece]) -> Board.Position? {
+        guard let rank = Board.Rank(coordinate: yCoordinate) else { return nil }
+        let position = Board.Position(x: file, y: rank)
+        if let piece = board[position] {
+            if piece.color == color {
+                return nil
+            } else {
+                return position
+            }
+        } else {
+            return position
         }
     }
 }

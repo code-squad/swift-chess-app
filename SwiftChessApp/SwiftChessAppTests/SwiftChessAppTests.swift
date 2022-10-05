@@ -26,55 +26,6 @@ class SwiftChessAppTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
 
-    func test_보드_초기배치() throws {
-        let board = Board()
-        XCTAssertEqual(board.display(), [
-            "........",
-            "♟♟♟♟♟♟♟♟",
-            "........",
-            "........",
-            "........",
-            "........",
-            "♙♙♙♙♙♙♙♙",
-            "........"
-        ])
-    }
-
-    func test_보드_초기배치_점수() throws {
-        let board = Board()
-        let score = board.score()
-        XCTAssertEqual(score.white, 0)
-        XCTAssertEqual(score.black, 0)
-    }
-
-    func test_보드_white폰1칸이동() throws {
-        let board = Board()
-        let hadMoved = board.move(from: (.G, .seven), to: (.G, .six))
-        if hadMoved {
-            XCTAssertEqual(board.display(), [
-                "........",
-                "♟♟♟♟♟♟♟♟",
-                "........",
-                "........",
-                "........",
-                "......♙.",
-                "♙♙♙♙♙♙.♙",
-                "........"
-            ])
-        } else {
-            XCTAssertEqual(board.display(), [
-                "........",
-                "♟♟♟♟♟♟♟♟",
-                "........",
-                "........",
-                "........",
-                "........",
-                "♙♙♙♙♙♙♙♙",
-                "........"
-            ])
-        }
-    }
-
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
