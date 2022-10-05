@@ -16,24 +16,24 @@ extension BoardFormatter {
 
     static let live = Self(
         formatBoard: { status in
-            var symbolized = status.map { rank in
+            var symbols = status.map { rank in
                 return rank
                     .map(\.asSymbol.rawValue)
                     .joined()
             }
 
-            var rankTaggedSymbolized: [String] = []
+            var taggedSymbols: [String] = []
 
             for index in 0...7 {
                 let rankTag = index + 1
-                rankTaggedSymbolized.append("\(rankTag)\(symbolized[index])")
+                taggedSymbols.append("\(rankTag)\(symbols[index])")
             }
 
             let fileTags = " ABCDEFGH"
-            rankTaggedSymbolized.insert(fileTags, at: 0)
-            rankTaggedSymbolized.append(fileTags)
+            taggedSymbols.insert(fileTags, at: 0)
+            taggedSymbols.append(fileTags)
 
-            let formatted = rankTaggedSymbolized.joined(separator: "\n")
+            let formatted = taggedSymbols.joined(separator: "\n")
             return formatted
         },
         formatGamePoint: { gamePoint in
