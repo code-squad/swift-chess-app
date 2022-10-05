@@ -8,11 +8,6 @@
 import Foundation
 
 struct Position {
-  let file: any PositionType
-  let rank: any PositionType
-  
-  init(file: some PositionType, rank: some PositionType) {
-    self.file = file
-    self.rank = rank
-  }
+  let file: File
+  let Rank: Rank
 }
