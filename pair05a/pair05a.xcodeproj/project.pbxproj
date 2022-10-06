@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CE7780028EF068200DF33EE /* pair05aTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE777FF28EF068200DF33EE /* pair05aTests.swift */; };
 		E87200A128EF053100D5ACF1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87200A028EF053100D5ACF1 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +24,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1CE777FD28EF068200DF33EE /* pair05aTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pair05aTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CE777FF28EF068200DF33EE /* pair05aTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pair05aTests.swift; sourceTree = "<group>"; };
 		E872009D28EF053100D5ACF1 /* pair05a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pair05a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87200A028EF053100D5ACF1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1CE777FA28EF068200DF33EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E872009A28EF053100D5ACF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +48,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CE777FE28EF068200DF33EE /* pair05aTests */ = {
+			isa = PBXGroup;
+			children = (
+				1CE777FF28EF068200DF33EE /* pair05aTests.swift */,
+			);
+			path = pair05aTests;
+			sourceTree = "<group>";
+		};
 		E872009428EF053100D5ACF1 = {
 			isa = PBXGroup;
 			children = (
 				E872009F28EF053100D5ACF1 /* pair05a */,
+				1CE777FE28EF068200DF33EE /* pair05aTests */,
 				E872009E28EF053100D5ACF1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				E872009D28EF053100D5ACF1 /* pair05a */,
+				1CE777FD28EF068200DF33EE /* pair05aTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +85,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1CE777FC28EF068200DF33EE /* pair05aTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CE7780128EF068200DF33EE /* Build configuration list for PBXNativeTarget "pair05aTests" */;
+			buildPhases = (
+				1CE777F928EF068200DF33EE /* Sources */,
+				1CE777FA28EF068200DF33EE /* Frameworks */,
+				1CE777FB28EF068200DF33EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pair05aTests;
+			productName = pair05aTests;
+			productReference = 1CE777FD28EF068200DF33EE /* pair05aTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E872009C28EF053100D5ACF1 /* pair05a */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E87200A428EF053100D5ACF1 /* Build configuration list for PBXNativeTarget "pair05a" */;
@@ -92,6 +129,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					1CE777FC28EF068200DF33EE = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					E872009C28EF053100D5ACF1 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -111,11 +151,30 @@
 			projectRoot = "";
 			targets = (
 				E872009C28EF053100D5ACF1 /* pair05a */,
+				1CE777FC28EF068200DF33EE /* pair05aTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		1CE777FB28EF068200DF33EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		1CE777F928EF068200DF33EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CE7780028EF068200DF33EE /* pair05aTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E872009928EF053100D5ACF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +186,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		1CE7780228EF068200DF33EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3885XCJRT2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = haeseoklee.dev.pair05a.pair05aTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1CE7780328EF068200DF33EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3885XCJRT2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = haeseoklee.dev.pair05a.pair05aTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		E87200A228EF053100D5ACF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -244,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 597Z8539FN;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -255,7 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 597Z8539FN;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -265,6 +354,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1CE7780128EF068200DF33EE /* Build configuration list for PBXNativeTarget "pair05aTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CE7780228EF068200DF33EE /* Debug */,
+				1CE7780328EF068200DF33EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E872009828EF053100D5ACF1 /* Build configuration list for PBXProject "pair05a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
