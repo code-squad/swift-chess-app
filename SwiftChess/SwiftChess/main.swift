@@ -19,12 +19,19 @@ enum Color {
 
 protocol Piece {
     var color: Color { get }
-    var position: Position { get }
+//    var position: Position { get }
+    var initialPosition: [Position] { get }
 }
 
-struct King: Piece {
-    let color: Color
-    var position: Position
+struct BlackKing: Piece {
+    let color: Color = .black
+//    var position: Position
+    let initialPosition: [Position] = [Position(rank: 0, file: 3)]
+}
+struct WhiteKing: Piece {
+    let color: Color = .white
+//    var position: Position
+    let initialPosition: [Position] = [Position(rank: 7, file: 3)]
 }
 
 struct Board {
@@ -34,4 +41,17 @@ struct Board {
         let rank = [Piece?](repeating: nil, count: 8)
         data = [[Piece?]](repeating: rank, count: 8)
     }
+    
+    mutating func initPieces() {
+        let pieces: [Piece] = [
+            BlackKing(), WhiteKing()
+        ]
+        for piece in pieces {
+            for position in piece.initialPosition {
+                data[position.rank][position.file] = piece
+            }
+        }
+        
+    }
 }
+
