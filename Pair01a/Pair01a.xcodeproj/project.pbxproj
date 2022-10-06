@@ -10,6 +10,7 @@
 		4815810A28EEFF9400828EEE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815810928EEFF9400828EEE /* main.swift */; };
 		4815811728EEFFF800828EEE /* KingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815811628EEFFF800828EEE /* KingTest.swift */; };
 		4815811B28EF000600828EEE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815810928EEFF9400828EEE /* main.swift */; };
+		D0C51E2A28EF034F0004514A /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C51E2928EF034F0004514A /* King.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		4815810928EEFF9400828EEE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4815811428EEFFF800828EEE /* KingTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KingTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4815811628EEFFF800828EEE /* KingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingTest.swift; sourceTree = "<group>"; };
+		D0C51E2928EF034F0004514A /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				4815810928EEFF9400828EEE /* main.swift */,
+				D0C51E2928EF034F0004514A /* King.swift */,
 			);
 			path = Pair01a;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C51E2A28EF034F0004514A /* King.swift in Sources */,
 				4815810A28EEFF9400828EEE /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
