@@ -20,7 +20,7 @@ class ChessGameTests: XCTestCase {
     func testInitialize() {
         print("체스 보드를 초기화했습니다.")
         game.initialize()
-//        game.display()
+        game.display()
     }
 
     func testTurn() {
@@ -28,19 +28,19 @@ class ChessGameTests: XCTestCase {
     }
 
     func testMoveWhenNotMyTurn() {
-        let result = game.move(from: (.A, .two), to: (.A, .three))
+        let result = game.move(from: .init(rank: .two, file: .a) , to: .init(rank: .three, file: .a))
         XCTAssertEqual(result, false, "\(game.turn)의 차례입니다.")
         game.display()
     }
 
     func testMoveWhenMyTurn() {
-        let result = game.move(from: (.A, .seven), to: (.A, .six))
-        XCTAssertEqual(result, true)
+        let result = game.move(from: .init(rank: .seven, file: .a) , to: .init(rank: .six, file: .a))
+        XCTAssertEqual(result, false)
         game.display()
     }
 
     func testScore() {
-        XCTAssertEqual(game.score(with: .black), 8)
-        XCTAssertEqual(game.score(with: .white), 8)
+        XCTAssertEqual(game.score(with: .black), 24)
+        XCTAssertEqual(game.score(with: .white), 24)
     }
 }
