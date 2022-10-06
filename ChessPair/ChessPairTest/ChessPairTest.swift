@@ -9,27 +9,46 @@ import XCTest
 
 class ChessPairTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+  func testBlackKingInitialize() {
+    let blackKing = BlackKing()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    let expectedPosition = Position(rank: .r1, file: .d)
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+    XCTAssertEqual(blackKing.initialPosition, expectedPosition)
+  }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+  func testWhiteKingInitialize() {
+    let whiteKing = WhiteKing()
 
+    let expectedPosition = Position(rank: .r8, file: .d)
+
+    XCTAssertEqual(whiteKing.initialPosition, expectedPosition)
+  }
+
+  func testBlackKingPossablePositions() {
+    let blackKing = BlackKing()
+
+    let expectedPositions: Set<Position> = Set([Position(rank: Position.Rank.r2, file: Position.File.e),
+                                                Position(rank: Position.Rank.r1, file: Position.File.e),
+                                                Position(rank: Position.Rank.r1, file: Position.File.d),
+                                                Position(rank: Position.Rank.r2, file: Position.File.c),
+                                                Position(rank: Position.Rank.r2, file: Position.File.d),
+                                                Position(rank: Position.Rank.r1, file: Position.File.c)])
+
+    XCTAssertEqual(blackKing.possiblePositions(from: blackKing.initialPosition), expectedPositions)
+  }
+
+  func testKingCheckInstance() {
+    let blackKing = BlackKing()
+    let whiteKing = WhiteKing()
+
+    XCTAssertFalse(blackKing.compare(other: whiteKing))
+  }
+
+  func testKingCheckSameInstance() {
+    let blackKing = BlackKing()
+    let anotherBlackKing = BlackKing()
+
+    XCTAssertTrue(blackKing.compare(other: anotherBlackKing))
+  }
 }
