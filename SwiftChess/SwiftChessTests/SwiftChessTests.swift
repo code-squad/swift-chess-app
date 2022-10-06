@@ -8,6 +8,8 @@
 import XCTest
 
 final class SwiftChessTests: XCTestCase {
+    
+    var board = Board()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -18,6 +20,7 @@ final class SwiftChessTests: XCTestCase {
     }
 
     func testExample() throws {
+        board.initPieces()
         
     }
 

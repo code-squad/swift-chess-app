@@ -17,20 +17,20 @@ enum Color {
     case white
 }
 
-protocol Piece {
+protocol Piece: AnyObject {
     var color: Color { get }
-//    var position: Position { get }
+    var currentPosition: Position? { get set }
     var initialPosition: [Position] { get }
 }
 
-struct BlackKing: Piece {
+class BlackKing: Piece {
     let color: Color = .black
-//    var position: Position
+    var currentPosition: Position?
     let initialPosition: [Position] = [Position(rank: 0, file: 3)]
 }
-struct WhiteKing: Piece {
+class WhiteKing: Piece {
     let color: Color = .white
-//    var position: Position
+    var currentPosition: Position?
     let initialPosition: [Position] = [Position(rank: 7, file: 3)]
 }
 
@@ -48,10 +48,14 @@ struct Board {
         ]
         for piece in pieces {
             for position in piece.initialPosition {
-                data[position.rank][position.file] = piece
+                addToBoard(position: position, piece: piece)
             }
         }
-        
+    }
+    
+    mutating func addToBoard(position: Position, piece: Piece) {
+        data[position.rank][position.file] = piece
+        piece.currentPosition = position
     }
 }
 
