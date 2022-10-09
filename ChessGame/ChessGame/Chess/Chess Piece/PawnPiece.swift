@@ -15,6 +15,7 @@ struct PawnPiece: ChessPiece {
     }
     
     func isDeltaValid(delta: Delta) -> Bool {
+        guard delta.file == 0 else { return false }
         let expectedRankDelta = teamColor == .white ? 1 : -1
         return delta.rank == expectedRankDelta
     }
