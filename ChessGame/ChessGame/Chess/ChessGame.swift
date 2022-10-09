@@ -7,8 +7,8 @@
 
 import Foundation
 
-class ChessGame {
-    private(set) var board = ChessBoard.standardChessBoard()
+class ChessGame: ObservableObject {
+    @Published private(set) var board = ChessBoard.standardChessBoard()
     private(set) var playerTurn: TeamColor = .white
     func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard

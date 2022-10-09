@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var game: ChessGame = ChessGame()
+    
+    @State var availablePositions: Set<Position> = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        BoardView(board: game.board) { position in
+            availablePositions = game.board.availableMovingPositions(at: position)
+        } extraFloorContent: { position in
+            if availablePositions.contains(position) {
+                Color.red.opacity(0.5)
+            }
         }
-        .padding()
     }
 }
 

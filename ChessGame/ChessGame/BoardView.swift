@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-struct BoardView: View {
+struct BoardView<FloorContent: View>: View {
     var board: ChessBoard
+    
+    var onTapPosition: ((Position) -> Void)?
+    
+    var extraFloorContent: ((Position) -> FloorContent)?
     
     private var columns: [GridItem] {
         [GridItem](repeating: GridItem(spacing: 0), count: board.filesCount)
@@ -21,15 +25,40 @@ struct BoardView: View {
                     let position = Position(file: file, rank: rank)
                     Group {
                         if position.isBlackFloor {
-                            Color.black
+                            Color.blackFloor
                         } else {
-                            Color.white
+                            Color.whiteFloor
                         }
                     }
                     .aspectRatio(1, contentMode: .fill)
+                    .overlay {
+                        GeometryReader { geometry in
+                            if let piece = board[position] {
+                                PieceView(piece: piece, size: geometry.size.height)
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                            }
+                        }
+                    }
+                    .overlay {
+                        extraFloorContent?(position)
+                    }
+                    .onTapGesture {
+                        onTapPosition?(position)
+                    }
                 }
             }
         }
+    }
+}
+
+extension BoardView {
+    init(board: ChessBoard,
+         onTapPosition: ((Position) -> Void)? = nil,
+         @ViewBuilder extraFloorContent: @escaping (Position) -> FloorContent
+    ) {
+        self.board = board
+        self.onTapPosition = onTapPosition
+        self.extraFloorContent = extraFloorContent
     }
 }
 
@@ -41,6 +70,10 @@ extension Position {
 
 struct BoardView_Previews: PreviewProvider {
     static var previews: some View {
-        BoardView(board: .standardChessBoard())
+        BoardView(board: .standardChessBoard()) { position in
+            print(position)
+        } extraFloorContent: { position in
+            Text(position.description)
+        }
     }
 }
