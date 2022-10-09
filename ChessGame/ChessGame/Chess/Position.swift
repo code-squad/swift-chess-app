@@ -16,16 +16,14 @@ struct Position: Equatable, Hashable {
 
 typealias Delta = Position
 
-extension Delta {
+extension Position {
     static func -(lhs: Position, rhs: Position) -> Delta {
         var lhs = lhs
         lhs.file -= rhs.file
         lhs.rank -= rhs.rank
         return lhs
     }
-}
-
-extension Position {
+    
     static func +(lhs: Position, rhs: Delta) -> Position {
         var lhs = lhs
         lhs.file += rhs.file

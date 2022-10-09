@@ -7,14 +7,28 @@
 
 import Foundation
 
-struct KightPiece: ChessPieceProtocol {
+struct KnightPiece: ChessPiece {
     let teamColor: TeamColor
     static let score = 3
     var symbol: Character {
         teamColor == .white ? "♘" : "♞"
     }
     
-    static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
+    func isDeltaValid(delta: Delta) -> Bool {
+        let expectedDeltas = [
+            Delta(file: 2, rank: 1),
+            Delta(file: 2, rank: -1),
+            Delta(file: -2, rank: 1),
+            Delta(file: -2, rank: -1),
+            Delta(file: 1, rank: 2),
+            Delta(file: 1, rank: -2),
+            Delta(file: -1, rank: 2),
+            Delta(file: -1, rank: -2)
+        ]
+        return expectedDeltas.contains(delta)
+    }
+    
+    func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         
         let delta = destination - origin
         let availableDeltas: [Delta]

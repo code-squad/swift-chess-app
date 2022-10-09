@@ -28,7 +28,7 @@ extension ChessBoard {
         return " " + String(filesRow)
     }
     
-    private func makeRankRowString(_ rankRow: [ChessPieceProtocol?]) -> String {
+    private func makeRankRowString(_ rankRow: [ChessPiece?]) -> String {
         let rankRowCharacters = rankRow.map { piece in
             if let piece {
                 return piece.symbol
