@@ -7,29 +7,16 @@
 
 import Foundation
 
-struct ChessBoard: Equatable {
+struct ChessBoard {
     
-    private(set) var data: [[ChessPieceProtocol?]]
+    private(set) var data: [[ChessPiece?]]
     
     init(files: Int, ranks: Int) {
-        let fileRow = [ChessPieceProtocol?](repeating: nil, count: files)
+        let fileRow = [ChessPiece?](repeating: nil, count: files)
         data = Array(repeating: fileRow, count: ranks)
     }
     
-    static func ==(lhs: ChessBoard, rhs: ChessBoard) -> Bool {
-        guard lhs.allPositions == rhs.allPositions else { return false }
-        for position in lhs.allPositions {
-            let lPiece = lhs[position]
-            let rPiece = rhs[position]
-            guard
-                type(of: lPiece) == type(of: rPiece),
-                lPiece?.teamColor == rPiece?.teamColor
-            else { return false }
-        }
-        return true
-    }
-    
-    subscript(_ position: Position) -> ChessPieceProtocol? {
+    subscript(_ position: Position) -> ChessPiece? {
         get {
             data[position.rank][position.file]
         }
@@ -44,7 +31,7 @@ struct ChessBoard: Equatable {
     var ranksCount: Int {
         data.count
     }
-    var allPieces: [ChessPieceProtocol] {
+    var allPieces: [ChessPiece] {
         data.flatMap { $0 }
             .compactMap { $0 }
     }
@@ -65,11 +52,7 @@ struct ChessBoard: Equatable {
     @discardableResult
     mutating func movePiece(from origin: Position, to destination: Position) -> Bool {
         
-        guard
-            canAccess(position: origin),
-            let originPiece = self[origin],
-            type(of: originPiece).canMove(from: origin, to: destination, board: self)
-        else { return false }
+        guard canMove(from: origin, to: destination) else { return false }
         
         self[destination] = self[origin]
         self[origin] = nil
@@ -89,6 +72,24 @@ struct ChessBoard: Equatable {
             }
         }
         return (whiteScore, blackScore)
+    }
+    
+    func canMove(from origin: Position, to destination: Position) -> Bool {
+        guard
+            origin != destination,
+            canAccess(position: origin),
+            canAccess(position: destination),
+            let originPiece = self[origin],
+            originPiece.teamColor != self[destination]?.teamColor,
+            originPiece.isDeltaValid(delta: destination - origin)
+        else { return false }
+        return originPiece.isMovementValid(origin: origin, destination: destination, board: self)
+    }
+    
+    func availableMovingPositions(at position: Position) -> Set<Position> {
+        let availablePositions = allPositions
+            .filter { canMove(from: position, to: $0) }
+        return Set(availablePositions)
     }
 }
 
@@ -122,11 +123,11 @@ extension ChessBoard {
         board[Position("D8")!] = QueenPiece(teamColor: .black)
         
         // 나이트 추가
-        board[Position("B1")!] = KightPiece(teamColor: .white)
-        board[Position("G1")!] = KightPiece(teamColor: .white)
+        board[Position("B1")!] = KnightPiece(teamColor: .white)
+        board[Position("G1")!] = KnightPiece(teamColor: .white)
         
-        board[Position("B8")!] = KightPiece(teamColor: .black)
-        board[Position("G8")!] = KightPiece(teamColor: .black)
+        board[Position("B8")!] = KnightPiece(teamColor: .black)
+        board[Position("G8")!] = KnightPiece(teamColor: .black)
         
         return board
     }

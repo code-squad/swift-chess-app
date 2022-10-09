@@ -7,15 +7,14 @@
 
 import Foundation
 
-struct BishopPiece: ChessPieceProtocol {
+struct BishopPiece: ChessPiece {
     let teamColor: TeamColor
     static let score = 3
     var symbol: Character {
         teamColor == .white ? "♗" : "♝"
     }
     
-    static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
-        let delta = destination - origin
+    func isDeltaValid(delta: Delta) -> Bool {
         return abs(delta.file) == abs(delta.rank)
     }
 }

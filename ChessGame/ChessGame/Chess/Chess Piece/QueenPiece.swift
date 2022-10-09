@@ -7,22 +7,15 @@
 
 import Foundation
 
-struct QueenPiece: ChessPieceProtocol {
+struct QueenPiece: ChessPiece {
     let teamColor: TeamColor
     static let score = 9
     var symbol: Character {
         teamColor == .white ? "♕" : "♛"
     }
     
-    static func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
-        return BishopPiece.isMovementValid(
-            origin: origin,
-            destination: destination,
-            board: board
-        ) || RookPiece.isMovementValid(
-            origin: origin,
-            destination: destination,
-            board: board
-        )
+    func isDeltaValid(delta: Delta) -> Bool {
+        return RookPiece(teamColor: teamColor).isDeltaValid(delta: delta) ||
+        BishopPiece(teamColor: teamColor).isDeltaValid(delta: delta)
     }
 }
