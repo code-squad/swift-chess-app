@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E82AA91728F40579002C010F /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91628F40579002C010F /* BoardError.swift */; };
+		E82AA91A28F42DD6002C010F /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91928F42DD6002C010F /* Empty.swift */; };
 		E82AA91F28F46DE0002C010F /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91E28F46DE0002C010F /* InputError.swift */; };
 		E82AA92128F46DF5002C010F /* BoardInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA92028F46DF5002C010F /* BoardInputValidator.swift */; };
 		E894128128E37E1000DB15AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128028E37E1000DB15AE /* Board.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		E82AA91628F40579002C010F /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
+		E82AA91928F42DD6002C010F /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		E82AA91E28F46DE0002C010F /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		E82AA92028F46DF5002C010F /* BoardInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInputValidator.swift; sourceTree = "<group>"; };
 		E894128028E37E1000DB15AE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -105,12 +107,21 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		E82AA91828F42DCB002C010F /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				E894128728E37E6C00DB15AE /* Pawn.swift */,
+				E82AA91928F42DD6002C010F /* Empty.swift */,
+			);
+			path = Piece;
+			sourceTree = "<group>";
+		};
 		E894127F28E37DFD00DB15AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E82AA91828F42DCB002C010F /* Piece */,
 				E894129B28E8FE9E00DB15AE /* PositionType */,
 				E894128228E37E2400DB15AE /* Color.swift */,
-				E894128728E37E6C00DB15AE /* Pawn.swift */,
 				E894128A28E38EF300DB15AE /* Position.swift */,
 			);
 			path = Model;
@@ -338,6 +349,7 @@
 				E894129D28E8FEA800DB15AE /* File.swift in Sources */,
 				E89412A128EAD79D00DB15AE /* Game.swift in Sources */,
 				E894128128E37E1000DB15AE /* Board.swift in Sources */,
+				E82AA91A28F42DD6002C010F /* Empty.swift in Sources */,
 				E894128328E37E2400DB15AE /* Color.swift in Sources */,
 				E894128B28E38EF300DB15AE /* Position.swift in Sources */,
 				E8C67FEB28E1DDD50033DE60 /* SceneDelegate.swift in Sources */,
