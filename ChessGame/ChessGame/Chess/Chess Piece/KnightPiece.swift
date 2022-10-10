@@ -28,12 +28,10 @@ struct KnightPiece: ChessPiece {
         return expectedDeltas.contains(delta)
     }
     
-    func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
-        
+    func steppingPositions(origin: Position, destination: Position) -> [Position] {
         let delta = destination - origin
         let steppingPosition: Position
         
-        // 지나가는 위치에 다른 기물이 막고 있지 않은지 확인한다.
         if abs(delta.file) > abs(delta.rank) {
             let fileIsPositive = delta.file > 0
             steppingPosition = origin + Delta(file: fileIsPositive ? 1 : -1, rank: 0)
@@ -41,7 +39,6 @@ struct KnightPiece: ChessPiece {
             let rankIsPositive = delta.rank > 0
             steppingPosition = origin + Delta(file: 0, rank: rankIsPositive ? 1 : -1)
         }
-        
-        return board[steppingPosition] == nil
+        return [steppingPosition]
     }
 }
