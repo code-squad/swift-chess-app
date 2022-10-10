@@ -33,8 +33,8 @@
 
 #### 요구사항에 따른 비숍, 룩, 퀸, 나이트 추가
 
-- 비숍, 룩, 퀸은 기물이 막혀있어도 지나갈 수 있도록 작성됨
-- 나이트는 기물이 막혀있으면 지나가지 못하도록 작성됨
+- ChessPiece에 이동할때 밟고 지나가는 포지션을 제공할 수 있도록 함수 추가
+- 다른 기물을 뛰어 넘을수 없도록 함
 
 ### 테스트 케이스
 
@@ -44,7 +44,7 @@ ChessBoardTests에서는 각 기물을 이동시켰을 때 정상, 비정상 여
 
 ## 3. 체스보드 화면
 
-![chessboard](assets/chessboard.gif)
+![chessboard_step3](assets/chessboard_step3.gif)
 
 BoardView
 
