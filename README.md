@@ -41,3 +41,18 @@
 Game, Board, Piece 별로 테스트 스위트를 나누어 테스트함.
 ChessPieceTests에서는 각 기물의 모든 이동가능한 위치를 테스트함.
 ChessBoardTests에서는 각 기물을 이동시켰을 때 정상, 비정상 여부를 테스트함.
+
+## 3. 체스보드 화면
+
+![Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52](../images/README/Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52.gif)
+
+BoardView
+
+- ChessBoard를 표현함
+- onTapPosition 클로저를 전달해 상위 뷰에서 탭 이후 로직을 작성할 수 있음
+- extraFloorContent 뷰빌더를 전달해 특정 위치에 표시할 뷰를 상위 뷰에서 구현할 수 있음
+
+ChessGame/ChessGameViewModel
+
+- 탭된 위치에 따라 이동 가능 위치를 표시함
+- 탭이 이동 명령일 때 기물을 이동시킴

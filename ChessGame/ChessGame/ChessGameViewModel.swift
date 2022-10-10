@@ -26,7 +26,7 @@ class ChessGameViewModel: ObservableObject {
     
     private var tapState: TapState = .showPositions
     
-    @Published var selectedPosition: Position?
+    private var selectedPosition: Position?
     @Published private(set) var availablePositions: Set<Position> = []
     
     var board: ChessBoard { game.board }
