@@ -44,7 +44,7 @@ ChessBoardTests에서는 각 기물을 이동시켰을 때 정상, 비정상 여
 
 ## 3. 체스보드 화면
 
-![Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52](../images/README/Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52.gif)
+![Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52](assets/Simulator Screen Recording - iPhone 13 Pro - 2022-10-10 at 11.55.52.gif)
 
 BoardView
 
