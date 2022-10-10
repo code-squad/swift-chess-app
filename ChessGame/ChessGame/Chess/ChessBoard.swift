@@ -129,6 +129,10 @@ extension ChessBoard {
         board[Position("B8")!] = KnightPiece(teamColor: .black)
         board[Position("G8")!] = KnightPiece(teamColor: .black)
         
+        // 킹 추가
+        board[Position("E1")!] = KingPiece(teamColor: .white)
+        board[Position("E8")!] = KingPiece(teamColor: .black)
+        
         return board
     }
 }

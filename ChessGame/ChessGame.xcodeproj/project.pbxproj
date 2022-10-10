@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F227222328F3B89B002CC7E0 /* ChessGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227222228F3B89B002CC7E0 /* ChessGameViewModel.swift */; };
+		F227222528F3BE2A002CC7E0 /* KingPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227222428F3BE2A002CC7E0 /* KingPiece.swift */; };
 		F25605E028E06A35009F40E0 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25605DF28E06A35009F40E0 /* ChessGame.swift */; };
 		F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331128DE0716002AC78C /* ChessGameApp.swift */; };
 		F27B331428DE0716002AC78C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331328DE0716002AC78C /* ContentView.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		F227222228F3B89B002CC7E0 /* ChessGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameViewModel.swift; sourceTree = "<group>"; };
+		F227222428F3BE2A002CC7E0 /* KingPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingPiece.swift; sourceTree = "<group>"; };
 		F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessStringRepresent.swift; sourceTree = "<group>"; };
 		F25605DF28E06A35009F40E0 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		F27B330E28DE0716002AC78C /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 				F298BA3028E85ABD007A495A /* RookPiece.swift */,
 				F298BA3228E87D5B007A495A /* QueenPiece.swift */,
 				F298BA3428E87E55007A495A /* KnightPiece.swift */,
+				F227222428F3BE2A002CC7E0 /* KingPiece.swift */,
 			);
 			path = "Chess Piece";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				F2A3AFA528E8438C00E912E1 /* ChessStringRepresent.swift in Sources */,
 				F298BA2F28E855A0007A495A /* BishopPiece.swift in Sources */,
 				F2A3AFA228E8253F00E912E1 /* PawnPiece.swift in Sources */,
+				F227222528F3BE2A002CC7E0 /* KingPiece.swift in Sources */,
 				F284F0A528DF3FF20037F860 /* Position.swift in Sources */,
 				F2A3AFA028E8244800E912E1 /* ChessPiece.swift in Sources */,
 				F25605E028E06A35009F40E0 /* ChessGame.swift in Sources */,
