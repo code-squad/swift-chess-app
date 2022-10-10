@@ -62,7 +62,7 @@ extension BoardView {
     }
 }
 
-extension Position {
+private extension Position {
     var isBlackFloor: Bool {
         return (file + rank) % 2 == 0
     }
