@@ -10,6 +10,8 @@ import Foundation
 class ChessGame: ObservableObject {
     @Published private(set) var board = ChessBoard.standardChessBoard()
     private(set) var playerTurn: TeamColor = .white
+    
+    @discardableResult
     func movePiece(from origin: Position, to destination: Position) -> Bool {
         guard
             board.canAccess(position: origin),
