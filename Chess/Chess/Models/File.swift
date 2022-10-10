@@ -32,6 +32,20 @@ enum File: CaseIterable {
         default: return nil
         }
     }
+
+    init?(index: Int) {
+        switch index {
+        case 0: self = .A
+        case 1: self = .B
+        case 2: self = .C
+        case 3: self = .D
+        case 4: self = .E
+        case 5: self = .F
+        case 6: self = .G
+        case 7: self = .H
+        default: return nil
+        }
+    }
 }
 
 extension File {

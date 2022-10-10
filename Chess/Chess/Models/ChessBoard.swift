@@ -10,6 +10,8 @@ import Foundation
 protocol Board {
     func display() -> String
     func move(from: String, to: String) -> Bool
+    func move(from: Position, to: Position) -> Bool
+    func select(at position: Position, for team: Team) -> [Position]
 }
 
 class ChessBoard: Board {
@@ -117,7 +119,7 @@ class ChessBoard: Board {
         return move(from: fromPos, to: toPos)
     }
 
-    private func move(from: Position, to: Position) -> Bool {
+    func move(from: Position, to: Position) -> Bool {
         guard let fromPiece = boards[from.rank.index][from.file.index],
               fromPiece.canMove(from: from, to: to),
               fromPiece.team != boards[to.rank.index][to.file.index]?.team
@@ -142,5 +144,13 @@ class ChessBoard: Board {
         }
 
         return Position(file: file, rank: rank)
+    }
+
+    func select(at position: Position, for team: Team) -> [Position] {
+        guard let piece = boards[position.rank.index][position.file.index] else {
+            return []
+        }
+
+        return piece.team == team ? piece.movablePositions(from: position) : []
     }
 }
