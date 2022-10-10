@@ -14,8 +14,12 @@ struct ChessGameView: View {
         BoardView(board: viewModel.board) { position in
             viewModel.onTapPosition(position)
         } extraFloorContent: { position in
-            if viewModel.availablePositions.contains(position) {
-                Color.red.opacity(0.5)
+            ZStack {
+                if viewModel.availablePositions.contains(position) {
+                    Color.red.opacity(0.5)
+                }
+                Text(position.description)
+                    .foregroundColor(.red)
             }
         }
     }

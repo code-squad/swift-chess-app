@@ -81,9 +81,10 @@ struct ChessBoard {
             canAccess(position: destination),
             let originPiece = self[origin],
             originPiece.teamColor != self[destination]?.teamColor,
-            originPiece.isDeltaValid(delta: destination - origin)
+            originPiece.isDeltaValid(delta: destination - origin),
+            originPiece.isMovementValid(origin: origin, destination: destination, board: self)
         else { return false }
-        return originPiece.isMovementValid(origin: origin, destination: destination, board: self)
+        return true
     }
     
     func availableMovingPositions(at position: Position) -> Set<Position> {
