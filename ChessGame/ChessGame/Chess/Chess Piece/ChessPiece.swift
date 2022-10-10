@@ -16,6 +16,8 @@ protocol ChessPiece {
     
     func isDeltaValid(delta: Delta) -> Bool
     
+    func steppingPositions(origin: Position, destination: Position) -> [Position]
+    
     /// 움직이기 전 보드의 상태를 확인해야 할 경우 추가로 구현해야하는 함수
     ///
     /// 이 함수는 보드의 각 포지션에 접근할 수 있는지 검증이 된 후 실행되기 떄문에 보드에 접근할 수 있는지 확인할 필요가 없다.
@@ -33,6 +35,10 @@ protocol ChessPiece {
 }
 
 extension ChessPiece {
+    func steppingPositions(origin: Position, destination: Position) -> [Position] {
+        return []
+    }
+    
     func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
         return true
     }

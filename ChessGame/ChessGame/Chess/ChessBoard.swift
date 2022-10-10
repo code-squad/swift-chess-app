@@ -82,6 +82,7 @@ struct ChessBoard {
             let originPiece = self[origin],
             originPiece.teamColor != self[destination]?.teamColor,
             originPiece.isDeltaValid(delta: destination - origin),
+            checkCollision(originPiece: originPiece, origin: origin, destination: destination),
             originPiece.isMovementValid(origin: origin, destination: destination, board: self)
         else { return false }
         return true
@@ -91,6 +92,24 @@ struct ChessBoard {
         let availablePositions = allPositions
             .filter { canMove(from: position, to: $0) }
         return Set(availablePositions)
+    }
+    
+    private func checkCollision(originPiece: ChessPiece, origin: Position, destination: Position) -> Bool {
+        let steppingPositions = originPiece.steppingPositions(origin: origin, destination: destination)
+        
+        for steppingPosition in steppingPositions {
+            
+            if let piece = self[steppingPosition] {
+                
+                if piece.teamColor != originPiece.teamColor,
+                   destination == steppingPosition {
+                    return true
+                }
+                return false
+            }
+        }
+        
+        return true
     }
 }
 

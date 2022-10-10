@@ -18,32 +18,13 @@ struct BishopPiece: ChessPiece {
         return abs(delta.file) == abs(delta.rank)
     }
     
-    func isMovementValid(origin: Position, destination: Position, board: ChessBoard) -> Bool {
-        
+    func steppingPositions(origin: Position, destination: Position) -> [Position] {
         let fileStride = stride(from: origin.file, through: destination.file)
         let rankStride = stride(from: origin.rank, through: destination.rank)
         
         var steppingPositions = zip(fileStride, rankStride)
             .map { Position(file: $0, rank: $1) }
         steppingPositions.removeFirst()
-        
-        for steppingPosition in steppingPositions {
-            
-            if let piece = board[steppingPosition] {
-                
-                if piece.teamColor != teamColor,
-                   destination == steppingPosition {
-                    return true
-                }
-                return false
-            }
-        }
-        
-        return true
+        return steppingPositions
     }
-}
-
-func stride(from start: Int, through end: Int) -> StrideThrough<Int> {
-    let addingNumber = start < end ? 1 : -1
-    return stride(from: start, through: end, by: addingNumber)
 }
