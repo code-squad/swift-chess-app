@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F227222328F3B89B002CC7E0 /* ChessGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227222228F3B89B002CC7E0 /* ChessGameViewModel.swift */; };
 		F25605E028E06A35009F40E0 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25605DF28E06A35009F40E0 /* ChessGame.swift */; };
 		F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331128DE0716002AC78C /* ChessGameApp.swift */; };
 		F27B331428DE0716002AC78C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B331328DE0716002AC78C /* ContentView.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F227222228F3B89B002CC7E0 /* ChessGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameViewModel.swift; sourceTree = "<group>"; };
 		F25605DD28E02EBC009F40E0 /* ChessStringRepresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessStringRepresent.swift; sourceTree = "<group>"; };
 		F25605DF28E06A35009F40E0 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		F27B330E28DE0716002AC78C /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,9 +133,10 @@
 				F27B331128DE0716002AC78C /* ChessGameApp.swift */,
 				F27B331328DE0716002AC78C /* ContentView.swift */,
 				F29B863B28F3B0B200A2E108 /* ChessGameView.swift */,
+				F227222228F3B89B002CC7E0 /* ChessGameViewModel.swift */,
 				F29B863328F3155D00A2E108 /* BoardView.swift */,
-				F29B863928F31F7D00A2E108 /* ColorPalette.swift */,
 				F29B863728F316FF00A2E108 /* PieceView.swift */,
+				F29B863928F31F7D00A2E108 /* ColorPalette.swift */,
 				F27B331528DE0717002AC78C /* Assets.xcassets */,
 				F284F09B28DF3B4C0037F860 /* Chess */,
 				F27B331728DE0717002AC78C /* Preview Content */,
@@ -339,6 +342,7 @@
 				F284F0A328DF3F900037F860 /* TeamColor.swift in Sources */,
 				F298BA3528E87E55007A495A /* KnightPiece.swift in Sources */,
 				F298BA3328E87D5B007A495A /* QueenPiece.swift in Sources */,
+				F227222328F3B89B002CC7E0 /* ChessGameViewModel.swift in Sources */,
 				F27B331228DE0716002AC78C /* ChessGameApp.swift in Sources */,
 				F29B863C28F3B0B200A2E108 /* ChessGameView.swift in Sources */,
 			);

@@ -23,6 +23,14 @@ class ChessGame: ObservableObject {
         return true
     }
     
+    func availableMovingPositions(at position: Position) -> Set<Position> {
+        guard
+            board.canAccess(position: position),
+            board[position]?.teamColor == playerTurn
+        else { return [] }
+        return board.availableMovingPositions(at: position)
+    }
+    
     private func togglePlayerTurn() {
         playerTurn = playerTurn == .white ? .black : .white
     }
