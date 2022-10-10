@@ -9,5 +9,9 @@ import Foundation
 
 struct Position {
   let file: File
-  let Rank: Rank
+  let rank: Rank
+  
+  func toCoordinate() -> (Int, Int) {
+    (file.index, rank.index)
+  }
 }
