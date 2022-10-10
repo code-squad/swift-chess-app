@@ -17,13 +17,36 @@ struct ChessGameView: View {
             BoardView(board: viewModel.board) { position in
                 viewModel.onTapPosition(position)
             } extraFloorContent: { position in
-                ZStack {
-                    if viewModel.availablePositions.contains(position) {
-                        Color.red.opacity(0.5)
-                    }
-                    Text(position.description)
-                        .foregroundColor(.red)
+                if viewModel.availablePositions.contains(position) {
+                    Color.red.opacity(0.5)
                 }
+            }
+            .padding(20)
+            .overlay(alignment: .top) {
+                fileRow()
+                    .padding(.horizontal, 20)
+            }
+            .overlay(alignment: .leading) {
+                rankColumn()
+                    .padding(.vertical, 20)
+            }
+        }
+    }
+    
+    private func fileRow() -> some View {
+        HStack(spacing: 0) {
+            ForEach("ABCDEFGH".map { String($0) }, id: \.self) { file in
+                Text(file)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
+    
+    private func rankColumn() -> some View {
+        VStack(spacing: 0) {
+            ForEach(Array(1...8).reversed(), id: \.self) { rank in
+                Text("\(rank)")
+                    .frame(maxHeight: .infinity)
             }
         }
     }
