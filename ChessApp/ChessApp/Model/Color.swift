@@ -10,4 +10,5 @@ import Foundation
 enum Color {
   case black
   case white
+  case none
 }
