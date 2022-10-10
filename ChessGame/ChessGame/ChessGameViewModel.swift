@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit.UINotificationFeedbackGenerator
 
 class ChessGameViewModel: ObservableObject {
     enum TapState {
@@ -29,6 +30,8 @@ class ChessGameViewModel: ObservableObject {
     private var selectedPosition: Position?
     @Published private(set) var availablePositions: Set<Position> = []
     
+    private let feedbackGenerator = UINotificationFeedbackGenerator()
+    
     var board: ChessBoard { game.board }
     func score() -> (white: Int, black: Int) {
         return game.board.scoreSum()
@@ -45,7 +48,10 @@ class ChessGameViewModel: ObservableObject {
     
     private func showPositions(for selectedPosition: Position) {
         availablePositions = game.availableMovingPositions(at: selectedPosition)
-        guard !availablePositions.isEmpty else { return }
+        guard !availablePositions.isEmpty else {
+            generateHapticFeedback()
+            return
+        }
         self.selectedPosition = selectedPosition
         tapState.next()
     }
@@ -56,5 +62,10 @@ class ChessGameViewModel: ObservableObject {
         availablePositions = []
         self.selectedPosition = nil
         tapState.next()
+    }
+    
+    private func generateHapticFeedback() {
+        feedbackGenerator.prepare()
+        feedbackGenerator.notificationOccurred(.warning)
     }
 }
