@@ -18,4 +18,16 @@ struct QueenPiece: ChessPiece {
         return RookPiece(teamColor: teamColor).isDeltaValid(delta: delta) ||
         BishopPiece(teamColor: teamColor).isDeltaValid(delta: delta)
     }
+    
+    func steppingPositions(origin: Position, destination: Position) -> [Position] {
+        let delta = destination - origin
+        let bishop = BishopPiece(teamColor: teamColor)
+        let rook = RookPiece(teamColor: teamColor)
+        
+        if bishop.isDeltaValid(delta: delta) {
+            return bishop.steppingPositions(origin: origin, destination: destination)
+        } else {
+            return rook.steppingPositions(origin: origin, destination: destination)
+        }
+    }
 }
