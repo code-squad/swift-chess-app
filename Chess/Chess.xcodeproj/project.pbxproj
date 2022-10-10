@@ -127,6 +127,21 @@
 			path = Pieces;
 			sourceTree = "<group>";
 		};
+		0071985428F458940094CBB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0071983228ECC6CD0094CBB2 /* Pieces */,
+				00739FE428E89F8B0025E40F /* Score.swift */,
+				00739FE228E89F7C0025E40F /* Emoji.swift */,
+				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
+				00739FDE28E89F4F0025E40F /* Team.swift */,
+				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
+				00739FDC28E89F1B0025E40F /* Rank.swift */,
+				00739FDA28E89EDC0025E40F /* File.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0099CE7628DDF90F00AFCCCF = {
 			isa = PBXGroup;
 			children = (
@@ -151,17 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				0099CE8228DDF90F00AFCCCF /* AppDelegate.swift */,
-				0071983228ECC6CD0094CBB2 /* Pieces */,
-				00739FE428E89F8B0025E40F /* Score.swift */,
-				00739FE228E89F7C0025E40F /* Emoji.swift */,
-				0099CEB228E07B3E00AFCCCF /* ChessBoard.swift */,
-				00739FDE28E89F4F0025E40F /* Team.swift */,
-				0099CEBA28E1D4F400AFCCCF /* Position.swift */,
-				00739FDC28E89F1B0025E40F /* Rank.swift */,
-				00739FDA28E89EDC0025E40F /* File.swift */,
 				0099CE8428DDF90F00AFCCCF /* SceneDelegate.swift */,
 				0099CE8628DDF90F00AFCCCF /* ViewController.swift */,
 				0099CE8828DDF90F00AFCCCF /* Main.storyboard */,
+				0071985428F458940094CBB2 /* Models */,
 				0099CE8B28DDF91100AFCCCF /* Assets.xcassets */,
 				0099CE8D28DDF91100AFCCCF /* LaunchScreen.storyboard */,
 				0099CE9028DDF91100AFCCCF /* Info.plist */,

@@ -32,6 +32,20 @@ enum Rank: CaseIterable {
         default: return nil
         }
     }
+
+    init?(index: Int) {
+        switch index {
+        case 0: self = .one
+        case 1: self = .two
+        case 2: self = .three
+        case 3: self = .four
+        case 4: self = .five
+        case 5: self = .six
+        case 6: self = .seven
+        case 7: self = .eight
+        default: return nil
+        }
+    }
 }
 
 extension Rank {
