@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Rank: Int {
+enum Rank: Int, CaseIterable {
   case A = 0, B, C, D, E, F, G, H
   
   init?(_ rawValue: Character?) {
@@ -17,7 +17,14 @@ enum Rank: Int {
       return nil
     }
     
-    self = .init(rawValue: intValue) ?? .A
+    self.init(rawValue: intValue)
+  }
+  
+  init?(_ rawValue: Int) {
+    let allValues = Self.allCases.map { $0.rawValue }
+    guard allValues.contains(rawValue) else { return nil }
+    
+    self.init(rawValue: rawValue)
   }
   
   var toDisplay: String {
@@ -26,5 +33,15 @@ enum Rank: Int {
   
   var index: Int {
     self.rawValue
+  }
+}
+
+extension Rank {
+  static func + (left: Rank, right: Int) -> Rank? {
+    Rank(left.index + right)
+  }
+  
+  static func + (left: Int, right: Rank) -> Rank? {
+    Rank(left + right.index)
   }
 }
