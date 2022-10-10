@@ -30,6 +30,9 @@ class ChessGameViewModel: ObservableObject {
     @Published private(set) var availablePositions: Set<Position> = []
     
     var board: ChessBoard { game.board }
+    func score() -> (white: Int, black: Int) {
+        return game.board.scoreSum()
+    }
     
     func onTapPosition(_ position: Position) {
         switch tapState {
