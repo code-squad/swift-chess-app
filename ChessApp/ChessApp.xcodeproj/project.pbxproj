@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E82AA91728F40579002C010F /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91628F40579002C010F /* BoardError.swift */; };
+		E82AA91F28F46DE0002C010F /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91E28F46DE0002C010F /* InputError.swift */; };
+		E82AA92128F46DF5002C010F /* BoardInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA92028F46DF5002C010F /* BoardInputValidator.swift */; };
 		E894128128E37E1000DB15AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128028E37E1000DB15AE /* Board.swift */; };
 		E894128328E37E2400DB15AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128228E37E2400DB15AE /* Color.swift */; };
 		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		E82AA91628F40579002C010F /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
+		E82AA91E28F46DE0002C010F /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
+		E82AA92028F46DF5002C010F /* BoardInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInputValidator.swift; sourceTree = "<group>"; };
 		E894128028E37E1000DB15AE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E894128228E37E2400DB15AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E82AA91628F40579002C010F /* BoardError.swift */,
+				E82AA91E28F46DE0002C010F /* InputError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			children = (
 				E89412A028EAD79D00DB15AE /* Game.swift */,
 				E894128028E37E1000DB15AE /* Board.swift */,
+				E82AA92028F46DF5002C010F /* BoardInputValidator.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -321,7 +327,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E82AA92128F46DF5002C010F /* BoardInputValidator.swift in Sources */,
 				E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */,
+				E82AA91F28F46DE0002C010F /* InputError.swift in Sources */,
 				E82AA91728F40579002C010F /* BoardError.swift in Sources */,
 				E894129F28E8FEAF00DB15AE /* Rank.swift in Sources */,
 				E894128828E37E6C00DB15AE /* Pawn.swift in Sources */,

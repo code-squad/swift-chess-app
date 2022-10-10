@@ -8,7 +8,8 @@
 import Foundation
 
 final class Game {
-  private let board = Board(size: 8)
+  private let board = Board()
+  private let validator = BoardInputValidator()
   
   init() {
     self.board.reset()
