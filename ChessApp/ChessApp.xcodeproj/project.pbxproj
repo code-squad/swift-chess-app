@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E82AA91728F40579002C010F /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82AA91628F40579002C010F /* BoardError.swift */; };
 		E894128128E37E1000DB15AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128028E37E1000DB15AE /* Board.swift */; };
 		E894128328E37E2400DB15AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128228E37E2400DB15AE /* Color.swift */; };
 		E894128628E37E5300DB15AE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894128528E37E5300DB15AE /* Piece.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E82AA91628F40579002C010F /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
 		E894128028E37E1000DB15AE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E894128228E37E2400DB15AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E894128528E37E5300DB15AE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E82AA91528F4056F002C010F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E82AA91628F40579002C010F /* BoardError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		E894127F28E37DFD00DB15AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 		E8C67FE728E1DDD50033DE60 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				E82AA91528F4056F002C010F /* Error */,
 				E894128928E38EE500DB15AE /* Module */,
 				E894128428E37E4800DB15AE /* Protocol */,
 				E894127F28E37DFD00DB15AE /* Model */,
@@ -314,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C67FED28E1DDD50033DE60 /* ViewController.swift in Sources */,
+				E82AA91728F40579002C010F /* BoardError.swift in Sources */,
 				E894129F28E8FEAF00DB15AE /* Rank.swift in Sources */,
 				E894128828E37E6C00DB15AE /* Pawn.swift in Sources */,
 				E894129A28E8FE6F00DB15AE /* PositionType.swift in Sources */,
