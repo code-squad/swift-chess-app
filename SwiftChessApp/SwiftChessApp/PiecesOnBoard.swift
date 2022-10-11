@@ -14,9 +14,9 @@ extension PiecesOnBoard {
     self.init(
       repeating: .init(
         repeating: nil,
-        count: Position.maxFiles
+        count: Position.File.allCases.count
       ),
-      count: Position.maxRanks
+      count: Position.Rank.allCases.count
     )
   }
 
@@ -47,11 +47,11 @@ extension PiecesOnBoard {
   subscript(position position: Position?) -> Piece? {
     get {
       guard let position else { return nil }
-      return self[position.rankIndex][position.fileIndex]
+      return self[position.rank.rawValue][position.file.rawValue]
     }
     set {
       guard let position else { return }
-      self[position.rankIndex][position.fileIndex] = newValue
+      self[position.rank.rawValue][position.file.rawValue] = newValue
     }
   }
 }

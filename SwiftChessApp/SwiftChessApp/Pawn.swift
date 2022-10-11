@@ -19,11 +19,11 @@ struct Pawn: Piece {
   }
 
   static func makePiecesWithPosition() -> [PieceWithPosition] {
-    let blackPawns = (0..<Position.maxFiles)
-      .compactMap { Position(rankIndex: 1, fileIndex: $0) }
+    let blackPawns = Position.File.allCases
+      .map { Position(file: $0, rank: .R1) }
       .map { PieceWithPosition(piece: Pawn(player: .black), position: $0) }
-    let whitePawns = (0..<Position.maxFiles)
-      .compactMap { Position(rankIndex: 6, fileIndex: $0) }
+    let whitePawns = Position.File.allCases
+      .map { Position(file: $0, rank: .R6) }
       .map { PieceWithPosition(piece: Pawn(player: .white), position: $0) }
     return blackPawns + whitePawns
   }

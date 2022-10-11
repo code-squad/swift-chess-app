@@ -19,10 +19,10 @@ struct Rook: Piece {
   }
 
   static func makePiecesWithPosition() -> [PieceWithPosition] {
-    let blackRooks = [Position(rankIndex: 0, fileIndex: 0), Position(rankIndex: 0, fileIndex: 7)]
+    let blackRooks = [Position(file: .A, rank: .R1), Position(file: .H, rank: .R1)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Rook(player: .black), position: $0) }
-    let whiteRooks = [Position(rankIndex: 7, fileIndex: 0), Position(rankIndex: 7, fileIndex: 7)]
+    let whiteRooks = [Position(file: .A, rank: .R8), Position(file: .H, rank: .R8)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Rook(player: .white), position: $0) }
     return blackRooks + whiteRooks
