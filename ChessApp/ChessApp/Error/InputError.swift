@@ -11,7 +11,7 @@ enum InputError: Error {
   case empty
   case count
   
-  var message: String {
+  var localizedDescription: String {
     switch self {
     case .empty:
       return "빈 값을 입력했습니다."

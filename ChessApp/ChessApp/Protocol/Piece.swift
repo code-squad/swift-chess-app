@@ -12,5 +12,5 @@ protocol Piece {
   var color: Color { get set }
   var point: Int { get }
   
-  func movablePositions(from: Position) -> Result<[Position], BoardError>
+  func movablePositions(from: Position) -> [Position]
 }

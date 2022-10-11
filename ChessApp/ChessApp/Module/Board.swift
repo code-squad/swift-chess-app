@@ -10,94 +10,57 @@ import Foundation
 final class Board {
   
   // MARK: Property
-  private let boardPosition: Position
-  private let size: Int
-  private var piecePosition: [[Piece?]] = [[]]
+  private let presenter = BoardPresenter()
+  private let size: Int = 8
+  
+  private lazy var coordinator = PositionCoordinator(positionSize: self.size)
   private var score: [Color: Int] = [.black: 0, .white: 0]
   
   // MARK: Initailzer
-  init(size: Int) {
-    self.size = size
-    self.boardPosition = Position(file: File(), rank: Rank())
-    
+  init() {
     self.reset()
   }
   
   // MARK: Methods
   func reset() {
-    self.piecePosition = [[Piece?]](
-      repeating: [Piece?](repeating: nil, count: self.size),
-      count: size
-    )
+    self.coordinator.reset()
+  }
+  
+  func move(to: String, from: String) -> Result<Void, BoardError> {
+    do {
+      let toPosition = try Position(value: to)
+      let fromPosition = try Position(value: from)
+      
+      let toIndexs = toPosition.toCoordinate()
+      let fromIndexs = fromPosition.toCoordinate()
+      
+      let piece = self.coordinator.getPiece(indexs: toIndexs)
+      let result = self.canMove(piece: piece, to: toPosition, from: fromPosition)
+      
+      if result {
+        self.coordinator.setPiece(Empty(), indexs: toIndexs)
+        self.coordinator.setPiece(piece, indexs: fromIndexs)
+        return .success(Void())
+      } else {
+        return .failure(.notMovable)
+      }
+      
+    } catch BoardError.invalidRank {
+      return .failure(.invalidRank)
+    } catch BoardError.invalidFile {
+      return .failure(.invalidFile)
+    } catch {
+      return .failure(.notMovable)
+    }
+  }
+  
+  private func canMove(piece: Piece, to: Position, from: Position) -> Bool {
+    let movablePositions = piece.movablePositions(from: to)
+    
+    return movablePositions.contains(from)
   }
   
   func display() -> String {
-    let file = self.boardPosition.file
-    let rank = self.boardPosition.rank
-    
-    let fileLineString = " " + file.position.joined(separator: "")
-    
-    var rankLineString = ""
-    rank.position.enumerated().forEach {
-      let index = $0.offset
-      let rank = $0.element
-      
-      rankLineString += rank + self.piecePosition[index]
-                               .reduce("") { $0 + ($1?.shape ?? ".")}
-      rankLineString += "\n"
-    }
-    
-    return fileLineString + "\n" + rankLineString + fileLineString
-  }
-  
-  func displayScore() -> String {
-    let blackScore = self.score[.black] ?? 0
-    let whiteScore = self.score[.white] ?? 0
-    
-    return "흑: \(blackScore) 백: \(whiteScore)"
-  }
-  
-//  func configureScore() {
-//    let blackScore = self.position.flatMap { $0 }.filter { $0?.color == .black }
-//      .reduce(0) { $0 + ($1?.value ?? 0 )}
-//
-//    let whiteScore = self.position.flatMap { $0 }.filter { $0?.color == .white }
-//      .reduce(0) { $0 + ($1?.value ?? 0 )}
-//
-//    self.score = [.black: blackScore, .white: whiteScore]
-//  }
-  
-  func movePiece(from: String, to: String) -> Bool {
-    guard self.checkMoveValidate(position: from) && self.checkMoveValidate(position: to)
-    else {
-      return false
-    }
-    
-    return true
-  }
-  
-  private func checkMoveValidate(position: String) -> Bool {
-    guard position.count == 2 else { return false }
-    
-    let split = position.map { String($0) }
-    
-    let file = split.first ?? ""
-    let rank = split.last ?? ""
-    
-    return self.file.contains(file) && self.rank.contains(rank)
-  }
-  
-  func position(from position: String) -> Position? {
-    let split = position.map { String($0) }
-    
-    guard let file = split.first,
-          let rank = split.last,
-          let fileIndex = self.file.firstIndex(of: file),
-          let rankIndex = self.rank.firstIndex(of: rank)
-    else {
-      return nil
-    }
-    
-    return Position(file: rankIndex, rank: fileIndex)
+    return ""
   }
 }
