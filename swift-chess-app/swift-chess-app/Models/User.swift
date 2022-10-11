@@ -13,36 +13,29 @@ class User: UserInformable, Equatable {
     
     let name: String
     
-    let color: Piece.Color
+    var score: Int = 39
     
-    private let controller: UserControllable
+    let color: Color
     
     private(set) var state: UserState
     
     var pieces: [Piece] = []
     
+    var toUserInfo: UserInfo { UserInfo(color: color, score: score) }
+    
     init(
         id: String = UUID().uuidString,
         name: String,
-        color: Piece.Color,
-        controller: UserControllable
+        color: Color
     ) {
         self.id = id
         self.name = name
         self.color = color
-        self.controller = controller
         self.state = .init()
     }
 }
 
 extension User {
-    
-    func doAction() -> Action {
-        if let action = controller.enterCommand() {
-            return action
-        }
-        return .unknown
-    }
     
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id && lhs.color == rhs.color

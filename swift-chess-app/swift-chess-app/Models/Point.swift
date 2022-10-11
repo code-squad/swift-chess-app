@@ -16,6 +16,8 @@ struct Point: Hashable {
     var toString: String { file.toString + rank.toString }
     
     var toTuple: Tuple { Tuple(row: rank.rawValue - 1, col: file.toInt) }
+    
+    static var zero: Point { Point(rank: .one, file: .a) }
 }
 
 extension Point {
@@ -26,6 +28,12 @@ extension Point {
               let secondCharacter = string.last,
               let file = File(String(firstCharacter)),
               let rank = Rank(String(secondCharacter)) else { return nil }
+        self.rank = rank
+        self.file = file
+    }
+    
+    init?(tuple: Tuple) {
+        guard let rank = Rank(rawValue: tuple.row + 1), let file = File(tuple.col) else { return nil }
         self.rank = rank
         self.file = file
     }

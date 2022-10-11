@@ -7,17 +7,66 @@
 
 import Foundation
 
-struct InputManager: UserControllable {
+protocol InputManagerDelegate: AnyObject {
     
-    let parser: Parser
+    func didCommandEntered(action: Action)
+}
+
+class InputManager {
     
-    init(parser: Parser = Parser()) {
-        self.parser = parser
+    struct Input {
+        var first: Point?
+        var second: Point?
+        
+        mutating func clear() {
+            self.first = nil
+            self.second = nil
+        }
     }
     
-    func enterCommand() -> Action? {
-        print("명령을 입력하세요> ")
-        guard let command = readLine() else { return nil }
-        return parser.parse(command: command)
+    private var input: Input
+    
+    weak var delegate: InputManagerDelegate?
+    
+    init() {
+        self.input = Input()
     }
+    
+    func clear() { input.clear() }
+}
+
+
+extension InputManager: BoardViewDelegate {
+    
+    func didTapBoardView(point: Point) {
+        if checkIsFirstInput() {
+            handleFirstInput(point: point)
+        } else if checkIsSecondInput() {
+            handleSecondInput(point: point)
+        }
+    }
+}
+
+private extension InputManager {
+    
+    func checkIsFirstInput() -> Bool { input.first == nil }
+    
+    func checkIsSecondInput() -> Bool { input.first != nil && input.second == nil }
+    
+    func handleFirstInput(point: Point) {
+        input.first = point
+        delegate?.didCommandEntered(action: .help(point))
+    }
+    
+    func handleSecondInput(point: Point) {
+        guard let first = input.first else { return }
+        if first == point {
+            delegate?.didCommandEntered(action: .cancel)
+        } else {
+            input.second = point
+            delegate?.didCommandEntered(action: .move(from: first, to: point))
+        }
+        clear()
+    }
+    
 }

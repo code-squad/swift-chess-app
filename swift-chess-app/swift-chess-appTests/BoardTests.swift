@@ -12,23 +12,21 @@ class BoardTests: XCTestCase {
     
     var chessBrain: ChessBrain!
     
-    var sut: Board! { chessBrain.board }
+    var sut: Board { chessBrain.board }
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white, controller: inputManager),
-            user2: User(name: "test2", color: .black, controller: inputManager)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
-        let inputManager = InputManager()
         chessBrain = .init(
-            user1: User(name: "test1", color: .white, controller: inputManager),
-            user2: User(name: "test2", color: .black, controller: inputManager)
+            user1: User(name: "test1", color: .white),
+            user2: User(name: "test2", color: .black)
         )
     }
     
@@ -69,13 +67,31 @@ class BoardTests: XCTestCase {
         
         // when
         sut.set(pieces: [blackPawn, whitePawn])
-        let canCapture = sut.capture(Point(string: "A3")!, by: Point(string: "A2")!)
+        let canCapture = sut.capture(Point(string: "A2")!, Point(string: "A3")!)
         
         // then
         XCTAssertTrue(canCapture)
         XCTAssertNil(sut.toPiece(Point(string: "A2")!))
         XCTAssertNotNil(sut.toPiece(Point(string: "A3")!))
-        XCTAssertEqual(sut.toPiece(Point(string: "A3")!)!.color, .black)
+        XCTAssertEqual(sut.toPiece(Point(string: "A3")!)!.color, blackPawn.color)
+        XCTAssertEqual(sut.toPiece(Point(string: "A3")!)!.toIcon, blackPawn.toIcon)
+    }
+    
+    func test_capture_when_knight_capturable() {
+        // given
+        let whiteKnight = Knight(color: .black, point: Point(string: "D4")!)
+        let blackPawn = Pawn(color: .white, point: Point(string: "E2")!)
+        
+        // when
+        sut.set(pieces: [whiteKnight, blackPawn])
+        let canCapture = sut.capture(Point(string: "D4")!, Point(string: "E2")!)
+        
+        // then
+        XCTAssertTrue(canCapture)
+        XCTAssertNil(sut.toPiece(Point(string: "D4")!))
+        XCTAssertNotNil(sut.toPiece(Point(string: "E2")!))
+        XCTAssertEqual(sut.toPiece(Point(string: "E2")!)!.color, whiteKnight.color)
+        XCTAssertEqual(sut.toPiece(Point(string: "E2")!)!.toIcon, whiteKnight.toIcon)
     }
     
     func test_movablePoints_for_rook() {
@@ -166,7 +182,7 @@ class BoardTests: XCTestCase {
     
     func test_black_pawn_count() {
         // given
-        let pieceColor: Piece.Color = .black
+        let pieceColor: Color = .black
 
         // when
         chessBrain.start()
@@ -175,12 +191,12 @@ class BoardTests: XCTestCase {
             .count
 
         // then
-        XCTAssertEqual(result, 15)
+        XCTAssertEqual(result, 16)
     }
     
     func test_white_pawn_count() {
         // given
-        let pieceColor: Piece.Color = .white
+        let pieceColor: Color = .white
 
         // when
         chessBrain.start()
@@ -189,13 +205,13 @@ class BoardTests: XCTestCase {
             .count
 
         // then
-        XCTAssertEqual(result, 15)
+        XCTAssertEqual(result, 16)
     }
     
     
     func test_1and2rank_color_is_black() {
         // given
-        let pieceColor: Piece.Color = .black
+        let pieceColor: Color = .black
         
         // when
         chessBrain.start()
@@ -212,7 +228,7 @@ class BoardTests: XCTestCase {
     
     func test_7and8rank_color_is_white() {
         // given
-        let pieceColor: Piece.Color = .white
+        let pieceColor: Color = .white
         
         // when
         chessBrain.start()
@@ -273,7 +289,7 @@ class BoardTests: XCTestCase {
     func test_white_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: Piece.Color = .white
+        let pawnColor: Color = .white
         
         // when
         chessBrain.start()
@@ -287,7 +303,7 @@ class BoardTests: XCTestCase {
     func test_black_pawn_count_after_prepare_pawns() {
         
         // given
-        let pawnColor: Piece.Color = .black
+        let pawnColor: Color = .black
         
         // when
         chessBrain.start()
@@ -300,7 +316,7 @@ class BoardTests: XCTestCase {
     
     func test_white_color_score() {
         // given
-        let scoreOption: ScoreManager.ScoreOptions = [.white]
+        let scoreOption: ScoreOptions = .white
         
         // when
         chessBrain.start()
@@ -312,7 +328,7 @@ class BoardTests: XCTestCase {
     
     func test_black_color_score() {
         // given
-        let scoreOption: ScoreManager.ScoreOptions = [.black]
+        let scoreOption: ScoreOptions = .black
         
         // when
         chessBrain.start()

@@ -7,11 +7,15 @@
 
 import Foundation
 
-final class Knight: Piece {
+struct Knight: Piece {
     
-    override var score: Int { 3 }
+    let color: Color
     
-    override var steps: [Tuple] {
+    var point: Point
+    
+    var score: Int { 3 }
+    
+    var steps: [Tuple] {
         [
             Direction.n + Direction.nw,
             Direction.n + Direction.ne,
@@ -24,9 +28,11 @@ final class Knight: Piece {
         ]
     }
     
-    override var toString: String { "Knight" }
+    var maxStepDistance: Int { 1 }
     
-    override var toIcon: String {
+    var toString: String { "Knight" }
+    
+    var toIcon: String {
         switch color {
         case .white:
             return "♘"

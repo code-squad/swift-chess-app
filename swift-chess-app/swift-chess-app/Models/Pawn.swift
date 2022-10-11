@@ -7,11 +7,17 @@
 
 import Foundation
 
-final class Pawn: Piece {
+struct Pawn: Piece {
     
-    override var score: Int { 1 }
+    let color: Color
     
-    override var steps: [Tuple] {
+    var point: Point
+    
+    var maxStepDistance: Int { 1 }
+    
+    var score: Int { 1 }
+    
+    var steps: [Tuple] {
         switch color {
         case .white:
             return [Direction.n].map { $0.toTuple }
@@ -20,9 +26,9 @@ final class Pawn: Piece {
         }
     }
     
-    override var toString: String { "Pawn" }
+    var toString: String { "Pawn" }
     
-    override var toIcon: String {
+    var toIcon: String {
         switch color {
         case .white:
             return "♙"
