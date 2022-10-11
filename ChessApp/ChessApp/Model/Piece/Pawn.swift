@@ -30,19 +30,13 @@ struct Pawn: Piece {
     self.color = color
   }
   
-  func movablePositions(from: Position) -> Result<[Position], BoardError> {
-    guard let movedFile = from.move(
-      fileIndex: self.movableFileIndex
-    ) else {
-      return .failure(.notMovableFile)
+  func movablePositions(from: Position) -> [Position] {
+    guard let movedFile = from.move(fileIndex: self.movableFileIndex),
+          let movedRank = from.move(rankIndex: self.movableRankIndex)
+    else {
+      return []
     }
     
-    guard let movedRank = from.move(
-      rankIndex: self.movableRankIndex
-    ) else {
-      return .failure(.notMovableRank)
-    }
-    
-    return .success([Position(file: movedFile, rank: movedRank)])
+    return [Position(file: movedFile, rank: movedRank)]
   }
 }

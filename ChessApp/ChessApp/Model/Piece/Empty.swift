@@ -8,10 +8,6 @@
 import Foundation
 
 struct Empty: Piece {
-  var type: PiecePolicy.PieceType {
-    .none
-  }
-  
   var shape: String {
     "."
   }
@@ -26,7 +22,7 @@ struct Empty: Piece {
     self.color = .none
   }
   
-  func movablePositions(from: Position) -> Result<[Position], BoardError> {
-    return .failure(.emptyBoard)
+  func movablePositions(from: Position) -> [Position] {
+    return []
   }
 }
