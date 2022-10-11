@@ -13,14 +13,14 @@ final class BoardTests: XCTestCase {
         let board = Board()
         board.newGame()
         XCTAssertEqual(board.display(), [
-            "♜♞♝.♛♝♞♜",
+            "♜♞♝♚♛♝♞♜",
             "♟♟♟♟♟♟♟♟",
             "........",
             "........",
             "........",
             "........",
             "♙♙♙♙♙♙♙♙",
-            "♖♘♗.♕♗♘♖"
+            "♖♘♗♔♕♗♘♖"
         ])
     }
 
@@ -39,25 +39,25 @@ final class BoardTests: XCTestCase {
         let hadMoved = board.move(from: .init(x: .G, y: .seven), to: .init(x: .G, y: .six))
         if hadMoved {
             XCTAssertEqual(board.display(), [
-                "♜♞♝.♛♝♞♜",
+                "♜♞♝♚♛♝♞♜",
                 "♟♟♟♟♟♟♟♟",
                 "........",
                 "........",
                 "........",
                 "......♙.",
                 "♙♙♙♙♙♙.♙",
-                "♖♘♗.♕♗♘♖"
+                "♖♘♗♔♕♗♘♖"
             ])
         } else {
             XCTAssertEqual(board.display(), [
-                "♜♞♝.♛♝♞♜",
+                "♜♞♝♚♛♝♞♜",
                 "♟♟♟♟♟♟♟♟",
                 "........",
                 "........",
                 "........",
                 "........",
                 "♙♙♙♙♙♙♙♙",
-                "♖♘♗.♕♗♘♖"
+                "♖♘♗♔♕♗♘♖"
             ])
         }
     }
@@ -71,14 +71,14 @@ final class BoardTests: XCTestCase {
         board.move(from: .init(x: .G, y: .three), to: .init(x: .G, y: .four))
         board.move(from: .init(x: .G, y: .five), to: .init(x: .G, y: .four))
         XCTAssertEqual(board.display(), [
-            "♜♞♝.♛♝♞♜",
+            "♜♞♝♚♛♝♞♜",
             "♟♟♟♟♟♟.♟",
             "........",
             "......♙.",
             "........",
             "........",
             "♙♙♙♙♙♙.♙",
-            "♖♘♗.♕♗♘♖"
+            "♖♘♗♔♕♗♘♖"
         ])
 
         let score = board.score()
