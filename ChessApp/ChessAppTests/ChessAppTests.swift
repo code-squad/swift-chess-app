@@ -103,7 +103,7 @@ final class ChessAppTests: XCTestCase {
   
   // MARK: PositionCoordinator Test
   func test_reset_blackPawn() {
-    let coordinator = PositionCoordinator(positionSize: self.size)
+    let coordinator = PieceCoordinator(positionSize: self.size)
     coordinator.reset()
     
     let piece = coordinator.getPiece(indexs: (2, 0))
@@ -114,7 +114,7 @@ final class ChessAppTests: XCTestCase {
   }
   
   func test_reset_whitePawn() {
-    let coordinator = PositionCoordinator(positionSize: self.size)
+    let coordinator = PieceCoordinator(positionSize: self.size)
     coordinator.reset()
     
     let piece = coordinator.getPiece(indexs: (7, 0))
@@ -125,7 +125,7 @@ final class ChessAppTests: XCTestCase {
   }
   
   func test_set_piece() {
-    let coordinator = PositionCoordinator(positionSize: self.size)
+    let coordinator = PieceCoordinator(positionSize: self.size)
     coordinator.reset()
     
     let emptyPiece = Empty()

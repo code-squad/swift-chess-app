@@ -13,7 +13,7 @@ final class Board {
   private let presenter = BoardPresenter()
   private let size: Int = 8
   
-  private lazy var coordinator = PositionCoordinator(positionSize: self.size)
+  private lazy var coordinator = PieceCoordinator(positionSize: self.size)
   private var score: [Color: Int] = [.black: 0, .white: 0]
   
   // MARK: Initailzer
