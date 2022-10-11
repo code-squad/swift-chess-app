@@ -17,11 +17,11 @@ struct Position {
   }
   
   init(value: String) throws {
-    guard let file = File(value.last) else {
+    guard let file = File(value.first) else {
       throw BoardError.invalidFile
     }
     
-    guard let rank = Rank(value.first) else {
+    guard let rank = Rank(value.last) else {
       throw BoardError.invalidRank
     }
     

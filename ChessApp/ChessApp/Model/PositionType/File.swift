@@ -8,7 +8,7 @@
 import Foundation
 
 enum File: Int, CaseIterable {
-  case one = 1, two, three, four, five, six, seven, eight
+  case A = 0, B, C, D, E, F, G, H
   
   init?(_ rawValue: Character?) {
     guard let rawValue = rawValue,
@@ -28,11 +28,11 @@ enum File: Int, CaseIterable {
   }
   
   var toDisplay: String {
-    String(self.rawValue)
+    String(describing: self)
   }
   
   var index: Int {
-    self.rawValue - 1
+    self.rawValue
   }
 }
 
