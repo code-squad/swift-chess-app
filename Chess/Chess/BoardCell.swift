@@ -20,7 +20,7 @@ class BoardCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 1, green: 0.9169071317, blue: 0.8498679399, alpha: 1)
         self.layer.borderColor = UIColor.green.cgColor
 
         addSubview(pieceLabel)
@@ -38,7 +38,7 @@ class BoardCell: UICollectionViewCell {
     }
 
     func setMovable(_ movable: Bool) {
-        self.layer.borderWidth = movable ? 1 : 0
+        self.layer.borderWidth = movable ? 2 : 0
     }
 
     func setPiece(_ text: String) {
