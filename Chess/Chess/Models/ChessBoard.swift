@@ -8,6 +8,8 @@
 import Foundation
 
 protocol Board {
+    var scores: [Team: Score] { get }
+
     func display() -> String
     func move(from: String, to: String) -> Bool
     func move(from: Position, to: Position) -> Bool
