@@ -19,10 +19,10 @@ struct Queen: Piece {
   }
 
   static func makePiecesWithPosition() -> [PieceWithPosition] {
-    let blackQueens = [Position(rankIndex: 0, fileIndex: 4)]
+    let blackQueens = [Position(file: .E, rank: .R1)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Queen(player: .black), position: $0) }
-    let whiteQueens = [Position(rankIndex: 7, fileIndex: 4)]
+    let whiteQueens = [Position(file: .E, rank: .R8)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Queen(player: .white), position: $0) }
     return blackQueens + whiteQueens

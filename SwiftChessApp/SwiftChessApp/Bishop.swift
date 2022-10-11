@@ -19,10 +19,10 @@ struct Bishop: Piece {
   }
 
   static func makePiecesWithPosition() -> [PieceWithPosition] {
-    let blackBishops = [Position(rankIndex: 0, fileIndex: 2), Position(rankIndex: 0, fileIndex: 5)]
+    let blackBishops = [Position(file: .C, rank: .R1), Position(file: .F, rank: .R1)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Bishop(player: .black), position: $0) }
-    let whiteBishops = [Position(rankIndex: 7, fileIndex: 2), Position(rankIndex: 7, fileIndex: 5)]
+    let whiteBishops = [Position(file: .C, rank: .R8), Position(file: .F, rank: .R8)]
       .compactMap { $0 }
       .map { PieceWithPosition(piece: Bishop(player: .white), position: $0) }
     return blackBishops + whiteBishops
