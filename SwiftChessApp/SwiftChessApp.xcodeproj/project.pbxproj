@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B606037528F4512900FD733B /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606037428F4512900FD733B /* King.swift */; };
 		B620F59F28E15F02009AA304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620F59E28E15F02009AA304 /* AppDelegate.swift */; };
 		B620F5A128E15F02009AA304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620F5A028E15F02009AA304 /* SceneDelegate.swift */; };
 		B620F5A328E15F02009AA304 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620F5A228E15F02009AA304 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B606037428F4512900FD733B /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 		B620F59B28E15F02009AA304 /* SwiftChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B620F59E28E15F02009AA304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B620F5A028E15F02009AA304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				B6C7E81728E8AC5800515BBE /* Rook.swift */,
 				B6C7E81928E8AC6300515BBE /* Queen.swift */,
 				B6C7E81B28E8AC7A00515BBE /* Knight.swift */,
+				B606037428F4512900FD733B /* King.swift */,
 				B620F5A428E15F02009AA304 /* Main.storyboard */,
 				B620F5A728E15F03009AA304 /* Assets.xcassets */,
 				B620F5A928E15F03009AA304 /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 				B620F5DA28E2B0E3009AA304 /* Position.swift in Sources */,
 				B6C7E81828E8AC5800515BBE /* Rook.swift in Sources */,
 				B6C7E81428E8AC2600515BBE /* PiecesOnBoard.swift in Sources */,
+				B606037528F4512900FD733B /* King.swift in Sources */,
 				B620F5A128E15F02009AA304 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +489,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -512,6 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftChessApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -558,6 +564,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -593,6 +600,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.frdy.SwiftChessAppUITests;
