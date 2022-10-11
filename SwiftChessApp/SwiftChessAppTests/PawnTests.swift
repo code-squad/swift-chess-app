@@ -20,18 +20,18 @@ final class PawnTests: XCTestCase {
   }
 
   func testBlackPawnNextPositions() {
-    let positions = blackPawn.availableNextPositions(from: .init(string: "B2")!, in: nil)
+    let positions = blackPawn.availableNextPositions(from: .init(file: .B, rank: .R2)!, in: nil)
 
-    XCTAssertEqual(positions, Set([.init(string: "A2")!, .init(string: "C2")!, .init(string: "B3")!]))
+    XCTAssertEqual(positions, Set([.init(file: .A, rank: .R2)!, .init(file: .C, rank: .R2)!, .init(file: .B, rank: .R3)!]))
   }
 
   func testWhitePawnNextPositions() {
-    let positions = whitePawn.availableNextPositions(from: .init(string: "G7")!, in: nil)
+    let positions = whitePawn.availableNextPositions(from: .init(file: .G, rank: .R7)!, in: nil)
 
-    XCTAssertTrue(positions.contains(Position(string: "G6")!))
-    XCTAssertTrue(positions.contains(Position(string: "F7")!))
-    XCTAssertTrue(positions.contains(Position(string: "H7")!))
-    XCTAssertFalse(positions.contains(Position(string: "G8")!))
-    XCTAssertFalse(positions.contains(Position(string: "E5")!))
+    XCTAssertTrue(positions.contains(Position(file: .G, rank: .R6)!))
+    XCTAssertTrue(positions.contains(Position(file: .F, rank: .R7)!))
+    XCTAssertTrue(positions.contains(Position(file: .H, rank: .R7)!))
+    XCTAssertFalse(positions.contains(Position(file: .G, rank: .R8)!))
+    XCTAssertFalse(positions.contains(Position(file: .E, rank: .R5)!))
   }
 }
