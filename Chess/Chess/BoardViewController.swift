@@ -8,6 +8,12 @@
 import UIKit
 
 class BoardViewController: UIViewController {
+    private let scoreView: ScoreView = {
+        let scoreView = ScoreView()
+        scoreView.translatesAutoresizingMaskIntoConstraints = false
+        return scoreView
+    }()
+
     private let currentTeamView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +65,7 @@ class BoardViewController: UIViewController {
         self.currentDisplay = board.display()
         self.turn = .white
         super.init(nibName: nil, bundle: nil)
+        reloadData()
     }
 
     required init?(coder: NSCoder) {
@@ -74,6 +81,7 @@ class BoardViewController: UIViewController {
 
     private func setUI() {
         view.backgroundColor = .white
+        view.addSubview(scoreView)
         view.addSubview(currentTeamView)
         view.addSubview(collectionView)
 
@@ -91,13 +99,20 @@ class BoardViewController: UIViewController {
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
             collectionView.heightAnchor.constraint(equalTo: view.widthAnchor),
             collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            scoreView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 40),
+            scoreView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scoreView.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
 
     private func reloadData() {
         currentDisplay = board.display()
         collectionView.reloadData()
+        scoreView.setScore(
+            white: board.scores[.white],
+            black: board.scores[.black]
+        )
     }
 
     private func changeTurn() {
@@ -163,9 +178,7 @@ extension BoardViewController: UICollectionViewDelegate {
                 reloadData()
                 return
             }
-            if let movablePositions = movablePositions,
-               movablePositions.contains(position) {
-                board.move(from: selectedPosition, to: position)
+            if board.move(from: selectedPosition, to: position) {
                 self.selectedPosition = nil
                 self.movablePositions = nil
                 changeTurn()
