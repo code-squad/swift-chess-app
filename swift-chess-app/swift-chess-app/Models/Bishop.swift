@@ -7,11 +7,15 @@
 
 import Foundation
 
-final class Bishop: Piece {
+struct Bishop: Piece {
     
-    override var score: Int { 3 }
+    let color: Color
     
-    override var steps: [Tuple] {
+    var point: Point
+    
+    var score: Int { 3 }
+    
+    var steps: [Tuple] {
         [
             Direction.ne,
             Direction.se,
@@ -20,11 +24,11 @@ final class Bishop: Piece {
         ].map { $0.toTuple }
     }
     
-    override var maxStepDistance: Int { 7 }
+    var maxStepDistance: Int { 7 }
     
-    override var toString: String { "Bishop" }
+    var toString: String { "Bishop" }
     
-    override var toIcon: String {
+    var toIcon: String {
         switch color {
         case .white:
             return "♗"

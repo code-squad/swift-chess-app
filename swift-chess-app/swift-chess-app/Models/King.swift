@@ -1,19 +1,19 @@
 //
-//  Queen.swift
+//  King.swift
 //  swift-chess-app
 //
-//  Created by Haeseok Lee on 2022/10/03.
+//  Created by Haeseok Lee on 2022/10/11.
 //
 
 import Foundation
 
-struct Queen: Piece {
+struct King: Piece {
     
     let color: Color
     
     var point: Point
     
-    var score: Int { 9 }
+    var score: Int { 0 }
     
     var steps: [Tuple] {
         [
@@ -28,16 +28,16 @@ struct Queen: Piece {
         ].map { $0.toTuple }
     }
     
-    var maxStepDistance: Int { 7 }
+    var maxStepDistance: Int { 1 }
     
-    var toString: String { "Queen" }
+    var toString: String { "King" }
     
     var toIcon: String {
         switch color {
         case .white:
-            return "♕"
+            return "♔"
         case .black:
-            return "♛"
+            return "♚"
         }
     }
 }

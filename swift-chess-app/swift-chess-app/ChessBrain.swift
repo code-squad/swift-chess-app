@@ -7,6 +7,15 @@
 
 import Foundation
 
+protocol ChessBrainDelegate: AnyObject {
+    
+    func didCanceled(action: Action, board: Board)
+    
+    func didChanged(users: [User])
+    
+    func didCompleted(action: Action, board: Board)
+}
+
 final class ChessBrain {
     
     let board: Board
@@ -19,15 +28,17 @@ final class ChessBrain {
     
     private(set) var currentTurnUser: User
     
-    var boardToList: [[Piece?]] { board.toList }
+    var boardToList: [[PieceInfo?]] { board.toList }
     
-    var currentTurnColor: Piece.Color { currentTurnUser.color }
+    var currentTurnColor: Color { currentTurnUser.color }
     
     var users: [User] { [user1, user2] }
     
     var allPieces: [Piece] { users.reduce([]) { $0 + $1.pieces } }
     
-    init(board: Board = .init(), user1: User, user2: User) {
+    weak var delegate: ChessBrainDelegate?
+    
+    init(board: Board = Board(scoreManager: ScoreManager()), user1: User, user2: User) {
         self.board = board
         self.user1 = user1
         self.user2 = user2
@@ -42,53 +53,55 @@ extension ChessBrain {
         board.set(pieces: allPieces)
         isOnGoing = true
     }
+}
+
+
+extension ChessBrain: InputManagerDelegate {
     
-    func turn() {
-        apply(action: startTurn())
-        endTurn()
-    }
-    
-    func help(user: User) -> [Piece: [Point]] {
-        Dictionary(uniqueKeysWithValues: user.pieces.map { ($0, board.movablePoints($0)) })
+    func didCommandEntered(action: Action) {
+        apply(action: action)
     }
 }
 
 private extension ChessBrain {
     
-    func startTurn() -> Action {
-        return currentTurnUser.doAction()
-    }
-    
     func endTurn() {
         currentTurnUser = currentTurnUser == user1 ? user2 : user1
+        board.set(state: .normal)
     }
 
     func apply(action: Action) {
-        switch transform(action: action) {
+        let verified = board.verify(action: action, color: currentTurnColor)
+        let transformed = board.transform(action: verified)
+        
+        switch transformed {
+        case let .help(point):
+            board.help(point)
+            
+        case .cancel:
+            board.set(state: .normal)
+            delegate?.didCanceled(action: action, board: board)
+            
         case let .move(point1, point2):
             board.move(point1, to: point2)
+            endTurn()
             
         case let .capture(point1, point2):
-            board.capture(point1, by: point2)
+            board.capture(point1, point2)
+            update(users: users)
+            delegate?.didChanged(users: users)
+            endTurn()
             
         default:
             return
         }
+        
+        delegate?.didCompleted(action: action, board: board)
     }
     
-    func transform(action: Action) -> Action {
-        switch action {
-        case let .move(from, to):
-            if board.canCapture(from, by: to) {
-                return .capture(from, by: to)
-            }
-            if board.canMove(from, to: to) {
-                return action
-            }
-            return .error(ChessError.impossible)
-            
-        default:
-            return action
+    func update(users: [User]) {
+        users.forEach {
+            $0.score = board.calculateScore(option: ScoreOptions(color: $0.color))
         }
     }
 }
@@ -99,53 +112,93 @@ private extension ChessBrain {
         users.forEach { preparePieces(user: $0) }
     }
     
+    func prepareRank(info: PieceInfo) -> Rank {
+        switch info.type {
+        case is Pawn.Type:
+            return info.color == .white ? Rank.seven : Rank.two
+            
+        default:
+            return info.color == .white ? Rank.eight : Rank.one
+        }
+    }
+    
     func preparePieces(user: User) {
         preparePawns(user: user)
         prepareRooks(user: user)
         prepareKnights(user: user)
         prepareBishops(user: user)
         prepareQueen(user: user)
+        prepareKing(user: user)
     }
     
     func preparePawns(user: User) {
-        guard let rank = user.color == .white ? Rank(7) : Rank(2) else { return }
         let pieces = File.allCases.map { file -> Piece in
-            Pawn(color: user.color, point: Point(rank: rank, file: file))
+            Pawn(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Pawn.self)), file: file)
+            )
         }
         user.pieces.append(contentsOf: pieces)
     }
     
     func prepareRooks(user: User) {
-        guard let rank = user.color == .white ? Rank(8) : Rank(1) else { return }
         let pieces = [
-            Rook(color: user.color, point: Point(rank: rank, file: File.a)),
-            Rook(color: user.color, point: Point(rank: rank, file: File.h))
+            Rook(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Rook.self)), file: File.a)
+            ),
+            Rook(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Rook.self)), file: File.h)
+            )
         ]
         user.pieces.append(contentsOf: pieces)
     }
     
     func prepareKnights(user: User) {
-        guard let rank = user.color == .white ? Rank(8) : Rank(1) else { return }
         let pieces = [
-            Knight(color: user.color, point: Point(rank: rank, file: File.b)),
-            Knight(color: user.color, point: Point(rank: rank, file: File.g))
+            Knight(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Knight.self)), file: File.b)
+            ),
+            Knight(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Knight.self)), file: File.g)
+            )
         ]
         user.pieces.append(contentsOf: pieces)
     }
     
     func prepareBishops(user: User) {
-        guard let rank = user.color == .white ? Rank(8) : Rank(1) else { return }
         let pieces = [
-            Bishop(color: user.color, point: Point(rank: rank, file: File.c)),
-            Bishop(color: user.color, point: Point(rank: rank, file: File.f))
+            Bishop(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Bishop.self)), file: File.c)
+            ),
+            Bishop(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Bishop.self)), file: File.f)
+            )
         ]
         user.pieces.append(contentsOf: pieces)
     }
     
     func prepareQueen(user: User) {
-        guard let rank = user.color == .white ? Rank(8) : Rank(1) else { return }
         let pieces = [
-            Queen(color: user.color, point: Point(rank: rank, file: File.e))
+            Queen(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: Queen.self)), file: File.e)
+            )
+        ]
+        user.pieces.append(contentsOf: pieces)
+    }
+    
+    func prepareKing(user: User) {
+        let pieces = [
+            King(
+                color: user.color,
+                point: Point(rank: prepareRank(info: PieceInfo(color: user.color, type: King.self)), file: File.d)
+            )
         ]
         user.pieces.append(contentsOf: pieces)
     }

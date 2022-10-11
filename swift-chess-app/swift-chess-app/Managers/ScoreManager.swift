@@ -7,29 +7,21 @@
 
 import Foundation
 
-struct ScoreManager {
+struct ScoreManager: ScoreManagable {
     
-    struct ScoreOptions: OptionSet {
-        let rawValue: Int
-
-        static let white = ScoreOptions(rawValue: 1 << 0)
-        static let black = ScoreOptions(rawValue: 2 << 0)
-        static let all: ScoreOptions = [.white, .black]
-    }
-    
-    func caculateScore(board: Board.BoardDataType, option: ScoreOptions) -> Int {
+    func caculateScore(list: [[PieceInfo?]], option: ScoreOptions) -> Int {
         
-        let boardPieces = board.map { $1 }
-        var pieces = [Piece]()
+        let infos = list.flatMap { $0 }.compactMap { $0 }
+        var candidates = [PieceInfo]()
         
         if option.contains(.white) {
-            pieces.append(contentsOf: boardPieces.filter({ $0.color == .white }))
+            candidates.append(contentsOf: infos.filter({ $0.color == .white }))
         }
         
         if option.contains(.black) {
-            pieces.append(contentsOf: boardPieces.filter({ $0.color == .black }))
+            candidates.append(contentsOf: infos.filter({ $0.color == .black }))
         }
         
-        return pieces.reduce(0) { $0 + $1.score }
+        return candidates.reduce(0) { $0 + $1.toScore }
     }
 }
