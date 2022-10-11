@@ -15,6 +15,7 @@
 		0071982F28ECC6A10094CBB2 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071982E28ECC6A10094CBB2 /* Queen.swift */; };
 		0071983128ECC6AF0094CBB2 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071983028ECC6AF0094CBB2 /* Knight.swift */; };
 		0071985328F4585E0094CBB2 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071985228F4585E0094CBB2 /* BoardCell.swift */; };
+		0071985628F5A47C0094CBB2 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071985528F5A47C0094CBB2 /* ScoreView.swift */; };
 		00739FDB28E89EDC0025E40F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDA28E89EDC0025E40F /* File.swift */; };
 		00739FDD28E89F1B0025E40F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDC28E89F1B0025E40F /* Rank.swift */; };
 		00739FDF28E89F4F0025E40F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00739FDE28E89F4F0025E40F /* Team.swift */; };
@@ -63,6 +64,7 @@
 		0071982E28ECC6A10094CBB2 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		0071983028ECC6AF0094CBB2 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		0071985228F4585E0094CBB2 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		0071985528F5A47C0094CBB2 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		00739FDA28E89EDC0025E40F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		00739FDC28E89F1B0025E40F /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		00739FDE28E89F4F0025E40F /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				0071985428F458940094CBB2 /* Models */,
 				0099CE8628DDF90F00AFCCCF /* BoardViewController.swift */,
 				0071985228F4585E0094CBB2 /* BoardCell.swift */,
+				0071985528F5A47C0094CBB2 /* ScoreView.swift */,
 				0099CE8B28DDF91100AFCCCF /* Assets.xcassets */,
 				0099CE8D28DDF91100AFCCCF /* LaunchScreen.storyboard */,
 				0099CE9028DDF91100AFCCCF /* Info.plist */,
@@ -341,6 +344,7 @@
 				0071982B28ECC67B0094CBB2 /* Bishop.swift in Sources */,
 				0071982D28ECC6920094CBB2 /* Rook.swift in Sources */,
 				0099CEBB28E1D4F400AFCCCF /* Position.swift in Sources */,
+				0071985628F5A47C0094CBB2 /* ScoreView.swift in Sources */,
 				0099CE8328DDF90F00AFCCCF /* AppDelegate.swift in Sources */,
 				0071983128ECC6AF0094CBB2 /* Knight.swift in Sources */,
 				0099CEB528E07B6400AFCCCF /* Pawn.swift in Sources */,
