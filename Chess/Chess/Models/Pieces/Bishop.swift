@@ -19,7 +19,7 @@ class Bishop: Piece {
     }
 
     func canMove(from: Position, to: Position) -> Bool {
-        return from.file.index - to.file.index == from.rank.index - to.rank.index
+        return abs(from.file.index - to.file.index) == abs(from.rank.index - to.rank.index)
     }
 
     func movablePositions(from: Position) -> [Position] {
