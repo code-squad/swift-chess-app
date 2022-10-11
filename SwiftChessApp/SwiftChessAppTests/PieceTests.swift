@@ -11,7 +11,7 @@ final class PieceTests: XCTestCase {
 
     // MARK: - Bishop
     func test_Bishop_availablePositions_빈보드() {
-        let bishop = Bishop(color: .black)
+        let bishop = BlackBishop()
         XCTAssertEqual(bishop.availablePositions(from: .init(x: .D, y: .five), on: [:]), [
             .init(x: .E, y: .six),
             .init(x: .E, y: .four),
@@ -29,12 +29,12 @@ final class PieceTests: XCTestCase {
         ])
     }
     func test_Bishop_availablePositions_장애물() {
-        let bishop = Bishop(color: .black)
+        let bishop = BlackBishop()
         let availablePositions = bishop.availablePositions(from: .init(x: .D, y: .five), on: [
-            .init(x: .F, y: .seven): Pawn(color: .black),
-            .init(x: .G, y: .two): Pawn(color: .black),
-            .init(x: .C, y: .six): Pawn(color: .black),
-            .init(x: .B, y: .three): Pawn(color: .black)
+            .init(x: .F, y: .seven): BlackPawn(),
+            .init(x: .G, y: .two): BlackPawn(),
+            .init(x: .C, y: .six): BlackPawn(),
+            .init(x: .B, y: .three): BlackPawn(),
         ])
         XCTAssertEqual(availablePositions, [
             .init(x: .E, y: .six),
@@ -44,12 +44,12 @@ final class PieceTests: XCTestCase {
         ])
     }
     func test_Bishop_availablePositions_장애물_상대편() {
-        let bishop = Bishop(color: .black)
+        let bishop = BlackBishop()
         let availablePositions = bishop.availablePositions(from: .init(x: .D, y: .five), on: [
-            .init(x: .F, y: .seven): Pawn(color: .white),
-            .init(x: .G, y: .two): Pawn(color: .white),
-            .init(x: .C, y: .six): Pawn(color: .white),
-            .init(x: .B, y: .three): Pawn(color: .white)
+            .init(x: .F, y: .seven): WhitePawn(),
+            .init(x: .G, y: .two): WhitePawn(),
+            .init(x: .C, y: .six): WhitePawn(),
+            .init(x: .B, y: .three): WhitePawn(),
         ])
         XCTAssertEqual(availablePositions, [
             .init(x: .E, y: .six),
@@ -65,7 +65,7 @@ final class PieceTests: XCTestCase {
 
     // MARK: - Knight
     func test_Knight_availablePositions_빈보드() {
-        let knight = Knight(color: .black)
+        let knight = BlackKnight()
         XCTAssertEqual(knight.availablePositions(from: .init(x: .D, y: .four), on: [:]), [
             .init(x: .F, y: .five),
             .init(x: .F, y: .three),
@@ -78,11 +78,11 @@ final class PieceTests: XCTestCase {
         ])
     }
     func test_Knight_availablePositions_장애물() {
-        let knight = Knight(color: .black)
+        let knight = BlackKnight()
         let availablePositions = knight.availablePositions(from: .init(x: .D, y: .four), on: [
-            .init(x: .D, y: .five): Pawn(color: .black),
-            .init(x: .B, y: .three): Pawn(color: .black),
-            .init(x: .E, y: .two): Pawn(color: .white)
+            .init(x: .D, y: .five): BlackPawn(),
+            .init(x: .B, y: .three): BlackPawn(),
+            .init(x: .E, y: .two): WhitePawn()
         ])
         XCTAssertEqual(availablePositions, [
             .init(x: .F, y: .five),
@@ -95,7 +95,7 @@ final class PieceTests: XCTestCase {
 
     // MARK: - Rook
     func test_Rook_availablePositions_빈보드() {
-        let rook = Rook(color: .black)
+        let rook = BlackRook()
         XCTAssertEqual(rook.availablePositions(from: .init(x: .D, y: .five), on: [:]), [
             .init(x: .E, y: .five),
             .init(x: .F, y: .five),
@@ -114,11 +114,11 @@ final class PieceTests: XCTestCase {
         ])
     }
     func test_Rook_availablePositions_장애물() {
-        let rook = Rook(color: .black)
+        let rook = BlackRook()
         let availablePositions = rook.availablePositions(from: .init(x: .D, y: .five), on: [
-            .init(x: .D, y: .seven): Pawn(color: .black),
-            .init(x: .G, y: .five): Pawn(color: .black),
-            .init(x: .A, y: .five): Pawn(color: .white)
+            .init(x: .D, y: .seven): BlackPawn(),
+            .init(x: .G, y: .five): BlackPawn(),
+            .init(x: .A, y: .five): WhitePawn()
         ])
         XCTAssertEqual(availablePositions, [
             .init(x: .E, y: .five),
@@ -136,7 +136,7 @@ final class PieceTests: XCTestCase {
 
     // MARK: - Queen
     func test_Queen_availablePositions_빈보드() {
-        let queen = Queen(color: .black)
+        let queen = BlackQueen()
         XCTAssertEqual(queen.availablePositions(from: .init(x: .D, y: .four), on: [:]), [
             .init(x: .E, y: .four),
             .init(x: .F, y: .four),
@@ -168,11 +168,11 @@ final class PieceTests: XCTestCase {
         ])
     }
     func test_Queen_availablePositions_장애물() {
-        let queen = Queen(color: .black)
+        let queen = BlackQueen()
         let availablePositions = queen.availablePositions(from: .init(x: .D, y: .four), on: [
-            .init(x: .G, y: .four): Pawn(color: .black),
-            .init(x: .B, y: .six): Pawn(color: .black),
-            .init(x: .D, y: .two): Pawn(color: .white)
+            .init(x: .G, y: .four): BlackPawn(),
+            .init(x: .B, y: .six): BlackPawn(),
+            .init(x: .D, y: .two): WhitePawn()
         ])
         XCTAssertEqual(availablePositions, [
             .init(x: .E, y: .four),
