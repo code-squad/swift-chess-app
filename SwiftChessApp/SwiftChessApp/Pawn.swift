@@ -20,17 +20,17 @@ struct Pawn: Piece {
 
   static func makePiecesWithPosition() -> [PieceWithPosition] {
     let blackPawns = Position.File.allCases
-      .map { Position(file: $0, rank: .R1) }
+      .map { Position(file: $0, rank: .R2) }
       .map { PieceWithPosition(piece: Pawn(player: .black), position: $0) }
     let whitePawns = Position.File.allCases
-      .map { Position(file: $0, rank: .R6) }
+      .map { Position(file: $0, rank: .R7) }
       .map { PieceWithPosition(piece: Pawn(player: .white), position: $0) }
     return blackPawns + whitePawns
   }
 
   func availableNextPositions(from position: Position, in pieces: PiecesOnBoard?) -> Set<Position> {
     return validatePositions(
-      [position.forward(player: player), position.nearestPosition(.west), position.nearestPosition(.east)],
+      [position.forward(player: player)],
       in: pieces ?? .single(.init(piece: self, position: position)))
   }
 }
