@@ -107,10 +107,9 @@ final class ChessAppTests: XCTestCase {
     coordinator.reset()
     
     let piece = coordinator.getPiece(indexs: (2, 0))
-    let pawn = Pawn(color: .black)
     
-    XCTAssertEqual(pawn.shape, "♟")
-    XCTAssertEqual(pawn.color, .black)
+    XCTAssertEqual(piece.shape, "♟")
+    XCTAssertEqual(piece.color, .black)
   }
   
   func test_reset_whitePawn() {
@@ -118,10 +117,9 @@ final class ChessAppTests: XCTestCase {
     coordinator.reset()
     
     let piece = coordinator.getPiece(indexs: (7, 0))
-    let pawn = Pawn(color: .white)
     
-    XCTAssertEqual(pawn.shape, "♙")
-    XCTAssertEqual(pawn.color, .white)
+    XCTAssertEqual(piece.shape, "♙")
+    XCTAssertEqual(piece.color, .white)
   }
   
   func test_set_piece() {
