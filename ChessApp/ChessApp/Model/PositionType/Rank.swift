@@ -38,10 +38,10 @@ enum Rank: Int, CaseIterable {
 
 extension Rank {
   static func + (left: Rank, right: Int) -> Rank? {
-    Rank(left.index + right)
+    Rank(left.rawValue + right)
   }
   
   static func + (left: Int, right: Rank) -> Rank? {
-    Rank(left + right.index)
+    Rank(left + right.rawValue)
   }
 }

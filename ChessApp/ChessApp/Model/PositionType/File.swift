@@ -11,12 +11,13 @@ enum File: Int, CaseIterable {
   case A = 0, B, C, D, E, F, G, H
   
   init?(_ rawValue: Character?) {
-    guard let rawValue = rawValue,
-          let intValue = Int(String(rawValue))
+    let unicodeAValue = 65
+    guard let unicodeValue = rawValue?.unicodeScalars.first?.value
     else {
       return nil
     }
     
+    let intValue = Int(unicodeValue) - unicodeAValue
     self.init(rawValue: intValue)
   }
   
@@ -38,10 +39,10 @@ enum File: Int, CaseIterable {
 
 extension File {
   static func + (left: File, right: Int) -> File? {
-    File(left.index + right)
+    File(left.rawValue + right)
   }
   
   static func + (left: Int, right: File) -> File? {
-    File(left + right.index)
+    File(left + right.rawValue)
   }
 }
