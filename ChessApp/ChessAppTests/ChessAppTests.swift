@@ -106,7 +106,7 @@ final class ChessAppTests: XCTestCase {
     let coordinator = PieceCoordinator(positionSize: self.size)
     coordinator.reset()
     
-    let piece = coordinator.getPiece(indexs: (2, 0))
+    let piece = coordinator.getPiece(indexs: (1, 0))
     
     XCTAssertEqual(piece.shape, "♟")
     XCTAssertEqual(piece.color, .black)
@@ -116,7 +116,7 @@ final class ChessAppTests: XCTestCase {
     let coordinator = PieceCoordinator(positionSize: self.size)
     coordinator.reset()
     
-    let piece = coordinator.getPiece(indexs: (7, 0))
+    let piece = coordinator.getPiece(indexs: (6, 0))
     
     XCTAssertEqual(piece.shape, "♙")
     XCTAssertEqual(piece.color, .white)
@@ -127,11 +127,11 @@ final class ChessAppTests: XCTestCase {
     coordinator.reset()
     
     let emptyPiece = Empty()
-    let pawn = coordinator.getPiece(indexs: (7, 0))
+    let pawn = coordinator.getPiece(indexs: (6, 0))
     XCTAssertNotNil(pawn as? Pawn)
     
-    coordinator.setPiece(emptyPiece, indexs: (7, 0))
-    let empty = coordinator.getPiece(indexs: (7, 0))
+    coordinator.setPiece(emptyPiece, indexs: (6, 0))
+    let empty = coordinator.getPiece(indexs: (6, 0))
     XCTAssertNotNil(empty as? Empty)
   }
 }
