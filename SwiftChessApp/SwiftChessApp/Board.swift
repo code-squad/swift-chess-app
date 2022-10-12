@@ -6,25 +6,49 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol BoardPositionable {
     func availablePositions(from current: Position, on board: [Position: Piece]) -> [Position]
 }
 
-final class Board {
+final class Board: ObservableObject {
     struct Score {
         let black: Int
         let white: Int
     }
 
-    let blackPlayer: Player = BlackPlayer()
-    let whitePlater: Player = WhitePlayer()
+    enum TileStatus {
+        case picked
+        case movable
+        case normal
+    }
 
-    private var board: [Position: Piece] = [:]
+    let allPositions: [Position] = {
+        var positions: [Position] = []
+        Position.File.allCases.forEach { file in
+            Position.Rank.allCases.forEach { rank in
+                positions.append(.init(x: file, y: rank))
+            }
+        }
+        return positions
+    }()
+
+    private let blackPlayer: Player = BlackPlayer()
+    private let whitePlayer: Player = WhitePlayer()
+    private lazy var player: Player = whitePlayer
+
+    @Published private(set) var pieces: [Position: Piece] = [:]
+    @Published private(set) var tilesStatus: [Position: TileStatus] = [:]
+    private var pickedPosition: Position? = nil
+
+    init() {
+        newGame()
+    }
 
     func newGame() {
-        board.removeAll()
-        board = [blackPlayer, whitePlater].reduce([Position: Piece](), { partialResult, player in
+        pieces.removeAll()
+        pieces = [blackPlayer, whitePlayer].reduce([Position: Piece](), { partialResult, player in
             var result = partialResult
             result.merge(player.initialPieces.reduce([Position: Piece]()) { partialResult, pieceType in
                 var result = partialResult
@@ -33,6 +57,7 @@ final class Board {
             }) { (c, _) in c }
             return result
         })
+        refreshTilesStatus()
     }
 
     func display() -> [String] {
@@ -40,7 +65,7 @@ final class Board {
         for rank in Position.Rank.allCases {
             var rankDisplay: String = ""
             for file in Position.File.allCases {
-                if let piece = board[.init(x: file, y: rank)] {
+                if let piece = pieces[.init(x: file, y: rank)] {
                     rankDisplay += piece.symbol
                 } else {
                     rankDisplay += "."
@@ -52,13 +77,16 @@ final class Board {
     }
 
     @discardableResult
-    func move(from: Position, to: Position) -> Bool {
-        guard let piece = board.removeValue(forKey: from) else { return false }
-        let availablePositions = piece.availablePositions(from: from, on: board)
+    func move(to: Position) -> Bool {
+        guard
+            let from = pickedPosition,
+            let piece = pieces.removeValue(forKey: from)
+        else { return false }
+        let availablePositions = piece.availablePositions(from: from, on: pieces)
         var result: Bool = false
         for position in availablePositions {
             if position == to {
-                board[to] = piece
+                pieces[to] = piece
                 result = true
                 break
             }
@@ -69,7 +97,7 @@ final class Board {
     func score() -> Score {
         var black: Int = 0
         var white: Int = 0
-        for (_, v) in board {
+        for (_, v) in pieces {
             if v.color == .black {
                 black += v.value
             } else {
@@ -77,5 +105,43 @@ final class Board {
             }
         }
         return Score(black: black, white: white)
+    }
+
+    func pick(_ position: Position) {
+        guard let tileStatus = tilesStatus[position] else { return }
+        switch tileStatus {
+        case .normal:
+            if let piece = pieces[position], piece.color == player.color {
+                refreshTilesStatus()
+                tilesStatus[position] = .picked
+                let availablePositions = piece.availablePositions(from: position, on: pieces)
+                availablePositions.forEach {
+                    tilesStatus[$0] = .movable
+                }
+                pickedPosition = position
+            }
+        case .movable:
+            move(to: position)
+            refreshTilesStatus()
+            pickedPosition = nil
+            changeTurn()
+        case .picked:
+            break
+        }
+    }
+
+    private func refreshTilesStatus() {
+        allPositions.forEach {
+            tilesStatus[$0] = .normal
+        }
+    }
+
+    private func changeTurn() {
+        switch player.color {
+        case .black:
+            player = whitePlayer
+        case .white:
+            player = blackPlayer
+        }
     }
 }
