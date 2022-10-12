@@ -34,7 +34,7 @@
 #### 요구사항에 따른 비숍, 룩, 퀸, 나이트 추가
 
 - ChessPiece에 이동할때 밟고 지나가는 포지션을 제공할 수 있도록 함수 추가
-- 다른 기물을 뛰어 넘을수 없도록 함
+- 기물 종류에 따라 다른 기물을 뛰어 넘을수 있거나 없도록 직접 구현 가능
 
 ### 테스트 케이스
 
@@ -52,7 +52,7 @@ BoardView
 - onTapPosition 클로저를 전달해 상위 뷰에서 탭 이후 로직을 작성할 수 있음
 - extraFloorContent 뷰빌더를 전달해 특정 위치에 표시할 뷰를 상위 뷰에서 구현할 수 있음
 
-ChessGame/ChessGameViewModel
+ChessGameView, ChessGameViewModel
 
 - 탭된 위치에 따라 이동 가능 위치를 표시함
 - 탭이 이동 명령일 때 기물을 이동시킴
