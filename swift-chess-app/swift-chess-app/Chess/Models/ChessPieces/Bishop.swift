@@ -8,11 +8,14 @@
 import Foundation
 
 struct Bishop: Equatable, ChessPiecable, ChessPieceMovableChecker {
+    enum Point {
+        static let bishop = 3
+    }
     private(set) var color: ChessPieceColor
     var position: Position
     
     var point: Int {
-        return Dimension.Point.bishop
+        return Point.bishop
     }
 
     // MARK: 비숍은 대각선으로만 이동이 가능 (-1, -1) / (-1, +1) / (+1. -1) / (+1, +1)

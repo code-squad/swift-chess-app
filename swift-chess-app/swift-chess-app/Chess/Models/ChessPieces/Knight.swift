@@ -8,11 +8,14 @@
 import Foundation
 
 struct Knight: Equatable, ChessPiecable, ChessPieceMovableChecker {
+    enum Point {
+        static let knight = 3
+    }
     private(set) var color: ChessPieceColor
     var position: Position
     
     var point: Int {
-        return Dimension.Point.knight
+        return Point.knight
     }
 
     // MARK: 나이트는 점프로만 이동이 가능 (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1), (-2, -1), (-1, -2)

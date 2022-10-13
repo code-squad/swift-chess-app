@@ -8,11 +8,14 @@
 import Foundation
 
 struct Queen: Equatable, ChessPiecable, ChessPieceMovableChecker {
+    enum Point {
+        static let queen = 9
+    }
     private(set) var color: ChessPieceColor
     var position: Position
     
     var point: Int {
-        return Dimension.Point.queen
+        return Point.queen
     }
     
     // MARK: 퀸은 대각선 및 직선으로만 이동이 가능 (-1, -1) / (-1, +1) / (+1. -1) / (+1, +1) / (0, 1) / (0, -1) / (1. 0) / (-1, 0)

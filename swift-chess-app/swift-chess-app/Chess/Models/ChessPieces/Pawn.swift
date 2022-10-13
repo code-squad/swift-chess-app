@@ -8,11 +8,15 @@
 import Foundation
 
 struct Pawn: Equatable, ChessPiecable, ChessPieceMovableChecker {
+    enum Point {
+        static let pawn = 1
+    }
+    
     private(set) var color: ChessPieceColor
     var position: Position
     
     var point: Int {
-        return Dimension.Point.pawn
+        return Point.pawn
     }
     
     // MARK: 백색은 더 작은 rank로 움직일 수 있고, 흑색은 더 큰 rank로 움직일 수 있다.
