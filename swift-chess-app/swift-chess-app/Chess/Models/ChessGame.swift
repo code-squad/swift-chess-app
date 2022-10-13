@@ -7,52 +7,75 @@
 
 import Foundation
 
+protocol Presentable: AnyObject {
+    func display(row: Int, col: Int, description: String)
+    func score(color: ChessPieceColor, score: Int)
+    func displayMovablePosition(_ positions: [Position])
+    func clear()
+}
+
 class ChessGame {
     typealias PlayerColor = ChessPieceColor
-    
     let chessBoard = ChessBoard()
     var currentPalyerColor: PlayerColor = .black
+    weak var presenter: Presentable?
+    
+    private var inputBuffer: [Position] = []
+    
+    init(presenter: Presentable, currentPalyerColor: PlayerColor = .black) {
+        self.currentPalyerColor = currentPalyerColor
+        self.presenter = presenter
+    }
     
     func start() {
-        // 생성
         createPieces()
+        displayAll()
+    }
+    
+    func inputPosition(row: Int, col: Int) {
+        guard let file = File(rawValue: col + 1),
+              let rank = Rank(rawValue: row + 1) else { return }
+        let position = Position(file: file, rank: rank)
+        inputBuffer.append(position)
         
-        // 게임 진행
-        while checkContinueGame() {
-            let inputString = ""
-            guard let command = Command(inputString: inputString) else {
-                printError(CommandError.invalidFormat)
-                continue
+        if inputBuffer.count == 1 {
+            guard let targetPiece = chessBoard.myPieces(color: currentPalyerColor).first(where: { $0.position == inputBuffer.first })
+            else {
+                inputBuffer.removeAll()
+                return printError(CommandError.invaildPlayer(currentPalyerColor))
+            }
+            
+            displayMovablePosition(targetPiece.movablePositions())
+        } else if inputBuffer.count == 2 {
+            let command = Command(type: .move, commandStrings: inputBuffer.map({ $0.description }))
+            execute(command: command)
+        }
+    }
+    
+    func execute(command: Command) {
+        if command.type == .move,
+           let from = command.fromPosition(),
+           let to = command.toPosition() {
+            guard checkValidatePosition(playerColor: currentPalyerColor, from: from, to: to)
+            else {
+                inputBuffer.removeLast()
+                return printError(PieceError.invalidPosition)
             }
 
-            if command.type == .move,
-               let from = command.fromPosition(),
-               let to = command.toPosition() {
-                guard checkValidatePosition(playerColor: currentPalyerColor, from: from, to: to)
-                else {
-                    printError(PieceError.invalidPosition)
-                    continue
-                }
-
-                guard chessBoard.movePiece(color: currentPalyerColor, from: from, to: to)
-                else {
-                    printError(PieceError.notFindPiece)
-                    continue
-                }
-
-                if let removeTarget = chessBoard.checkHitPiece(color: currentPalyerColor, position: to) {
-                    chessBoard.killChessPiece(removeTarget)
-                }
-
-                chessBoard.display()
-                changeTurnPalyer()
-            } else if command.type == .info,
-                      let infoPosition = command.infoPosition(){
-                if chessBoard.infoDisplay(color: currentPalyerColor, position: infoPosition) == false {
-                    let otherPalyerColor: PlayerColor = self.currentPalyerColor == .black ? .white : .black
-                    printError(CommandError.invaildPlayer(otherPalyerColor))
-                }
+            guard chessBoard.movePiece(color: currentPalyerColor, from: from, to: to)
+            else {
+                inputBuffer.removeLast()
+                return printError(PieceError.notFindPiece)
             }
+
+            let otherPlayerColor: PlayerColor = currentPalyerColor == .black ? .white : .black
+            if let removeTarget = chessBoard.checkHitPiece(color: otherPlayerColor, position: to) {
+                chessBoard.killChessPiece(removeTarget)
+            }
+            
+            inputBuffer.removeAll()
+            changeTurnPalyer()
+            displayAll()
         }
     }
     
@@ -62,7 +85,7 @@ class ChessGame {
     }
     
     func checkValidatePosition(playerColor: PlayerColor, from: Position, to: Position) -> Bool {
-        guard chessBoard.myPieces(color: playerColor).first == nil else { return false }
+        guard chessBoard.myPieces(color: playerColor).first(where: { $0.position == to }) == nil else { return false }
         let movablePosition = chessBoard.movablePositions(color: playerColor, position: from )
         return movablePosition.first(where: { $0 == to }) != nil
     }
@@ -77,18 +100,46 @@ class ChessGame {
         })
         return shouldContinue
     }
+}
+
+// MARK: - display
+extension ChessGame {
+    private func displayAll() {
+        presenter?.clear()
+        
+        let blackPieces = chessBoard.myPieces(color: .black)
+        let whitePieces = chessBoard.myPieces(color: .white)
+        
+        (blackPieces + whitePieces).forEach({
+            let row = $0.position.rank.rawValue - 1
+            let col = $0.position.file.rawValue - 1
+            let description = $0.description
+            presenter?.display(row: row, col: col, description: description)
+        })
+    }
+    
+    private func displayMovablePosition(_ positions: [Position]) {
+        presenter?.displayMovablePosition(positions)
+    }
+    
+    private func displayScore() {
+        let blackScore = score(color: .black)
+        let whiteScore = score(color: .white)
+        
+        presenter?.score(color: .black, score: blackScore)
+        presenter?.score(color: .white, score: whiteScore)
+    }
     
     private func printError(_ error: ChessBoardError) {
         print(error.message)
     }
     
-    func score() -> Int {
+    func score(color: ChessPieceColor) -> Int {
         return chessBoard
-            .myPieces(color: self.currentPalyerColor)
+            .myPieces(color: color)
             .map({ $0.point })
             .reduce(0, { $0 + $1 })
     }
-    
 }
 
 // MARK: - Create Pieces

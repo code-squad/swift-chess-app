@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         window = UIWindow()
-        window?.rootViewController = ViewController()
+        window?.rootViewController = ChessGameViewController()
         window?.makeKeyAndVisible()
         return true
     }
