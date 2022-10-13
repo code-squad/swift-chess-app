@@ -35,50 +35,6 @@ class ChessBoard {
     }
 }
 
-// MARK: - Display(Presenter)
-extension ChessBoard {
-    func display() {
-        var matrix: [[ChessPiecable?]]
-        let rank: [ChessPiecable?] = Array(repeating: nil, count: 8)
-        matrix = Array(repeating: rank, count: 8)
-
-        self.chessPieces.all().forEach({ piece in
-            matrix[piece.position.rank.rawValue - 1][piece.position.file.rawValue - 1] = piece
-        })
-
-        var string = ""
-        string += File.allCases.map{ $0.invertedTypeString }.reduce(" ", { $0 + $1 })
-        string += "\n"
-
-        Rank.allCases.forEach({ rank in
-            string += "\(rank.invertedTypeString)"
-            string +=  matrix[rank.rawValue - 1]
-                .map({
-                    if let piece = $0 { return piece.description }
-                    else { return "." }
-                })
-                .reduce("", { $0 + $1 })
-            string += "\n"
-        })
-
-        string += File.allCases.map{ $0.invertedTypeString }.reduce(" ", { $0 + $1 })
-
-        print(string)
-    }
-    
-    @discardableResult
-    func infoDisplay(color: ChessPieceColor, position: Position) -> Bool {
-        guard let piece = chessPieces.find(color: color, position: position) else {
-            return false
-        }
-        
-        let string = piece.movablePositions().map({ $0.description })
-        print(string)
-        return true
-    }
-}
-
-
 // MARK: - Piece Maker
 extension ChessBoard {
     func createPawns(color: ChessPieceColor, positions: [Position]) {
